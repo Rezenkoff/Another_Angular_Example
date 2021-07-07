@@ -1,0 +1,58 @@
+﻿<div class="brand-name">{{ 'Бренды производителей автозапчастей' | translate}}</div>
+<div class="alphabet">
+    <div class="alphabet-block">
+        <div *ngFor="let letter of (alphabet$ | async).digitals" class="letter">
+            <a (click)="scroll(letter)" class="letter-link">{{letter}}</a>
+        </div>
+    </div>
+    <div class="alphabet-block">
+        <div *ngFor="let letter of (alphabet$ | async).eng" class="letter">
+            <a (click)="scroll(letter)" class="letter-link">{{letter}}</a>
+        </div>
+    </div>
+    <div class="alphabet-block">
+        <div *ngFor="let letter of (alphabet$ | async).rus" class="letter">
+            <a (click)="scroll(letter)" class="letter-link">{{letter}}</a>
+        </div>
+    </div>
+</div>
+<div>
+    <brands-search (searchChange)="applyFilter($event)"></brands-search>
+
+    <div *ngFor="let letter of (alphabet$ | async).digitals" class="letter-block">
+        <div id="letter_{{letter}}" class="first-letter">{{letter}}</div>
+        <div class="first-brand clearfix">
+            <ng-container *ngFor="let brand of getBrandsByLetter((brandsList$ | async), letter)">
+                <div class="brand-foto-text letter-block-column col-xs-4">
+                    <img src="{{brand.pictureUrl}}" width="24" height="24" onerror="this.src = 'https://cdn.autodoc.ua/small-logo-1.png'" />
+                    <div class="brand-text"><a class="brand-link" [routerLink]="brand.url">{{brand.name}}</a></div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <div *ngFor="let letter of (alphabet$ | async).eng" class="letter-block">
+        <div id="letter_{{letter}}" class="first-letter">{{letter}}</div>
+        <div class="first-brand clearfix">
+            <ng-container *ngFor="let brand of getBrandsByLetter((brandsList$ | async), letter)">
+                <div class="brand-foto-text letter-block-column col-xs-4">
+                    <img src="{{brand.pictureUrl}}" width="24" height="24" onerror="this.src = 'https://cdn.autodoc.ua/small-logo-1.png'"/>
+                    <div class="brand-text"><a class="brand-link" [routerLink]="brand.url">{{brand.name}}</a></div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <div *ngFor="let letter of (alphabet$ | async).rus" class="letter-block">
+        <div id="letter_{{letter}}" class="first-letter">{{letter}}</div>
+        <div class="first-brand clearfix">
+            <ng-container *ngFor="let brand of getBrandsByLetter((brandsList$ | async), letter)">
+                <div class="brand-foto-text letter-block-column col-xs-4">
+                    <img src="{{brand.pictureUrl}}" width="24" height="24" onerror="this.src = 'https://cdn.autodoc.ua/small-logo-1.png'"/>
+                    <div class="brand-text"><a class="brand-link" [routerLink]="brand.url">{{brand.name}}</a></div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div *ngIf="inProcess" class="autodoc-loader"></div>
+</div>

@@ -1,0 +1,35 @@
+﻿<div class="product-section__image-box">
+    <div class="autodoc-image-viwer product-section__image-slide">
+        
+        <seo-carousel [carouselImages]="galleryImages"></seo-carousel>
+    </div>
+    <div *ngIf="stock">
+        <span class="special-card">{{'акция' | translate}}</span>
+    </div>
+    <ul class="image-battons">
+        <li class="image-battons__item virtual-btn" *ngIf="is3D === 1">
+
+            <span class="image-battons__ico" (click)="enable3D()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.3914 2.47239L8.20289 0.0314978C8.03275 -0.00122193 7.89532 -0.00122193 7.76117 0.0314978L0.56937 2.47566C-0.0163141 2.65562 4.57992e-05 3.11697 4.57992e-05 3.13006V12.5239C4.57992e-05 12.7955 0.170189 13.0343 0.441763 13.1358L7.76117 15.9595C7.89205 16.0151 8.17017 15.9922 8.23888 15.9595L15.5583 13.139C15.8299 13.0376 16 12.7988 16 12.5272V3.13006C16 2.9272 15.8757 2.53456 15.3914 2.47239ZM8.00003 1.35992L13.3792 3.16278L8.00003 5.20777L2.6209 3.16278L8.00003 1.35992ZM1.32847 12.0495V4.1182L7.31946 6.39877V14.3628L1.32847 12.0495ZM14.6716 12.0495L8.6806 14.3628V6.4184L14.6716 4.1182V12.0495Z" fill="#1D5495" />
+                </svg>
+
+            </span>
+            <span class="image-battons__text" (click)="enable3D()">{{'Смотреть 3D обзор' | translate}}</span>
+        </li>
+    </ul>
+    <div *ngIf="is3D === 1" [style.display]="is3DEnabled()">
+        <div class="order-section__form-step-1 active">
+            <div id="3dimg" class="order-section__sub-search foto-3d" style="display: block;">
+                <span class="close-icon close-icon--Foto" (click)="close()">
+                    <svg class="close-icon__svg">
+                        <use svg-use-reference="close" xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="../assets/images/sprite.svg#close">
+                        </use>
+                    </svg>
+                </span>
+                <div class="sprite_place" style="margin:auto;"></div>
+                
+            </div>
+        </div>
+    </div>
+</div>

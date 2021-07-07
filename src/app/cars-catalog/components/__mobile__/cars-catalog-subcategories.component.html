@@ -1,0 +1,23 @@
+﻿<h1 class="catalog-name">{{'Запчасти для' | translate}}&nbsp;<span>{{ title }}</span></h1>
+
+
+<div *ngIf="isModelGroupsDisplayed()">
+    <ul class="sub-categories">
+        <li class="sub-categories__item catalog-item" *ngFor="let serie of carInfo.seriesList">
+            <a class="sub-catalog-name" [routerLink]="getRouteForCarSerie(serie)" [queryParams]="queryParams">
+                {{carInfo.markName}} {{serie.serieName}}
+            </a>
+        </li>
+    </ul>
+</div>
+<div *ngIf="inProcess" class="autodoc-loader"></div>
+<div class="free-title-mob">{{'Мы бесплатно поможем с подбором запчастей для' | translate}}&nbsp;<span>{{ title }}</span></div>
+<select-me [carMark]="carInfo" [carSerie]="carSerie" [startImgUrl]="startImgUrl"></select-me>
+<div >
+    <search-section (searchChange)="onSearchChange($event)" [titleCar]="title"></search-section>
+</div>
+<div *ngFor="let node of catalogNodes" style="width: 455px; margin:auto;">
+    <category-level [currentLevel]="node" [isOpenNode]="isOpenNode" [childrenHidden]="false" [routeArray]="routeArray" ></category-level>
+</div>
+<br>
+<div class="product-seciton" [innerHTML]="pageText"></div>

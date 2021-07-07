@@ -1,0 +1,45 @@
+﻿<div *ngIf="needShow">
+    <div class="tires-slider">
+        <div class="tires-title">
+            {{'Подобрать шины и диски на авто еще никогда не было так просто!' | translate}}
+        </div>
+        <div class="tires-slider__main">
+            <div>
+                <div class="header-tires-selection">
+                    <div class="tab-tires" [ngClass]="{'close-tires': !isTires}" (click)="toggleTiresWheels()">
+                        <span class="link-tab-tires">{{'Подобрать шины' | translate}}</span>
+                    </div>
+                    <div class="tab-tires right-tab-tires" [ngClass]="{'close-tires': isTires}" (click)="toggleTiresWheels()">
+                        <span class="link-tab-tires">{{'Подобрать диски' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+            <tires-tab *ngIf="isTires" (outTireSizeKeyValue)="onLoadTiresSize($event)" (outTireSizeDiameter)="onLoadDiameter($event)"></tires-tab>
+            <wheels-tab *ngIf="!isTires"></wheels-tab>
+        </div>
+    </div>
+</div>
+<div *ngIf="needShow">
+    <popular-tires (onLoadDictionaryList)="onLoadDictionaryList($event)" (onLoadKeysDictionary)="onLoadKeysDictionary($event)"></popular-tires>
+    <div>
+        <div class="tires-brand-title-popular">{{'Популярные шины и диски по параметрам' | translate}}</div>
+        <div class="radius-popular">
+            <a [routerLink]="['/category/shiny-id49-3']" [queryParams]="getParam('tltd0l4u8-leto')" class="r-popular">{{'Летние' | translate}}</a>
+            <a [routerLink]="['/category/shiny-id49-3']" [queryParams]="getParam('tltd0l4u8-zima')" class="r-popular">{{'Зимние' | translate}}</a>
+            <a [routerLink]="['/category/shiny-id49-3']" [queryParams]="getParam('tltd0l11u1024-vsesezonnaja')" class="r-popular">{{'Всесезонные' | translate}}</a>
+            <a [routerLink]="['/category/diski-id50-3']" class="r-popular">{{'Диски' | translate}}</a>
+        </div>
+        <div class="popular-parametr-flex">
+            <div *ngFor="let key of keysList" class="block-popular-parametrs">
+                <span class="radius-psrsmetr">{{key}}</span>
+                <ul>
+                    <li *ngFor="let param of dictionaryList.get(key)">
+                        <a [routerLink]="['/category/shiny-id49-3']" [queryParams]="getQueryParams(param)">{{param}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+

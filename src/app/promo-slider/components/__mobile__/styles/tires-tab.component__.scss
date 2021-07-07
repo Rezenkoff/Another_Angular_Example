@@ -1,0 +1,183 @@
+.tires-selection {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+.header-tires-selection {
+    background: #f5f7fa;
+    padding: 12px 12px 0;
+    text-align: left;
+    border: 1px solid #C5D5EA;
+    border-radius: 6px 6px 0px 0px;
+}
+
+.block-tires-selection {
+    background: #fff;
+    border-radius: 0;
+    padding: 12px 12px 0;
+    border-left: 1px solid #C5D5EA;
+    border-right: 1px solid #C5D5EA;
+}
+
+.btn-option-tires, .btn-brand-tires {
+    font-size: 12px;
+    line-height: 16px;
+    color: #1d5495;
+    fill: #1d5495;
+    padding: 7px 0;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    width: 45%;
+    background: #FFFFFF;
+    border: 1px solid #C5D5EA;
+    border-radius: 6px;
+
+    &:hover {
+        color: #414141;
+    }
+}
+
+.active-btn-tires {
+    background: #F5F7FA;
+    color: #414141;
+    fill: #414141;
+}
+
+.checkout-line-tires {
+    display: inline-block;
+    width: 1px;
+    height: 30px;
+    background: #c5d5ea;
+    margin: 0 13px;
+    vertical-align: middle;
+}
+
+.btn-group-tires {
+    text-align: center;
+}
+
+.line-type-seasonality {
+    display: inline-block;
+    width: 1px;
+    background: #ffffff;
+    margin: 0 15px;
+    vertical-align: middle;
+}
+
+.btn-type-tires {
+    font-size: 14px;
+    line-height: 18px;
+    color: #1d5495;
+    fill: #1d5495;
+    background: #ffffff;
+    border: 1px solid #C5D5EA;
+    padding: 12px 10px;
+    border-radius: 6px;
+    width: 48%;
+    height: 42px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+
+    &:hover {
+        color: #1d5495;
+        fill: #1d5495;
+    }
+}
+
+.active-type-tires {
+    background: #F5F7FA;
+    color: #414141;
+    fill: #414141;
+
+    &:hover {
+        color: #414141;
+        fill: #414141;
+    }
+}
+
+.type-tires, .seasonality-tires {
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 12px;
+}
+
+.tires-svg {
+    display: inline-block !important;
+}
+
+.type-tires {
+    .catalog-type-icon__svg {
+        display: inline-block;
+    }
+}
+
+.seasonality-btn {
+    width: 42px;
+    height: 42px;
+    background: #FFFFFF;
+    border: 1px solid #99AEC9;
+    display: inline-block;
+    border-radius: 6px;
+    margin-right: 12px;
+    vertical-align: top;
+    padding: 8px;
+    fill: #1d5495 !important;
+}
+
+.active-seasonality-tires {
+    background: #F5F7FA;
+    fill: #414141 !important;
+}
+
+.select-block-tires {
+    padding: 12px 0 0px;
+}
+
+.select-tires {
+    width: 100%;
+    padding-bottom: 12px;
+    position: relative;
+}
+
+.right-tab-tires {
+    float: right;
+}
+
+.season-type-icon__svg {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.footer-tires-selection {
+    background: linear-gradient(180deg,#407fca,#1d5495);
+    border-radius: 0 0 6px 6px;
+    text-align: center;
+    padding: 12px 0;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.footer-tires-selection a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
+
+
+    &:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+}
+.tires-arrow {
+    right: 12px;
+    bottom: 24px;
+    position: absolute;
+}
+.label-form {
+    display: block;
+}

@@ -1,0 +1,18 @@
+﻿<main-user-info [userInfo$]="userInfo$" (onUserInfoChange)="updateUserInfo($event)"></main-user-info>
+<payment-order [initialPaymentId]="initialPaymentMethodId" [paymentId$]="paymentMethodId$" (paymentChanged)="onPaymentChange($event)"></payment-order>
+<delivery-settings (onDeliveryTypeSelect)="setDeliveryType($event)"
+                   (onSettlementSelect)="setSelectedSettlement($event)"
+                   (onCourierDeliverySelect)="setUserAddress($event)"
+                   (onDeliveryPointSelect)="setDeliveryPoint($event)"  
+                   [paymentMethodId$]="paymentMethodId$"
+                   [shipmentKey$]="deliveryTypeKey$"                   
+                   [settlementKey$]="settlementKey$"
+                   [deliveryPointKey$]="deliveryPointKey$"
+                   [userAddress]="userAddress">                   
+</delivery-settings>
+<div class="order-section__add-comment order-section__add-comment--basket">
+    <span class="order-section__add-comment-text" (click)="showComment()">{{'Добавить комментарий к заказу' | translate}}</span>
+</div>
+<div *ngIf="commentDisplayed" class="order-section__area-box" style="height: 150px">
+    <textarea [(ngModel)]="orderComment" (ngModelChange)="updateComment()" class="order-section__contact-area" placeholder="{{'Комментарий' | translate}}" cols="30" rows="10"></textarea>
+</div>

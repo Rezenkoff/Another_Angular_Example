@@ -1,0 +1,28 @@
+.catalog-sub-second {
+    font-size: 12px;
+    line-height: 16px;
+    color: #1D5495;
+    display: block;
+    padding: 6px 0 0 0;
+    word-wrap: break-word;
+    text-decoration: none;
+}
+
+@media(max-width: 320px) {
+    .cars-catalog-title {
+        font-size: 10px;
+    }
+
+    .catalog-sub-second {
+        font-size: 9px;
+    }
+}
+.sub-fourth-level {
+    margin: 0px 0 0 10px;
+    text-decoration: none;
+}
+
+.sub-sub-link {
+    text-decoration: none;
+    line-height: 48px;
+}

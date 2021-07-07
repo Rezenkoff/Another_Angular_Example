@@ -1,0 +1,36 @@
+﻿<div class="container__radio-box">
+    <delivery-types [shipmentKey$]="shipmentKey$"
+                    (onDeliveryTypeSelect)="onDeliveryTypeChange($event)"
+                    [pointsCount$]="pointsCount$"
+                    [paymentMethodId$]="paymentMethodId$">
+    </delivery-types>
+
+    <ng-container *ngIf="isCourierDelivery">
+        <courier-delivery-select [userAddress]="userAddress"
+                                 (courierDeliveryChanged)="onCourierDeliveryChange($event)">
+        </courier-delivery-select>
+    </ng-container>
+    
+    <ng-container *ngIf="!isCourierDelivery">
+        <div class="container__radio-box">
+            <span style="width:100%" class="container__radio-title">{{'Населённый пункт' | translate}} <span class="red-star">*</span></span>
+            <settlement-dropdown (settlementSelected)="onSettlementChange($event)"
+                                 [deliveryMethodKey$]="shipmentKey$"
+                                 [selectedSettlementKey$]="settlementKey$">
+            </settlement-dropdown>
+        </div>
+        <delivery-points-select [spinnerOn$]="spinnerOn$"
+                                [selectedSettlement$]="settlementModel$"
+                                [selectedDeliveryPointKey$]="deliveryPointKey$"
+                                [markersList$]="markers$"
+                                [deliveryMethodKey$]="shipmentKey$"
+                                (deliveryPointChanged)="onDeliveryPointChange($event)">
+        </delivery-points-select>
+    </ng-container>
+</div>
+<div *ngIf="isStoOrTireFitting && (settlementModel$ | async) && (pointsCount$ | async) === 0" class="no-dealership">
+    <div class="no-dealership-text">
+        {{'К сожалению в выбранном населенном пункте нет нашего представительства.' | translate}}
+    </div>
+    <div class="btn-map-order"><a class="checkout-btn-order" (click)="setNovaPoshtaDeliveryType()">{{'Доставить “Новой Почтой”' | translate}}</a></div>
+</div>

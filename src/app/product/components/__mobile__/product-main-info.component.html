@@ -1,0 +1,204 @@
+<div class="product-section__main-info" >
+    <div class="product-section__twocolumns">
+        <div class="product-section__column">
+            
+            <div itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
+                <link *ngIf="product.isAvailableProduct || product.inAnotherProductStore" itemprop="availability" href="http://schema.org/InStock" content="InStock" />
+                <link *ngIf="product.inAnotherProductPartner" itemprop="availability" href="http://schema.org/PreOrder" content="PreOrder" />
+                <link *ngIf="product.notAvailableProduct" itemprop="availability" href="http://schema.org/OutOfStock" content="OutOfStock" />
+                <meta itemprop="price" content="{{product.price}}" />
+                <meta itemprop="priceCurrency" content="грн">
+                <a itemprop="url" href="{{getUrlProduct()}}"></a>
+
+                <div class="instock-prod">
+                    <div *ngIf="product.isAvailableProduct" class="product-box__instock product-box__instock--product">
+                        {{'Есть в наличии' | translate}}: {{product.restCount}} шт.
+                    </div>
+                    <div *ngIf="product.inAnotherProductStore" class="product-box__instock product-box__instock--product" style="color: #d89a39">
+                        {{'Есть в наличии' | translate}}
+                    </div>
+                    <div *ngIf="product.inAnotherProductPartner" class="product-box__instock" style="color: #d89a39">
+                        {{'Доступно под заказ (от 3х дней)' | translate}}
+                    </div>
+                    <div *ngIf="product.notAvailableProduct" class="product-box__instock product-box__instock--outstock" style="float: none;display: inline-block;">
+                        
+                        {{'Нет в наличии' | translate}}
+                    </div>
+                    <div style="display: inline-block; float: right; top: -5px; position: relative;">
+
+                        <span *ngIf="!product.isFavorite" (click)="addToFavorite(product)">
+                            <span class="prod-whish-icon">
+                                <svg class="wishlist-icon__svg prod-whish-list-ico">
+                                    <use svg-use-reference="active-star" />
+                                </svg>
+                            </span>
+                            <span class="prod-whish-list">{{'В избранное' | translate}}</span>
+                        </span>
+                        <span class="" *ngIf="product.isFavorite" (click)="addToFavorite(product)">
+                            <span class="prod-whish-icon">
+                                <svg class="wishlist-icon__svg-yellow prod-whish-list-ico">
+                                    <use svg-use-reference="active-star" />
+                                </svg>
+                            </span>
+                            <span class="prod-whish-list">{{'Добавлено в избранное' | translate}}</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="long-btn">
+                    <div class="block-price">
+                        <div class="old-price" *ngIf="product.hidePrice && product.oldPrice">
+                            {{ product.oldPrice  |  currency:'UAH': '' | currencyFormat}}
+                            <div style="display:inline-block" itemprop="priceCurrency">грн.</div>
+                        </div>
+
+                        <div *ngIf="!product.isProductPrice" style="top: 11px; position: relative;">
+                            <div style="display:none;display:inline-block;">0.00</div>
+                            {{'Цену уточняйте' | translate}}
+                        </div>
+
+                        <div class="new-price" *ngIf="product.isProductPrice" [ngClass]="product.hidePrice && product.price <= 0 ? '':'black-price'">
+                            {{ product.price  |  currency:'UAH': '' | currencyFormat}}
+                            <div class="product-box-grn" style="left:0">
+                                <div style="display:inline-block" itemprop="priceCurrency">грн</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="!product.isPurchaseProductButtonHidden" style="display: inline-block;float: right;" (click)="onProductAdd(product)">
+                        <span class="product-box__buy product-box__buy--related ">
+                            <svg class="basket-icon__svg basket-icon__svg--white">
+                                <use svg-use-reference="basket"></use>
+                            </svg><span class="buy-button">{{'Купить' | translate}}</span>
+                        </span>
+                    </div>
+                    <div *ngIf="product.isPurchaseProductButtonHidden" class="product-box__buttons">
+                        <a class="product-box__item-in" (click)="openNotifyWhenAvailablePopup()"><span class="main-info-when-available">{{'Сообщить о наличии' | translate}}</span></a>
+                    </div>
+                </div>
+
+                <div class="quick-order">{{'Или оформите быстрый заказ по телефону' | translate}}</div>
+                <product-quick-order [product]="product"></product-quick-order>
+
+                <div class="main-info-section">
+                    <div class="main-info-mob">
+
+                        <div class="main-info-manufacturer">{{'Производитель:' | translate }}</div>
+                        <span class="main-info-brand">{{ product.brand }}</span>
+                    </div>
+                    <div class="main-info-mob">
+                        <div class="main-info-manufacturer">{{'Код товара:' | translate }}</div>
+                        <span class="main-info-code">{{ product.lookupNumber }}</span>
+                        <order-popup [selectedProduct]="selectedProduct$" #orderpop></order-popup>
+                    </div>
+                    <div class="main-info-mob">
+                        <div class="main-info-manufacturer">{{'Полное наименование:' | translate }}</div>
+                        <span class="main-info-brand">{{ product.displayDescription }}</span>
+                    </div>
+                </div>
+                <div class="specifications-mob">
+                    <div class="specifications-title-mob">{{'Технические характеристики:' | translate}}</div>
+                    <div class="specifications-list-mob">
+                        <div class="specifications-item-mob" *ngFor="let itemSpecification of getPreviewedSpecificationItems()">
+                            <span class="specifications-name-mob">{{itemSpecification.key}}:&nbsp; </span>
+                            <span class="specifications-description-mob">{{itemSpecification.value}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <div class="hidden-block">
+                        <h2 class="sub-main-text__title">{{ product.displayDescription }}</h2>
+                        <div *ngIf="collapsed" [innerHTML]="getAutodocInfo() | slice:0:limitForAddInfo" class="text-block-desk"></div>
+                        <div *ngIf="!collapsed" [innerHTML]="getAutodocInfo()"></div>
+                        <div *ngIf="checkLimitForAutodocInfo()" style="display:none" [innerHTML]="product.autodocInfo | slice:limitForAddInfo:product.autodocInfo.length"></div>
+                        <p *ngIf="checkLimitForAutodocInfo()">
+                            <span class="ps-text-link"  *ngIf="collapsed" (click)="showMoreAutodocInfo()">
+                                {{ 'Подробнее' | translate }}
+                            </span>
+                            <span class="ps-text-link"  *ngIf="!collapsed" (click)="hideMore()">
+                                {{ 'Скрыть' | translate }}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="main-info-accordion">
+                <mat-accordion>
+                    <mat-expansion-panel *ngIf="isSpecificationDiplayed" (click)="showPopupMobile('Характеристики')" [expanded]="serverParamsService.serverParams.isBotRequest">
+                        <mat-expansion-panel-header>{{'Характеристики' | translate}}</mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="block-characteristics">
+                                <div class="characteristics-list-mob">
+                                    <div class="characteristics-item-mob" *ngFor="let itemSpecification of productDetails.specificationList">
+                                        <div class="characteristics-name-mob">{{ itemSpecification.key }}:&nbsp;</div>
+                                        <div class="characteristics-description-mob">{{ itemSpecification.value }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel *ngIf="!serverParamsService.serverParams.isBotRequest" (click)="showPopupMobile('Аналоги')">
+                        <mat-expansion-panel-header>{{'Аналоги' | translate}}</mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="block-characteristics">
+                                <div style="min-height:150px">
+                                    <analog-tab [product]="product" [categoryName]="categoryName"></analog-tab>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel *ngIf="isApplicabilityDisplay" (click)="showPopupMobile('Применяемость')" [expanded]="serverParamsService.serverParams.isBotRequest">
+                        <mat-expansion-panel-header>{{'Применяемость' | translate}}</mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="block-characteristics">
+                                <div style="min-height:150px">
+                                    <apply-vehicle [productDetails]="productDetails"></apply-vehicle>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel *ngIf="isOemCodesDisplay" (click)="showPopupMobile('OEM')" [expanded]="serverParamsService.serverParams.isBotRequest">
+                        <mat-expansion-panel-header>{{'OEM' | translate}}</mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="block-characteristics">
+                                <div style="min-height:150px">
+                                    <oe-tab [productDetails]="productDetails"></oe-tab>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel *ngIf="isReviewsDisplay" (click)="showPopupMobile('Отзывы')" [expanded]="serverParamsService.serverParams.isBotRequest">
+                        <mat-expansion-panel-header>{{'Отзывы' | translate}}</mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="block-characteristics">
+                                <div style="min-height:150px">
+                                    <reviews-tab [productId]="productDetails.productId"
+                                                [brandId]="brandId">
+                                    </reviews-tab>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel *ngIf="isPopularCarsDisplay" (click)="showPopupMobile('Популярные модели авто')" [expanded]="serverParamsService.serverParams.isBotRequest">
+                        <mat-expansion-panel-header>{{'Популярные модели авто' | translate}}</mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="block-characteristics">
+                                <div style="min-height:150px">
+                                    <category-auto-tab [productDetails]="product" [categoryName]="product.categoryName" [productId]="product.id" [categoryId]="product.category" [categoryUrl]="product.categoryUrl"></category-auto-tab>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+    <order-popup [selectedProduct]="selectedProduct$" #orderpop></order-popup>
+    <notify-when-available #notifyWhenAvailablePopup></notify-when-available> 
+</div>

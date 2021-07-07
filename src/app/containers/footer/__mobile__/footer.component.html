@@ -1,0 +1,63 @@
+﻿<arrow-up *ngIf="isBrowser()"></arrow-up>
+<div class="footer__holder">
+    <span style="display:none">MOBILE</span>
+    <div class="footer__column lofo-left">
+        <strong class="footer__logo"><a class="footer__logo-link" href="/">{{'Autodoc' | translate}}</a></strong>
+        <ul class="social-networks">
+            <li class="social-networks__item">
+                <a class="social-networks__link" target="_blank" href="https://www.facebook.com/autodoc.ukraine/">
+                    <span class="fb-hov-footer"></span>
+                </a>
+            </li>
+            <li class="social-networks__item">
+                <a class="social-networks__link" href="https://www.instagram.com/autodoc.ua/" target="_blank">
+                    <span class="inst-hov-footer"></span>
+                </a>
+            </li>
+            <li class="social-networks__item">
+                <a class="social-networks__link" href="viber://pa/info?uri=autodoc" target="_blank">
+                    <span class="viber-hov-footer"></span>
+                </a>
+            </li>
+            <li class="social-networks__item">
+                <a class="social-networks__link" href="https://t.me/AutodocUaBot" target="_blank">
+                    <span class="tg-hov-footer"></span>
+                </a>
+            </li>
+        </ul>
+        
+        <subscription></subscription>
+    </div>
+
+    <div class="footer__column footer__column--info">
+        <span class="footer__column-title">{{'Информация:' | translate}}</span>
+        <ul class="footer-nav">
+            <li class="footer-nav__item"><a class="footer-nav__link" [routerLink]="['']" href="javascript:void(0)">{{'Главная' | translate}}</a></li>
+            <li class="footer-nav__item"><a class="footer-nav__link" [routerLink]="['/pomoch']" href="javascript:void(0)">{{'Помощь' | translate}}</a></li>
+            <li class="footer-nav__item"><a class="footer-nav__link" [routerLink]="['/about-company']" href="javascript:void(0)">{{'О магазине' | translate}}</a></li>
+            <li class="footer-nav__item"><a class="footer-nav__link" [routerLink]="['/all-news']">{{'Новости' | translate}}</a></li>
+            <li class="footer-nav__item"><a class="footer-nav__link" [routerLink]="['/dostavka-i-oplata']" href="javascript:void(0)">{{'Доставка и оплата' | translate}}</a></li>
+            <li class="footer-nav__item"><a class="footer-nav__link" [routerLink]="['/garantia-i-vozvrat']" href="javascript:void(0)">{{'Гарантия и возврат' | translate}}</a></li>
+            <li class="footer-nav__item">
+                <a class="footer-nav__link" [routerLink]="['/cars-catalog']">{{'Все модели авто' | translate}}</a>
+            </li>
+            <li class="footer-nav__item"><a class="footer-nav__link" [routerLink]="['/pravila-polzovania']" href="javascript:void(0)">{{'Уголок потребителя' | translate}}</a></li>
+            <li class="footer-nav__item">
+                <a class="footer-nav__link" [routerLink]="['/category']" href="javascript:void(0)">{{'Все категории' | translate}}</a>
+            </li>
+            <li class="footer-nav__item">
+                <a class="footer-nav__link" [routerLink]="['/brands-catalog']">{{'Бренды' | translate}}</a>
+            </li>
+            <li class="footer-nav__item"><a class="footer-nav__link" [routerLink]="['/contact']" href="javascript:void(0)">{{'Контакты' | translate}}</a></li>
+            <li class="footer-nav__item"><a class="footer-nav__link footer-sto" [routerLink]="['sto']" href="javascript:void(0)">{{'Карта партнеров' | translate}}</a></li>
+            <li class="footer-nav__item"><a class="footer-nav__link" [routerLink]="['/for-partners']" href="javascript:void(0)">{{'Партнерам' | translate}}</a></li>
+        </ul>
+    </div>
+    
+</div>
+<div class="footer__copy">
+    <div class="footer__copy-box">
+        <span class="copy">&copy;{{today | date:"yyyy"}}.&nbsp;{{'Интернет-магазин AutoDoc. Все права защищены' | translate}}</span>
+
+    </div>
+</div>

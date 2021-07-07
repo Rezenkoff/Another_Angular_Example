@@ -1,0 +1,10 @@
+﻿<div class="review__holder">
+    <span *ngIf="plurality==0" class="review__holder-title">{{(reviews$ | async)?.length || 0}}{{' комментариев' | translate}}</span>
+    <span *ngIf="plurality==1" class="review__holder-title">{{(reviews$ | async)?.length}}{{' комментария' | translate}}</span>
+    <span *ngIf="plurality==2" class="review__holder-title">{{(reviews$ | async)?.length}}{{' комментарий' | translate}}</span>
+    <ng-container *ngIf="(reviews$ | async)?.length">
+        <div *ngFor="let review of (reviews$ | async); trackBy: trackByFn" class="review__holder-list" style="margin-left:3%">
+            <review [review]="review"></review>
+        </div>
+    </ng-container>
+</div>

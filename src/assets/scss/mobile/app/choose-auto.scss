@@ -1,0 +1,200 @@
+.choose-auto {
+    padding: 0 0 100px;
+
+    @media screen and (max-width: 1250px) {
+        max-width: 964px;
+        margin: 0 auto;
+    }
+
+    @media screen and (max-width: 1023px) {
+        max-width: 708px;
+    }
+
+    @media screen and (max-width: 767px) {
+        padding: 0 15px;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    &__form-box {
+        max-width: 556px;
+        float: right;
+        width: 100%;
+        background: #fff;
+        padding: 26px 77px 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-radius: 5px;
+
+        @media screen and (max-width: 1250px) {
+            max-width: 471px;
+        }
+
+        @media screen and (max-width: 1023px) {
+            max-width: 361px;
+            padding: 26px 30px 40px;
+        }
+
+        @media screen and (max-width: 767px) {
+            max-width: 100%;
+            float: none;
+            margin: 0 0 30px;
+        }
+    }
+
+    &__form-title {
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 500;
+        color: #666;
+        display: block;
+        margin: 0 0 15px;
+        text-transform: uppercase;
+
+        @media screen and (max-width: 479px) {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+
+    &__form-sub-title {
+        font-size: 13px;
+        line-height: 15px;
+        text-transform: uppercase;
+        color: #999;
+        display: block;
+        margin: 0 0 15px;
+    }
+
+    &__form-block {
+        margin: 0 0 26px;
+    }
+
+    &__form-row {
+        & + .choose-auto__form-row {
+            margin-top: 10px;
+        }
+    }
+
+    &__form-button-box {
+        text-align: center;
+    }
+
+    &__form-button {
+        font-size: 13px;
+        line-height: 53px;
+        height: 53px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 500;
+        background:  #3e77aa;
+        border: none;
+        padding: 0 25px;
+        display: inline-block;
+        vertical-align: top;
+        width: auto;
+        cursor: pointer;
+
+        @media screen and (min-width: 1366px) {
+            &:hover {
+                background:  #3e77aa-button;
+            }
+        }
+    }
+
+    &__decor {
+        float: left;
+        padding: 0 50px;
+        text-align: center;
+
+        @media screen and (max-width: 1250px) {
+            padding: 0 30px;
+        }
+
+        @media screen and (max-width: 1023px) {
+            display: none;
+        }
+    }
+
+    &__decor-text {
+        font-size: 13px;
+        line-height: 15px;
+        color: #666;
+        position: relative;
+
+        &::after {
+            content: '';
+            width: 1px;
+            height: 104px;
+            display: block;
+            margin: 10px auto 0;
+            background: #ccc;
+        }
+
+        &::before {
+            content: '';
+            width: 1px;
+            height: 104px;
+            display: block;
+            margin: 0 auto 10px;
+            background: #ccc;
+        }
+    }
+
+    &__search {
+        float: left;
+        border: 2px solid #fff;
+        background: #dee5e8;
+        max-width: 457px;
+        width: 100%;
+        padding: 30px;
+        border-radius: 5px;
+
+        @media screen and (max-width: 1250px) {
+            max-width: 410px;
+        }
+
+        @media screen and (max-width: 1023px) {
+            max-width: 320px;
+        }
+
+        @media screen and (max-width: 767px) {
+            max-width: 100%;
+            float: none;
+        }
+    }
+
+    &__search-title {
+        font-size: 16px;
+        line-height: 18px;
+        text-transform: uppercase;
+        color: #666;
+        font-weight: 500;
+        display: block;
+        margin: 0 0 15px;
+
+        @media screen and (max-width: 479px) {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+
+    &__search-text {
+        font-size: 12px;
+        line-height: 20px;
+        color: #999;
+        padding: 20px 10px 0 0;
+    }
+}
+
+.jcf-select.jcf-select-choose-auto__form-select {
+    &.jcf-focus {
+        .jcf-select-text {
+            color: #333;
+            font-weight: bold;
+        }
+    }
+}

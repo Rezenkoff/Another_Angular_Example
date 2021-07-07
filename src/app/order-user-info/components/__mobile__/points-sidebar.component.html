@@ -1,0 +1,32 @@
+﻿<delivery-method-logo [deliveryMethodKey$]="deliveryMethodKey$"></delivery-method-logo>
+<div class="post-input-wrapper-mob">
+    <input class="post-input-mob"
+           type="text"
+           [(ngModel)]="searchTerm"
+           placeholder="{{'Поиск отделения' | translate}}"
+           (keyup)="filter()">
+    <span class="search-icon post-search-icon-mob" (click)="filter()"><svg class="search-icon__svg"><use svg-use-reference="search-1"></use></svg></span>
+</div>
+<ng-container *ngFor="let point of (filteredList$ | async); trackBy: trackByFn">
+    <div *ngIf="isActive(point)" class="post-point" id="{{point.refKey}}">
+        <div class="post-offices-block-mob">
+            <div class="post-office-address">
+                {{ point.shortName }}
+            </div>
+            <div class="post-office-address">
+                {{ point.address }}
+            </div>
+        </div>
+        <button class="btn-post-map-mob" (click)="selectPoint(point)">{{'Выбрать это отделение' | translate}}</button>
+        <button class="btn-post-map-mob" (click)="navigate(point)">{{'Построить маршрут' | translate}}</button>
+    </div>
+    <div class="all-post-points" *ngIf="!isActive(point)" (click)="activate(point)" id="{{point.refKey}}">
+        <div class="text-post-point">
+            {{ point.shortName }}
+        </div>
+        <div class="text-post-point">
+            {{ point.address }}
+        </div>
+    </div>
+</ng-container>
+

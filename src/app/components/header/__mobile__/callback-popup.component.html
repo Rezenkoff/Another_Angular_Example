@@ -1,0 +1,9 @@
+﻿﻿<div class="callback">
+    <span class="callback__button" (click)="toggleWindow()"><span class="tel-icon"><svg class="tel-icon__svg"><use svg-use-reference="tel" /></svg></span>{{'Заказать обратный звонок' | translate}}</span>
+    <div class="callback__holder" [style.display]="showDropDown()">
+        <span class="close-icon" (click)="toggleWindow()"><svg class="close-icon__svg"><use svg-use-reference="close" /></svg></span>
+        <span class="callback__title">{{'Заявка на звонок' | translate}}</span>
+        <auto-doc-callback [isPopup]="true"></auto-doc-callback>
+    </div>
+    <div class="callback-overlay head-overlay" (click)="toggleWindow()" [style.display]="showDropDown()"></div>
+</div>

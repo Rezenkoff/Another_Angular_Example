@@ -1,0 +1,54 @@
+﻿<div class="main">
+    <div class="order-section" *ngIf="!inProcess">
+        <ul class="order-section__step-list">
+            <li class="order-section__step-item" [ngClass]="displayStepStatus(0)">
+                <span class="order-section__step-text" style="width: 128px;">{{'Выберите автомобиль' | translate}}</span>
+                <span class="order-section__step-number" (click)="onStepIndexClick(0)">
+                    <svg class="success__svg"><use svg-use-reference="success" /></svg>1
+                </span>               
+            </li>
+            <li class="order-section__step-item" [ngClass]="displayStepStatus(1)">
+                <span class="order-section__step-text">{{'Укажите нужную запчасть' | translate}}</span>
+                <span class="order-section__step-number" (click)="onStepIndexClick(1)">
+                    <svg class="success__svg"><use svg-use-reference="success" /></svg>2
+                </span>
+            </li>
+            <!--ADC-499
+            <li class="order-section__step-item" [ngClass]="displayStepStatus(2)">
+                <span class="order-section__step-text">{{'Выберите форму оплаты' | translate}}</span>
+                <span class="order-section__step-number" (click)="onStepIndexClick(2)">
+                    <svg class="success__svg"><use svg-use-reference="success" /></svg>3
+                </span>
+            </li>
+            <li class="order-section__step-item" [ngClass]="displayStepStatus(3)">
+                <span class="order-section__step-text">{{'Выберите форму доставки' | translate}}</span>
+                <span class="order-section__step-number" (click)="onStepIndexClick(3)">
+                    <svg class="success__svg"><use svg-use-reference="success" /></svg>4
+                </span>
+            </li>-->
+            <li class="order-section__step-item" [ngClass]="displayStepStatus(2)">
+                <span class="order-section__step-text">{{'Укажите контактную информацию' | translate}}</span>
+                <span class="order-section__step-number" (click)="onStepIndexClick(2)">
+                    <svg class="success__svg"><use svg-use-reference="success" /></svg>3
+                </span>
+            </li>
+        </ul>
+        <div class="order-section__form">
+            <ng-template step-host></ng-template>
+            <div class="order-section__next order-section__next--back-button">
+                <button *ngIf="currentStepIndex > 0" class="order-section__next-button order-section__next-button--back" (click)="onBackStepClick()"><span>{{'Назад' | translate}}</span></button>
+                <button class="order-section__next-button next-button--action" (click)="onNextStepClick()" [style.display]="getDisplayNext()" [ngClass]="{ 'disabled-button': !currentStepItem.isValid}">
+                    {{'Следующий шаг' | translate}}<span class="btn-arrow">
+                        <svg class="btn-arrow__svg"><use svg-use-reference="btn-arrow" /></svg>
+                    </span>
+                </button>
+                <button class="order-section__next-button order-section__next-button--order" [style.display]="getDisplayConfirm()" (click)="ConfirmOrder()" [ngClass]="{'disabled-button': !currentStepItem.isValid}">{{'Отправить запрос' | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="inProcess" style="height:120px;">
+        <div class="autodoc-loader"></div>
+    </div>
+</div>
+
+

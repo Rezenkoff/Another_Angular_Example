@@ -1,0 +1,38 @@
+﻿
+<!-- 1 панель -->
+<div class="panel panel-default filter-title">
+    <!-- Заголовок 1 панели -->
+    <div class="panel-heading holder-filter" style="padding: 18px 24px;">
+        <h4 class="panel-title">
+            <span data-parent="#accordion" (click)="getFilterItems()" data-toggle="collapse" href="{{href}}">
+                {{('' + type) | translate}}
+            </span>
+        </h4>
+    </div>
+    <div id="{{id}}" class="panel-collapse collapse in">
+        <!-- Содержимое 1 панели -->
+        <div class="panel-body">
+            <div class="container__filter">
+                <span class="filter__label">{{'Введите наименование' | translate}}</span>
+                <input type="text" [(ngModel)]="searchString" (keyup)="searchFilterOptions(searchString)" class="input-search-filter" placeholder="{{'Поиск...' | translate}}" [ngClass]="{'autodoc-mini-loader': inProcess}"/>
+            </div>
+            <div class="filter-scroll">
+                <div class="filter__row" *ngFor="let option of options$ | async">
+                    <label class="filter__label filter__label--auto">
+                        <input (change)="changeOptionState(option, $event)" class="filter__checkbox" type="checkbox" [checked]="checkOptions(option)" [jcf]="{ type:'Checkbox' }">
+                        <span class="filter__label-text">{{option.value}}</span>
+                        <span class="filter__sum"></span>
+                        <span class="close-icon close-icon--filter"><svg class="close-icon__svg"><use svg-use-reference="close" /></svg></span>
+                    </label>
+                </div>
+            </div>
+            <!--<div>                   
+                <button class="filter-apply-btn" (click)="applyOptions()">{{'Применить' | translate}}</button>
+                <button class="filter-reset-btn" (click)="resetOptions()">{{'Сбросить' | translate}}</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+<!--Эта секция нужна для cохранения переводов в словаре (Jira: ADC-554)-->
+<p style="display: none">{{'Автомобиль' | translate}}</p>
+<p style="display: none">{{'Производитель' | translate}}</p>

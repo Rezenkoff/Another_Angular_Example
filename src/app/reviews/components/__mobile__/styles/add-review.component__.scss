@@ -1,0 +1,85 @@
+.review {
+    padding: 0 30px 30px;
+
+    @media screen and (max-width: 600px) {
+        padding: 0 0 20px;
+    }
+
+    &__form {
+        margin: 0 12px 30px;
+    }
+
+    &__area {
+        border-radius: 6px;
+        border-color: #eee;
+        height: 94px;
+        padding: 20px;
+        margin: 0 0 15px;
+    }
+
+    &__row {
+        overflow: hidden;
+    }
+
+    &__input-box {
+        float: left;
+        max-width: 332px;
+
+        @media screen and (max-width: 1250px) {
+            max-width: 300px;
+        }
+
+        @media screen and (max-width: 600px) {
+            float: none;
+            margin: 0 0 20px;
+            max-width: 100%;
+        }
+    }
+
+    &__input {
+        border-color: #eee;
+        line-height: 45px;
+        height: 47px;
+        padding: 0 20px;
+
+        & + .review__input {
+            margin-top: 14px;
+        }
+    }
+
+    &__submit-box {
+        float: right;
+        padding: 7px 0 0;
+
+        @media screen and (max-width: 1250px) {
+            padding: 0;
+        }
+
+        @media screen and (max-width: 600px) {
+            float: none;
+        }
+    }
+
+    &__submit {
+        display: block;
+        width: 190px;
+        background: linear-gradient(180deg,#8fd400,#699c01);
+        text-align: center;
+        font-size: 16px;
+        line-height: 54px;
+        font-weight: 700;
+        border-radius: 6px;
+        color: #fff;
+        border: none;
+        margin: 0 0 0 auto;
+
+        @media screen and (max-width: 600px) {
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        &:hover {
+            background: #70b51c;
+        }
+    }
+}

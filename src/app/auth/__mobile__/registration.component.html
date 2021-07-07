@@ -1,0 +1,63 @@
+﻿<div class="order-section__form">
+    <form novalidate>
+        <div class="order-section__step-box" *ngIf="!inProcess">
+            <div class="container__row relative">
+                <span class="login__label">{{'Номер телефона ' | translate}}<label class="alert__alert-danger">&#42;</label></span>
+                
+                <input class="registration__input" 
+                       type="tel"                       
+                       [showMaskTyped]="true"
+                       name="phoneNumberReg" 
+                       [(ngModel)]="userRegistration.phone" 
+                       #phoneNumberReg="ngModel"                       
+                       placeholder="+380 XXX XX-XX-XX"  mask="(000) 000-00-00" prefix="+38">
+                <div *ngIf="!phoneNumberReg.valid && !phoneNumberReg.untouched" class="alert__alert-danger">
+                    {{'Некорректный мобильный номер' | translate}}
+                </div>
+            </div>
+            <div class="container__row">
+                <span class="login__label">{{'Email' | translate}}</span>
+                <input class="registration__input" type="text" name="emailReg" [(ngModel)]="userRegistration.email"
+                       #emailReg="ngModel" pattern="{{_constants.PATTERNS.EMAIL_PATTERN}}">
+                <div *ngIf="!emailReg.valid && !emailReg.untouched" class="alert__alert-danger">
+                    {{'Введите корректный e-mail' | translate}}
+                </div>
+            </div>
+            <div class="container__row">
+                <span class="login__label">{{'Ваше ФИО ' | translate}}<label class="alert__alert-danger">&#42;</label></span>
+                <input class="registration__input" type="text" name="fullNameReg" [(ngModel)]="userRegistration.firstLastName"
+                       #fullNameReg="ngModel" pattern="{{_constants.PATTERNS.FULLNAME_PATTERN}}" required>
+                <div *ngIf="!fullNameReg.valid && !fullNameReg.untouched" class="alert__alert-danger">
+                    {{'Введите свое имя' | translate}}
+                </div>
+            </div>
+            <div class="container__row">
+                <span class="login__label">{{'Пароль ' | translate}}<label class="alert__alert-danger">&#42;</label></span>
+                <input class="registration__input" type="password" name="passReg" [(ngModel)]="userRegistration.password"
+                       #passReg="ngModel" required pattern="{{_constants.PATTERNS.PASSWORD_PATTERN}}">
+                <div *ngIf="!passReg.valid && !passReg.untouched" class="alert__alert-danger">
+                    {{'Введите пароль' | translate}}
+                </div>
+            </div>
+            <div class="container__row">
+                <span class="login__label">{{'Повторите пароль ' | translate}}<label class="alert__alert-danger">&#42;</label></span>
+                <input class="registration__input" type="password" name="confPassReg" [(ngModel)]="userRegistration.confirmPassword"
+                       #confPassReg="ngModel" required pattern="{{_constants.PATTERNS.PASSWORD_PATTERN}}">
+                <div *ngIf="!confPassReg.valid && !confPassReg.untouched" class="alert__alert-danger">
+                    {{'Повторите пароль' | translate}}
+                </div>
+            </div>
+            <div class="container__row">
+                <button [ngClass]="{'disabled-button' : emailReg.invalid  || phoneNumberReg.invalid || fullNameReg.invalid || passReg.invalid || confPassReg.invalid}"
+                        class="registration-page__button" (click)="registration()">
+                    {{'Зарегистрироваться' | translate}}
+                </button>
+            </div>
+        </div>
+        <div *ngIf="inProcess">
+            <div class="container__row">
+                <div class="autodoc-loader"></div>
+            </div>
+        </div>
+    </form>
+</div>

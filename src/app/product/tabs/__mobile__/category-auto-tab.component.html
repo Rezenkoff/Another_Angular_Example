@@ -1,0 +1,8 @@
+<div class="category-auto-tab">
+    <div class="category-auto-tab__element" *ngFor="let linkName of linksName; let i = index">
+        <div class="category-auto-tab-name">
+            <a [routerLink]="getLink(i)">{{linkName}}</a>
+            
+        </div>
+    </div>
+</div>

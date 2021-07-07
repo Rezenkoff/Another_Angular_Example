@@ -1,0 +1,11 @@
+﻿export { CartAuthorizationComponent } from './cart-authorization.component';
+export { OrderUserInfoComponent } from './order-user-info.component';
+export { MainUserInfoComponent } from './main-user-info.component';
+export { DeliveryPointsSelectComponent } from './delivery-points-select.component';
+export { DeliverySettingsComponent } from './delivery-settings.component';
+export { DeliveryPointsListComponent } from './delivery-points-list.component';
+export { PaymentOrderComponent } from './payment-order.component';
+export { DeliveryTypesComponent } from './delivery-types.component';
+export { AreaSelectComponent } from './area-select.component';
+export { CourierDeliverySelectComponent } from './courier-delivery-select.component';
+export { ProductInstallingComponent } from './product-installing.component';

@@ -1,0 +1,13 @@
+﻿<div *ngIf="isOpenNode && hasChildren()" class="circle-element-catalog" (click)="toggleChildren()">
+    <span [ngClass]="getClassMarker()">{{(childrenHidden ? '+' : '-' )}}</span>
+</div>
+<a [ngClass]="getClass()" [routerLink]="getRoute()" [queryParams]="queryParams">
+    {{ currentLevel.name }}
+</a>
+<ng-container *ngIf="hasChildren()">
+    <ul [hidden]="childrenHidden" class="tree-text-sub-catalog">
+        <li *ngFor="let node of getChildrenList(); trackBy: trackByFn">
+            <category-level [currentLevel]="node" [isOpenNode]="true" [childrenHidden]="true" [routeArray]="routeArray" [queryParams]="queryParams"></category-level>
+        </li>
+    </ul>
+</ng-container>

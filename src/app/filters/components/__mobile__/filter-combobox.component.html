@@ -1,0 +1,41 @@
+﻿<div class="panel panel-default filter-title">
+    <div class="panel-heading holder-filter" (click)="toggleCollapse()">
+        <h4 class="panel-title">
+            <span >{{ getTitle() }}</span>
+            <span class="drop-arrow filter-arrow"><svg class="drop-arrow__svg filter-arrow"><use svg-use-reference="arrow"></use></svg></span>
+        </h4>
+    </div>
+    <div [style.display]="isCollapsed ? 'none' : 'block'" id="{{ getTitle() }}" class="panel-collapse collapse in">
+        <div class="combobox-panel-body">
+            <div class="container__filter">
+                <span class="filter__label">{{'Введите наименование' | translate}}</span>
+                <input type="text"
+                       [(ngModel)]="filterSearchString"
+                       (keyup)="searchFilterOptions()"
+                       class="input-search-filter"
+                       [ngClass]="{'autodoc-mini-loader': isLoading()}"
+                       placeholder="{{'Поиск...' | translate}}"
+                       maxlength="30" />
+            </div>
+            <div class="filter-scroll">
+                <div class="filter__row" *ngFor="let option of filterData.options">
+                    <label class="filter__label filter__label--auto">
+                        <input (change)="changeOptionState(option, $event)" class="filter__checkbox" type="checkbox" [checked]="isOptionChecked(option)" [jcf]="{ type:'Checkbox' }">
+                        <span *ngIf="displayUrl()" class="filter__label-text">
+                            <a [routerLink]="getRouteParams(option)" [queryParams]="getQueryParams(option)">{{option.value}}</a>
+                            <span  *ngIf="option.size && option.size != ''">&nbsp;(+{{option.size}})</span>
+                        </span>
+                        <span *ngIf="!displayUrl()" class="filter__label-text">
+                            <a (click)="navigateToFiltered(option); false">{{option.value}}</a>
+                            <span *ngIf="option.size && option.size != ''">&nbsp;(+{{option.size}})</span>
+                        </span>
+                        <span class="filter__sum"></span>
+                        <span class="close-icon close-icon--filter">
+                            <svg class="close-icon__svg"><use svg-use-reference="close" /></svg>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

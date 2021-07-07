@@ -1,0 +1,25 @@
+.dis_button {
+    color: #666;
+    border: 1px solid #9c9c9c;
+    color: #fff;
+    font-size: 13px;
+    border-radius: 5px;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+.table-vechicle {
+    margin-bottom: 30px;
+}
+
+.table-vechicle td {
+    overflow: hidden;
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-vechicle td:nth-child(9) {
+    overflow: visible;
+    width: 40px;
+}

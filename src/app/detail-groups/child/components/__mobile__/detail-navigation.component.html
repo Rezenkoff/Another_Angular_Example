@@ -1,0 +1,14 @@
+﻿<a *ngIf="node.parent && node.parent.name" (click)="onActivate(node.parent)" class="navbar__back"><span class="drop-arrow drop-arrow--black"><svg class="drop-arrow__svg drop-arrow__svg--black"><use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="../assets/images/sprite.svg#arrow"></use></svg></span>{{node.name}}</a>
+<nav class="navbar__nav">    
+    <ul class="navbar__list" >
+        <li *ngFor="let child of node.children" class="navbar__item">            
+            <a (click)="onActivate(child)" class="navbar__link">
+                <span class="drop-arrow drop-arrow--blue">
+                    <svg class="drop-arrow__svg drop-arrow__svg--blue"><use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="../assets/images/sprite.svg#arrow"></use></svg>
+                </span>
+                <span *ngIf="child.children" style="display: inline" class="glyphicon glyphicon-plus-sign"></span>
+                <span *ngIf="!child.children" style="display: inline" class="glyphicon glyphicon-wrench"></span>                
+                <p style="display: inline"> {{child.name}}</p></a>
+        </li>        
+    </ul>
+</nav>

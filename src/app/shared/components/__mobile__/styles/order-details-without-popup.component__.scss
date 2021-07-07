@@ -1,0 +1,79 @@
+﻿.order-holder__order-info {
+    margin: 0 0 30px;
+    padding: 0;
+    list-style: none;
+}
+.order-holder__order-name {
+    font-size: 12px;
+    line-height: 14px;
+    color: #999;
+    float: left;
+}
+.comment-order {
+    word-wrap: break-word;
+    text-align: left !important;
+    white-space: pre-wrap;
+    margin-top: 7px;
+    padding: 2px;
+    max-height: 70px;
+    overflow-y: scroll;
+}
+.title-order {
+    color: #70b51c !important;
+    display: block;
+    vertical-align: top;
+    font-size: 24px;
+    line-height: 26px;
+    text-decoration: none;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+.title-car-model {
+    color: #9e9e9e;
+    font-size: 15px;
+    font-weight: 600;
+}
+.order-holder__image-car {
+    float: left;
+    margin: 0px 45px 0 0;
+
+    @media screen and (max-width: 888px) {
+        display: none;
+    }
+}
+.download-img {
+    color: #3e77aa;
+}
+.adress-detail {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    width: 310px;
+
+    @media screen and (max-width: 570px) {
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        width: 200px;
+    }
+}
+.show-on-map {
+    margin-top: 10px;
+    float: left !important;
+    text-align: left !important;
+}
+.order-status {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    font-weight: 600;
+    color: #70b51c;
+    float: left;
+}
+.status-icon {
+    position: relative;
+    right: 3px;
+    bottom: 1px;
+}
+
+.status-icon__svg {
+    width: 15px !important;
+    height: 15px;
+}

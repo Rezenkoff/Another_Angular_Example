@@ -1,0 +1,19 @@
+﻿<div class="vehicle-params-pad-order1">
+    <div class="model-year-vin">
+        <span>{{(vehicle$ | async)?.mark }}</span><span>{{(vehicle$ | async)?.model }}</span><span><u>{{(vehicle$ | async)?.year }}</u></span><span>{{(vehicle$ | async)?.vin }}</span>
+    </div>
+    <div *ngIf="vehicle != null" class="row edit-form">
+        <div class="col-lg-6 col-md-6 col-sm-12 edit-form-input">
+            <span class="login__label">{{'Гос номер' | translate}}</span>
+            <input type="text" class="registration__input" [patterns]="customPatterns" mask="00000000" [(ngModel)]="vehicle.stateNumber" />
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 edit-form-input">
+            <span class="login__label">{{'Пробег' | translate}}</span>
+            <input type="text" class="registration__input input_number_no_arrow" [(ngModel)]="vehicle.milage" mask="separator" maxlength="8" />
+        </div>
+    </div>
+    <div>
+        <button (click)="editVehicle()" class="addGarage__bottom">{{'Редактировать' | translate}}</button>
+        <button (click)="close()" class="cancelGarage">{{'Выход' | translate}}</button>
+    </div>
+</div>

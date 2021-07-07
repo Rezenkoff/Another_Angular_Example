@@ -1,0 +1,94 @@
+// .order-section {
+//   &__form-step-3 {
+//     margin: 0 0 85px;
+//     @media screen and (max-width: 767px) {
+//       margin: 0 0 20px;
+//     }
+//     @media screen and (max-width: 359px) {
+//       margin: 0;
+//     }
+//   }
+//   &__pay {
+//     text-align: center;
+//     letter-spacing: -4px;
+//   }
+//   &__pay-box {
+//     display: inline-block;
+//     vertical-align: middle;
+//     letter-spacing: 0;
+//     position: relative;
+//     max-width: 228px;
+//     width: 100%;
+//     @media screen and (max-width: 1023px) {
+//       max-width: 170px;
+//     }
+//     @media screen and (max-width: 767px) {
+//       max-width: 228px;
+//       margin: 0 15px 30px;
+//     }
+//     & + .order-section__pay-box {
+//       margin: 0 0 0 36px;
+//       @media screen and (max-width: 1250px) {
+//         margin: 0 0 0 18px;
+//       }
+//       @media screen and (max-width: 1023px) {
+//         margin: 0 0 0 9px;
+//       }
+//       @media screen and (max-width: 767px) {
+//         margin: 0 15px 30px;
+//       }
+//     }
+//     &.active {
+//       .decor-icon {
+//         display: block;
+//       }
+//       .order-section__pay-item {
+//         border-color: #70b51c;
+//       }
+//     }
+//   }
+//   &__pay-item {
+//     display: block;
+//     border: 1px solid #dee5e8;
+//     border-radius: 5px;
+//     text-align: center;
+//     height: 157px;
+//     cursor: pointer;
+//     padding: 29px 0 58px;
+//     &:hover {
+//       border-color: #70b51c;
+//     }
+//     .jcf-radio {
+//       display: none;
+//     }
+//   }
+//   &__pay-radio {
+//     visibility: hidden;
+//     position: absolute;
+//     left: 0;
+//   }
+//   &__pay-name {
+//     font-size: 14px;
+//     line-height: 16px;
+//     color: #333;
+//     position: absolute;
+//     display: block;
+//     text-align: center;
+//     bottom: 37px;
+//     width: 100%;
+//   }
+// }
+// .decor-icon {
+//   width: 60px;
+//   height: 60px;
+//   border-radius: 50%;
+//   border: 10px solid #fff;
+//   background: #70b51c;
+//   line-height: 40px;
+//   text-align: center;
+//   position: absolute;
+//   bottom: -30px;
+//   left: 50%;
+//   margin: 0 0 0 -30px;
+//   display: none;
+// }

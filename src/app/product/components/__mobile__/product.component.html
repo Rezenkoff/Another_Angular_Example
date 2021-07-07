@@ -1,0 +1,33 @@
+﻿<div *ngIf="product" class="main-product" itemscope itemtype="https://schema.org/Product">
+    <meta itemprop="description" content="{{ product.displayDescription }}" />
+    <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
+        <meta itemprop="name" content="{{ product.brand }}" />
+    </div>
+    <div class="title-prod">
+        <h1 class="title-text-prod" itemprop="name">
+            <ng-container *ngIf="product.art_type === 0 || product.art_type === 1">
+                {{ getDescription() }}
+            </ng-container>
+            <ng-container *ngIf="product.art_type !== 0 && product.art_type !== 1">
+                {{ product.displayDescription }}
+            </ng-container>
+        </h1>
+    </div>
+    <div class="product-section">
+        <div *ngIf="productDetails">
+            <product-image [product]="productDetails"
+            [categoryName]="product.categoryName" [lookupNumber]="product.lookupNumber" [brand]="product.brand" [is3D]="product.is3D" [stock]="product.oldPrice"></product-image>
+        </div>
+        <div class="product-section__main-holder">
+            <div class="product-section__content">
+                <div *ngIf="productDetails">
+                    <product-main-info (onReviewsClick)="scrollToReviews()"
+                                       [review]="review"
+                                       [categoryName]="categoryName"
+                                       [product]="product"
+                                       [productDetails]="productDetails"></product-main-info>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿<div>
+    <div style="position: relative">
+        <input class="car-select-input delivery-step__input"
+               type="text"
+               [disabled]="isDisabled()"
+               [(ngModel)]="filterSearchString"
+               placeholder="{{ placeholder }} "
+               #filterBox (keyup)="findElemFilter(filterBox.value)"
+               (click)="onClick()"
+               (focus)="$event.target.select();"
+               [ngClass]="{'autodoc-mini-loader': itemsListLoad }"
+               maxlength="30">
+        <span class="drop-arrow car-select-arrow">
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" >
+                <path d="M10.9673 0.873632L6.00057 5.8416L1.03381 0.873034C0.797007 0.636235 0.413951 0.636235 0.177151 0.873034C-0.0590505 1.10983 -0.0590505 1.49349 0.177151 1.73029L5.57197 7.1269C5.80817 7.3637 6.19183 7.3637 6.42803 7.1269L11.8228 1.73034C12.0591 1.49354 12.0591 1.10929 11.8228 0.872486C11.5872 0.636833 11.2035 0.636833 10.9673 0.873632Z" fill="#1D5495"/>
+                </svg>
+                
+            
+        </span>
+       
+        <div *ngIf="isDropdownShown()" class="filter-dropdown-container">
+            <span></span>
+            <div *ngFor="let item of tmpfilterDataList" (click)="selectedFilter(item)" class="settlement-item">
+                <span class="text-uppercase"><b>{{ item.value }}</b></span>&nbsp;<br />
+            </div>
+        </div>
+    </div>
+    <div class="head-overlay lang-overlay" (click)="hideDropdown()" [style.display]="getDisplay()"></div>
+</div>

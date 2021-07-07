@@ -1,0 +1,148 @@
+.carouselImg {
+    display: inline-block !important;
+    width: auto;
+    height: 250px !important;
+    padding: 1%;
+}
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.77); /* Black background with opacity */
+    z-index: 100; /* Specify a stack order in case you're using a different order for other elements */
+    //cursor: pointer; /* Add a pointer on hover */
+}
+
+.overlayImg {
+    margin: auto;
+    position: absolute;
+}
+
+.right{
+    background: none !important;
+}
+.left {
+    background: none !important;
+}
+
+.imagesCarouselOverlay {
+    height: 500px;
+    width: 100%;
+    top: 15%;
+    position: absolute;
+}
+
+.carouselImgOverlay {
+    display: inline-block !important;
+    max-height: 100% !important;
+    max-width: 100%;
+    padding: 1%;
+    cursor: pointer;
+    height: 80vh;
+
+    @media screen and (max-width: 449px) {
+        max-height: 400px;
+        width: 85%;
+    }
+
+    @media screen and (max-height: 480px) {
+        height: 250px !important;
+        width: auto;
+    }
+}
+
+.spanDescriptionOverlay {
+    bottom: 0%;
+    color: white;
+    font-size: medium;
+    left: 0;
+    right: 0;
+    margin-top: 3%;
+    font-weight: bold;
+
+    @media screen and (max-width: 767px) {
+        margin-top: 30px !important;
+    }
+}
+
+.collorWhite {
+    color: white;
+}
+
+.collorWhite.glyphicon-chevron-right:before {
+    color: white !important;
+}
+
+.collorWhite.glyphicon-chevron-left:before {
+    color: white !important;
+}
+
+.overlayCarouselControl {
+    width: 30%;
+}
+.carousel-caption {
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+}
+.first-carousel .carousel-indicators {
+    @media screen and (max-width: 767px) {
+        bottom: 20px !important;
+        margin: 0;
+        left: 20%;
+    }
+}
+.carousel-control .icon-next, .carousel-control .icon-prev {
+    font-size: 30px;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+}
+
+.carousel-control .icon-prev {
+    left: 5px;
+    background: rgba(65, 65, 65, 0.1);
+}
+
+.carousel-control .icon-next {
+    right: 5px;
+    background: rgba(65, 65, 65, 0.25);
+}
+
+.carousel-caption {
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+}
+
+.carousel-indicators {
+    z-index: 9;
+
+    @media screen and (max-width: 767px) {
+        bottom: 55px !important;
+        margin: 0;
+        left: 20%;
+    }
+}
+
+.carousel-indicators .active {
+    width: 12px;
+    height: 12px;
+    background: #99AEC9;
+    margin-right: 12px;
+}
+
+.carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    background: #FFFFFF;
+    border: 1px solid #99AEC9;
+    box-sizing: border-box;
+    margin-right: 12px;
+}

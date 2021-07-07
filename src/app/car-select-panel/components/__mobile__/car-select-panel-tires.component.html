@@ -1,0 +1,40 @@
+﻿<div>
+    <div>
+        <div class="label-form">{{'Марка авто' | translate}}</div>
+        <input class="delivery-step__input"
+               placeholder="{{'Выбрать' | translate}}"
+               (click)="toggleDropdownCarMark(true)"
+               [(ngModel)]="selectMark" />
+        <span class="drop-arrow tires-arrow news-arrow" (click)="toggleDropdownCarMark(true)">
+            <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+        </span>
+        <div *ngIf="showDropDownMark" class="tires-dropdown-container">
+            <div *ngFor="let mark of getMarkList(markList)" (click)="selectCarMark(mark.key, mark.value)" class="settlement-item">
+                <span class="text-uppercase"><b>{{ mark.value }}</b></span>&nbsp;<br />
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="label-form">{{'Мoдель авто' | translate}}</div>
+        <input class="delivery-step__input"
+               placeholder="{{'Выбрать' | translate}}"
+               (click)="toggleDropdownCarModel(true)"
+               [(ngModel)]="selectModel" />
+        <span class="drop-arrow tires-arrow news-arrow" (click)="toggleDropdownCarModel(true)">
+            <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+        </span>
+        <div *ngIf="showDropDownModel" class="tires-dropdown-container">
+            <div *ngFor="let model of getModelList(modelsList)" (click)="selectCarModel(model.key, model.value)" class="settlement-item">
+                <span class="text-uppercase"><b>{{ model.value }}</b></span>&nbsp;<br />
+            </div>
+        </div>
+    </div>
+    <div style="margin: 10px 0">
+        <div>
+            <input [value]="1" name="type-tires" [(ngModel)]="selectedType" id="radio-1" type="radio" [jcf]="{type: 'radio'}" (click)="chooseType(1)"> {{'Заводские' | translate}}
+        </div>
+        <div>
+            <input [value]="2" name="type-tires" [(ngModel)]="selectedType" id="radio-2" type="radio" [jcf]="{type: 'radio'}" (click)="chooseType(2)"> {{'На замену' | translate}}
+        </div>
+    </div>
+</div>

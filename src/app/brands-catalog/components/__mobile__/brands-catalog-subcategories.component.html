@@ -1,0 +1,40 @@
+﻿<div class="brand-name">{{ brand.name }}</div>
+<div class="about-brand">
+    <img class="brand-img-descr" src="{{ brand.pictureUrl }}"
+        onerror="this.src = 'https://cdn.autodoc.ua/small-logo-1.png'" />
+    <div>
+        <div [ngClass]="{'brand-descr' : isCollapsedDescription}">
+            <div [innerHTML]="pageText"></div>
+            <a class="brand-descr-link" href="{{brand.brandUrl}}">{{brand.brandUrl}}</a>
+        </div>
+        <p>
+            <a class="ps-text-link" href="javascript:void(0);" (click)="toggleDescriptionCollapse()">
+                <ng-container *ngIf="isCollapsedDescription">{{ 'Подробнее' | translate }}</ng-container>
+                <ng-container *ngIf="!isCollapsedDescription">{{ 'Скрыть' | translate }}</ng-container>
+            </a>
+        </p>
+    </div>
+</div>
+
+<div class="brand-next-category">{{'Вы можете купить запчасти бренда' |translate }} {{ brand.name }} {{'в следующих категориях:' |translate }}</div>
+<ng-container *ngFor="let node of catalogNodes">
+    <div class="title-tree">
+        <category-level [currentLevel]="node" [routeArray]="routeArray" [isParentNode]="true"></category-level>
+    </div>
+</ng-container>
+
+<div class="brand-block" *ngIf="topProducts">
+    <div class="title-top-brand">{{'ТОП-5 товаров бренда' | translate}}</div>
+    <ng-container *ngFor="let product of topProducts; let i = index">
+        <div class="item-top-block">
+            <div class="brand-top-number">{{i+1}}</div>
+            <div class="brand-top-img"><img [src]="getImageUrl(product.id)" height="48" width="60" /></div>
+            <div class="brand-text-top"><a [routerLink]="['/product', product.transliteratedTitle ]">{{ product.description }}</a></div>
+        </div>
+    </ng-container>
+</div>
+
+<div class="brand-block">
+    <brand-reviews></brand-reviews>
+</div>
+<div *ngIf="inProcess" class="autodoc-loader"></div>

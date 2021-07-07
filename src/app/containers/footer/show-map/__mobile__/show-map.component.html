@@ -1,0 +1,15 @@
+﻿<div (click)="toggleWindow()">
+    <a class="show-map" href="javascript:void(0)"><span class="show-map-icon"><svg class="show-map-icon__svg"><use svg-use-reference="map" /></svg></span>{{'Показать на карте' | translate}}</a>
+</div>
+<div class="popup popup-route" style="display:block" *ngIf="isShowDropDown">
+    <div class="popup__overlay route__overlay"></div>
+    <div class="popup-route__holder">
+        <div class="contact__map footer-map">
+            <agm-map #agmMap style="height: 100%" [latitude]="50.4478147" [longitude]="30.6581822" [(zoom)]="zoom">
+                <agm-marker [latitude]="50.4478147" [longitude]="30.6581822" [iconUrl]="imgUrl">
+                </agm-marker>
+            </agm-map>
+        </div>
+        <span class="close-icon footer-icon-map close-icon--route" (click)="toggleWindow()"><svg class="close-icon__svg close-icon__svg--order"><use svg-use-reference="close" /></svg></span>
+    </div>
+</div>

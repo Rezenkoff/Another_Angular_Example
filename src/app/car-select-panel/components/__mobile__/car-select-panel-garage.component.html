@@ -1,0 +1,16 @@
+<div class="garage-flex">
+    <div class="garage-block-input" *ngFor="let filterData of carDataArray$ | async; trackBy: trackByFn">
+        <filter-dropdown-garage [filterDataList]="filterData.options"
+                                [filterSearchString]="getSearchString(filterData)"
+                                (onChageFilter)="onOptionSelect($event, filterData)"
+                                (onClickEvent)="onFilterClick(filterData)"
+                                (onFilterClearEvent)="onFilterClear(filterData)"
+                                (onInputChangeEvent)="onInputChange()"
+                                [placeholder]="getPlaceholder(filterData)"
+                                [itemsListLoad]="filterData.loading"
+                                [isActive]="filterData.isActive"
+                                [showDropDown]="filterData.dropdownShown"
+                                (onOptionsRequest)="filterDropdownOptions($event, filterData)">
+        </filter-dropdown-garage>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="garage-my-auto">
+    <div class="vehicle-title-car">{{'Мои автомобили' | translate}}</div>
+    <div class="more-garage" *ngFor="let vehicle of (userVehicles$ | async ) | vehicleFilter:showDisabled; index as i">
+        <div class="more-garage-image">
+            <img class="img-car-garage" onerror="this.src = 'https://cdn.autodoc.ua/images/marks/car-icon.png'" [src]="getLogo(vehicle)">
+        </div>
+        <div class="container__added-name-box">
+            <div class="garage-brand">{{vehicle.ownNameCar}} {{vehicle.mark}} {{vehicle.model}}</div>
+            <div class="garage-year">{{'Год выпуска:' | translate }} {{vehicle.year}}</div>
+            <div class="garage-properties" *ngIf="vehicle.carInfoPP != null">{{vehicle.carInfoPP.infoDesc}}</div>
+            <div>
+                <a *ngIf="currentCar == vehicle.id || (currentCar == -1 && i == 0)" class="garage-deselect">{{'Отменить выбор' | translate }}</a>
+                <a *ngIf="currentCar != vehicle.id && !(currentCar == -1 && i == 0)" class="garage-deselect-edit" (click)="selectedCar(vehicle)">{{'Выбрать авто' | translate }}</a>
+            </div>
+        </div>
+    </div>
+</div>

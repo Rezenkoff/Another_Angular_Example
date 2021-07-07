@@ -1,0 +1,47 @@
+﻿<div class="title">
+    <span class="title__text">{{'Найденные модификации автомобиля по VIN' | translate}}</span>
+</div>
+<a (click)="goBack()" class="service-section__back"><span class="drop-arrow drop-arrow--blue drop-arrow--left"><svg class="drop-arrow__svg drop-arrow__svg--blue"><use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="../assets/images/sprite.svg#arrow"></use></svg></span>{{'Выбрать другое авто' | translate}}</a>
+<div *ngIf="inProcess">
+    <div class="autodoc-loader"></div>
+</div>
+<div class="modification-box">    
+    <table *ngIf="!inProcess && vinSearchCarList && vinSearchCarList.length > 1" class="main-table main-table--shadow">
+        <thead>
+            <tr>
+                <th><span class="sort">{{'Бренд' | translate}}</span></th>
+                <th><span class="sort">{{'Название' | translate}}</span></th>
+                <th><span class="sort">{{'Дата выпуска' | translate}}</span></th>
+                <th><span class="sort">{{'Рынок' | translate}}</span></th>
+                <th><span class="sort">{{'КПП' | translate}}</span></th>
+                <th><span class="sort">{{'Двигатель' | translate}}</span></th>
+                <th><span class="sort">{{'Выпущено' | translate}}</span></th>
+                <th><span class="sort">{{'Расположение руля' | translate}}</span></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="main-table__item" (click)="routeToGroups(vinSearchCar)" style="cursor:pointer" *ngFor="let vinSearchCar of vinSearchCarList">
+                <td>{{vinSearchCar.brand}}</td>
+                <td>{{vinSearchCar.name}}</td>
+                <td>{{vinSearchCar.attributes['date']}}</td>
+                <td>{{vinSearchCar.attributes['market']}}</td>
+                <td>{{vinSearchCar.attributes['transmission']}}</td>
+                <td>{{vinSearchCar.attributes['engine']}}</td>
+                <td>{{vinSearchCar.attributes['manufactured']}}</td>
+                <td>{{vinSearchCar.attributes['drive']}}</td>                
+                <td><button class="filter-apply-btn">{{'Выбрать' | translate}}</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="!inProcess && vinSearchCarList.length <= 0">
+        <p>{{'Совпадений не найдено.' | translate}}</p>
+        <p>{{'Или оставьте ваш номер и менеджер свяжется с вами.' | translate}}</p>
+        <div class="callback__buttons">
+            <span class="callback__tel">+38</span><input class="callback__input" maxlength="10" type="tel" #phoneVin="ngModel" pattern="{{_constants.PATTERNS.PHONE_PATTERN}}" [(ngModel)]="callbackVin.userPhoneNumber">
+             <button id="callBackBtnVin" class="callback__submit call-me-vin"  [ngClass]="{'disabled-button': phoneVin.invalid || !callbackVin.userPhoneNumber}" (click)="createCallback()">
+               <span>{{'Перезвонить' | translate}}</span>
+          </button>
+        </div>
+      </div>
+   </div>

@@ -1,0 +1,12 @@
+﻿<div class="all-auto-in-garage">
+    <ng-container *ngFor="let item of userCars">
+        <div style="cursor:pointer" [ngStyle]="{'background-color': isSelected(item) ? '#c5d5ea' : 'white'}" class="auto-in-garage" (click)="selectCarFromGarage(item)">
+            <img src="https://test.omega.page/api/api/v1.0/image/getmanlogo?manufId={{item.markId}}" class="select-car-img" width="60" height="60" onerror="this.src = 'https://cdn.autodoc.ua/images/marks/car-icon.png'">
+            <div class="car-info" style="display: inline-block;">
+                <div class="auto-in-garage-brand">{{item.mark}}</div>
+                <div class="auto-in-garage-info">{{item.model}}</div>
+                <div class="auto-in-garage-info">Год выпуска: {{getYearFromDate(item.year)}}</div>
+            </div>
+        </div>
+    </ng-container>
+</div>

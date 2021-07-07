@@ -1,0 +1,42 @@
+﻿<div class="popup popup-order" [style.display]="showDropDown()" style="z-index:2001">
+
+    <div class="popup__overlay popup__overlay-order" (click)="toggleWindow()" [style.display]="showDropDown()"></div>
+    <div class="order-holder popup-basket">
+        <span class="close-icon close-icon--order" (click)="toggleWindow()">
+            <svg class="close-icon__svg close-icon__svg--order">
+                <use svg-use-reference="close" />
+            </svg>
+        </span>
+        <div class="order-holder__description">
+            <div class="order-holder__top-box">
+                <div class="order-holder__title">{{'Ваша корзина' | translate}}</div>
+            </div>
+            <product-preview-list></product-preview-list>
+            <div class="order-holder__price-section">
+                <div class="order-holder__common-price-box">
+                    <span class="order-holder__price-title">{{ 'Итого:' | translate}}</span>
+                    <span class="order-holder__common-price">{{ totalCartSum |  currency:'UAH': '' | currencyFormat }}&nbsp;грн</span>
+                </div>
+            </div>
+            <div class="order-holder__button-list button-list-popup">
+                <div class="">
+                    <span class="order-holder__cancel" (click)="toggleWindow()">{{'Продолжить покупки' | translate}}</span>
+                    <button class="order-holder__to-order to-order-popup" (click)="clickCheckout()">{{'Оформить заказ' | translate}}</button>
+                </div>
+            </div>
+            <div class="aside-navigation-popup">
+                <span class="callback__label">{{'Укажите номер телефона' | translate}}</span>
+                <div>
+                    <div class="call-tel-input">
+                        <span class="callback__tel">+38</span><input class="callback__input" #phone="ngModel" [(ngModel)]="userPhoneNumber" maxlength="10" [ngModelOptions]="{standalone: true}" type="tel" pattern="{{constants.PATTERNS.PHONE_PATTERN}}">
+                    </div>
+                    <button id="quickOrderBtn" class="order-holder__popup-button" [ngClass]="{'disabled-button': phone.invalid || !userPhoneNumber || inProcess}" (click)="oneClickOrder()">
+                        <span *ngIf="!inProcess">{{'Быстрый заказ' | translate}}</span>
+                        <mini-spinner *ngIf="inProcess"></mini-spinner>
+                    </button>
+                    <div class="text-popup">{{'Можно оформить заказ без заполнения форм. Для этого достаточно указать свой телефон и консультант свяжется с Вами. Товары из корзины добавятся автоматически.' | translate}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

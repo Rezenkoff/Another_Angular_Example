@@ -1,0 +1,22 @@
+<div class="popup popup-order" [style.display]="showDropDown()">
+
+    <div class="popup__overlay popup__overlay-order"></div>
+    <div class="order-holder popup-basket">
+        <span class="close-icon close-icon--order" (click)="hideWindow()">
+            <svg class="close-icon__svg close-icon__svg--order">
+                <use svg-use-reference="close" />
+            </svg>
+        </span>
+        <div class="order-holder__description" *ngIf="product">
+            <h4 style="font-weight: 600;">{{ 'Вы выбрали: ' | translate }}{{ product.displayDescription }}</h4>
+
+            <label>{{ 'Введите ФИО' | translate }}</label>
+            <input type="text" [(ngModel)]="firstLastName" />
+
+            <label>{{ 'Введите телефон(+380) или Email' | translate }}</label>
+            <input type="text" [(ngModel)]="phoneOrEmail" />
+
+            <button class="btn btn-primary margin-top-10" (click)="save()" [disabled]="isDisabledButton" [ngClass]="{'disabled-button': isDisabledButton}">{{ 'Сохранить' | translate }}</button>
+        </div>
+    </div>
+</div>

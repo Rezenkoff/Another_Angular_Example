@@ -1,0 +1,69 @@
+﻿<div class="header-order">
+    <span (click)="returnToCabinetInfo()" class="drop-arrow  order-cabinet-arrow">
+        <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+    </span>
+    {{'Избранные товары' | translate}}
+</div>
+<div *ngIf="!inProcess" class="cabinet-page">
+    <div *ngFor="let item of pagedItems; let i = index" class="block-favorite-mob">
+        <div class="item-foto-mob">
+            <a [routerLink]="['/product', item.transliteratedTitle ]" (click)="sendSelectContentEvent(item, i)" href="javascript:void(0)">
+                <img [src]="getImage(item.id)" (error)="errorHandler($event)" alt="фото {{item.displayDescription}}" title="{{item.displayDescription}}" class="added-img-mob" height="62" width="78">
+            </a>
+            <div><a class="order-more close-link-more" (click)="deleteFromFavorite(item)">{{'Удалить' | translate}}</a></div>
+        </div>
+        <div class="item-deskr-mob">
+            <div class="item-title-mob">{{item.displayDescription}}</div>
+            <div class="item-code-mob">{{ 'Код товара' | translate }}: {{item.lookupNumber}}</div>
+            <div class="item-brand-mob">{{ 'Бренд' | translate }}: {{item.brand}}</div>
+            <div class="product-box__status">
+                <div *ngIf="isAvailable(item)" class="product-box__instock">
+                    <span class="instock-icon"><svg class="instock-icon__svg"><use svg-use-reference="success" /></svg></span>
+                    {{ 'Есть в наличии' | translate}}: {{item.restCount}} шт.
+                </div>
+                <div *ngIf="inAnotherStore(item)" class="product-box__instock" style="color: #d89a39">
+                    {{ 'Есть в наличии. Доставка 2-3 дня' | translate}}
+                </div>
+                <div *ngIf="inAnotherPartner(item)" class="product-box__instock" style="color: #d89a39">
+                    {{ 'Доступно под заказ (от 3х дней)' | translate}}
+                </div>
+                <div *ngIf="notAvailable(item)" class="product-box__instock product-box__instock--outstock">
+                    
+                    {{ 'Нет в наличии' | translate}}
+                </div>
+            </div>
+            <div class="counter-price-mob">
+                <div *ngIf="!item.hidePrice && item.price>0" class="price-mob" style="display: inline-block">
+                    <span *ngIf="item.oldPrice" class="big-price-mob"> {{item.price  |  currency:'UAH': '' | currencyFormat}}<span class="price-top"><span itemprop="priceCurrency">грн</span></span></span>
+                    <span *ngIf="item.oldPrice" class="big-price-mob"> {{item.oldPrice  |  currency:'UAH': '' | currencyFormat}}<span class="price-top"> <span itemprop="priceCurrency">грн</span></span></span>
+                    <span *ngIf="!item.oldPrice" class="big-price-mob"> {{item.price  |  currency:'UAH': '' | currencyFormat}}<span class="price-top"><span itemprop="priceCurrency">грн</span></span></span>
+                </div>
+                 <div *ngIf="analogsButtonShown(item)" class="counter-mob"><a class="small-btn-analog" (click)="navigateToAnalogs(item)">{{'Показать аналоги' | translate}}</a></div>
+                    <div *ngIf="purchaseButtonShown(item) && notInCart(item)" class="counter-mob"><a class="small-btn-analog" (click)="onProductAdd(item)">{{'Купить' | translate}}</a></div>
+                    <div *ngIf="disabledPurchaseButtonShown(item) && notInCart(item)" class="counter-mob"><a class="small-btn-analog" (click)="onProductAdd(item)">{{'Купить' | translate}}</a></div>
+                <div class="product-box__price-box product-box__price-box--analogues" *ngIf="item.hidePrice || item.price==0">
+                    <span class="product-box__price product-box__price">{{'Цену уточняйте' | translate}}</span>
+                </div>
+                <div *ngIf="isInCart(item)" class="counter-mob">
+                    <div class="add-full-set-counter ">
+                        <a class="add-small-btn-full-set" href="/order-checkout">{{'В корзине' | translate}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-btn-select">
+        <button (click)="addAllPagedProducts()" class="btn-blue-large-mob">{{'Добавить все товары в корзину' | translate}}</button>
+    </div>
+
+    <autodoc-paging [(currentPage)]="searchParameters.currentPage" [totalItems]="totalItems" (pageChanged)="pageChanged($event)" [maxSize]="pageSize" *ngIf="pageSize < totalItems"></autodoc-paging>
+    <order-popup [selectedProduct]="selectedProduct$" #orderpop></order-popup>
+    <div *ngIf="emptyFavoriteProducts">
+        {{'Список товаров пуст' | translate}}
+    </div>
+</div>
+<div *ngIf="inProcess">
+    <div class="container__row">
+        <div class="autodoc-loader"></div>
+    </div>
+</div>

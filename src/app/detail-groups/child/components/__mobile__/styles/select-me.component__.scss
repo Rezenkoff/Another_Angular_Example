@@ -1,0 +1,33 @@
+.catalog-textarea {
+    background: #fff;
+    border: 1px solid #99aec9;
+    border-radius: 6px;
+    max-height: 120px;
+    font-size: 14px;
+    line-height: 18px;
+}
+.btn-select-mob {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+.img-catalog {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 14px;
+    border: 1px solid #C5D5EA;
+    box-sizing: border-box;
+    border-radius: 6px;
+    height: 134px;
+    width: 156px;
+    line-height: 134px;
+    text-align: center;
+
+    img {
+        max-width: 150px;
+        max-height: 134px;
+    }
+}
+.wrapper-btn-select {
+    margin: 16px 12px 0px 12px;
+}

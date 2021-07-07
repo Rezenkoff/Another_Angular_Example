@@ -1,0 +1,23 @@
+﻿<div class="container__radio-box">
+    <span style="width:100%" class="container__radio-title">{{'Районный центр' | translate}} <span class="red-star">*</span></span>
+    <input class="delivery-step__input"
+           type="text"
+           [disabled]="!(isActive$ | async)"
+           [(ngModel)]="selectedName"
+           placeholder="{{'Начните вводить название районного центра (минимум 3 буквы)' | translate}}"
+           #searchBox (keyup)="searchDistrictOnKey()"
+           [ngClass]="{'autodoc-mini-loader': inProcess}"
+           (click)="togglePopup()">
+    <div *ngIf="showDropDown && selectedName.length > 0" class="settlement-dropdown-container">
+        <div *ngFor="let district of (districtsList$ | async ); trackBy: trackByFn" (click)="selectDistrict(district)" class="settlement-item">
+            <span class="bold-font">{{ district.districtName }}</span>
+        </div>
+    </div>
+    <div *ngIf="showDropDown" class="head-overlay lang-overlay" (click)="hideDropdown()"></div>
+    <div *ngIf="exampleDistrictName" class="container__row-example">
+        {{'Например' | translate}},
+        <ng-container>
+            <span style="cursor: pointer" class="container__row-example-text" (click)="searchByExampleName()">{{exampleDistrictName}}</span>
+        </ng-container>
+    </div>
+</div>

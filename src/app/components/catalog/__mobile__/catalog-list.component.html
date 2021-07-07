@@ -1,0 +1,28 @@
+﻿<div *ngIf="catalogTree">
+    <div class="search-form search-form--category" style="display: none;">
+        <input class="search-form__input"
+               type="text"
+               placeholder="{{'Поиск по категориям' | translate}}"
+               #searchBox (keyup)="catalogFilter(searchBox.value)" (click)="showDropDown = true;" [ngClass]="{'autodoc-mini-loader': inProcess}">
+
+        <div *ngIf="findedNodes.length > 0 && showDropDown" class="catalog-search-result">
+            <div *ngFor="let node of findedNodes" (click)="redirectToCategory(node)" class="catalog-search-result-item">
+                <span class="text-uppercase"><b>{{ node.name }}</b></span>&nbsp;<br />
+            </div>
+        </div>
+        <div class="head-overlay lang-overlay" (click)="hideDropdown()" [style.display]="getDisplay()"></div>
+    </div>
+    <div class="catalog-button">
+        <div style="display: inline-block; ">
+            <catalog-type-select [catalogType$]="catalogType$" (catalogTypeSelected)="switchCatalog($event)"></catalog-type-select>
+        </div>
+    </div>
+    <nav class="catalog__nav">
+        <ul class="catalog__list">
+            <catalog-level [children]="catalogTree[0].children" [catalogType]="catalogType"></catalog-level>
+        </ul>
+    </nav>
+</div>
+<div *ngIf="!catalogTree">
+    <div class="autodoc-loader"></div>
+</div>

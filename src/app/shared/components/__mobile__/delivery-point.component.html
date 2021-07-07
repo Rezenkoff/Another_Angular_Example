@@ -1,0 +1,14 @@
+﻿<div>
+    <input class="delivery-step__input"
+           type="text"
+           [(ngModel)]="address"
+           placeholder="{{'Начните вводить название города' | translate}}"
+           #searchBox (keyup)="searchAddress(searchBox.value)">
+
+    <div *ngIf="showDropDown" class="settlement-dropdown-container">
+        <div *ngFor="let marker of markersList" (click)="onMarkerItemSelect(marker)" class="settlement-item">
+            <span>{{shipmentTypeKey == 3 ? marker.shortName : marker.address}}</span>
+        </div>
+    </div>
+    <div class="head-overlay lang-overlay" (click)="hideDropdown()" [style.display]="getDisplay()"></div>
+</div>

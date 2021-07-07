@@ -1,0 +1,124 @@
+﻿.cabinet-order-name-vertical {
+    vertical-align: top;
+}
+
+
+.img-order-cabinet {
+    border: 1px solid#C4C4C4;
+    border-radius: 6px;
+    overflow: hidden;
+    width: 96px;
+    height: 76px;
+    display: inline-block;
+}
+
+.map-info-cabinet {
+    display: inline-block;
+    //white-space: pre-wrap;
+    width: 170px;
+    vertical-align: top;
+    margin-left: 12px;
+}
+.block-table-order-item {
+    border-radius: 6px;
+    border-collapse: collapse;
+    overflow: hidden;
+    border: 1px solid #c5d5ea;
+    margin-top: 12px;
+}
+.table-order-item {
+    border-radius: 6px;
+    border-collapse: collapse;
+    overflow: hidden;
+    border: 1px solid #c5d5ea;
+}
+
+.table-order-item th {
+    background: #F5F7FA !important;
+    text-align: center !important;
+    border: 1px solid #c5d5ea !important;
+    padding: 10px 3px;
+}
+
+.table-order-item td {
+    text-align: center !important;
+    border: 1px solid #c5d5ea !important;
+    padding: 10px 3px;
+}
+.cabinet-total-price {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+}
+.cabinet-order-price {
+    margin-top: 12px;
+    float: right;
+    text-align: right;
+}
+.pay-batton-margin {
+    margin-top: 5px;
+}
+.cabinet-order-description-mobile {
+    width: 60%;
+    display: inline-block;
+}
+.close-link-order {
+    color: #99aec9 !important;
+}
+.detail-order-cabinet {
+    border: 1px solid #C5D5EA;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 12px;
+}
+.cabinet-order-name {
+    font-weight: bold;
+    display: inline-block;
+    width: 40%;
+}
+.cabinet-order-item {
+    margin-bottom: 12px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+.order-more {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 12px;
+    line-height: 14px;
+    color: #3e77aa;
+    border-bottom: 1px dotted;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+        color: #70b51c;
+    }
+}
+.table-order {
+    margin-bottom: 30px;
+
+    thead tr {
+        cursor: default;
+    }
+
+    tbody tr {
+        cursor: pointer;
+    }
+}
+
+.table-order td {
+    max-width: 150px;
+    overflow: hidden;
+    max-width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media screen and (max-width: 360px) {
+        max-width: 70px;
+    }
+}

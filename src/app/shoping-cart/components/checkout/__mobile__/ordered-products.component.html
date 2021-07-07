@@ -1,0 +1,43 @@
+﻿<div class="mob-main-basket">
+    <div class="mob-block-basket">
+        <div class="mob-title-basket">{{'Корзина' | translate}}</div>
+        <span><svg class="close-icon__svg close-icon-mob-basket"><use svg-use-reference="close"></use></svg></span>
+    </div>
+
+    <product-preview-list></product-preview-list>
+
+    <!--<div class="all-block-item-mob">
+        <div *ngFor="let product of (cart$ | async) ?.products" class="block-item-mob">
+            <span><svg class="close-icon-item-basket"><use svg-use-reference="close"></use></svg></span>
+            <div class="item-foto-mob">
+                <img class="added-img-mob"
+                     onerror="this.src='https://cdn.autodoc.ua/images/no_image.png'"
+                     [src]="getImageUrl(product)" width="78" height="62" alt="image description">
+            </div>
+            <div class="item-deskr-mob">
+                <div class="item-title-mob">{{ product.displayDescription }}</div>
+                <div class="item-code-mob">{{'Код товара' | translate}}: {{ product.lookupNumber }}</div>
+                <div class="item-brand-mob">{{'Бренд' | translate}}: {{ product.brand }}</div>
+                <div class="counter-price-mob">
+                    <div class="price-mob">
+                        <span class="big-price-mob">{{ product.price }}</span>
+                        <div class="counter-mob">
+                            <div class="left-minus-block">-</div>
+                            <input type="number" class="add-item-mob" [ngModel]="product.quantity" />
+                            <div class="right-plus-block">+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="total-sum-mob">
+        <div class="quantity-price-item-mob">
+            <div class="quantity-item-mob"><total-items></total-items> {{' на сумму' | translate}}:</div>
+            <!--<div class="price-mob"><span class="big-price-mob">99 999<span class="small-price-mob">.99грн</span></span></div>-->
+            <total-sum-order></total-sum-order>
+        </div>
+        <div (click)="confirmProducts()" class="wrapper-order-btn"><a class="btn-green order-btn-mob">{{'Заказать' | translate}}</a></div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿<carousel *ngIf="!isBotRequest" class="first-carousel" (activeSlideChange)='gotChange()' [(activeSlide)]="activeSlideIndex">
+    <slide *ngFor="let img of arrayCarouselImages;let imgIndex = index;let isFirst = first;">
+        <img id="carouselImg" width="371" height="250" itemprop="image" class="carouselImg" style="cursor: pointer" src="{{img.big}}" alt="{{img.description}}" title="{{img.description}}" >        
+    </slide>
+</carousel>
+
+<carousel *ngIf="isBotRequest" class="first-carousel" [(activeSlide)]="activeSlideIndex">
+    <slide *ngFor="let img of carouselImages;let imgIndex = index;let isFirst = first;">
+        <img id="carouselImg" width="371" height="250" itemprop="image" class="carouselImg" style="cursor: pointer" src="{{img.big}}" alt="{{img.description}}" title="{{img.description}}" >        
+    </slide>
+</carousel>

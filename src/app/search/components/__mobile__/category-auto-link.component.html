@@ -1,0 +1,9 @@
+<div class="category-auto-tab">
+    <div class="category-auto-tab__element" *ngFor="let auto of categoryAutoModelList">
+        <div class="category-auto-tab-name"  *ngIf="auto.categoryName">
+            <a href="category/{{auto.categoryPlusAutoUrl}}">{{auto.categoryName}} на {{auto.carMarkName}} {{auto.carSerieName}}</a>
+           
+        </div>
+    </div>
+</div>
+

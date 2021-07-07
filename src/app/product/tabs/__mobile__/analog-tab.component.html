@@ -1,0 +1,46 @@
+﻿
+<div class="analog-block-item-mob">
+    <div class="block-item-mob" *ngFor="let item of products; let i = index">
+        <div class="item-foto-mob img-container">
+            <img class="added-img-mob"
+                 [src]="getImage(item.id)"
+                 onerror="this.src='https://cdn.autodoc.ua/images/no_image.png'"
+                 height="62" alt="image description" (click)="navigateToProduct(item)">
+        </div>
+        <div class="item-deskr-mob">
+            <div class="item-title-mob" (click)="navigateToProduct(item)">{{ item.displayDescription }}</div>
+            <div class="item-code-mob">{{ 'Код товара' | translate }}: {{ item.lookupNumber }}</div>
+            <div class="item-brand-mob">{{ 'Бренд' | translate }}: {{ item.brand }}</div>
+
+            <div class="counter-price-mob">
+                <div class="price-mob">
+
+                    <span class="big-price-mob" *ngIf="item.hidePrice && item.oldPrice">
+                        {{ item.oldPrice  |  currency:'UAH': '' | currencyFormat}}
+                        <span itemprop="priceCurrency">грн</span>
+                    </span>
+
+                    <div *ngIf="!item.isProductPriceDisplayed">
+                        <span itemprop="price" style="display:none;">0.00</span>
+                        {{'Цену уточняйте' | translate}}
+                    </div>
+    
+                    <span class="big-price-mob" *ngIf="item.isProductPriceDisplayed">
+                        {{ item.price  |  currency:'UAH': '' | currencyFormat }}<span class="price-top">
+                            <span itemprop="priceCurrency">грн</span>
+                        </span>
+                    </span>
+                    <div class="counter-mob" (click)="onProductAdd(item)" [ngClass]="{'disabled-button': item.isPurchaseProductButtonHidden }">
+                        <a class="small-btn-analog">{{ 'Купить' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div *ngIf="inProcess">
+        <div class="container__row">
+            <div class="autodoc-loader"></div>
+        </div>
+    </div>
+    <order-popup [selectedProduct]="selectedProduct$" #orderpop></order-popup>
+</div>

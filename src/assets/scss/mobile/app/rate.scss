@@ -1,0 +1,128 @@
+.rate {
+  float: right;
+  max-width: 78px;
+  letter-spacing: -4px;
+  text-align: right;
+  &--product-page {
+    float: none;
+    max-width: 100%;
+    text-align: left;
+    margin: 0 0 15px;
+    .rate__star {
+      width: 18px;
+      height: 15px;
+      svg {
+        width: 18px;
+        height: 15px;
+      }
+    }
+    .rate__text {
+      margin: 2px 0 0 10px;
+      &:hover {
+        border-bottom: 1px dotted;
+      }
+    }
+  }
+  &--previously {
+    float: none;
+    max-width: 100%;
+    text-align: left;
+    margin: 0 0 3px;
+    .rate__text {
+      margin: 0 0 0 10px;
+    }
+  }
+  &--analogues {
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+    text-align: left;
+    margin: 0 17px 0 0;
+    .rate__star {
+      vertical-align: middle;
+    }
+    .rate__text {
+      margin: 0 0 0 10px;
+      vertical-align: middle;
+      &:hover {
+        border-bottom: 1px dotted;
+      }
+    }
+  }
+  &--article {
+    max-width: none;
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+    .rate__star {
+      cursor: pointer;
+      width: 36px;
+      height: 32px;
+      svg {
+        width: 36px;
+        height: 32px;
+      }
+    }
+  }
+  &--review {
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: none;
+    margin: 0 40px 0 0;
+    .rate__star {
+      cursor: pointer;
+      width: 18px;
+      height: 15px;
+      svg {
+        width: 18px;
+        height: 15px;
+      }
+    }
+  }
+  &__star {
+    display: inline-block;
+    vertical-align: top;
+    letter-spacing: 0;
+    width: 13px;
+    height: 12px;
+    margin: 0 0 0 3px;
+    path {
+      fill: #ffb72b;
+    }
+    &:first-child {
+      margin: 0;
+    }
+    svg {
+      width: 13px;
+      height: 12px;
+      display: block;
+    }
+  }
+  &__text {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 12px;
+    line-height: 14px;
+    color: #999;
+    text-decoration: none;
+    border-bottom: 1px dotted;
+    letter-spacing: 0;
+    margin: 10px 0 0;
+    &:hover {
+      border-color: transparent;
+    }
+  }
+  &__count {
+    margin: 0 2px 0 0;
+  }
+}
+.rate[data-rate="1"] .rate__star:nth-child(n+2) path,
+.rate[data-rate="2"] .rate__star:nth-child(n+3) path,
+.rate[data-rate="3"] .rate__star:nth-child(n+4) path,
+.rate[data-rate="4"] .rate__star:nth-child(n+5) path,
+.rate[data-rate="5"] .rate__star:nth-child(n+6) path,
+.rate[data-rate="0"] .rate__star path {
+  fill: #e0e0e0;
+}

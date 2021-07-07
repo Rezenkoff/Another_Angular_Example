@@ -1,0 +1,27 @@
+﻿<div>
+    <input class="delivery-step__input"
+           type="text"
+           [(ngModel)]="pointName"
+           [disabled]="!(spinnerOn$ | async) && (deliveryMarkers.length == 0)"
+           [ngClass]="{'autodoc-mini-loader': (spinnerOn$ | async)}"
+           placeholder="{{'Начните вводить адрес пункта выдачи' | translate}}"
+           #deliveryBox
+           (keyup)="deliveryFilter(deliveryBox.value)"
+           (click)="showDropDown = true;"
+           (focus)="$event.target.select();">
+    <div *ngIf="tmpDeliveryMarkers.length > 0 && showDropDown" class="settlement-dropdown-container">
+        <div *ngFor="let marker of tmpDeliveryMarkers; trackBy: trackByFn" (click)="selectDeliveryPoint(marker)" class="settlement-item">
+            <ng-container *ngIf="!isStoDelivery">
+                <span class="text-uppercase"><b>{{ marker.shortName }}</b></span>&nbsp;<br />
+                <span class="info-font">{{ marker.address }}</span>
+            </ng-container>
+            <ng-container *ngIf="isStoDelivery">
+                <span class="text-uppercase"><b>{{ getNameCityFree(marker.address) }}</b></span>&nbsp;<br />
+                <span class="info-font">{{ marker.shortName }}</span>
+            </ng-container>
+        </div>
+    </div>
+    <div class="head-overlay lang-overlay" (click)="hideDropdown()" [style.display]="getDisplay()"></div>
+</div>
+
+

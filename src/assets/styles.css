@@ -1,0 +1,30 @@
+.logo {
+    background: url('https://cdn.autodoc.ua/thumbnail.png') -108px -188px;
+    display: inline-block;
+    vertical-align: middle;
+    text-indent: -9999px;
+    overflow: hidden;
+    letter-spacing: 0;
+    vertical-align: top;
+}
+
+@media screen and (max-width: 1023px) {
+    .logo {
+        width: 24px;
+        height: 24px;
+        margin: 0px 9px 0px 0px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .logo {
+        width: 23px;
+        height: 24px;
+        margin: 0 9px 0 0;
+    }
+}
+
+.logo__link {
+    display: block;
+    height: 100%
+}

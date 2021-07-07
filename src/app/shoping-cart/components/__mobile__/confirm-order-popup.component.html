@@ -1,0 +1,27 @@
+﻿<div class="confirm-popup">
+    <h3 class="check-vailability-title">{{'Внимание! Цены были изменены!' | translate}}</h3>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>{{'Код товара' | translate}}</th>
+                    <th>{{'Наименование' | translate}}</th>
+                    <th>{{'Новая цена' | translate}}</th>
+                    <th>{{'Цена в корзине' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of comparisonTable">
+                    <td>{{item.lookupNumber}}</td>
+                    <td>{{item.displayDescription}}</td>
+                    <td>{{item.reservedPrice}}</td>
+                    <td>{{item.cartPrice}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div  class="text-right">
+        <button class="confirm-apply-btn" (click)="close(true)">{{'Согласен' | translate}}</button>
+        <button class="confirm-reset-btn" (click)="close(false)">{{'Отказаться' | translate}}</button>
+    </div>
+</div>

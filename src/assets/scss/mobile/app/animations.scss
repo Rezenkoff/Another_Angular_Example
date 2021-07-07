@@ -1,0 +1,24 @@
+@media screen and (min-width: 1250px) {
+  .social-networks svg,
+  .brands-section__button,
+  .brands-section__link,
+  .info-holder__button,
+  .special-offers__more,
+  .brands__info-more,
+  .triggers__info-more,
+  .catalog__button,
+  .button-list__btn-1,
+  .button-list__btn-2,
+  .button-list__btn-3,
+  .basket__car-btn,
+  .basket__button,
+  .footer-nav__item .drop-arrow,
+  .navbar__item .drop-arrow,
+  .navbar__link::after,
+  .order-section__next-button,
+  .order-section__area-box,
+  .add-categories__box,
+  .popup-enroll__area-box {
+    transition: all 0.4s ease;
+  }
+}

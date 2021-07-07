@@ -1,0 +1,44 @@
+﻿<div>
+    <div>
+        <h4>
+            Интеграция с API «Autodoc»
+            Инструкцию можно легко изучить по разделам. В ней есть ответы на все ваши вопросы, начиная с того, как получить API Token,
+            и заканчивая тем, как строить запросы к API или интегрировать популярные сервисы «Autodoc» на стороне клиента.
+        </h4>
+    </div>
+    <div>
+        <div>1. Начало работы с API</div>
+        <div>
+            Получение доступа к API
+            Получение API Token
+        </div>
+        <div>
+            Построение запросов к API 
+            Примеры запросов и кода
+        </div>
+    </div>
+
+    <div>
+        <div>Получение API Token:</div>
+        <div>
+            <div>
+                <div>Ввведите свой пароль к аккаунту Autodoc и отправте запрос на получение токена авторизации в API «Autodoc»</div>
+                <input class="login__input" id="passwordDev" type="password" name="password" [(ngModel)]="confirmedPassword"
+                       #password="ngModel" required>
+                <div *ngIf="!password.valid && !password.untouched" class="alert__alert-danger">
+                    {{'Введите пароль' | translate}}
+                </div>
+            </div>
+        </div>
+        <div>
+            Токен авторизации:
+        </div>
+        <textarea cols="5" rows="10" disabled="disabled" [(ngModel)]="tokenResponse"></textarea>
+        <div>
+            Используя данный токен вы можете делать безапасные вызовы API «Autodoc»
+        </div>
+        <br />        
+        <button (click)="getApiToken()" class="btn btn-primary" [ngClass]="{'disabled-button': !password.valid}">Получить Token</button>
+        <br />
+    </div>
+</div>

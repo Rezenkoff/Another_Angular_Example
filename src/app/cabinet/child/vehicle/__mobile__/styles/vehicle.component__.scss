@@ -1,0 +1,331 @@
+.header-filter {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 12px;
+}
+
+.header-filter-close {
+    position: absolute;
+    right: 0;
+    margin: 4px 12px 0 0;
+}
+
+.header-filter-close-svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+.garage-add-link {
+    margin-top: 24px;
+    float: right;
+    display: inline-block;
+}
+ .vehicle-mob {
+    padding: 0 12px;
+    height: 90vh;
+    overflow-y: scroll;
+}
+ .header-vehicle {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 12px;
+}
+.save-btn-vehicle {
+    background: #99AEC9;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    padding: 12px 24px;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+        color: #ffffff;
+        cursor: not-allowed;
+    }
+}
+.active-btn-vehicle {
+    background: #316cb3;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+.more-garage-image {
+    width: 72px;
+    height: 56px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 24px 0 0;
+    padding: 3px;
+    border: 1px solid #C5D5EA;
+    border-radius: 6px;
+    text-align: center;
+}
+.img-car-garage {
+    max-height: 48px;
+    max-width: 64px;
+}
+
+.vehicle-garage {
+    position: relative;
+    background: #fff;
+}
+.garage-bonus {
+    width: 30%;
+    display: inline-block;
+    margin-right: 1em;
+    position: relative;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+ .garage-arrow-more {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+ .garage-arrow-more svg {
+    height: 12px;
+    width: 12px;
+}
+
+ .garage-arrow-more svg use {
+    fill: #1D5495;
+}
+
+ .garage-arrow {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+ .garage-arrow svg {
+    height: 12px;
+    width: 12px;
+}
+
+ .garage-arrow svg use {
+    fill: #1D5495;
+}
+ .garage-input {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+.garage-year-title {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 4px;
+}
+
+.garage-year-title span {
+    font-weight: 500;
+}
+.properties-name {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 24px;
+    display: inline-block;
+    width: 140px;
+}
+.properties-description {
+    font-size: 12px;
+    line-height: 24px;
+}
+.properties-list {
+    margin-top: 12px;
+}
+.garage-bold-text {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 18px;
+}
+.garage-simple-text {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 4px 0 12px;
+}
+.help-block {
+    border: 1px solid #C5D5EA;
+    background: #F5F7FA;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #1D5495;
+    margin-top: 12px;
+}
+
+.help-block a {
+    color: #1D5495;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+        text-decoration: underline;
+        color: #1D5495;
+    }
+}
+.left-help-block {
+    border-right: 1px solid #C5D5EA;
+    width: 50%;
+    padding: 16px 0;
+    display: inline-block;
+}
+
+.right-help-block {
+    width: 50%;
+    padding: 16px 0;
+    display: inline-block;
+}
+
+.centre-help-block {
+    border-top: 1px solid #C5D5EA;
+    width: 100%;
+    padding: 16px 0;
+}
+.icon-help {
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.icon-help svg {
+    width: 36px;
+    height: 36px;
+}
+.btn-selected-auto {
+    line-height: 18px;
+    vertical-align: top;
+    text-align: center;
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+}
+.selected-bonus {
+    width: 29%;
+}
+.garage-deselect {
+    //display: inline-block;
+    font-size: 12px;
+    line-height: 16px;
+    color: #99AEC9;
+    border-bottom: 1px dashed;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+        border-bottom: none;
+        color: #99AEC9;
+    }
+}
+ .edit-form {
+    margin: 0 auto !important;
+}
+ .vehicle-title-car {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 24px;
+    display: inline-block;
+}
+.garage-properties {
+    font-size: 12px;
+    line-height: 16px;
+    color: #99AEC9;
+    word-break: break-word;
+    max-width: 200px;
+}
+input.checkbox-garage {
+    height: 15px;
+    width: 15px;
+    border-radius: 0;
+    top: 3px;
+    position: relative;
+}
+
+ .edit-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+}
+
+ .checkbox-active {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+ .header-filter-close {
+    position: absolute;
+    right: 0;
+    margin: 4px 12px 0 0;
+}
+
+ .header-filter-close-svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+ .form-input {
+    position: relative;
+}
+
+ .more-garage {
+    padding: 24px 0 12px 0;
+}
+
+ .garage-brand {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    word-break: break-word;
+    max-width: 200px;
+}
+
+ .garage-year {
+    font-size: 12px;
+    line-height: 16px;
+}
+.select-icon-vehicle {
+    top: 10px;
+    position: absolute;
+    right: 10px;
+}
+.container_added-name-box{
+    min-width: 170px;
+}
+.garage-deselect-edit {
+    font-size: 12px;
+    line-height: 16px;
+    color: #1D5495;
+    border-bottom: 1px dashed;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 4px 30px 0 0;
+}
+.garage-deselect-edit:active {
+    border-bottom: 1px dashed;
+    text-decoration: none;
+  }
+.garage-deselect-active {
+    font-size: 12px;
+    line-height: 16px;
+    color: #1D5495;
+    border-bottom: 1px dashed;
+    text-decoration: none;
+    font-weight: 500;
+}

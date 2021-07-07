@@ -1,0 +1,34 @@
+﻿<ng-container *ngIf="selectedBlock == 1">
+    <div class="slider-main-title">{{'Бесплатная доставка на СТО сети AutoDoc™' | translate}}</div>
+    <div class="slider-text">{{'Мы ценим каждую копейку!' | translate}}</div>
+    <!--<div class="slider-button"><a class="btn-transparent">{{'Подробнее' | translate}}<span class="drop-arrow btn-blue-arrow"><svg class="btn-blue-arrow"><use svg-use-reference="arrow"></use></svg></span></a></div>-->
+</ng-container>
+<ng-container *ngIf="selectedBlock == 2">
+    <div class="slider-main-title">{{'Оперативная доставка от двух часов' | translate}}</div>
+    <div class="slider-text">{{'Бережём не только нервы, но и время.' | translate}}</div>
+    <!--<div class="slider-button"><a class="btn-transparent">{{'Подробнее' | translate}}<span class="drop-arrow btn-blue-arrow"><svg class="btn-blue-arrow"><use svg-use-reference="arrow"></use></svg></span></a></div>-->
+</ng-container>
+<ng-container *ngIf="selectedBlock == 3">
+    <div class="slider-main-title">{{'Самый точный поиск автозапчастей' | translate}}</div>
+    <div class="slider-text">{{'По номеру, названию детали или VIN.' | translate}}</div>
+    <!--<div class="slider-button"><a class="btn-transparent">{{'Подробнее' | translate}}<span class="drop-arrow btn-blue-arrow"><svg class="btn-blue-arrow"><use svg-use-reference="arrow"></use></svg></span></a></div>-->
+</ng-container>
+<div *ngIf="(indicatorShown$ | async)" class="slider-bg-indicator">
+    <div (click)="selectBlock(1)" class="indicator-main" [ngClass]="{'indicator-main-active': (selectedBlock == 1)}">
+        <a class="indicator-main__link" [ngClass]="{'indicator-main-active__link': (selectedBlock == 1)}">
+            {{'Бесплатная доставка внутри сети AutoDoc' | translate}}
+        </a>
+    </div>
+    <div (click)="selectBlock(2)" class="indicator-main" [ngClass]="{'indicator-main-active': (selectedBlock == 2)}" style="margin: 0 25px;">
+        <a class="indicator-main__link" [ngClass]="{'indicator-main-active__link': (selectedBlock == 2)}">
+            {{'Оперативная доставка от 2х часов!' | translate}}
+        </a>
+    </div>
+    <div (click)="selectBlock(3)" class="indicator-main" [ngClass]="{'indicator-main-active': (selectedBlock == 3)}">
+        <a class="indicator-main__link" [ngClass]="{'indicator-main-active__link': (selectedBlock == 3)}">
+            {{'Самый точный поиск автозапчастей' | translate}}
+        </a>
+    </div>
+</div>
+
+

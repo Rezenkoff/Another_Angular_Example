@@ -1,0 +1,29 @@
+.addGarage__button {
+    background: #86c934;
+    border: 1px solid #70b51c;
+    color: #fff;
+    font-size: 13px;
+    line-height: 30px;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 20px;
+    margin: 0 0 20px 0;
+    cursor: pointer;
+}
+.table-vechicle {
+    margin-bottom: 30px;
+}
+
+.table-vechicle td {
+    overflow: hidden;
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-vechicle td:nth-child(9) {
+    overflow: visible;
+    width: 40px;
+}

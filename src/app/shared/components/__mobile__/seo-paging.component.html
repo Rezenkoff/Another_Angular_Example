@@ -1,0 +1,11 @@
+﻿<ul class="art-pagination" *ngIf="totalItems > 0">
+    <li class="art-pagination__back" *ngIf="previousItemValid()">
+        <a class="art-pagination__second-control-link" [routerLink]="['./']" [queryParams]="getParamsForFirstPage()">{{'В начало' | translate}}</a>
+    </li>
+    <li *ngFor="let pageNo of pageList" class="art-pagination__item" [ngClass]="{'active': isActive(pageNo)}">
+        <a class="art-pagination__link" [routerLink]="['./']"  [queryParams]="getParamsForPage(pageNo)" [ngClass]="{'art-pagination__active': isActive(pageNo)}" (click)="setCurrentPage(pageNo)">{{ pageNo }}</a>
+    </li>
+    <li class="art-pagination__next" *ngIf="nextItemValid()">
+        <a class="art-pagination__second-control-link" [routerLink]="['./']" [queryParams]="getParamsForPage(pagesCount)">{{'В конец' | translate}}</a>
+    </li>
+</ul>

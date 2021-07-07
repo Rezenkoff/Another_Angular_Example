@@ -1,0 +1,8 @@
+﻿﻿<span class="mobile-arrow-back" (click)="back()">
+    <span>
+        <svg class="drop-arrow__svg drop-arrow__svg back-arrow"><use svg-use-reference="arrow" /></svg>
+    </span>
+</span>
+<button [class]="getPassengerBtnClass()" (click)="selectPassengerCatalog()"><span class="catalog-type-icon"><svg class="catalog-type-icon__svg"><use svg-use-reference="passAuto" /></svg></span>{{'Легковые авто' | translate}}</button>
+<div class="line"></div>
+<button [class]="getTruckBtnClass()" (click)="selectTruckCatalog()"><span class="catalog-type-icon"><svg class="catalog-type-icon__svg"><use svg-use-reference="truck" /></svg></span>{{'Грузовые авто' | translate}}</button>

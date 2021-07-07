@@ -1,0 +1,6 @@
+﻿<div class="brand-search-form" autocomplete="off" action="#">
+    <input class="search-form__input" [(ngModel)]="filterString" placeholder="{{'Начните вводить название бренда' | translate}}" type="search" (keyup)="search()">
+    <button class="search-form__submit-brand" (click)="search()">
+        <span class="search-icon"><svg class="search-icon__svg brand-ico"><use svg-use-reference="search"></use></svg></span>
+    </button>
+</div>

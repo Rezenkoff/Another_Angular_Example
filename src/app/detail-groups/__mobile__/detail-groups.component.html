@@ -1,0 +1,110 @@
+﻿<div class="main">
+    <div class="title">
+        <span class="title__text">{{car.brand}}</span>
+    </div>
+    <div class="service-section__search-car" style="margin-right: 35px;">
+        <div class="service-section__top">
+            <a (click)="navigateToFindByAuto()" class="service-section__back">
+                <span class="drop-arrow drop-arrow--blue drop-arrow--left">
+                    <svg class="drop-arrow__svg drop-arrow__svg--blue">
+                        <use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="../assets/images/sprite.svg#arrow"></use>
+                    </svg>
+                </span>{{'Выбрать другое авто' | translate}}
+            </a>
+            <div class="service-section__top-add">
+                <div *ngIf="car && car.name && car.date" class="service-section__top-info">
+                    <span class="service-section__car-name">{{car.name}}</span>
+                    <span class="service-section__date">{{'дата выпуска' | translate}}: {{car.date}}</span>
+                </div>
+                <!-- can't add to garage. laximo car model data is differs from PP
+                <a class="service-section__button" href="#"><span class="car-icon car-icon--white"><svg class="car-icon__svg car-icon__svg--white"><use svg-use-reference="car" /></svg></span>Добавить в гараж</a>
+                -->
+            </div>
+        </div>
+        <div class="service-section__search-holder">
+            <div class="service-section__product">
+                <ul class="service-section__product-info">
+                    <li class="service-section__product-item">
+                        <span class="service-section__product-name">{{'VIN' | translate}}</span>
+                        <span class="service-section__product-description">{{vin}}</span>
+                    </li>
+                    <li class="service-section__product-item">
+                        <span class="service-section__product-name">{{'Бренд' | translate}}</span>
+                        <span class="service-section__product-description">{{car.brand}}</span>
+                    </li>
+                    <li class="service-section__product-item">
+                        <span class="service-section__product-name">{{'Модель' | translate}}</span>
+                        <span class="service-section__product-description">{{car.name}}</span>
+                    </li>
+                    <li class="service-section__product-item">
+                        <span class="service-section__product-name">{{'Год производства' | translate}}</span>
+                        <span class="service-section__product-description">{{car.date}}</span>
+                    </li>
+                    <li class="service-section__product-item">
+                        <span class="service-section__product-name">{{'Двигатель' | translate}}</span>
+                        <span class="service-section__product-description">{{car.engine}}</span>
+                    </li>
+                </ul>
+                <div class="service-section__image">
+                    <!--delelele-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <select-me [vin]="vin"></select-me>   
+
+    <div class="category-list">
+        <div class="title">
+            <span class="title__text">{{'Каталог оригинальных запчастей' | translate}}</span>
+        </div>
+
+        <ul *ngIf="breadcrumbs && breadcrumbs.length > 1" class="breadcrumbs">
+            <li *ngFor="let node of breadcrumbs">
+                <a (click)="onDetailSelect(node)">{{node.name}}</a>
+            </li>
+            <li *ngIf="detailInfo">
+                <span>{{detailInfo.name}}</span>
+            </li>
+        </ul>
+        <search-section (searchChange)="onSearchChange($event)"></search-section>
+        <div *ngIf="inProcess">
+            <div class="autodoc-loader"></div>
+        </div>
+        <div *ngIf="navigationDisplayed()" class="category-list__columns">
+            <aside class="navbar" style="min-height: 0px; display: none;">
+                <detail-navigation [node]="currentNode" (onDetailSelect)="onDetailSelect($event)"></detail-navigation>
+            </aside>
+            <div class="category-grid" *ngIf="!previewDisplayed()">
+                <div *ngFor="let unit of currentNode.children" class="category-grid__box category-grid__box--big">
+                    <!--<a *ngIf="!isMobileScreen" class="category-grid__link" (click)="onDetailSelect(unit)">
+                        <img *ngIf="!unit.children || unit.children.length === 0" class="category-grid__img category-grid__img--big" src="http://res.cloudinary.com/dk5dc1wvr/image/upload/v1521014663/gear_small_mod_fr7ufx.png" alt="{{unit.name}}" title="{{unit.name}}" height="90">
+                        <img *ngIf="unit.children && unit.children.length > 0" class="category-grid__img category-grid__img--big" src="http://res.cloudinary.com/dk5dc1wvr/image/upload/v1521014663/gears_small_q11vpy.png" alt="{{unit.name}}" title="{{unit.name}}" height="90">
+                        <div class="category-grid__name">
+                            <span class="category-grid__name-text">{{unit.name}}</span>
+                        </div>
+                    </a>-->
+                    <a class="category-grid__link" (click)="onDetailSelect(unit)">
+                        <div class="category-grid__name">
+                            <span *ngIf="unit.children" style="display: inline; vertical-align: middle" class="glyphicon glyphicon-plus"></span>
+                            <span *ngIf="!unit.children" style="display: inline; vertical-align: middle" class="glyphicon glyphicon-wrench"></span>
+                            <span class="category-grid__name-text" style="font-size:135%; display: inline; vertical-align: middle"> {{unit.name}}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="category-grid" *ngIf="previewDisplayed()">
+                <div *ngFor="let unit of units" class="category-grid__box category-grid__box--big">
+                    <a class="category-grid__link" (click)="showDetail(unit)">
+                        <img class="category-grid__img category-grid__img--big" src="{{getImgUrl(unit)}}" alt="{{unit.name}}" title="{{unit.name}}" width="134" height="200">
+                        <div class="category-grid__name">
+                            <span class="category-grid__name-text">{{unit.name}}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="detailInfoDisplayed()">
+            <detail-info [detailInfo]="detailInfo" [code]="code" (backFromDetailInfo)="backToNavigation()"></detail-info>
+        </div>
+    </div>
+</div>

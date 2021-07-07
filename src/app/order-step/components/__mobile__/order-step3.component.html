@@ -1,0 +1,21 @@
+﻿<div class="order-section__form-step-3">
+    <span class="order-section__form-title">{{'Выберите форму оплаты' | translate}}</span>
+
+    <div class="order-section__pay" *ngIf="!inProcess">
+        <div *ngFor ="let payment of paymantsList"  class="order-section__pay-box" (click)="onPaymentSelect(payment.key)" [ngClass]="displaySelectedPayment(payment.key)">
+            <label class="order-section__pay-item">
+                <input class="order-section__pay-radio" type="radio" name="yes">
+                <!--<span style="display:none">{{'Наличные' | translate}}</span>-->
+                <span class="{{'pay-ico-' + payment.key }}"><svg [ngClass]="['pay-ico-' + payment.key + '__svg']"><use svg-use-reference="{{ 'pay-' + payment.key }}" /></svg></span>
+                <span class="order-section__pay-name">{{ payment.name | translate }}</span>
+                <span class="decor-icon"><svg class="success__svg"><use svg-use-reference="success" /></svg></span>
+            </label>
+        </div>        
+    </div>
+
+    <div *ngIf="inProcess">
+        <div class="autodoc-loader"></div>
+    </div>
+
+</div>
+

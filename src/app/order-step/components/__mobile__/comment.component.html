@@ -1,0 +1,6 @@
+﻿<div class="order-section__add-comment" (click)="onDisplayCommentClick()" *ngIf="!displayComment">
+    <span class="order-section__add-comment-text">{{'Добавить комментарий' | translate}}</span>
+</div>
+<div class="order-section__area-box" [style.height]="displayCommentBlock()">
+    <textarea class="order-section__contact-area" placeholder="{{'Комментарий' | translate}}" cols="30" rows="10" maxlength="300" (ngModelChange)="onCommentChange($event)" [(ngModel)]="_orderStepService.OrderStepMainModel.ContactInfo.Comment"></textarea>
+</div>

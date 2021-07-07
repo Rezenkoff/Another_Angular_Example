@@ -1,0 +1,136 @@
+﻿﻿﻿<div class="mobile-home">
+    <div class="catalog-list__section-2">
+        <div class="catalog-list__block-4">
+            <div class="catalog-list__block-info">
+                <a class="catalog-list__block-link" [routerLink]="['../order-main/order-step']" style="max-width: 200px">{{'Подберите мне запчасть' | translate}}</a>
+            </div>
+            <a class="catalog-list__block-image" [routerLink]="['../order-main/order-step']">
+                <span class="img-mobile-home"></span>
+            </a>
+        </div>
+    </div>
+</div>
+<spare-part-select></spare-part-select>
+<div class="catalog-list">
+    <!-- категории -->
+    <div class="vin-block-title-mob">{{'Популярные категории' | translate}}</div>
+    <div class="popular-with-icons">
+        <div class="popular-with-icons__part-one">
+            <div class="popular-with-icons__block">
+                <div *ngFor="let banner of swapTires(banners); let index = index;let first = first">
+                    <div class="popular-with-icons__sub-block">
+                        <div class="popular-with-icons__block-icon">
+                            <span><svg class="popular-with-icons__icon_svg"><use svg-use-reference="{{banner.svgImage}}" /></svg></span>
+                        </div>
+                        <div class="popular-with-icons__group">
+                            <div class="popular-with-icons__title">{{banner.name}}</div>
+                            <div *ngFor="let category of banner.categries">
+                                <a class="popular-with-icons__sub-title" [routerLink]="'/category/'+category.pageUrl">{{category.name}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popular-with-icons__part-two">
+            <a class="popular-with-icons__all-categories" [routerLink]="['/category']">
+                {{'Все категории' | translate}}
+                <span class="drop-arrow drop-arrow--blue news-arrow"><svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow" /></svg></span>
+            </a>
+        </div>
+    </div>
+    <!-- конец категорий -->
+
+</div>
+
+
+<div class="news-offers" (deferLoad)="showNews=true">
+    <div class="news-offers__top">
+        <span class="news-offers__title">{{'Новости и Акции' | translate}}</span>
+        <a class="news-offers__all-news" [routerLink]="['/all-news']">
+            {{'Все новости и акции' | translate}}
+            <span class="drop-arrow drop-arrow--blue news-arrow"><svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow" /></svg></span>
+        </a>
+    </div>
+    <div *ngIf="showNews" class="news-mobile-slider">
+        <carousel>
+            <slide *ngFor="let news of newsList; let index=index">
+                <div class="news-offers__slider-foto"><a class="news-offers__link" (click)="openNewsDetails(news)"><img src="{{getPreviewPictureUrl(((languageId$ | async) === 2 ? news.previewPictureUrl: news.previewPictureUrlUkr))}}" alt="{{(languageId$ | async) === 2 ? news.header : news.ukrHeader}}" title="{{(languageId$ | async) === 2 ? news.header : news.ukrHeader}}" height="190" width="250" /></a></div>
+                <div class="news-offers__slider-text">
+                    <a class="news-offers__slider-text__title" (click)="openNewsDetails(news)">{{(languageId$ | async) === 2 ? news.header : news.ukrHeader}}</a>
+                    <div class="news-offers__slider-text__date">{{news.publicationDate | date: 'dd.MM.yyyy'}}</div>
+                </div>
+            </slide>
+        </carousel>
+        <a class="news-offers__all-news-mob" [routerLink]="['/all-news']">
+            {{'Все новости и акции' | translate}}
+            <span class="drop-arrow drop-arrow--blue news-arrow"><svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow" /></svg></span>
+        </a>
+    </div>
+</div>
+
+
+<div *ngIf="!IsMobile()" (deferLoad)="showPopular=true">
+    <popular-products *ngIf="showPopular"></popular-products>
+</div>
+<div class="main-text" (deferLoad)="showMainText=true">
+    <div class="main-text__slider" *ngIf="showMainText">
+        <div class="slide">
+            <img class="slide-img" src="https://cdn.autodoc.ua/images/home/slide.jpg" alt="image description" title="" width="565" height="353">
+        </div>
+    </div>
+    <div class="main-text__info" *ngIf="showMainText">
+        <div class="main-text__info-box">
+            <p>{{'Съездить на авторынок или провести несколько часов за компьютером, сравнивая цены в разных интернет-магазинах? Ждать запчасть несколько дней или выбрать самовывоз? Если вы читаете этот текст, то можете забыть о подобных проблемах.' | translate }}</p>
+            <p>{{'11 месяцев назад мы начали разработку проекта AutoDoc. Теперь, мы рады сообщить вам, что автомобильная скорая помощь № 1 в Украине теперь работает в режиме онлайн. Приобрести необходимую запчасть или записаться на СТО можно прямо сейчас.' | translate }}</p>
+            <h1>{{'Всё, что нужно – в радиусе нескольких кликов' | translate}}</h1>
+            <p>{{'Перед нашими разработчиками стояла уникальная задача – создать умную онлайн-платформу, которая сможет удовлетворить любые требования клиента. Для решения этой задачи использовались передовые ИТ-технологии. Как и всё гениальное, наш сервис чрезвычайно прост. Доступность и лаконичность – краеугольный камень онлайн-сервиса AutoDoc.ua. Интерфейс интуитивно понятен и «подстраивается» под желания заказчика. Найти нужную деталь легче, чем переключить передачу на Москвиче.' | translate }}</p>
+            <ul>
+                <li>{{'Поиск нужных деталей по разным параметрам;' | translate}}</li>
+                <li>{{'Выбор разных способов оплаты и доставки;' | translate}}</li>
+                <li>{{'Поиск ближайшего СТО;' | translate}}</li>
+                <li>{{'Запись в автосервис в несколько кликов;' | translate}}</li>
+                <li>{{'Онлайн-консультация и помощь в телефонном режиме.' | translate}}</li>
+            </ul>
+            <p>{{'Все 150 тысяч единиц товара, которые сейчас лежат на наших складах, уже есть на сайте.' | translate }}</p>
+            <p>{{ 'В рамках тестировки мы попросили 8-летнего сына одного из сотрудников попробовать заказать аккумулятор для папиной Мазды. У ребёнка на это ушло две минуты. А сколько уйдёт у вас?' | translate}}</p>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="sub-main-text">
+        <h1 class="title-bottom-text-info">{{'Интернет-магазин автозапчастей Автодок' | translate}}</h1>
+        <div class="bottom-text-info">
+            {{'Автомобили являются наиболее популярным видом транспорта на сегодняшний день. Спрос на авто запчасти к ним постоянно растет.' | translate}}
+        </div>
+        <div [ngClass]="hideOrShowText()">
+            <div class="bottom-text-info">
+                {{'Ведь даже самые качественные детали изнашиваются и требуют замены. Подобрать оптимальную запчасть для своего транспорта поможет интернет-магазин автозапчастей Autodoс. Многие современные автовладельцы уже оценили по достоинству преимущества заказа онлайн. Большой каталог запчастей в нашем автомагазине позволяет заказчику подобрать наиболее выгодное решение под свои запросы всего в несколько кликов.' | translate}}
+                {{'Преимущества интернет магазина Автодок:' | translate}}
+                <ul class="list-home-block">
+                    <li>- {{'быстрая доставка (от 2 часов);' | translate}}</li>
+                    <li>- {{'бесплатная доставка на все СТО сети Автодок; ' | translate}}</li>
+                    <li>- {{'высококвалифицированный подбор автозапчастей; ' | translate}}</li>
+                    <li>- {{'гарантия на все автозапчасти; ' | translate}}</li>
+                    <li>
+                        - {{'сертифицированная продукция от проверенных поставщиков.' | translate}}
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-text-info">
+                {{'Каждый клиент получает квалифицированную помощь в выборе запчасти, а при необходимости, и в установке или ремонте авто. Ведь сервис Автодок стремится радовать своим качеством и оперативностью. В интернет магазине автозапчастей легко отыскать необходимые детали, а также расходные материалы. В этом поможет удобный электронный каталог. В режиме онлайн представлены запчасти для иномарок в большом ассортименте и по приемлемой цене.' | translate}}
+            </div>
+            <div class="bottom-text-info">
+                {{' Когда требуется помощь опытного специалиста, целесообразно воспользоваться простой формой «Подберите мне запчасть». Компетентные консультанты с помощью VIN-подбора подберут автозапчасть под любые клиентские запросы для конкретной модели автомобиля.' | translate}}
+            </div>
+            <div class="bottom-text-info">
+                {{'Благодаря оперативному и качественному обслуживанию сервиса Autodoс заказчику больше не потребуется посещать уйму специализированных магазинов. Ведь купить надежные запчасти от проверенных поставщиков можно непосредственно на сайте, получив соответствующий товар от 2 часов после совершения заказа на одной из точек выдачи сети Autodoс. Сеть точек выдачи автомагазина Автодок составляет более 300 точек выдачи по всей Украине.' | translate}}
+            </div>
+            <div class="bottom-text-info">
+                {{'Все СТО компании прошли необходимую сертификацию и аттестацию. Обширный спектр услуг позволит каждому быстро решить задачу по ремонту автомобиля, сэкономив, как время, так и финансы. Профессиональный сервис гарантирован.' | translate}}
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!showBottomText" class="text-changer" (click)="changeShowText()"><span>{{'Читать полностью' | translate}}</span></div>
+<div *ngIf="showBottomText" class="text-changer" (click)="changeShowText()"><span>{{'Свернуть' | translate}}</span></div>

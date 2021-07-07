@@ -1,0 +1,30 @@
+﻿<a *ngIf="!zoomed" (click)="goBack()" class="service-section__back service-section__back--node" style="margin-bottom: 0px"><span class="drop-arrow drop-arrow--blue drop-arrow--left"><svg class="drop-arrow__svg drop-arrow__svg--blue"><use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="../assets/images/sprite.svg#arrow"></use></svg></span>{{'Назад' | translate}}</a>
+<div *ngIf="!zoomed" class="category-list__columns">
+    <div class="detail-holder" style="max-width:450px">        
+        <p class="label label-info">{{'Категория' | translate}}: {{detailInfo.category}}</p>
+        <detail-info-table #mainDetailsTable [detailInfoList]="detailInfoMain" [showHead]="true" (rowHover)="onRowHover($event)" (rowLeave)="onRowLeave($event)"></detail-info-table>
+        <button class="btn btn-primary btn-sm" *ngIf="!additionalDetailsShown()" (click)="showAdditionalDetails()" >{{'Показать остальные детали' | translate}}</button>     
+        <button class="btn btn-primary btn-sm" *ngIf="additionalDetailsShown()" (click)="hideAdditionalDetails()">{{'Скрыть остальные детали' | translate}}</button>
+        <detail-info-table #otherDetailsTable *ngIf="additionalDetailsShown()" [detailInfoList]="detailInfoOther" [showHead]="false" (rowHover)="onRowHover($event)" (rowLeave)="onRowLeave($event)"></detail-info-table>
+    </div>
+    <div class="node-image" style="max-width: 800px">
+        <div (click)="showImage()" class="node-image__button-box">
+            <span class="search-icon search-icon--blue"><svg class="search-icon__svg search-icon__svg--blue"><use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="../assets/images/sprite.svg#search"></use></svg></span>            
+            <span data-open="Увеличить фотографию" data-close="Уменьшить фотографию" class="node-image__button">{{'Увеличить фотографию' | translate}}</span>                
+        </div>
+        <div *ngIf="!imageMapping" style="box-sizing:border-box; display:block; position:relative; max-width: 600px; overflow:hidden">
+            <img  src="{{imageUrl}}" style="display: block; position: relative; top: 0; left: 0; max-width:100%; height: auto">
+        </div>
+        <mapped-image #newImgMap *ngIf="imageMapping" [imageMap]="imageMapping" [imageUrl]="imageUrl" (markerSelected)="onRowHover($event)"></mapped-image>
+        </div>
+</div>
+<!--
+<div *ngIf="zoomed" class="mobile-overlay active" style="z-index: 1000">    
+    <span class="closeimg" (click)="hideImage()" style="display: block; position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer;" >×</span>
+    <img src="{{imageUrl}}" style="display: block; margin-left: auto; margin-right: auto; height: 100%"/>    
+</div>
+    -->
+<a *ngIf="zoomed" (click)="hideImage()" class="service-section__back service-section__back--node" style="margin-bottom: 0px"><span class="drop-arrow drop-arrow--blue drop-arrow--left"><svg class="drop-arrow__svg drop-arrow__svg--blue"><use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="../assets/images/sprite.svg#arrow"></use></svg></span>{{'Назад' | translate}}</a>
+<div *ngIf="zoomed" style="display:block; position:relative; max-width: 100%; overflow:hidden">  
+    <img src="{{imageUrl}}" style="display: block; position: relative; top: 0; left: 0; max-width:100%; height: auto"/>
+</div>

@@ -1,0 +1,126 @@
+﻿<div *ngIf="!isDataLoad" class="order-holder">
+    <div class="order-holder__image-car">
+        <a class="order-holder__image-link" href="#"><img class="order-holder__img" onerror="this.src = 'https://cdn.autodoc.ua/car-img.svg'" [src]="getLogo(order.modelId)" alt="{{getDescriptionForCar()}}" title="{{getDescriptionForCar()}}" width="150" height="100"></a>
+        <p class="title-car-model">{{order.vehicle}}</p>
+    </div>
+    <div class="order-holder__description">
+        <div class="">
+            <div class="order-holder__title title-order" href="#">{{'ДЕТАЛИ ЗАКАЗА' | translate}}</div>
+            <div class="title-order">№{{order.id}}</div>
+        </div>
+        <ul class="order-holder__order-info">
+            <li class="order-holder__code-item">
+                <span class="order-holder__order-name">{{'Дата и время заказа:' | translate}}</span>
+                <span class="order-holder__code-number specifications__description">{{order.orderDateString}}</span>
+            </li>
+            <li *ngIf="rows.length > 0" class="order-holder__code-item">
+                <span class="order-holder__order-name">{{'Способ доставки:' | translate}}</span>
+                <span class="order-holder__code-number specifications__description">{{order.deliveryMethod}}</span>
+            </li>
+            <!--<li class="order-holder__code-item">
+                <span class="order-holder__order-name">{{'Точка выдачи:' | translate}}</span>
+                <span class="order-holder__code-number specifications__description">{{order.deliveryPoint}}</span>
+            </li>-->
+            <li *ngIf="rows.length > 0" class="order-holder__code-item">
+                <span class="order-holder__order-name">{{'Способ оплаты:' | translate}}</span>
+                <span class="order-holder__code-number specifications__description">{{order.paymentMethod}}</span>
+            </li>
+            <li class="order-holder__code-item">
+                <span class="order-holder__order-name">{{'Автомобиль' | translate}}:</span>
+                <span class="order-holder__code-number specifications__description">{{order.mark}} {{order.model}} {{order.vehicleYear}}</span>
+            </li>
+            <li class="order-holder__code-item">
+                <span class="order-holder__order-name">{{'VIN' | translate}}:</span>
+                <span class="order-holder__code-number specifications__description">{{order.vin}}</span>
+            </li>
+            <li class="order-holder__code-item">
+                <span class="order-holder__order-name">{{'Заказ:' | translate}}</span>
+                <span class="order-holder__code-number specifications__description comment-order">{{order.wishList}}</span>
+            </li>
+            <li *ngIf="order && order.path != ''" class="order-holder__code-item">
+                <span class="order-holder__order-name">{{'Скачать прикреплёные файлы:' | translate}}</span>
+                <span (click)="download(order.id)" class="order-holder__code-number specifications__description"><a class="download-img">Скачать</a></span>
+            </li>
+            <li class="order-holder__code-item">
+                <span class="order-holder__order-name">{{'Комментарий:' | translate}}</span>
+                <span class="order-holder__code-number specifications__description comment-order">{{order.comment}}</span>
+            </li>
+            <li class="order-holder__code-item">
+                <span class="order-holder__order-name">{{'Статус заказа:' | translate}}</span>
+                <span class="order-holder__code-number specifications__description adress-detail" style="cursor:default;" matTooltip="{{order.statusDescription}}" matTooltipPosition="below"><span class="status-icon"><svg class="status-icon__svg work-icon__svg--blue work-icon__svg--order"><use svg-use-reference="work"></use></svg></span>{{order.orderStatus}}</span>
+            </li>
+            <li class="order-holder__code-item" *ngIf="order.deliveredDate">
+                <span class="order-holder__order-name">{{'Выдан:' | translate}}</span>
+                <span class="order-holder__code-number specifications__description">{{order.deliveredDate}}</span>
+            </li>
+            <li class="order-holder__code-item" *ngIf="order.trackingNumber">
+                <span class="order-holder__order-name">{{'ТТН новая почта:' | translate}}</span>
+                <a class="order-holder__code-number specifications__description" (click)="openNovaPoshtaTrackingPage(order.trackingNumber)">{{order.trackingNumber}}</a>
+            </li>
+            <li class="order-holder__code-item" *ngIf="order.arriveDate && order.arriveDate.length > 0 && inTransitStatus == order.statusId">
+                <span class="order-holder__order-name">{{'Планируемая дата и время доставки:' | translate}}</span>
+                <span class="order-holder__code-number specifications__description">{{userArrive(order.arriveDate)}}</span>
+            </li>
+            <li class="order-holder__code-item" *ngIf="order.sumCourierDelivery && order.sumCourierDelivery != 0">
+                <span class="order-holder__order-name">{{'Сумма оплаты за доставку:' | translate}}</span>
+                <span class="order-holder__code-number specifications__description">{{order.sumCourierDelivery}}</span>
+            </li>
+            <li *ngIf="rows.length > 0" class="order-holder__code-item">
+                <span class="order-holder__order-name">{{'Адрес доставки:' | translate}}</span>
+                <div class="service-list__image" *ngIf="order.deliveryMethodId && order.deliveryMethodId == stoDeliveryId" style="margin-left:20%">
+                    <img [src]="getPreviewImg(order.imageUrlDP)" width="150" (click)="openOriginImage(order.imageUrlDP)" onerror="this.src = 'https://cdn.autodoc.ua/images/no_image.png'" class="service-list__img" />
+                </div>
+                <span class="order-holder__code-number specifications__description adress-detail">{{order.deliveryAddress}}</span>
+                <span class="order-holder__code-number specifications__description adress-detail" *ngIf="order.inspectorPhoneDP"><a href="tel:{{order.inspectorPhoneDP}}">{{'тел.' | translate}} {{order.inspectorPhoneDP}}</a></span>
+                <span class="order-holder__code-number show-on-map" *ngIf="order.latitudeDP != 0 && order.longitudeDP != 0" (click)="openDeliveryPointMap()"><a class="map_point" href="javascript:void(0)"><span class="icon_map_point"><svg class="icon_map_point__svg"><use svg-use-reference="map" /></svg></span>{{'Показать на карте' | translate}}</a></span>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="rows.length == 0 && !statusIsCanceled()" class="order-status">
+        <span>{{'Менеджер обрабатывает Ваш заказ. В ближайшее время Вы увидите перечень товаров.' | translate}}</span>
+    </div>
+    <div *ngIf="rows.length > 0">
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>{{'Код по каталогу' | translate}}</th>
+                        <th>{{'Название' | translate}}</th>
+                        <th>{{'Кол-во' | translate}}</th>
+                        <th class="hidden-xs">{{'Цена' | translate}}</th>
+                        <th>{{'Сумма' | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of rows">
+                        <td><a href="{{ productUrl(item.transliteratedTitle) }}" target="_blank">{{ item.articleNumber }}</a></td>
+                        <td><a href="{{ productUrl(item.transliteratedTitle) }}" target="_blank">{{ item.artName }}</a></td>
+                        <td>{{ item.quantity }}</td>
+                        <td class="hidden-xs">{{ item.price }} грн.</td>
+                        <td>{{ item.summa }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="isPaymentButtonShown()">
+            <button class="btn btn-success" (click)="pay()">{{'Оплатить' | translate}}</button>
+            <liqpay-widget></liqpay-widget>
+        </div>
+        <div class="order-holder__price-section">
+            <div class="order-holder__common-price-box">
+                <span class="order-holder__price-title">{{'Всего:' | translate}}</span>
+                <span class="order-holder__common-price">{{total}} грн.</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isDataLoad">
+    <div class="container__row">
+        <div class="autodoc-loader"></div>
+    </div>
+</div>
+<div *ngIf="order">
+    <show-point-on-map-popup #showpointonmappopup *ngIf="order?.deliveryMethodId == 6" [iconUrl]="'npmarker.png'" [latitudeCenter]="order?.latitudeDP" [longitudeCenter]="order?.longitudeDP" [latitudePoint]="order?.latitudeDP" [longitudePoint]="order?.longitudeDP" [zoom]="zoom"></show-point-on-map-popup>
+    <show-point-on-map-popup #showpointonmappopup *ngIf="order?.deliveryMethodId == 4" [iconUrl]="'marker.png'" [latitudeCenter]="order?.latitudeDP" [longitudeCenter]="order?.longitudeDP" [latitudePoint]="order?.latitudeDP" [longitudePoint]="order?.longitudeDP" [zoom]="zoom"></show-point-on-map-popup>
+    <show-point-on-map-popup #showpointonmappopup *ngIf="order?.deliveryMethodId == 9" [iconUrl]="'memarker.png'" [latitudeCenter]="order?.latitudeDP" [longitudeCenter]="order?.longitudeDP" [latitudePoint]="order?.latitudeDP" [longitudePoint]="order?.longitudeDP" [zoom]="zoom"></show-point-on-map-popup>
+</div>

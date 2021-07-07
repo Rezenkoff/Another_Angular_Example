@@ -1,0 +1,13 @@
+﻿<ng-container *ngIf="rate">
+    <div class="rate rate--product-page" [attr.data-rate]="getRoundedRate()">
+        <div *ngFor="let i of [1,2,3,4,5]" class="rate__star">
+            <star></star>
+        </div>
+        <span style="cursor: pointer" class="rate__text" (click)="scrollToAnalogs()">
+            <span class="rate__count">{{ reviewsCount }}</span>
+            <span *ngIf="plurality==0" class="rate__title">{{'отзывов' | translate}}</span>
+            <span *ngIf="plurality==1" class="rate__title">{{'отзыва' | translate}}</span>
+            <span *ngIf="plurality==2" class="rate__title">{{'отзыв' | translate}}</span>
+        </span>
+    </div>
+</ng-container>

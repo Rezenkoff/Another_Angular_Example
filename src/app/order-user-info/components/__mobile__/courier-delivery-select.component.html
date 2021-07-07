@@ -1,0 +1,6 @@
+﻿<div style="margin-top:10px;">
+    <google-autocomplete [deliveryPoint]="deliveryOnAddress" (onChangeAddress)="onAddressItemSelect($event)"></google-autocomplete>
+</div>
+<div *ngIf="selectAddressWarningShown()">
+    <span class="text-danger">{{'Выберите пункт адресной доставки' | translate}}</span>
+</div>

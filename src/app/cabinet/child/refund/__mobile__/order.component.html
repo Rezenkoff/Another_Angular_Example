@@ -1,0 +1,55 @@
+﻿<div *ngIf="!inProcess" class="cabinet-page">
+    <table class="main-table main-table--shadow table-order">
+        <thead>
+            <tr style="cursor:pointer">
+                <th class="hidden-sm hidden-xs" (click)="onColumnClick('OrderDate')">
+                    {{'Дата заказа' | translate}}
+                    <span class="glyphicon glyphicon-chevron-up" *ngIf="clickCount === 1 && lastClickedColumnName === 'OrderDate'"></span>
+                    <span class="glyphicon glyphicon-chevron-down" *ngIf="clickCount === 0 || (clickCount !== 1 && lastClickedColumnName === 'OrderDate')"></span>
+                </th>
+                <th (click)="onColumnClick('Id')" class="orderNumberRef">
+                    {{'Номер заказа' | translate}}
+                    <span class="glyphicon glyphicon-chevron-up" *ngIf="clickCount === 1 && lastClickedColumnName === 'Id'"></span>
+                    <span class="glyphicon glyphicon-chevron-down" *ngIf="clickCount === 2 && lastClickedColumnName === 'Id'"></span>
+                </th>
+                <th (click)="onColumnClick('OrderSum')" class="orderSumRef">
+                    {{'Сумма заказа' | translate}}
+                    <span class="glyphicon glyphicon-chevron-up" *ngIf="clickCount === 1 && lastClickedColumnName === 'OrderSum'"></span>
+                    <span class="glyphicon glyphicon-chevron-down" *ngIf="clickCount === 2 && lastClickedColumnName === 'OrderSum'"></span>
+                </th>
+                <th (click)="onColumnClick('StatusDescription')" class="hidden-xs">
+                    {{'Статус заказа' | translate}}
+                    <span class="glyphicon glyphicon-chevron-up" *ngIf="clickCount === 1 && lastClickedColumnName === 'StatusDescription'"></span>
+                    <span class="glyphicon glyphicon-chevron-down" *ngIf="clickCount === 2 && lastClickedColumnName === 'StatusDescription'"></span>
+                </th>
+                <th>
+                    {{'Возврат'| translate}}
+                </th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let order of orders" class="main-table__item">
+            <tr (click)="onClickOrderRow(order)">
+                <td class="hidden-sm hidden-xs">{{order.orderDateString}}</td>
+                <td>{{order.id}}</td>
+                <td><span *ngIf="order.orderSum != 0">{{order.orderSum}} грн.</span></td>
+                <td (click)="$event.stopPropagation()" class="hidden-xs" matTooltip="{{order.statusDescription}}" matTooltipPosition="below"><div class="status-description"><span class="status-icon"><svg class="status-icon__svg work-icon__svg--blue work-icon__svg--order"><use svg-use-reference="work"></use></svg></span>{{order.orderStatus}} </div></td>
+                <td>
+                    <div *ngIf="order.isRefundable">
+                        <button class="refund-btn" (click)="changePersonalData(order)">{{ 'Оформить возврат' | translate}}</button>
+                    </div>
+                    <div *ngIf="!order.isRefundable && order.statusId == statusIssued">
+                        <span class="alert__alert-danger">{{'Срок возврата истек'  | translate}}</span>
+                    </div>
+                </td>
+        </tbody>
+    </table>
+    <autodoc-paging [(currentPage)]="searchParameters.currentPage" [totalItems]="totalItems" (pageChanged)="pageChanged($event)" [maxSize]="pageSize" *ngIf="pageSize < totalItems"></autodoc-paging>
+    <div *ngIf="emptyOrder">
+        {{'У вас нет заказов' | translate}}
+    </div>
+</div>
+<div *ngIf="inProcess">
+    <div class="container__row">
+        <div class="autodoc-loader"></div>
+    </div>
+</div>

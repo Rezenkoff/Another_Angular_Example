@@ -1,0 +1,24 @@
+﻿<div>
+    <input matTooltip="{{'Введите первые 3 буквы названия' | translate}}" 
+           matTooltipPosition="below"
+           class="delivery-step__input"
+           type="text"
+           [disabled]="!(isActive$ | async)"
+           [(ngModel)]="selectedName"
+           placeholder="{{'Начните вводить название города' | translate}}"
+           #searchBox (keyup)="searchSettlement()"
+           [ngClass]="{'autodoc-mini-loader': inProcess}"
+           maxlength="30">
+    <div *ngIf="showDropDown" class="settlement-dropdown-container">
+        <div *ngFor="let settlement of (settlementsList$ | async ); trackBy: trackByFn" (click)="selectSettlement(settlement)" class="settlement-item">
+            <span class="bold-font">{{ settlement.name }}</span>
+        </div>
+    </div>
+    <div *ngIf="showDropDown" class="head-overlay lang-overlay" (click)="hideDropdown()"></div>
+    <div *ngIf="exampleSettlements.length" class="container__row-example">
+        {{'Например' | translate}},
+        <ng-container *ngFor="let name of exampleSettlements; let last = last;">
+            <span style="cursor: pointer" class="container__row-example-text" (click)="searchByExampleName(name)">{{name}}<ng-container *ngIf="!last">, </ng-container></span>         
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿<div style="margin: 0 12px;">
+    <div class="sector-form">
+        <span class="label-form">{{'Номер телефона' | translate}} &nbsp;<span class="red-star">*</span></span>   
+        <input class="form-input"
+                #phoneNumber="ngModel"
+                type="tel"
+                [showMaskTyped]="true"
+                placeholder="+380 XXX XX-XX-XX" mask="(000) 000-00-00" prefix="+38"
+                [(ngModel)]="userLogin.phone"
+                (ngModelChange)="checkLength()">
+    </div>
+    <div *ngIf="!phoneNumber.valid && !phoneNumber.untouched" class="alert__alert-danger">
+        {{'Некорректный мобильный номер' | translate}}
+    </div>
+    <div class="sector-form" >
+        <span class="label-form">{{'Пароль' | translate}} &nbsp;<span class="red-star">*</span></span>
+        <input class="form-input"
+            #password
+            type="password"
+            
+            [(ngModel)]="userLogin.password"
+            (keyup.enter)="login()"
+            required />
+    </div>
+    <div *ngIf="!passwordIsValid()" class="alert__alert-danger">
+        {{'Введите пароль пользователя' | translate}}
+    </div>
+    <div class="container-forgotPassword">
+        <a class="" [routerLink]="['/authentication/forgot-password']" href="javascript:void(0)">{{'Забыли пароль?' | translate}}</a>
+    </div>
+    <div class="sector-form" >
+        <button [ngClass]="{ 'disabled-button': inProcess || !passwordIsValid() || phoneNumber.invalid }" class="cart-authoriz-btn login__button" (click)="login()">        
+            <mini-spinner *ngIf="inProcess"></mini-spinner>
+            <span *ngIf="!inProcess">{{'Войти' | translate}}</span>
+        </button>
+    </div>
+</div>

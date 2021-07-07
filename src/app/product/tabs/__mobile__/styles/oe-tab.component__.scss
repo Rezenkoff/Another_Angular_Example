@@ -1,0 +1,108 @@
+﻿.watched-recently-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #414141;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+.oem-header-code {
+    display: inline-block;
+    width: 40%;
+    padding: 0px 12px 18px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #414141;
+}
+.oem-header-brand {
+    display: inline-block;
+    width: 60%;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #414141;
+}
+.OEM-block {
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 60px;
+    padding-right: 24px;
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+
+    @media screen and (max-width: 1200px) {
+        width: 70%;
+    }
+
+    @media screen and (max-width: 1000px) {
+        width: 100%;
+    }
+}
+.table-oem {
+    font-size: 16px;
+    line-height: 24px;
+    color: #414141;
+    border-collapse: initial;
+}
+.scroll-only-body {
+    max-height: 490px;
+    overflow: auto;
+    border: 1px solid #c5d5ea;
+    border-radius: 6px;
+}
+
+.table-oem th {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    padding: 18px 0;
+    background: #F5F7FA;
+    width: 50%;
+    text-align: center;
+    border-bottom: 1px solid #C5D5EA;
+}
+
+.table-oem tr:nth-child(2n) {
+    background: #F5F7FA;
+}
+
+.table-oem .oem-model {
+    padding: 5px 10px;
+    text-align: left;
+    border-right: 1px solid #C5D5EA;
+}
+
+.table-oem .oem-code {
+    padding: 5px 10px;
+    text-align: left;
+}
+.fix-header-oe {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.full-set-scrollbar::-webkit-scrollbar, .analog-scroll::-webkit-scrollbar, .main-list-recently::-webkit-scrollbar, .scroll-only-body::-webkit-scrollbar, .filter-scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.full-set-scrollbar::-webkit-scrollbar-button, .analog-scroll::-webkit-scrollbar-button, .main-list-recently::-webkit-scrollbar-button, .scroll-only-body::-webkit-scrollbar-button, .filter-scroll::-webkit-scrollbar-button {
+    background-color: #fff;
+}
+
+.full-set-scrollbar::-webkit-scrollbar-track, .analog-scroll::-webkit-scrollbar-track, .main-list-recently::-webkit-scrollbar-track, .scroll-only-body::-webkit-scrollbar-track, .filter-scroll::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+.full-set-scrollbar::-webkit-scrollbar-track-piece, .analog-scroll::-webkit-scrollbar-track-piece, .main-list-recently::-webkit-scrollbar-track-piece, .scroll-only-body::-webkit-scrollbar-track-piece, .filter-scroll::-webkit-scrollbar-track-piece {
+    background-color: #ffffff;
+}
+
+.full-set-scrollbar::-webkit-scrollbar-thumb, .analog-scroll::-webkit-scrollbar-thumb, .main-list-recently::-webkit-scrollbar-thumb, .scroll-only-body::-webkit-scrollbar-thumb, .filter-scroll::-webkit-scrollbar-thumb {
+    height: 50px;
+    background: rgba(153, 174, 201, 0.5);
+    border-radius: 3px;
+}

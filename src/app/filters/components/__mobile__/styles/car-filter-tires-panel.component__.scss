@@ -1,0 +1,33 @@
+.btn-show-filter {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(180deg, #407FCA 0%, #1D5495 100%);
+    display: inline-block;
+    border-radius: 6px;
+    text-decoration: none;
+    padding: 12px 0;
+    width: 47%;
+}
+
+.btn-reset-filter {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    color: #1D5495;
+    text-align: center;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+    border: 1px solid #C5D5EA;
+    display: inline-block;
+    border-radius: 6px;
+    text-decoration: none;
+    padding: 12px 0;
+    width: 47%;
+    margin-right: 5%;
+    &:hover {
+        background: linear-gradient(180deg, #5395E3 0%, #3370B8 100%);        
+    }
+}

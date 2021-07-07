@@ -1,0 +1,573 @@
+.footer {
+  display: table-row;
+  width: 100%;
+  background:  #082B54;
+  @media screen and (max-width: 1250px) {
+    display: block;
+  }
+  &__holder {
+    max-width: 1366px;
+    margin: 0 auto;
+    overflow: hidden;
+    color: #F5F7FA;
+    @media screen and (max-width: 1250px) {
+      padding: 0 15px;
+    }
+    @media screen and (max-width: 767px) {
+      position: relative;
+      padding: 0 15px 85px;
+    }
+  }
+  &__column {
+    max-width: 370px;
+    float: left;
+    padding: 36px 0;
+    width: 100%;
+    margin: 0px 0px 0 83px;
+    @media screen and (max-width: 1250px) {
+      margin: 0 20px 0 0;
+    }
+    @media screen and (max-width: 767px) {
+      margin: 0;
+      padding: 0;
+      float: none;
+      max-width: 100%;
+    }
+    &--info {
+      padding: 50px 0 36px;
+      margin: 0;
+      @media screen and (max-width: 767px) {
+        padding: 0;
+      }
+    }
+    &--contact {
+      float: right;
+      margin: 0;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 50px 33px 130px;
+      @media screen and (max-width: 1250px) {
+        //max-width: 274px;
+        //padding: 30px 20px;
+      }
+      @media screen and (max-width: 1065px) {
+        display: none;
+      }
+    }
+  }
+  &__logo {
+    display: block;
+    background: url('https://cdn.autodoc.ua/images/footer/footer-logo.png') no-repeat;
+    width: 200px;
+    height: 48px;
+    background-size: 200px 48px;
+    text-indent: -9999px;
+    overflow: hidden;
+    margin: 0 106px 24px 0;
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+  &__logo-link {
+    display: block;
+    height: 100%;
+  }
+  &__newsletter {
+    margin: 0 0 50px;
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+  &__pay{
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+  &__title {
+    color: #585d65;
+    font-size: 12px;
+    line-height: 14px;
+    display: block;
+    margin: 0 0 10px;
+    &--payment {
+      margin: 0 0 20px;
+    }
+  }
+  &__form {
+    position: relative;
+    max-width: 282px;
+  }
+  &__form-input {
+    background: none;
+    border: 1px solid #fff;
+    padding: 0 55px 0 19px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+  }
+  &__form-button {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 44px;
+    height: 45px;
+    text-align: center;
+    cursor: pointer;
+  }
+  &__contact-box {
+      
+    & + .footer__contact-box {
+      margin: 24px 0 0;
+      display: inline-block;
+      
+    }
+  }
+  &__column-title {
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #99AEC9;
+    font-weight: bold;
+    display: block;
+    margin: 0 0 12px;
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+  &__contact-title {
+    font-size: 14px;
+    line-height: 21px;
+    color: #99aec9;
+    display: block;
+    vertical-align: top;
+    margin: 0 7px 0 0;
+  }
+  &__address-info {
+    display: block;
+    vertical-align: top;
+    font-size: 13px;
+    line-height: 15px;
+    color: #F5F7FA;
+  }
+  &__address {
+    font-style: normal;
+    display: block;
+    margin: 0 0 6px;
+    line-height: 21px;
+  }
+  &__phone-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 13px;
+    line-height: 21px;
+    color: #F5F7FA;
+  }
+  &__phone-item {
+    & + .footer__phone-item {
+      margin: 8px 0 0;
+    }
+  }
+  &__phone-link {
+    font-size: 14px;
+    line-height: 21px;
+    color:#F5F7FA;
+    text-decoration: none;
+    &:hover {
+      color: #fff;
+    }
+    &:focus {
+      color:#99aec9!important;
+    }
+  }
+  &__contact-work-time {
+    font-size: 14px;
+    line-height: 21px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  &__contact-email {
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 15px;
+    display: inline-block;
+    vertical-align: top;
+    &:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+     &:focus {
+      color:#99aec9!important;
+    }
+  }
+  &__copy {
+    background: #041B35;
+  }
+  &__copy-box {
+    max-width: 1140px;
+    margin: 0 auto;
+    overflow: hidden;
+    @media screen and (max-width: 1250px) {
+      padding: 0 15px;
+    }
+  }
+}
+.right-box {
+    float: right;
+    width: 150px;
+}
+.copy {
+    line-height: 36px;
+    float: left;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.3);
+
+    @media screen and (max-width: 1250px) {
+        line-height: 70px;
+    }
+
+    @media screen and (max-width: 767px) {
+        font-size: 12px;
+        line-height: 16px;
+        float: none;
+        text-align: center;
+        display: block;
+        max-width: 220px;
+        margin: 0 auto;
+        border-bottom: 1px solid #292a2d;
+        padding: 15px 0;
+    }
+}
+.show-map {
+  color: #FFFFFF;
+  text-decoration: none;
+  position: relative;
+  font-size: 12px;
+  line-height: 16px;
+  &::after {
+    content:'';
+    position:absolute;
+    bottom: 0;
+    left: 12px;
+    right: 0;
+    border-bottom: 1px dotted #FFFFFF;
+  }
+  &:hover {
+    color: #FFFFFF;
+    border-bottom: none;
+    &::after {
+      border-color: transparent;
+    }
+  }
+  &:focus{
+    color:  #99aec9!important;
+  }
+}
+.map_point {
+    color: #5D8AA8;
+    text-decoration: none;
+    position: relative;
+    font-size: 12px;
+    line-height: 16px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 12px;
+        right: 0;
+        border-bottom: 1px dotted #5D8AA8;
+    }
+
+    &:hover {
+        color: #5D8AA8;
+        border-bottom: none;
+
+        &::after {
+            border-color: transparent;
+        }
+    }
+
+    &:focus {
+        color: #99aec9 !important;
+    }
+}
+.social-networks {
+  margin: 0 0 30px -8px;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  @media screen and (max-width: 767px) {
+    margin: 0;
+    position: absolute;
+    bottom: 18px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  &__item {
+    float: left;
+    margin: 0 0 0 8px;
+    @media screen and (max-width: 767px) {
+      float: none;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    &:hover {
+      .fbook-icon,
+      .inst-icon,
+      .vk-icon,
+      .od-icon {
+        opacity: 0;
+      }
+      .fbook-icon-h,
+      .inst-icon-h,
+      .vk-icon-h,
+      .od-icon-h {
+        opacity: 1;
+      }
+    }
+  }
+  &__link {
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: relative;
+  }
+}
+.fbook-icon,
+.inst-icon,
+.vk-icon,
+.od-icon {
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -20px 0 0 -20px;
+}
+.fbook-icon-h,
+.inst-icon-h,
+.vk-icon-h,
+.od-icon-h {
+  width: 50px;
+  height: 50px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  opacity: 0;
+}
+.footer-nav {
+  margin: 0 0 55px -15px;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  line-height: 15px;
+  overflow: hidden;
+  @media screen and (max-width: 767px) {
+    margin: 0;
+  }
+  &__item {
+    float: left;
+    width: 160px;
+    position: relative;
+    padding: 0 0 0 14px;
+    margin: 0 0 12px 0px;
+    @media screen and (max-width: 767px) {
+      float: none;
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      padding: 0;     
+    }
+    &:hover,
+    &.active {
+      .drop-arrow {
+        left: 0;
+        opacity: 1;
+      }
+      &::after {
+        opacity: 0;
+      }
+    }
+    .drop-arrow {
+      position: absolute;
+      top: 50%;
+      left: -10px;
+      margin: -2px 0 0;
+      opacity: 0;
+    }
+    &::after {
+      display: none;
+      content:'';
+      position:absolute;
+      top: 50%;
+      left: 2px;
+      width: 4px;
+      height: 4px;
+      margin-top: -2px;
+      border-radius: 50%;
+      background: #585d65;
+      @media screen and (max-width: 767px) {
+        background: none;
+        width: 0;
+        height: 0;
+      }
+    }
+  }
+  &__link {
+    color: #F5F7FA;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    line-height: 21px;
+    @media screen and (max-width: 767px) {
+      line-height: 40px;
+    }
+    &:hover {
+      color: #F5F7FA;
+      text-decoration: underline;
+    }
+    &:focus {
+        color: #99AEC9 !important;
+    }   
+  }
+}
+.footer-map{
+    height: 469px;
+}
+.footer-icon-map{
+    right: 3px!important;
+    top: 1px!important;
+}
+.footer-sto {
+    color: #E34761;
+
+    &:hover {
+        color: #E34761 !important;
+    }
+
+    &:focus {
+        color: #99AEC9 !important;
+    }
+}
+
+.footer-nav__item:nth-child(2n) {
+    
+    @media screen and (max-width: 767px) {
+        margin: 0;
+    }
+}
+.lofo-left {
+    @media screen and (max-width: 1250px) {
+        max-width: 240px;
+    }
+
+    @media screen and (max-width: 790px) {
+        max-width: 345px;
+    }
+}
+.contact-social-fb {
+    background: url(https://cdn.autodoc.ua/fb36.png);
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    transition: 1s;
+    margin-right: 12px;
+
+    &:hover {
+        background: url(https://cdn.autodoc.ua/fb-hover.png);
+        background-repeat: no-repeat;
+        transition: 1s;
+    }
+}
+
+.contact-social-inst {
+    background: url(https://cdn.autodoc.ua/inst36.png);
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    transition: 1s;
+    margin-right: 12px;
+
+    &:hover {
+        background: url(https://cdn.autodoc.ua/inst-hover.png);
+        background-repeat: no-repeat;
+        transition: 1s;
+    }
+}
+
+.contact-social-viber {
+    background: url(https://cdn.autodoc.ua/viber36.png);
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    transition: 1s;
+    margin-right: 12px;
+
+    &:hover {
+        background: url(https://cdn.autodoc.ua/viber-hov.png);
+        background-repeat: no-repeat;
+        transition: 1s;
+    }
+}
+
+.contact-social-tg {
+    background: url(https://cdn.autodoc.ua/tg36.png);
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    transition: 1s;
+    margin-right: 12px;
+
+    &:hover {
+        background: url(https://cdn.autodoc.ua/tg-hov.png);
+        background-repeat: no-repeat;
+        transition: 1s;
+    }
+}
+.inst-hov-footer {
+    background: url('https://cdn.autodoc.ua/thumbnail.png') -108px -77px;
+    width: 36px;
+    height: 36px;
+    display: block;
+    transition: 1s;
+}
+
+.fb-hov-footer {
+    background: url('https://cdn.autodoc.ua/thumbnail.png') -108px -40px;
+    width: 36px;
+    height: 36px;
+    display: block;
+    transition: 1s;
+}
+
+.viber-hov-footer {
+    background: url('https://cdn.autodoc.ua/thumbnail.png') -108px -151px;
+    width: 36px;
+    height: 36px;
+    display: block;
+    transition: 1s;
+}
+
+.tg-hov-footer {
+    background: url('https://cdn.autodoc.ua/thumbnail.png') -108px -114px;
+    width: 36px;
+    height: 36px;
+    display: block;
+    transition: 1s;
+}
+

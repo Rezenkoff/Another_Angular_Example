@@ -1,0 +1,51 @@
+﻿﻿<div class="garage-border">
+    <div class="basket__car-btn" (click)="toggleWindow()">
+        <span class="car-icon"><svg class="car-icon__svg"><use svg-use-reference="car-1" /></svg></span>
+        <div class="basket__car-text">
+            <div class="basket__car-title">{{ 'Мой гараж:' | translate }}</div>
+            <div class="basket__number">{{ (cars$ | async)?.length }}&nbsp;<span class="basket__auto">{{ 'авто' | translate }}</span></div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isShowDropDown" class="garage__added" style="display: block">
+    <div *ngIf="(cars$ | async)?.length > 0;else emptygarage">
+        <div class="basket__title">{{ 'Мой гараж' | translate }}<span class="close-icon" (click)="toggleWindow()"><svg class="close-icon__svg"><use svg-use-reference="close" /></svg></span></div>
+
+        <ul class="container__added-list">
+            <li *ngFor="let car of (cars$ | async)" style="cursor:pointer" (click)="navigate(car)" class="container__added-item">
+                <div class="container__added-info">
+                    <div class="container__added-image" (deferLoad)="car.showImage=true">
+                        <img *ngIf="car.showImage" onerror="this.src = 'https://res.cloudinary.com/dk5dc1wvr/image/upload/c_scale,h_50/v1507713301/images/car-icon.png'" [src]="getLogo(car.mark)" width="60" height="60">
+                    </div>
+                    <div class="container__added-name-box">
+                        <a class="container__added-name">{{ car.mark }}</a>
+                        <div class="container__added-code">
+                            <span class="container__added-code-name">{{ car.model }}</span>
+                        </div>
+                        <div *ngIf="car.year" class="container__added-code">
+                            <span class="container__added-code-name">{{ 'Год выпуска' | translate }}:</span>
+                            <span class="container__added-code-name"> {{ car.year }}</span>
+                        </div>
+                        <div *ngIf="car.vin" class="container__added-code">
+                            <span class="container__added-code-name">{{ 'VIN номер' | translate }}:</span>
+                            <span class="container__added-code-name">{{ car.vin }}</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="edit-vehicle-footer">
+            <a class="edit-vehicle-footer__link" [routerLink]="['/cabinet/vehicle']">
+                {{ 'Изменить / Добавить' | translate }}
+                <span class="drop-arrow drop-arrow--blue news-arrow"><svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow" /></svg></span>
+            </a>
+        </div>
+    </div>
+    <ng-template #emptygarage>
+        <div class="basket__title-empty">
+            {{'Добавьте свой автомобиль в Ваш гараж в личном кабинете' | translate}}
+        </div>
+    </ng-template>
+</div>
+<div class="basket-overlay head-overlay" (click)="toggleWindow()" [style.display]="showDropDown()"></div>
+

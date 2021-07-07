@@ -1,0 +1,8 @@
+﻿<div class="checkout-discount" *ngIf="discountDisplayedAllBlock">
+    <a class="ps-text-link" *ngIf="!discountDisplayed" (click)="toggleDiscountShowing()">{{'Применить промокод на скидку' | translate}}</a>
+    
+    <div class="" *ngIf="discountDisplayed">        
+        <input class="discount-input" placeholder="{{'Введите промокод' | translate}}" [(ngModel)]="discountCode" />       
+        <button class="discount-btn" [ngClass]="{'disabled-button': !discountCode || discountCode.length < 3}" (click)="checkDiscount()">{{'Применить' | translate}}</button>        
+    </div>
+</div>

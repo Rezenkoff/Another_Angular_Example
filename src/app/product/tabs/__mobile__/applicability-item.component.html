@@ -1,0 +1,11 @@
+﻿<tr> 
+  <td>
+        {{item.name}}
+    </td>
+</tr>
+
+<ng-container *ngIf="hasChildren()">
+    <ng-container *ngFor="let node of item.children; trackBy: trackByFn">
+            <applicability-item [item]="node"></applicability-item>
+    </ng-container>
+</ng-container>

@@ -1,0 +1,54 @@
+input[type="search"] {
+  box-sizing: border-box;
+}
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+a,
+button,
+input,
+keygen,
+select,
+textarea {
+  font-family: inherit;
+  outline-width: 0;
+}
+li,
+ol,
+p,
+ul {
+  margin: 0;
+}
+input,
+textarea {
+  border-radius: 0;
+  background-color: transparent;
+  &::-ms-clear {
+    display: none;
+  }
+}
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+input,
+select,
+textarea {
+  &:-webkit-autofill {
+    -webkit-text-fill-color: #333;
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+    &:focus,
+    &:hover {
+      -webkit-text-fill-color: #333;
+      -webkit-box-shadow: 0 0 0 1000px #fff inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  }
+}
+@for $i from 1 through 6 {
+  h#{$i} {
+    margin: 0;
+  }
+}

@@ -1,0 +1,128 @@
+﻿<header class="header active">
+    <special-proposition></special-proposition>
+    <div (click)="showMenu()" class="menu-icon">
+        <span class="line" id="bar-1"></span>
+        <span class="line" id="bar-2"></span>
+        <span class="line" id="bar-3"></span>
+    </div>
+    <div class="header__holder">
+        <div class="header__frame">
+            <strong class="logo"><a class="logo__link" href="/">Autodoc</a></strong>
+        </div>
+        <div class="basket header-mob-basket">
+            <div class="work-info">
+                <div class="work-info__block">
+                    <span class="header-location-icon"><svg class="header-location-icon__svg"><use svg-use-reference="telephone" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../assets/images/sprite.svg#telephone"></use></svg></span>
+                    <div class="header-phone-number">
+                        <ul class="phone-list">
+                            <li class="phone-list__item"><a class="phone-list__link" href="tel:0504222333">+38(050) 4-222-333</a></li>
+                            <li class="phone-list__item"><a class="phone-list__link" href="tel:0674222333">+38(067) 4-222-333</a></li>
+                            <li class="phone-list__item"><a class="phone-list__link" href="tel:0734222333">+38(073) 4-222-333</a></li>
+                        </ul>
+                        <div class="opener-holder">
+                            <auto-doc-callback></auto-doc-callback>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <mobile-callback-component></mobile-callback-component>
+            <my-garage *ngIf="Authenticated()" style="display:none;"></my-garage>
+            <auto-doc-basket class="main-basket"></auto-doc-basket>
+        </div>
+        <search class="mobile-search ng-star-inserted"></search>
+    </div>
+    <hr class="hr-header">
+    <div class="header__box">
+        <div class="basket" style="">
+            <div class="work-info">
+                <div class="work-info__block">
+                    <span class="header-location-icon"><svg class="header-location-icon__svg"><use svg-use-reference="telephone" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../assets/images/sprite.svg#telephone"></use></svg></span>
+                    <div class="header-phone-number">
+                        <ul class="phone-list">
+                            <li class="phone-list__item"><a class="phone-list__link" href="tel:0504222333">+38(050) 4-222-333</a></li>
+                            <li class="phone-list__item"><a class="phone-list__link" href="tel:0674222333">+38(067) 4-222-333</a></li>
+                            <li class="phone-list__item"><a class="phone-list__link" href="tel:0734222333">+38(073) 4-222-333</a></li>
+                        </ul>
+                        <div class="opener-holder">
+                            <auto-doc-callback></auto-doc-callback>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <auto-doc-basket class="main-basket"></auto-doc-basket>
+        </div>
+    </div>
+    <div *ngIf="menuShown" class="mobile-block active">
+        <span class="mobile-close" (click)="hideMenu()"></span>
+        <div class="top-mobile">
+            <autodoc-language></autodoc-language>
+            <settlement-area></settlement-area>
+        </div>
+        <div class="catalog" #catalog>
+            <span class="catalog__new-button" (click)="openCatalogList()">
+                <span class="drop-menu drop-menu--white">
+                    <svg class="drop-menu__svg drop-menu__svg--white"><use svg-use-reference="menu" /></svg>
+                </span>{{'Каталог' | translate}}<span class="no-visible">&nbsp;{{'товаров' | translate}}</span>
+                <span class="drop-arrow drop-arrow--white catalog-arrow"><svg class="drop-arrow__svg drop-arrow__svg--white catalog-arrow"><use svg-use-reference="arrow" /></svg></span>
+            </span>
+        </div>
+        <div class="button-list" #buttonlist>
+            <!--<a class="button-list__btn-1" style="display: none;" [routerLink]="['find-by-auto']" href="javascript:void(0)">
+                <span class="car-icon car-icon--white"><svg class="car-icon__svg car-icon__svg--white"><use svg-use-reference="car" /></svg></span>
+                {{'Подбор по VIN' | translate}}
+            </a>-->
+            <a class="button-list__btn-2" style="display: none;" [routerLink]="['sto']" href="javascript:void(0)">
+                <span class="location-icon"><svg class="location-icon__svg"><use svg-use-reference="map" /></svg></span>
+                {{'Карта партнеров' | translate}}
+            </a>
+            <a angulartics2On="click" angularticsEvent="clickOrderStep" angularticsCategory="OrderStep" class="button-list__btn-4" href="javascript:void(0)" [routerLink]="['order-main']" (click)="hideMenu()">
+                {{'Подберите мне' | translate}}&nbsp;<span class="no-visible">{{'запчасть' | translate}}</span>
+            </a>
+            <!--<a class="head-block__login mob-menu-only" [routerLink]="['find-by-auto']" href="javascript:void(0)">
+                <span class="location-icon"><svg class="location-icon__svg"><use svg-use-reference="two-cogwheels" /></svg></span>
+                {{'Поиск запчастей по VIN' | translate}}
+            </a>-->
+            <a class="head-block__login header-my-garage mob-menu-only" [routerLink]="['/cabinet/vehicle']" href="javascript:void(0)" *ngIf="Authenticated()">
+                <span class="location-icon"><svg class="location-icon__svg"><use svg-use-reference="car-2" /></svg></span>
+                {{'Мой гараж' | translate}} <span class="mob-menu-number">{{(carsCount$ | async)}}</span>
+            </a>
+        </div>
+        <div class="header__top">
+            <div class="head-block">
+                <div *ngIf="isAuthenticated ">
+                    <a class="head-block__login" href="javascript:void(0)" [routerLink]="['cabinet/info']">
+                        <span class="person-icon">
+                            <svg class="person-icon__svg"><use svg-use-reference="user" /></svg>
+                        </span> <span class="person-title">{{'Личный кабинет' | translate}}</span>
+                    </a>
+                    <a class="head-block__login" (click)="logout()" href="javascript:void(0)">
+                        <span class="person-icon">
+                            <svg class="person-icon__svg"><use svg-use-reference="exit-arrow" /></svg>
+                        </span> <span class="person-title">{{'Выход' | translate}}</span>
+                    </a>
+
+                </div>
+                <div *ngIf="!isAuthenticated">
+                    <a class="head-block__login" href="javascript:void(0)" [routerLink]="['authentication']">
+                        <span class="person-icon">
+                            <svg class="person-icon__svg"><use svg-use-reference="user" /></svg>
+                        </span> <span class="person-title">{{'Вход / Регистрация' | translate}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="top-navigation">
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a class="nav__link" [routerLink]="['about-company']" href="javascript:void(0)">{{ 'О магазине' | translate }}</a></li>
+                    <li class="nav__item"><a class="nav__link" [routerLink]="['dostavka-i-oplata']" href="javascript:void(0)">{{ 'Доставка и оплата' | translate}}</a></li>
+                    <li class="nav__item"><a class="nav__link" [routerLink]="['garantia-i-vozvrat']" href="javascript:void(0)">{{'Гарантия и возврат' | translate}}</a></li>
+                    <li class="nav__item"><a class="nav__link" [routerLink]="['pomoch']" href="javascript:void(0)">{{'Помощь' | translate}}</a></li>
+                    <li class="nav__item"><a class="nav__link header-sto" [routerLink]="['sto']" href="javascript:void(0)">{{'Карта партнеров' | translate}}</a></li>
+                    <li class="nav__item"><a class="nav__link" [routerLink]="['contact']" href="javascript:void(0)">{{'Контакты' | translate}}</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div *ngIf="menuShown" class="mobile-overlay active" (click)="hideMenu()"></div>
+</header>

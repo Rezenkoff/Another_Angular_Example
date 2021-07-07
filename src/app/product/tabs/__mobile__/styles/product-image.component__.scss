@@ -1,0 +1,33 @@
+.foto-3d {
+    height: 380px !important;
+    width: 540px !important;
+    z-index: 2001 !important;
+    background: #dee5e8;
+    position: absolute;
+    bottom: -85px !important;
+    right: -45% !important;
+    top: auto !important;
+    width: 100%;
+    border: 2px solid #fff;
+    padding: 25px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    z-index: 2;
+    display: none;
+
+    @media screen and (max-width: 1022px) {
+        right: -25% !important;
+    }
+
+    @media screen and (max-width: 535px) {
+        right: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        bottom: 0px !important;
+    }
+}
+.sprite_place {
+    @media screen and (max-width: 535px) {
+        width: auto !important;
+        height: 250px !important;
+    }
+}

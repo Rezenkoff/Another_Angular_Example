@@ -1,0 +1,34 @@
+﻿<div class="location-holder" #location>
+    <div (click)="toggleWindow()">
+        <span class="header-location-icon"><svg class="header-location-icon__svg"><use svg-use-reference="placeholder" /></svg></span>
+        <div class="location-choose">
+            <span class="location-holder__notes">{{'Выберите область:' | translate}}</span>
+            <span class="location-holder__button">
+                {{ selectedArea?.areaName }}
+                <span class="drop-arrow-mob"><svg class="drop-arrow__svg"><use svg-use-reference="arrow" /></svg></span>
+            </span>
+        </div>
+    </div>
+    <div class="location-holder__dropdown" [style.display]="showDropDown()">
+        <span class="close-icon" (click)="toggleWindow()"><svg class="close-icon__svg"><use svg-use-reference="close" /></svg></span>
+        <span class="location-holder__title">{{'Выберите свою область' | translate}}</span>
+        <span class="location-holder__sub-title">{{'Мы доставляем заказы по всей Украине!' | translate}}</span>
+        <ul *ngIf="(areas$ | async)?.length" class="location-holder__list">
+            <li *ngFor="let area of (areas$ | async)" class="location-holder__item" [ngClass]="{ 'active':area.areaId === selectedArea?.areaId }" (click)="selectArea(area)">{{ area.areaName }}</li>
+            <ng-container *ngIf="selectedArea && isBrowser()">
+                <li class="location-holder__form-text">{{'Ваша область:' | translate}}</li>
+                <li class="location-holder__item" [ngClass]="{ 'active': true }">{{ selectedArea?.areaName }}</li>
+            </ng-container>
+        </ul>
+        <div class="location-holder__form">
+            <span class="location-holder__form-text">{{'Или введите другую область Украины' | translate}}</span>
+            <div class="location-holder__row">
+                <area-list (onAreaSelect)="selectArea($event)"></area-list>
+            </div>
+            <div class="location-holder__text">
+                {{'Выбор области поможет предоставить актуальную информацию о наличии товара, его цены и способов доставки в вашем городе! Это поможет сохранить больше свободного времени для вас!' | translate}}
+            </div>
+        </div>
+    </div>
+    <div class="location-overlay head-overlay" [style.display]="showDropDown()" (click)="toggleWindow()"></div>
+</div>

@@ -1,0 +1,19 @@
+﻿<div class="delivery-info-page">
+    <div class="success-holder">
+        <div class="info-order">
+            {{'Спасибо, Ваша заявка зарегистрирована' | translate}},<br />
+            {{'номер Вашей заявки' | translate}} {{orderId}},<br />
+            {{'ожидайте, в ближайшее время с Вами свяжется наш менеджер.' | translate}}
+        </div>
+        <button *ngIf="!secretLinkCode" class="success__button" href="javascript:void(0)" [routerLink]="['/cabinet/order']">
+            {{'Перейти в личный кабинет' | translate}}<span class="btn-arrow">
+                <svg class="btn-arrow__svg"><use svg-use-reference="btn-arrow" /></svg>
+            </span>
+        </button>
+        <button *ngIf="secretLinkCode" class="success__button" href="javascript:void(0)" [routerLink]="['/s/'+secretLinkCode]">
+            {{'Статус заказа' | translate}}<span class="btn-arrow">
+                <svg class="btn-arrow__svg"><use svg-use-reference="btn-arrow" /></svg>
+            </span>
+        </button>
+    </div>
+</div>

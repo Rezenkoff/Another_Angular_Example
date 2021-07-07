@@ -1,0 +1,8 @@
+﻿<li (click)="showMobileBlock(node)" *ngFor="let node of children" class="catalog__item" [ngClass]="{'parent': node.hasChildren && node.deepLevel != 3, 'active-link': node.show}">
+    <a class="catalog__link" href="javascript:void(0)" [routerLink]="['/category', node.pageURL]" [queryParams]="getQueryParams()" (click)="closeModal()" [ngClass]="{ 'disabled-node-level' : node.deepLevel == 1 }">
+        {{ node.name }}
+    </a>
+    <ul [id]="getNodeId(node)" [ngClass]="{ 'catalog__second-dropdown': node.deepLevel == 1, 'catalog__third-dropdown': node.deepLevel == 2}">
+        <catalog-level [children]="node.children" [catalogType]="catalogType" *ngIf="node.deepLevel != 3 && node.deepLevel != 4"></catalog-level>
+    </ul>
+</li>

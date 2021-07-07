@@ -1,0 +1,89 @@
+﻿<div class="tires-selection">
+    <div class="block-tires-selection">
+        <div class="btn-group-tires">
+            <button class="btn-option-tires" [ngClass]="{'active-btn-tires': !searchByMarkAuto}" (click)="applyParamSearch()"><span class="catalog-type-icon"><svg class="catalog-type-icon__svg"><use svg-use-reference="width"></use></svg></span>{{'По параметрам' | translate}}</button>
+            <div class="checkout-line-tires"></div>
+            <button *ngIf="userCar == null" class="btn-option-tires" [ngClass]="{'active-btn-tires': searchByMarkAuto}" (click)="applyParamSearch()"><span class="catalog-type-icon"><svg class="catalog-type-icon__svg"><use svg-use-reference="car-tires"></use></svg></span>{{'По марке авто' | translate}}</button>
+            <button *ngIf="userCar != null" class="btn-option-tires" [ngClass]="{'active-btn-tires': searchByMarkAuto}" (click)="applyParamSearch()"><span class="catalog-type-icon"><svg class="catalog-type-icon__svg"><use svg-use-reference="car-tires"></use></svg></span>{{userCar[0].value}} {{userCar[1].value}}</button>
+        </div>
+        <div *ngIf="!searchByMarkAuto">
+            <div class="type-seasonality-tires">
+                <div class="type-tires">
+                    <div class="label-form">{{'Тип авто' | translate}}</div>
+                    <button class="btn-type-tires" [ngClass]="{'active-type-tires': !isTruck}" (click)="applyTruck()"><span class="catalog-type-icon"><svg class="catalog-type-icon__svg"><use svg-use-reference="passAuto"></use></svg></span>{{'Легковой' | translate}}</button>
+                    <button class="btn-type-tires right-tab-tires" [ngClass]="{'active-type-tires': isTruck}" (click)="applyTruck()"><span class="catalog-type-icon"><svg class="catalog-type-icon__svg"><use svg-use-reference="truck"></use></svg></span>{{'Грузовой' | translate}}</button>
+                </div>
+                <div class="line-type-seasonality"></div>
+                <div class="seasonality-tires">
+                    <div class="label-form">{{'Сезонность шин' | translate}}</div>
+                    <button class="seasonality-btn" [ngClass]="{'active-seasonality-tires': seasonalityState == 0}">
+                        <span class="catalog-type-icon"><svg class="season-type-icon__svg" (click)="applaySeason(0)"><use svg-use-reference="snow-tires"></use></svg></span>
+                    </button>
+                    <button class="seasonality-btn" [ngClass]="{'active-seasonality-tires': seasonalityState == 1}">
+                        <span class="catalog-type-icon"><svg class="season-type-icon__svg" (click)="applaySeason(1)"><use svg-use-reference="sun-tires"></use></svg></span>
+
+                    </button>
+                    <button class="seasonality-btn" [ngClass]="{'active-seasonality-tires': seasonalityState == 2}">
+                        <span class="catalog-type-icon"><svg class="season-type-icon__svg" (click)="applaySeason(2)"><use svg-use-reference="cloud-tires"></use></svg></span>
+                    </button>
+                </div>
+            </div>
+            <div class="select-block-tires">
+                <div class="select-tires">
+                    <div class="label-form">{{'Ширина шины' | translate}}</div>
+                    <input class="delivery-step__input"
+                           placeholder="{{'Выбрать' | translate}}"
+                           (click)="toggleDropdownWidt()"
+                           [(ngModel)]="sizeWidth" />
+                    <span class="drop-arrow tires-arrow news-arrow" (click)="toggleDropdownWidt()">
+                        <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+                    </span>
+                    <div *ngIf="showDropDown1" class="tires-dropdown-container">
+                        <div *ngFor="let width of getWidthList(widthList); index as i; first as isFirst" (click)="selectWidth(width)" class="settlement-item">
+                            <span class="text-uppercase"><b>{{width}}</b></span>&nbsp;<br />
+                        </div>
+                    </div>
+                </div>
+                <div class="select-tires middle-select-tires">
+                    <div class="label-form">{{'Профиль шины' | translate}}</div>
+                    <input class="delivery-step__input"
+                           placeholder="{{'Выбрать' | translate}}"
+                           (click)="toggleDropdownProf()"
+                           [(ngModel)]="sizeProf" />
+                    <span class="drop-arrow tires-arrow news-arrow" (click)="toggleDropdownProf()">
+                        <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+                    </span>
+                    <div *ngIf="showDropDown2" class="tires-dropdown-container">
+                        <div *ngFor="let prof of getWidthProf(filterWithAndProf$ | async)" (click)="selectProf(prof.value.split('/')[1])" class="settlement-item">
+                            <span class="text-uppercase"><b>{{ prof.value.split('/')[1] }}</b></span>&nbsp;<br />
+                        </div>
+                    </div>
+                </div>
+                <div class="select-tires">
+                    <div class="label-form">{{'Диаметр шины' | translate}}</div>
+                    <input class="delivery-step__input"
+                           placeholder="{{'Выбрать' | translate}}"
+                           (click)="toggleDropdownDiameter()"
+                           [(ngModel)]="sizeDiameter" />
+                    <span class="drop-arrow tires-arrow news-arrow" (click)="toggleDropdownDiameter()">
+                        <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+                    </span>
+                    <div *ngIf="showDropDown3" class="tires-dropdown-container">
+                        <div *ngFor="let diameter of getDiameterList(diameterList)" (click)="selectDiameter(diameter)" class="settlement-item">
+                            <span class="text-uppercase"><b>{{ diameter }}</b></span>&nbsp;<br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="searchByMarkAuto">
+            <car-select-tires (onSelectCar)='onSelectCar($event)'></car-select-tires>
+        </div>
+    </div>
+</div>
+<div class="footer-tires-selection" (click)="turnOffAll()">
+    <a [routerLink]="['/category', url ]" [queryParams]="getQueryParams()">
+        {{'Подобрать шины' | translate}}
+        <span class="drop-arrow btn-blue-arrow"><svg class="btn-blue-arrow"><use svg-use-reference="arrow"></use></svg></span>
+    </a>
+</div>

@@ -1,0 +1,123 @@
+.art-pagination {
+  letter-spacing: -4px;
+  text-align: center;
+  margin: 0 0 30px;
+  list-style: none;
+  padding: 0 12px 20px 12px;
+  a {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+  }
+  &__start {
+    letter-spacing: 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 17px 0 0;
+  }
+  &__control-link {
+    font-size: 12px;
+    line-height: 24px;
+    color:  #3e77aa;
+    font-weight: 500;
+    &:hover {
+      text-decoration: underline;
+      color:  #3e77aa;
+    }
+  }
+  &__back {
+    letter-spacing: 0;
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #dee5e8;
+    border-radius: 5px;
+    background: #faf9f9;
+    margin: 10px 20px 0 0;
+    &:hover {
+      background: #dee5e8;
+    }
+    .drop-arrow {
+      transform: rotate(90deg);
+      margin: -2px 6px 0 0;
+    }
+  }
+  &__second-control-link {
+    line-height: 38px;
+    padding: 0 22px;
+    color:  #3e77aa;
+    font-weight: 500;
+    font-size: 12px;
+    &:hover {
+      color:  #3e77aa;
+    }
+  }
+  &__item {
+    letter-spacing: 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 10px;
+    & + .art-pagination__item {
+      margin: 10px 0 0 10px;
+    }
+  }
+  &__link {
+    line-height: 36px;
+    width: 40px;
+    border: 2px solid #d7e7f2;
+    border-radius: 6px;
+    color:  #3e77aa;
+    font-size: 14px;
+    font-weight: 500;
+    &:hover {
+      background:  #3e77aa;
+      color: #fff;
+      border-color:  #3e77aa;
+    }
+  }
+  &__active {
+    line-height: 36px;
+    width: 40px;
+    border: 2px solid  #3e77aa;
+    border-radius: 6px;
+    background:  #3e77aa;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    pointer-events: none;
+    cursor: default;
+  }
+  &__item-dot {
+    letter-spacing: 0;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px;
+    height: 40px;
+    padding: 23px 0 0;
+  }
+  &__dots {
+    font-size: 14px;
+    color:  #3e77aa;
+    display: block;
+  }
+  &__next {
+    letter-spacing: 0;
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #dee5e8;
+    border-radius: 5px;
+    background: #faf9f9;
+    margin: 10px 23px 0 20px;
+    &:hover {
+      background: #dee5e8;
+    }
+    .drop-arrow {
+      margin: -2px 0 0 6px;
+    }
+  }
+  &__end {
+    letter-spacing: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,36 @@
+.car-select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.car-select-arrow-svg {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.car-select-arrow-svg use {
+    fill: #1D5495 !important;
+}
+.filter-arrow {
+    width: 16px !important;
+    height: 16px !important;
+    float: right;
+}
+.panel-title {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: bold;
+}
+.filter-title {    
+    border-bottom: 1px solid #c5d5ea !important;
+    border-radius: 0px !important;    
+    border-top: 0!important;
+    border: none!important;
+    border: 0px solid #c5d5ea !important
+}
+.holder-filter{
+    border-top: 1px solid #c5d5ea !important;
+}

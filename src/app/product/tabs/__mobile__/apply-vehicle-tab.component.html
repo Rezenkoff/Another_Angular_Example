@@ -1,0 +1,14 @@
+﻿<ul class="main-list-recently">
+    <li *ngFor="let applicItem of getApplicability()" (click)="applicItem.isShown = !applicItem.isShown">
+        <expand-component [canexpand]="applicItem.isShown" [title]="applicItem.name"></expand-component>
+        <ul *ngIf="serverParamsService.serverParams.isBotRequest || (applicItem.children && applicItem.isShown)" class="sub-list-recently">
+            <li *ngFor="let applicItemChild of applicItem.children" (click)="loadModifications(applicItemChild, $event)" class="item-sub-list">
+                <expand-component [canexpand]="applicItemChild.showChildModifications" [title]="applicItemChild.name"></expand-component>
+                <mat-spinner *ngIf="applicItemChild.loading" diameter="20"></mat-spinner>
+                <div *ngIf="applicItemChild.showChildModifications" class="sub-sub-list-recently">
+                    <div *ngFor="let modification of applicItemChild.children">{{ modification.name }}</div>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>

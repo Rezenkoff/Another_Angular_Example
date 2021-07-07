@@ -1,0 +1,21 @@
+﻿<div *ngFor="let subnode of children; let i = index">
+    <div *ngIf="subnode.deepLevel == 3 || isRootOnFirstLevelOfCatalog() || (subnode.deepLevel == 4 && i < 5)">
+        <a class="sub-sub-link" href="{{ subnode.pageURL }}" [routerLink]="getSubcategoryRouteLink(subnode)" [queryParams]="queryParameters">
+            <h4 *ngIf="isParentOnHighLevel()">{{ subnode.name }}</h4>
+            <p *ngIf="isParentOnSecondLevel()" class="catalog-sub-second sub-name">{{ subnode.name }}</p>
+
+            <p *ngIf="!isParentOnSecondLevel() && !isParentOnHighLevel() && !isRootOnSecondLevelOfCatalog()" [ngClass]="{ 'sub-fourth-level': subnode.deepLevel == 4 }">{{ subnode.name }}</p>
+
+            <p *ngIf="!isParentOnSecondLevel() && !isParentOnHighLevel() && isRootOnSecondLevelOfCatalog()" [ngClass]="{ 'sub-fourth-level': subnode.deepLevel == 4 }">{{ subnode.name }}</p>
+        </a>
+        <catalog-sub-subs [children]="subnode.children"
+                          [parent]="subnode"
+                          [rootParentNode]="rootParentNode"
+                          [routeParams]="routeParams"
+                          [queryParameters]="queryParameters">
+        </catalog-sub-subs>
+    </div>
+</div>
+<a class="allCategories__button" *ngIf="isRootOnSecondLevelOfCatalog() && isParentOnThirdLevel()" [routerLink]="getSubcategoryRouteLink(parent)" [queryParams]="queryParameters">{{'Все категории' | translate}}
+    <span class="drop-arrow drop-arrow--blue"><svg class="drop-arrow__svg drop-arrow__svg--blue"><use svg-use-reference="arrow" /></svg></span>
+</a>

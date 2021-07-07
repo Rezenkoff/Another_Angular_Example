@@ -1,0 +1,13 @@
+﻿﻿<div class="search-form" autocomplete="on" action="#">
+
+    <input [ngClass]="{'autodoc-mini-loader': isSearching}" class="search-form__input" style="z-index: 6" (keyup.enter)="search()" #searchBox (keyup)="catalogFilter(searchBox.value, $event)" [(ngModel)]="searchString" id="search-autocomplete" placeholder="{{'Поиск' | translate}}" type="search" maxlength="99">
+
+    <div *ngIf="dropdownShown()" class="catalog-search-result">
+        <div *ngFor="let node of findedNodes" (click)="redirectToCategory(node)" class="catalog-search-result-item">
+            <span class="text-uppercase"><b>{{ node.name }}</b></span>&nbsp;<br />
+        </div>
+    </div>
+
+    <button *ngIf="!isSearching" class="search-form__submit" (click)="search()"><span class="search-icon"><svg class="search-icon__svg"><use svg-use-reference="search-1" /></svg></span></button>
+</div>
+<div *ngIf="dropdownShown()" class="mobile-overlay active" style="background: none" (click)="hideDropdown()"></div>

@@ -1,0 +1,6 @@
+﻿<div class="main-input-search" style="padding-bottom: 1px">
+    <car-select-panel-slider (onCarSelectPanelChange)="applyChanges($event)"></car-select-panel-slider>
+</div>
+<div class="footer-block-search" [ngClass]="{'ui-state-disabled': !isCarSelected()}" (click)="toCatalog()">
+    <a>{{'Поиск по каталогу' | translate}}<span class="drop-arrow btn-blue-arrow"><svg class="btn-blue-arrow"><use svg-use-reference="arrow"></use></svg></span></a>
+</div>

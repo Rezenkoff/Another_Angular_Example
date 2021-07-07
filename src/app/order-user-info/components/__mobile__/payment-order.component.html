@@ -1,0 +1,24 @@
+﻿<div class="container__radio-box">
+    <span class="container__radio-title">{{'Способ оплаты' | translate}} <span class="red-star">*</span></span>
+    <div *ngFor="let payment of paymentList" class="container__radio-block">
+        <ul class="container__radio-list">
+            <li class="container__radio-item">
+                <input class="container__radio-input"
+                       [value]="payment"
+                       name="payments-{{ payment.key }}"
+                       [(ngModel)]="selectedPayment"
+                       (ngModelChange)="selectPayment()"
+                       id="radio-{{ payment.key }}"
+                       type="radio"
+                       [jcf]="{type: 'radio'}">
+                <label class="container__radio-label" for="radio-{{ payment.key }}">{{ payment.name }}</label>
+            </li>
+        </ul>
+    </div>
+    <div class="card-block">
+        <div class="payment-text">{{'Оплата банковскими картами осуществляется через' | translate}} <a class="free-delivery-link" href="https://alfabank.ru/ecom" target="_blank">{{'АО «АЛЬФА-БАНК».' | translate}}</a><img class="img-payment-left" src="https://cdn.autodoc.ua/alpha-bank.png" width="44" /></div>        
+        <br /><div class="payment-text">{{'К оплате принимаются карты VISA, MasterCard.' | translate}}</div>
+        <br /><img class="img-payment-right" src="https://cdn.autodoc.ua/visa-card.png" width="29" />
+        <img class="img-payment-right" src="https://cdn.autodoc.ua/master-card-1.png" width="16" />        
+    </div>
+</div>

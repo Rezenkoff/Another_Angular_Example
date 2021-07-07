@@ -1,0 +1,28 @@
+﻿<ul *ngIf="crumbs.length >= 2" class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <ng-container *ngFor="let crumb of crumbs; let last = last, let i = index">
+
+        <li *ngIf="last && crumb.text.length > 1">
+            <span>
+                {{ crumb.text }}
+            </span>
+        </li>
+
+        <li *ngIf="crumb.text.length > 1 && !last"
+            [ngClass]="{ 'active': last }"
+            class="breadcrumb-item"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem">
+            <a *ngIf="!last && crumbs.length > 1"
+               [routerLink]="getLink(crumb)"
+               [queryParams]="getParams()"           
+               itemprop="item">
+                <span itemprop="name">{{ crumb.text }}</span>
+            </a>
+            <span  *ngIf="last && crumbs.length > 1" itemprop="name">
+                {{ crumb.text }}
+            </span>
+            <meta itemprop="position" content="{{ i + 1 }}" />
+        </li>
+    </ng-container>
+</ul>

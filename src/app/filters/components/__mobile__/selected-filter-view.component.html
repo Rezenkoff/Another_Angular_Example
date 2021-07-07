@@ -1,0 +1,23 @@
+﻿<div class="select-filter" *ngIf="filterLeftBar.length > 0 || carFilterSelected.length > 0">
+    <div class="select-filter-text">{{'Выбранные фильтры:' | translate}}</div>
+    <ng-container *ngFor="let option of filterLeftBar">
+        <div class="item-select-filter">
+            <span class="select-descr"><span class="select-descr-title">{{language.name == 'RUS' ? option.filterNameRus : option.filterNameUkr}}:</span>&nbsp;{{getFilterValue(option)}}</span>
+            <span class="close-icon-select">
+                <svg class="close-icon__svg close-icon__svg--red" (click)="removeRange(option)">
+                    <use svg-use-reference="close"></use>
+                </svg>
+            </span>
+        </div>
+    </ng-container>    
+    
+    <div class="item-select-filter" *ngIf="carFilterSelected.length > 0">
+        
+        <span class="select-descr" style="max-width: 200px;"><span class="select-descr-title">{{'Автомобиль' | translate }}:</span>&nbsp;{{carFilterSelected}}</span>
+        <span class="close-icon-select">
+            <svg class="close-icon__svg close-icon__svg--red" (click)="onClearCar()">
+                <use svg-use-reference="close"></use>
+            </svg>
+        </span>
+    </div>    
+</div>

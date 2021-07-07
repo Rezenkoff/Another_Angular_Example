@@ -1,0 +1,23 @@
+﻿.quick-order__holder {
+    background: #fff;
+    box-shadow: 0 -6px 40px rgba(0, 0, 0, 0.52);
+    position: absolute;
+    z-index: 5;
+    padding: 25px 30px 30px;
+    max-width: 390px;
+    display: none;
+    z-index: 16;
+}
+
+.quick-order__holder::after {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 43px;
+    width: 0;
+    height: 0;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+    border-bottom: 13px solid #fff;
+    z-index: 1;
+}

@@ -1,0 +1,45 @@
+.addGarage__bottom {
+    background: #3e77aa;
+    border: 1px solid #3e77aa;
+    color: #fff;
+    font-size: 13px;
+    line-height: 30px;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 20px;
+    margin: 20px 0 20px 0;
+    cursor: pointer;
+}
+button[disabled].addGarage__bottom {
+    opacity: 0.35;
+    cursor: not-allowed;
+    background: #3e77aa;
+}
+.cancelGarage {
+    background: #F44336;
+    border: 1px solid #f24343;
+    color: #fff;
+    font-size: 13px;
+    line-height: 30px;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 20px;
+    margin: 20px 0 20px 0;
+    cursor: pointer;
+}
+.model-year-vin {
+    font-size: 15px;
+}
+.edit-form-input {
+    padding: 0;
+}
+
+.edit-form-input + .edit-form-input {
+    padding: 0 0 0 15px;
+
+    @media screen and (max-width: 992px) {
+        padding: 0;
+    }
+}

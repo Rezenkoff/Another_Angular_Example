@@ -1,0 +1,14 @@
+﻿<div class="vehicle-params-pad-order">
+    <div class="vin-block-title-mob">Выбор автомобиля</div>
+    <car-select-panel-common         
+        (onCarSelectPanelChange)="updateCarInfo($event)">
+    </car-select-panel-common>
+    <div class="text-center">
+        <a class="button-list__btn-1 button-list__btn-1--opener" style="margin-top:15px;" [ngClass]="{ 'disabled-button': !CarIsValid()}" (click)="onVehicleCreated()">
+            <span class="car-icon car-icon--white"><svg class="car-icon__svg car-icon__svg--white"><use svg-use-reference="car"></use></svg></span>{{'Выбрать автомобиль' | translate}}
+        </a>
+        <a class="button-list__btn-1 button-list__btn-1--opener" style="margin-top:15px;" (click)="onShowSelectMeForm()">
+            {{'Нет моего атомобиля' | translate}}
+        </a>
+    </div>
+</div>

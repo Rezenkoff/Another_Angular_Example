@@ -1,0 +1,319 @@
+.product-section {  
+
+    &__main-holder {
+        overflow: hidden;
+
+        @media screen and (max-width: 1105px) {
+            width: 75%;
+            margin: auto;
+            margin-top: 24px;
+        }
+
+        @media screen and (max-width: 1105px) {
+            width: 100%;
+        }
+    }
+
+    &__content {
+        overflow: hidden;
+        margin: 0 0 40px;
+    }
+
+    &__info-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__info-item {
+        position: relative;
+        padding: 0 0 0 10px;
+
+        &__red {
+            position: relative;
+            padding: 0 0 0 10px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 8px;
+                left: 0;
+                width: 3px;
+                height: 3px;
+                border-radius: 50%;
+                background: #E34761;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #414141;
+        }
+    }
+}
+.product-sub-section {
+    @media screen and (max-width: 767px) {
+        padding: 0 15px;
+        margin: 0;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    &__aside {
+        float: left;
+        max-width: 360px;
+        width: 100%;
+        margin: 0 30px 0 0;
+
+        @media screen and (max-width: 1023px) {
+            float: none;
+            max-width: 574px;
+            margin: 0 auto 30px;
+        }
+    }
+
+    &__content {
+        width: 100%;
+    }
+}
+.product-section__content{
+    @media screen and (max-width: 479px) {
+        margin: 0 0 20px;
+        overflow: visible;
+    }
+}
+.product-section__column{
+    @media screen and (max-width: 767px) {
+        float: none;
+        margin: 0 auto;
+        max-width: 100%;
+        position: relative;
+        padding: 0 12px;
+    }
+}
+.prodCard-position {
+    position: relative;
+}
+.product-info-desktop {
+    max-width: 223px;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 16px;
+}
+.product-info-box:first-child {
+    color: #E34761 !important;
+}
+
+.product-info-box {
+    color: #414141;
+    margin: 0 0 36px 36px;
+    position: relative;
+}
+.delivery-truck {
+    position: absolute;
+    left: -37px;
+}
+
+.delivery-truck svg {
+    width: 24px;
+    height: 24px;
+}
+.product-info-box-title {
+    font-weight: bold;
+}
+.text-block-desk {
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+}
+.text-block-desk:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 4em;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+}
+.prod-describe-title {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 36px;
+    color: #414141;
+    margin-bottom: 12px;
+}
+.cont {
+    display: inline-block;
+    width: 24%;
+    vertical-align: top;
+
+    @media screen and (max-width: 1000px) {
+        display: none;
+    }
+}
+.main-item-tab {
+    width: 76%;
+    display: inline-block;
+}
+
+.main-item-tab .block-specifications {
+    width: 100%;
+}
+
+.main-item-tab .review {
+    width: 100%;
+}
+.quick-order-by-phone {
+    background: url(https://cdn.autodoc.ua/Fon/fast_delivery.png);
+    max-width: 1366px;
+    margin: 20px -83px 60px;
+    padding: 36px 0;
+
+    @media screen and (max-width: 1200px) {
+        margin: 0 0 40px 0;
+    }
+}
+.quick-order-main-title {
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 36px;
+    line-height: 48px;
+}
+.quick-order-slider-text {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+}
+.quick-order-promo-slider {
+    width: 1200px;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1200px) {
+        width: auto;
+    }
+}
+.footer-quick-order {
+    background: linear-gradient(180deg,#407fca,#1d5495);
+    border-radius: 0 0 6px 6px;
+    text-align: center;
+    padding: 12px 0;
+}
+
+.footer-quick-order a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
+}
+.input-quick-order {
+    background: #fff;
+    padding: 24px;
+    border: 1px solid #C5D5EA;
+    border-radius: 6px 6px 0px 0px;
+}
+.tab-list-product {
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid #C5D5EA;
+    margin-bottom: 36px;
+}
+.tab-item-product {
+    float: left;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 9px;
+}
+.tab-link-product {
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    color: #414141;
+    text-decoration: none;
+    margin-right: 24px;
+
+    &:hover {
+        color: #414141;
+    }
+}
+.active-prod:after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    height: 6px;
+    width: calc(100% - 24px);
+    left: 0;
+    right: 0;
+    background: #99AEC9;
+    border-radius: 3px 3px 0px 0px;
+}
+.grey-block-1 {
+    display: inline-block;
+    width: 130px;
+    height: 14px;
+    margin: 0 0 12px;
+    float: none;
+    background-color: #ddd;
+    border-radius: 6px;
+}
+
+.grey-block-2 {
+    display: inline-block;
+    float: right;
+    width: 130px;
+    height: 14px;
+    margin: 0 0 12px;
+    background-color: #ddd;
+    border-radius: 6px;
+}
+
+.grey-block-3 {
+    display: inline-block;
+    float: none;
+    background-color: #ddd;
+    border-radius: 6px;
+    height: 54px;
+    width: 100%;
+}
+
+.grey-block-4 {
+    margin: 36px 0 12px;
+    background-color: #ddd;
+    border-radius: 6px;
+    height: 42px;
+    width: 100%;
+}
+
+.grey-block-5 {
+    background-color: #ddd;
+    border-radius: 6px;
+    height: 24px;
+    width: 100%;
+    max-width: 263px;
+    margin: auto;
+}
+
+.grey-block-6 {
+    background-color: #ddd;
+    border-radius: 6px;
+    float: left;
+    width: 360px;
+    margin: 0 30px 0 0;
+    height: 280px;
+}
+

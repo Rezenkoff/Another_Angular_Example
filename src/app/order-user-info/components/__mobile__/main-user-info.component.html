@@ -1,0 +1,25 @@
+﻿<form novalidate [formGroup]="orderContactInfoGroup">
+    <div class="container__input-holder">
+        <div class="sector-form">
+            <span class="label-form">{{'ФИО (полностью)' | translate}} &nbsp;<span class="red-star">*</span></span>
+            <input (click)="processInputClick()" class="form-input ng-untouched ng-pristine ng-valid" formControlName="name" placeholder="ФИО">
+        </div>
+        <div *ngIf="!orderContactInfoGroup.controls.name.valid" class="alert__alert-danger">
+            {{'Введите имя пользователя' | translate}}
+        </div>
+        <div class="sector-form">
+            <span class="label-form">{{'Номер телефона' | translate}} &nbsp;<span class="red-star">*</span></span>
+            <input (click)="processInputClick()" class="form-input" formControlName="phone" placeholder="+380 XXX XX-XX-XX" mask="(000) 000-00-00" prefix="+38" [showMaskTyped]="true">
+        </div>
+        <div *ngIf="!orderContactInfoGroup.controls.phone.valid" class="alert__alert-danger">
+            {{'Некорректный мобильный номер' | translate}}
+        </div>
+        <div class="sector-form">
+            <span class="label-form">{{'E-mail адрес' | translate}}</span>
+            <input class="form-input" formControlName="email" type="email" placeholder="Email">
+        </div>
+        <div *ngIf="!orderContactInfoGroup.controls.email.valid" class="alert__alert-danger">
+            {{'Введите корректный e-mail' | translate}}
+        </div>
+    </div>
+</form>

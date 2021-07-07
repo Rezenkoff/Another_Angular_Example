@@ -1,0 +1,56 @@
+.prod-whish-list-ico {
+    width: 12px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.prod-whish-list span {
+    border-bottom: 1px dashed;
+}
+.cabinet-order-info {
+    font-size: 12px;
+    line-height: 16px;
+    padding: 12px;
+    border-bottom: 1px solid #C5D5EA;
+}
+.cabinet-order-name {
+    font-weight: bold;
+    display: inline-block;
+    width: 40%;
+}
+.cabinet-order-item {
+    margin-bottom: 12px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+.order-cabinet-arrow {
+    transform: rotate(90deg);
+    margin: 5px 0px 0px 16px !important;
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    width: 16px !important;
+    height: 16px !important;
+}
+.header-order {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 12px 0;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 12px;
+}
+.cabinet-page {
+    height: 90vh;
+    padding: 0 10px;
+    overflow-y: scroll;
+}
+
+.refund-btn {
+    color: #1d5495;
+    font-weight: 700;
+    text-decoration: underline;
+}

@@ -1,0 +1,26 @@
+﻿<div class="check-vailability">
+    <div class="content-padding">
+        <h3 class="check-vailability-title">{{'На выбранном складе недостаточно товара.' | translate}}</h3>
+        <b><span class="check-vailability-span">{{'Вы согласны оформить заказ без этих товаров ?'|translate}}</span></b>
+        <table>
+            <thead>
+                <tr>
+                    <th>{{'Наименование' | translate}}</th>
+                    <th>{{'Кол-во' | translate}}</th>
+                    <th>{{'Цена' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of data.availability">
+                    <td>{{getDescription(item.product)}}</td>
+                    <td>{{item.order}}</td>
+                    <td>{{item.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-right" style="padding:1%">
+            <button class="confirm-apply-btn" (click)="close(true, data.availability)">{{'Согласен' | translate}}</button>
+            <button class="confirm-reset-btn" (click)="close(false)">{{'Отказаться' | translate}}</button>
+        </div>
+    </div>
+</div>

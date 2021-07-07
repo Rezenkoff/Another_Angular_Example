@@ -1,0 +1,16 @@
+﻿<div class="wrapper" customSwipe>
+    <inline-styles></inline-styles>
+    <div class="wrapper__box">
+        <div class="wrapper__holder">
+            <span style="display:none">MOBILE</span>
+            
+            <auto-doc-header></auto-doc-header>
+            <div class="wrapper__main-info">
+                <alert *ngIf="isBrowser()"></alert>
+                <autodoc-breadcrumbs></autodoc-breadcrumbs>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+    <footer *ngIf="showMobileMenu" class="footer"></footer>
+</div>

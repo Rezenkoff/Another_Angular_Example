@@ -1,0 +1,386 @@
+.garage {
+    &__title {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+        padding: 0px 0 16px 0px;
+    }
+}
+
+.block-garage {
+    position: relative;
+    height: 520px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 24px 24px 0 24px;
+
+    &::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+    }
+
+    &::-webkit-scrollbar-button {
+        background-color: #666;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #999;
+    }
+
+    &::-webkit-scrollbar-track-piece {
+        background-color: #ffffff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        height: 50px;
+        background-color: #666;
+        border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background-color: #999;
+    }
+
+    &::-webkit-resizer {
+        background-color: #666;
+    }
+}
+.garage-flex {
+    display: flex;
+    width: 100%;
+    margin-bottom: 24px;
+    align-content: space-around;
+}
+.more-garage-image {
+    width: 72px;
+    height: 56px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 24px 0 0;
+    border: 1px solid #C5D5EA;
+    border-radius: 6px;
+    padding: 4px;
+    text-align: center;
+
+    img {
+        max-height: 46px;
+        max-width: 60px;
+    }
+}
+
+ .filter-dropdown-garage {
+    position: absolute;
+    top: 41px;
+    width: 100%;
+    max-height: 150px;
+    padding: 5px;
+    border: 1px solid #3e77aa;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow-y: auto;
+    z-index: 16;
+}
+.garage-bonus {
+    display: flex;
+    justify-content: flex-start;
+    width: 30%;
+    margin-right: 1em;
+    position: relative;
+}
+ .garage-arrow-more {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+ .garage-arrow-more svg {
+    height: 12px;
+    width: 12px;
+}
+
+ .garage-arrow-more svg use {
+    fill: #1D5495;
+}
+.more-garage {
+    margin-bottom: 12px;
+}
+.my-garage {
+    margin-bottom: 24px;
+}
+.garage-my-auto, .selected-car {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+
+    @media screen and (max-width: 1450px) {
+        width: 48%;
+    }
+
+    @media screen and (max-width: 1024px) {
+        width: 100%;
+    }
+}
+.selected-car {
+    margin-left: 1.7em;
+    padding-left: 1.7em;
+    border-left: 1px solid #C5D5EA;
+
+    @media screen and (max-width: 1024px) {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+    }
+}
+.garage-add-link {
+    line-height: 21px;
+    float: right;
+}
+.garage-deselect {
+    font-size: 12px;
+    line-height: 16px;
+    color: #99AEC9;
+    float: right;
+    border-bottom: 1px dashed;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+        border-bottom: none;
+        color: #99AEC9;
+    }
+}
+.garage-deselect-active {
+    font-size: 12px;
+    line-height: 16px;
+    color: #1D5495;
+    float: right;
+    border-bottom: 1px dashed;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+        border-bottom: none;
+        color: #1D5495;
+    }
+}
+
+.icon-help {
+    margin-bottom: 12px;
+    display: inline-block;
+}
+.icon-help svg {
+    width: 42px;
+    height: 42px;
+}
+.select-icon-vehicle {
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+    right: 10px;
+}
+.select-icon-vehicle:hover span {
+    opacity: 1;
+    visibility: visible;
+}
+.selected-garage-info {
+    width: 204px;
+    height: 160px;
+    display: inline-block;
+
+    @media screen and (max-width: 1450px) {
+        width: 102px;
+        height: 80px;
+    }
+}
+.img-garage {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid #C5D5EA;
+    border-radius: 6px 6px 0px 0px;
+    width: 204px;
+    height: 160px;
+    padding: 10px;
+
+    img {
+        max-height: 145px;
+        max-width: 180px;
+    }
+
+    @media screen and (max-width: 1450px) {
+        width: 102px;
+        height: 80px;
+
+        img {
+            max-height: 72px;
+            max-width: 90px;
+        }
+    }
+}
+.save-btn-vehicle {
+    background: #99AEC9;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    padding: 12px 24px;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+        color: #ffffff;
+        cursor: not-allowed;
+    }
+}
+.active-btn-vehicle {
+    background: #316cb3;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+.edit-info {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #1D5495;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+    text-align: center;
+    border: 1px solid #C5D5EA;
+    border-top: none;
+    border-radius: 0px 0px 6px 6px;
+    padding: 4px 0;
+
+    @media screen and (max-width: 1450px) {
+        width: 102px;
+    }
+}
+.selected-box {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 24px;
+    width: 57%;
+
+    @media screen and (max-width: 1450px) {
+        width: 55%;
+    }
+}
+.garage-brand-title {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+}
+.garage-year-title {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 4px;
+}
+
+.garage-year-title span {
+    font-weight: 500;
+}
+.properties-name {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 24px;
+    display: inline-block;
+    width: 130px;
+}
+.properties-description {
+    font-size: 12px;
+    line-height: 24px;
+}
+.properties-list {
+    margin-top: 12px;
+}
+.garage-bold-text {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 5px;
+}
+.garage-simple-text {
+    font-size: 14px;
+    line-height: 21px;
+    font-style: italic;
+    margin: 8px 0 12px;
+}
+.selected-auto-input {
+    width: 63%;
+
+    @media screen and (max-width: 1320px) {
+        width: 50%;
+    }
+
+    @media screen and (max-width: 1024px) {
+        width: 63%;
+    }
+}
+.btn-selected-auto {
+    width: 170px;
+    line-height: 18px;
+    vertical-align: top;
+    float: right;
+    text-align: center;
+}
+.selected-bonus {
+    width: 26%;
+}
+.help-block {
+    border: 1px solid #C5D5EA;
+    background: #F5F7FA;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #1D5495;
+    margin-top: 12px;
+}
+
+.help-block a {
+    color: #1D5495;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+        text-decoration: underline;
+        color: #1D5495;
+    }
+}
+.left-help-block {
+    border-right: 1px solid #C5D5EA;
+    width: 50%;
+    padding: 16px 0;
+    display: inline-block;
+}
+
+.right-help-block {
+    width: 50%;
+    padding: 16px 0;
+    display: inline-block;
+}
+
+.centre-help-block {
+    border-top: 1px solid #C5D5EA;
+    width: 100%;
+    padding: 16px 0;
+}
+.garage-brand {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+}
+.garage-year {
+    font-size: 12px;
+    line-height: 16px;
+}
+.block-vin-garage {
+    width: 63%;
+    position: relative;
+    display: inline-block;
+}

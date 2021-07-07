@@ -1,0 +1,140 @@
+
+<div *ngIf="!CarIsValid()">
+    <div class="header-vehicle">
+        <div class="garage__title">{{ 'Добавить авто в гараж' | translate }}
+        <a [routerLink]="['/']" ><span class="close-icon" (click)="closeAddCar()"><svg class="close-icon__svg header-filter-close-svg"><use svg-use-reference="close" /></svg></span></a>
+        </div>
+
+    </div>
+    <div class="vehicle-mob">
+        <div class="text-vehicle">
+            {{'Добавив свою “ласточку” в гараж, Вам больше не придется тратить время на фильтрацию каталога запчастей. После добавления автомобиля, Вы сможете перейти в каталог, который уже будет отфильтрован специально под Вашу машину.' | translate}}
+        </div>
+
+        <car-select-panel-garage (onCarSelectPanelChange)="onCarModelChange($event)"></car-select-panel-garage>
+
+        <div class="wrapper-btn-link">
+            <a class="btn-link-vehicle" (click)="nextStep(1)">
+                {{ 'Продолжить' | translate }}
+                <span class="drop-arrow drop-arrow--blue news-arrow"><svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow" /></svg></span>
+            </a>
+        </div>
+    </div>
+</div>
+<div *ngIf="CarIsValid()" class="row edit-form">
+    <div class="block-garage-add">
+        <div class="header-vehicle">
+            <div class="garage__title">
+                {{ 'Добавить авто в гараж' | translate }}
+                <span class="close-icon" (click)="closeSecondStep()"><svg class="close-icon__svg"><use svg-use-reference="close" /></svg></span>
+            </div>
+
+        </div>
+        <div class="vehicle-mob">
+            <div class="more-garage">
+                <div class="more-garage-image">
+                    <img src='https://cdn.autodoc.ua/images/marks/car-icon.png' />
+                </div>
+                <div class="container__added-name-box">
+                    <div class="garage-brand">{{newVehicle.mark}} {{newVehicle.model}}</div>
+                    <div class="garage-year">{{'Год выпуска:' | translate }} {{newVehicle.year}}</div>
+                    <!--<div class="garage-properties">2005 - 2010 1399 ccm 97 PS G4EE</div>-->
+                </div>
+            </div>
+            <div>
+                <div class="sector-form garage-input-more">
+                    <span class="label-form">{{'VIN авто (самый точный поиск — это поиск по VIN)' | translate }} </span>
+                    <input class="form-input"
+                           type="text"
+                           placeholder="{{'Введите VIN номер' | translate }}"
+                           [(ngModel)]="newVehicle.vin"
+
+                           mask="000000000000000">
+                    <span class="question-icon-vehicle">
+                        <svg width="24" height="24"><use svg-use-reference="vehicle-question" /></svg>
+                        <span class="vin-foto">
+                            <img src="https://cdn.autodoc.ua/VIN_info.png" width="346" height="248" />
+                            <span>{{'Vehicle identification number (VIN) — уникальный код транспортного средства, состоящий из 17 символов. В коде представлена информация о производителе, характеристиках транспортного средства, и годе выпуска.' | translate}}</span>
+                        </span>
+                    </span>
+                </div>
+                <div class="sector-form garage-input-more">
+                    <span class="label-form">{{'Как вы зовете вашу "Ласточку"?' | translate }} </span>
+                    <input class="form-input"
+                           type="text"
+                           placeholder="{{'Имя авто поможет ориентироваться в гараже' | translate }}"
+                           [(ngModel)]="newVehicle.ownNameCar" />
+                </div>
+                <div class="sector-form garage-input-more">
+                    <span class="label-form">{{'Какой пробег у Вашей машины? (тыс. км)' | translate }} </span>
+                    <input class="form-input"                        
+                           placeholder="{{'Введите пробег' | translate }}"
+                           type="text"
+                           mask="separator"
+                           min="0"
+                           maxlength="8"
+                           [(ngModel)]="newVehicle.milage">
+                </div>
+                <div class="sector-form garage-input-more">
+                    <span class="label-form" style="display:block;">{{'Дата рождения вашего авто — В этот день мы дарим бонус!' | translate }} </span>
+                    <div class="garage-flex">
+                        <div class="garage-bonus">
+                            <input class="form-input"
+                                   type="text"
+                                   placeholder="{{'Число' | translate }}"
+                                   [(ngModel)]="day"
+                                   (click)="toggleShowDay()">
+                            <span class="drop-arrow garage-arrow-more">
+                                <svg class="drop-arrow__svg"><use svg-use-reference="arrow"></use></svg>
+                            </span>
+                            <div *ngIf="showDay" class="filter-dropdown-add-garage">
+                                <span></span>
+                                <div *ngFor="let item of GetDateDays(dateDays)" (click)="selectedDay(item)" class="settlement-item">
+                                    <span class="text-uppercase"><b>{{ item }}</b></span>&nbsp;<br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="garage-bonus">
+                            <input class="form-input"
+                                   type="text"
+                                   placeholder="{{'Месяц' | translate }}"
+                                   [(ngModel)]="month"
+                                   (click)="toggleShowMonth()">
+                            <span class="drop-arrow garage-arrow-more">
+                                <svg class="drop-arrow__svg"><use svg-use-reference="arrow"></use></svg>
+                            </span>
+                            <div *ngIf="showMonth" class="filter-dropdown-add-garage">
+                                <span></span>
+                                <div *ngFor="let item of GetDateMonth(dateMonth)" (click)="selectedMonth(item)" class="settlement-item">
+                                    <span class="text-uppercase"><b>{{ item }}</b></span>&nbsp;<br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="garage-bonus">
+                            <input class="form-input"
+                                   type="text"
+                                   placeholder="{{'Год' | translate }}"
+                                   [(ngModel)]="year"
+                                   (click)="toggleShowYear()">
+                            <span class="drop-arrow garage-arrow-more">
+                                <svg class="drop-arrow__svg"><use svg-use-reference="arrow"></use></svg>
+                            </span>
+                            <div *ngIf="showYear" class="filter-dropdown-add-garage">
+                                <span></span>
+                                <div *ngFor="let item of GetDateYears(dateYear)" (click)="selectedYear(item)" class="settlement-item">
+                                    <span class="text-uppercase"><b>{{ item }}</b></span>&nbsp;<br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-btn-link">
+                <a class="btn-link-vehicle" [routerLink]="['/cabinet/vehicle']"  (click)="nextStep(2)">
+                    {{ 'Перейти в гараж' | translate }}
+                    <span class="drop-arrow drop-arrow--blue news-arrow"><svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow" /></svg></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

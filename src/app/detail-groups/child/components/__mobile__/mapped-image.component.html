@@ -1,0 +1,7 @@
+﻿<div #imageContainer style="box-sizing:border-box; display:block; position:relative; max-width: 600px; height: 821px">
+    <img #imgElement src="{{imageUrl}}" id="img" usemap="#myMap" style="display: block; position: absolute; top: 0; left: 0; max-width:100%; height: auto">
+    <map style="z-index:3" name="myMap">
+        <area *ngFor="let marker of markers" alt="{{marker.code}}" shape="rect" coords="{{marker.x1}}, {{marker.y1}}, {{marker.x2}}, {{marker.y2}}" (click)="onMarkerSelect(marker)" (mouseenter)="onMarkerSelect(marker)" >
+    </map>
+    <canvas #myCanvas width="600" height="{{canvasHeight}}" style="pointer-events: none; z-index:2; position:absolute; top: 0; left: 0;" id="myCanvas"></canvas>
+</div>

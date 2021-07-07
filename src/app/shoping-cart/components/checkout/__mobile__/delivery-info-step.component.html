@@ -1,0 +1,77 @@
+﻿<div *ngIf="(isActive$ | async)">
+    <div class="checkout-mob">{{'Оформить заказ' | translate}}:</div>
+    <div class="stepwizard">
+        <div class="connecting-line"></div>
+        <div class="stepwizard-row setup-panel">
+            <div class="stepwizard-step">
+                <a class="first-step-mob"><svg class="success__svg">
+                        <use svg-use-reference="success"></use>
+                    </svg></a>
+                <p class="first-step-text-mob">{{'Список товаров' | translate}}</p>
+            </div>
+            <div class="stepwizard-step">
+                <a class="first-step-mob"><svg class="success__svg">
+                        <use svg-use-reference="success"></use>
+                    </svg></a>
+                <p class="active-step-text-mob activ-second-step">
+                    {{'Контактная информация' | translate}}
+                </p>
+            </div>
+            <div class="stepwizard-step">
+                <a class="active-step-mob">3</a>
+                <p class="dis-step-text-mob activ-third-step">
+                    {{'Доставка и оплата' | translate}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="blue-line-mob"></div>
+
+    <div class="delivery-block-mob">
+        <payment-order [initialPaymentId]="initialPaymentMethodId" [paymentId$]="paymentMethodId$"
+            (paymentChanged)="onPaymentChange($event)"></payment-order>
+        <!-- <product-installing></product-installing> -->
+        <delivery-settings (onDeliveryTypeSelect)="setDeliveryType($event)"
+            (onSettlementSelect)="setSelectedSettlement($event)" (onCourierDeliverySelect)="setUserAddress($event)"
+            (onDeliveryPointSelect)="setDeliveryPoint($event)" [paymentMethodId$]="paymentMethodId$"
+            [shipmentKey$]="deliveryTypeKey$" [settlementKey$]="settlementKey$"
+            [deliveryPointKey$]="deliveryPointKey$" [userAddress]="userAddress">
+        </delivery-settings>
+
+        <div class="order-tire-fitting" *ngIf="(deliveryTypeKey$ | async) === 8">
+            <div class="checkbox-tires">
+                <input class="filter__checkbox " type="checkbox" [jcf]="{ type:'Checkbox' }" [(ngModel)]="tireFittingOrder.tireFittingOrderSelected" (ngModelChange)="tireFittingOrderChange()">
+                <label class="label-tires-order">{{'Заказать шиномонтаж' | translate}}</label>
+                <div class="text-tires-order">{{'Выберите желаемую дату и время, наши менеджеры согласуют с Вами все детали.' | translate}}</div>
+            </div>
+            <div class="block-date-tires" *ngIf="tireFittingOrder.tireFittingOrderSelected">
+                <div class="date-tires-order">
+                    <span class="container__radio-title">{{'Дата' | translate}} <span class="red-star">*</span></span>
+                    <select class="sort-holder__select" [jcf]="{type:'Select'}" [(ngModel)]="tireFittingOrder.tireFittingDate" (ngModelChange)="tireFittingOrderChange()" style="width: 90%;">
+                        <option *ngFor="let i of getDatesForTireFitting()">{{i}}</option>
+                    </select>        
+                </div>
+                <div class="date-tires-order">
+                    <span class="container__radio-title">{{'Время' | translate}} <span class="red-star">*</span></span>
+                    <select class="sort-holder__select" [jcf]="{type:'Select'}" [(ngModel)]="tireFittingOrder.tireFittingTime" (ngModelChange)="tireFittingOrderChange()" style="width: 90%;">
+                        <option *ngFor="let time of getTimeForTireFitting()">{{time}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-add-comment">
+        <a class="ps-text-link" *ngIf="!commentDisplayed" (click)="showComment()">+ {{'Добавить комментарий' |
+            translate}}</a>
+        <a class="ps-text-link" *ngIf="commentDisplayed" (click)="hideComment()">- {{'Скрыть комментарий' |
+            translate}}</a>
+        <div class="checkout-area-box" *ngIf="commentDisplayed">
+            <textarea [(ngModel)]="orderComment" (ngModelChange)="updateComment()" class="checkou-contact-area"
+                cols="30" rows="10" placeholder="{{'Комментарий' | translate}}"></textarea>
+        </div>
+    </div>
+
+    <order-summary [deliveryTypeKey$]="deliveryTypeKey$" [discount]="discount" (orderSubmited)="submit()">
+    </order-summary>
+</div>

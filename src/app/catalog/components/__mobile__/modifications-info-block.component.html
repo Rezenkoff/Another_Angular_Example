@@ -1,0 +1,16 @@
+<div *ngIf="isDataLoaded" class="modifications-info-block">
+    {{ 'В интернет-магазине Автодок Вы сможете найти' | translate }}
+    <strong>{{ categoryTitle }}</strong>
+    {{ 'таких модификаций:' | translate }}
+    <ng-container *ngFor="let modif of modifications; let last = last;">
+        {{modif}}
+        <ng-container *ngIf="!last"> / </ng-container>
+    </ng-container>
+    <ng-container *ngFor="let year of years; let last = last;">
+        {{year}}<ng-container *ngIf="!last">, </ng-container>
+    </ng-container>
+    {{ 'года выпуска с такими двигателями:' | translate }}
+    <ng-container *ngFor="let engine of engines; let last = last">
+        {{engine}}<ng-container *ngIf="!last">, </ng-container>
+    </ng-container>.
+</div>

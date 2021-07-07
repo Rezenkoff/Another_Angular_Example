@@ -1,0 +1,43 @@
+﻿<div *ngIf="!inProcess" style="padding:0 12px;">
+    <h1 class="page-title">{{ (languageId$ | async) === 2 ? news.header : news.ukrHeader }}</h1>
+    <div class="news-content">
+        <div class="image-box news-image-box">
+            <img [src]="(languageId$ | async) === 2 ? news.previewPictureUrl : news.previewPictureUrlUkr" width="250" onerror="this.src = 'https://cdn.autodoc.ua/images/no_image.png'" alt="{{ (languageId$ | async) === 2 ? news.header : news.ukrHeader }}" title="{{ (languageId$ | async) === 2 ? news.header : news.ukrHeader }}">
+        </div>
+        <div class="text-section">
+            <div [innerHTML]="saveHtml"></div>
+        </div>
+    </div>
+    <div class="news-callback" style="">
+        <div class="news-callback__text">{{ 'Подберите мне запчасть' | translate }}</div>
+        <auto-doc-callback></auto-doc-callback>
+    </div>
+</div>
+
+<div *ngIf="inProcess">
+    <div class="container__row">
+        <div class="autodoc-loader"></div>
+    </div>
+</div>
+
+<div class="news-section-more">
+    <div class="latest-articles-more">
+        <div class="latest-news__top read-more">
+            <span class="latest-news__title">{{'ЧИТАЙТЕ ТАКЖЕ' | translate}}</span>
+            <a class="latest-news__all-news" [routerLink]="['/all-news']">{{'Все новости' | translate}}<span class="drop-arrow drop-arrow--green"><svg class="drop-arrow__svg drop-arrow__svg--green"><use svg-use-reference="arrow" /></svg></span></a>
+        </div>
+        <div class="latest-articles__holder row">
+            <div *ngIf="!latestNewsLoaded">
+                <div class="container__row">
+                    <div class="autodoc-loader"></div>
+                </div>
+            </div>
+            <div *ngFor="let news of latestNews" class="col-md-4 col-sm-6 col-xs-12">
+                <a class="latest-articles__link" (click)="openNews(news)">
+                    <img src="{{ getPreviewPictureUrl(news.previewPictureUrl) }}" onerror="this.src = 'https://cdn.autodoc.ua/images/no_image.png'" alt="{{ news.header }}" title="{{ news.header }}" height="136">
+                    <span class="latest-articles__name-more">{{ (languageId$ | async) === 2 ? news.description : news.ukrDescription }}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

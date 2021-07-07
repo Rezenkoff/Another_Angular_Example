@@ -1,0 +1,5 @@
+﻿<div class="main-input-search" style="padding-bottom: 25px">
+    <vin-search-input [isSearching$]="isSearching$" (onVinCodeEnter)="vinSearch($event)" (onGovernmentNumEnter)="governmentNumSearch($event)"></vin-search-input>
+    <br>
+    <span style="color:#e34761" *ngIf="errorMessageShown">{{'По указанному коду ничего не найдено' | translate}}</span>
+</div>

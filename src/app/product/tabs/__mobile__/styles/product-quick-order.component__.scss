@@ -1,0 +1,22 @@
+﻿
+
+.product-main-input-button {
+    display: inline-block;
+    cursor: pointer;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+    width: 55%;
+    height: 24px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: #1D5495;
+    font-weight: 700;
+    position: relative;
+    left: -1px;
+    text-decoration: none;
+    vertical-align: top;
+    border: 1px solid #99aec9;
+    &:hover {
+        background: #FFFFFF;
+        
+    }
+}

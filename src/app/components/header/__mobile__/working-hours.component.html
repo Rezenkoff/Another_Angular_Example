@@ -1,0 +1,21 @@
+﻿<div class="work-time">
+    <span class="header-location-icon"><svg class="header-location-icon__svg"><use svg-use-reference="wall-clock" /></svg></span>
+    <div class="location-choose">
+        <span class="location-holder__notes" >{{'График работы' | translate}}</span>
+        <span class="location-holder__button" (click)="toggleWindow()">{{' 7:30 - 18:00' | translate}}</span>
+    </div>
+    <div class="work-time__holder" [style.display]="showDropDown()">
+        <span class="close-icon" (click)="toggleWindow()"><svg class="close-icon__svg"><use svg-use-reference="close" /></svg></span>
+        <span class="work-time__title">{{'Прием заявок online:' | translate}}</span>
+        <span class="work-time__order">{{'КРУГЛОСУТОЧНО' | translate}}</span>
+        <span class="work-time__title">{{'График работы' | translate}}</span>
+        <span class="work-time__time">{{'с 7:30 до 18:00' | translate}}</span>
+        <ul class="work-time__list">
+            <li class="work-time__item">
+                <span class="work-time__day">{{'Суббота, Воскресенье: ' | translate}}</span>
+                <span class="work-time__description">{{'с 10:00 до 17:00' | translate}}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="work-overlay head-overlay" (click)="toggleWindow()" [style.display]="showDropDown()"></div>
+</div>

@@ -1,0 +1,15 @@
+﻿<form class="callback__form" action="#">
+    <span class="callback__label">{{'Введите Ваш номер телефона:' | translate}}</span>
+    <div class="callback__row">
+        <span class="callback__tel">+38</span><input class="callback__input" #phone="ngModel" [(ngModel)]="quickOrder.userPhoneNumber" maxlength="10" [ngModelOptions]="{standalone: true}" type="tel" pattern="{{_constants.PATTERNS.PHONE_PATTERN}}">
+    </div>
+    <div *ngIf="!isOrderProcessed" class="callback__buttons">
+        <button id="quickOrderBtn" class="callback__submit call-me" [ngClass]="{'disabled-button': phone.invalid || checkoutDisabled()}" (click)="createQuickOrder()">
+            <span *ngIf="!inProcess">{{'Оформить заказ' | translate}}</span>
+            <mini-spinner *ngIf="inProcess"></mini-spinner>
+        </button>
+    </div>
+    <div *ngIf="isOrderProcessed">
+        <h4 class="order-processed-text">{{'Заказ оформлен' | translate}}</h4>
+    </div>
+</form>

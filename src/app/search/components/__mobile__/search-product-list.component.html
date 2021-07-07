@@ -1,0 +1,159 @@
+﻿<div class="product-list" [ngClass]="{list:isList}">
+    <div *ngIf="!inProcess" class="clearfix">
+        <div class="product-box" *ngFor="let item of products$ | async; let i = index">
+            <!--workaround for server side rendering-->
+            <div class="product-box__image" *ngIf="!isServerPlatformAndBot()" (deferLoad)="item.showImage=true">
+                <a [routerLink]="['/product', item.transliteratedTitle ]" (click)="sendSelectContentEvent(item, i)" href="javascript:void(0)" *ngIf="item.showImage">
+                    <img class="product-box__img" [src]="getImage(item.id)" (error)="errorHandler($event)" alt="фото {{item.displayDescription}}" title="{{item.displayDescription}}" width="" height="200">
+                </a>
+                <span *ngIf="item.oldPrice" class="special">{{'акция' | translate}}</span>
+                <suitable-vehicles [productId]="item.id"></suitable-vehicles>
+            </div>
+            <!--workaround for server side rendering-->
+            <div class="product-box__image" *ngIf="isServerPlatformAndBot()">
+                <a [routerLink]="['/product', item.transliteratedTitle ]" (click)="sendSelectContentEvent(item, i)" href="javascript:void(0)">
+                    <img class="product-box__img" [src]="getImage(item.id)" (error)="errorHandler($event)" alt="фото {{item.displayDescription}}" title="{{item.displayDescription}}" width="" height="200">
+                </a>
+                <span *ngIf="item.oldPrice" class="special">{{'акция' | translate}}</span>
+                <suitable-vehicles [productId]="item.id"></suitable-vehicles>
+            </div>
+
+            <div class="product-box__description" (deferLoadProducts)="addToViewed(i)">
+                <div class="product-box__main-info">
+                    <div class="product-box__top-info">
+                        <a [routerLink]="['/product', item.transliteratedTitle ]" (click)="sendSelectContentEvent(item, i)" href="javascript:void(0)" class="product-box__name">
+                            <ng-container *ngIf="!isCategoryPage">
+                                {{item.displayDescription}}
+                            </ng-container>
+                            <ng-container *ngIf="isCategoryPage">
+                                {{getProductTitle(item)}}
+                            </ng-container>
+                        </a>
+                        <ng-container *ngIf="isCategoryPage && isSelectedCarAndMark() && categoryTitle">
+                            <div class="product-box__code" style="margin-top: 10px; margin-bottom: 0px">
+                                <span class="product-box__code-name">{{ item.displayDescription }}</span>
+                                <br />
+                                <span class="product-box__code-name" *ngIf="item.compulsory">Количество в упаковке: {{ item.incDecStep }}</span>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="!isCategoryPage || !isSelectedCarAndMark() || !categoryTitle">
+                            <div class="product-box__code" style="margin-top: 10px; margin-bottom: 0px">
+                                <span class="product-box__code-name">{{ 'Бренд' | translate}}:</span>
+                                <span class="product-box__code-number">{{item.brand}}</span>
+                                <br>
+                            </div>
+                            <div class="product-box__code">
+                                <span class="product-box__code-name">{{ 'Код товара:' | translate}}</span>
+                                <span class="product-box__code-number">{{item.lookupNumber}}</span>
+                                <br />
+                                <span class="product-box__code-name" *ngIf="item.compulsory">Количество в упаковке: {{ item.incDecStep }}</span>
+                            </div>
+                        </ng-container>
+                        <div class="product-box__status">
+                            <div *ngIf="isAvailable(item)" class="product-box__instock">
+
+                                {{ 'Есть в наличии' | translate}}: {{item.restCount}} шт.
+                            </div>
+                            <div *ngIf="inAnotherStore(item)" class="product-box__instock">
+                                {{ 'Есть в наличии' | translate}}
+                            </div>
+                            <div *ngIf="inAnotherTiresStore(item)" class="product-box__instock" style="color: #d89a39">
+                                {{ 'Есть в наличии. Доставка 1-2 дня' | translate}}
+                            </div>
+                            <div *ngIf="inAnotherPartner(item)" class="product-box__instock" style="color: #d89a39">
+                                {{ 'Доступно под заказ (от 3х дней)' | translate}}
+                            </div>
+                            <div *ngIf="notAvailable(item) && !analogsButtonShown(item)" class="product-box__instock product-box__instock--outstock">
+                                
+                                {{ 'Нет в наличии' | translate}}
+                            </div>
+                        </div>
+                        <div *ngIf="item.hardPackingRate != null" class="product-box__hardRate">Минимальное кол-во для заказа: {{item.hardPackingRate}} шт.</div>
+                    </div>
+                    <div class="product-box__bottom-info">
+                        <br />
+
+
+
+                        <div class="product-box__wishlist">
+                            <span class="no-line" href="javascript:void(0)" *ngIf="!item.isFavorite" (click)="addToFavorite(item)">
+                                <svg class="wishlist-icon__svg ">
+                                    <use svg-use-reference="active-star" />
+                                </svg><span class="addToFavor">{{'В избранное' | translate}}</span>
+                            </span>
+                            <span class="no-line" href="javascript:void(0)" *ngIf="item.isFavorite" (click)="addToFavorite(item)">
+                                <svg class="wishlist-icon__svg-yellow ">
+                                    <use svg-use-reference="active-star" />
+                                </svg><span class="addToFavor">{{'Добавлено в избранное' | translate}}</span>
+                            </span>
+                        </div>
+                        <div class="product-box__bottom-info product-box__bottom-info--related">
+                            <ng-container *ngIf="checkProductInBasket(item)">
+                                <div class="product-box__buttons"><a href="/order-checkout" class="product-box__item-in"><span class="item-in-basket">{{'Товар в корзине' | translate}}</span></a></div>
+                            </ng-container>
+                            <ng-container *ngIf="!checkProductInBasket(item)">
+                                <div *ngIf="analogsButtonShown(item)" class="product-box__buttons">
+                                    <span class="product-box__analog-btn" (click)="navigateToAnalogs(item)">{{'Показать аналоги' | translate}}</span>
+                                </div>
+                                <div *ngIf="purchaseButtonShown(item)" class="product-box__buttons">
+                                    <span class="product-box__buy" (click)="onProductAdd(item)"><svg class="basket-icon__svg basket-icon__svg--white"><use svg-use-reference="basket" /></svg><span class="buy-button">{{'Купить' | translate}}</span></span>
+                                </div>
+                                <div *ngIf="disabledPurchaseButtonShown(item)  && !(notAvailable(item) && !analogsButtonShown(item))" class="product-box__buttons">
+                                    <span class="product-box__buy disabled-button"><svg class="basket-icon__svg basket-icon__svg--white"><use svg-use-reference="basket" /></svg><span class="buy-button">{{'Купить' | translate}}</span></span>
+                                </div>
+                                <div *ngIf="notAvailable(item) && !analogsButtonShown(item)" class="product-box__buttons">
+                                    <a class="product-box__item-in" (click)="openNotifyWhenAvailablePopup(item)"><span class="product-box__analog-btn report-when-available">{{'Сообщить о наличии' | translate}}</span></a>
+                                </div>
+                            </ng-container>
+                            <div class="old-price-search" style="visibility:hidden;">100 399.99 грн</div>
+                            <div class="product-box__price-box">
+                                <div *ngIf="item.hidePrice">
+                                    <div class="prod-list-text">{{'Цену уточняйте' | translate}}</div>
+                                </div>
+                                <ng-container *ngIf="!item.hidePrice">
+                                    <div *ngIf="!notAvailable(item) && item.price>0">
+                                        <span *ngIf="item.oldPrice" class="product-box__new-price">{{item.price  |  currency:'UAH': '' | currencyFormat}} <span class="search-product-box-grn">грн</span></span>
+                                        <span *ngIf="item.oldPrice" class="product-box__price">{{item.oldPrice  |  currency:'UAH': '' | currencyFormat}} <span class="search-product-box-grn">грн</span></span>
+                                        <span *ngIf="!item.oldPrice" class="product-box__price">{{item.price  |  currency:'UAH': '' | currencyFormat}} <span class="search-product-box-grn">грн</span></span>
+                                    </div>
+                                </ng-container>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-box__icons-list">
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showMoreButtonDisplayed || moreProductsLoadInProcess" class="search-result">
+            <div *ngIf="moreProductsLoadInProcess" class="autodoc-loader" style="margin-top:30%"></div>
+            <div *ngIf="!moreProductsLoadInProcess" class="" (deferLoad)="refreshImageShow=true">
+                <button (click)="showMore()" class="more-items">
+                    <span class="">
+                        <svg class="more-items-svg"><use svg-use-reference="refresh-icon"></use></svg>
+                    </span>
+                    {{'Загрузить ещё' | translate}}
+                    <!--<img *ngIf="refreshImageShow" (error)="errorHandler($event)">-->
+                </button>
+            </div>
+        </div>
+        <div class="search-result"><b>{{'Всего по запросу найдено:' | translate}}</b> <span *ngIf="(totalCount$ | async) == 5000">></span><span>&nbsp;{{ totalCount$ | async}}</span> {{'товаров' | translate}}</div>
+        <order-popup [selectedProduct]="selectedProduct$" #orderpop></order-popup>
+        <notify-when-available #notifyWhenAvailablePopup></notify-when-available>
+        <div *ngIf="!inProcess && (totalCount$ | async) === 0">
+            <br />
+            <p>{{ 'Ничего не найдено?' | translate}}</p>
+            <p>{{'Оставьте свой номер и наш менеджер поможет Вам с подбором' | translate}}:</p>
+            <div>
+                <span class="product-box__buy" (click)="toggleCallbackWindow()">{{'Оставить номер' | translate}}</span>
+                <search-help-callback #callback></search-help-callback>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="inProcess">
+        <div class="container__row">
+            <div class="autodoc-loader"></div>
+        </div>
+    </div>
+</div>

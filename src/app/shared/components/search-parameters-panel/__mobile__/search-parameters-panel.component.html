@@ -1,0 +1,39 @@
+﻿<div class="sort-holder">
+    <div class="sort-holder__row">
+        <!--<div class="sort-holder__col">
+            <vehicle-type-switch [catalogType]="searchParameters.formFactor" (catalogTypeSelected)="setFormFactor($event)"></vehicle-type-switch>
+        </div>-->
+        <div class="sort-select">
+            <div class="sort-holder__col">
+                <!--<span class="sort-holder__title">{{'Сортировать:' | translate}}</span>-->
+                <div class="sort-holder__box">
+                    <select #selectSort [ngModel]="selectedOption" class="sort-holder__select" [jcf]="{type:'Select'}" (ngModelChange)="setSortByDisplayDescr(selectSort.value)">
+                        <option value="byDefault">{{'По популярности' | translate}}</option>
+                        <option value="byPriceAsc">{{'По цене (от дешевых)' | translate}}</option>
+                        <option value="byPriceDesc">{{'По цене (от дорогих)' | translate}}</option>
+                        <option value="byNameAsc">{{'По названию (А-Я)' | translate}}</option>
+                        <option value="byNameDesc">{{'По названию (Я-А)' | translate}}</option>
+                        <option value="byBrandAsc">{{'По бренду (А-Я)' | translate}}</option>
+                        <option value="byBrandDesc">{{'По бренду (Я-А)' | translate}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="sort-holder__col">
+                <!--<span class="sort-holder__title">{{'Показать по:' | translate}}</span>-->
+                <div class="sort-holder__box sort-holder__box--quantity">
+                    <select #selectCount [(ngModel)]="searchParameters.count" class="sort-holder__select" [jcf]="{type:'Select'}" (change)="setPageSize(selectCount.value)">
+                        <option [value]="20">20</option>
+                        <option [value]="40">40</option>
+                        <option [value]="60">60</option>
+                        <option [value]="100">100</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sort-holder__view">
+        <span class="sort-holder__title">Вид:</span>
+        <span class="sort-holder__view-list" [ngClass]="{active:isList}" (click)="setListClass(true)"><svg class="list-svg"><use svg-use-reference="list"></use></svg></span>
+        <span class="sort-holder__view-grid" [ngClass]="{active:!isList}" (click)="setListClass(false)"><svg class="grid-svg"><use svg-use-reference="grid"></use></svg></span>
+    </div>
+</div> 

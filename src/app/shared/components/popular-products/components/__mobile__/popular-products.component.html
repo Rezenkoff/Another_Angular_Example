@@ -1,0 +1,73 @@
+﻿﻿<div class="main-popular-product">
+    <div>
+        <span class="news-offers__title">{{'Топ-товары' | translate}}</span>
+        <div class="slider-header">
+            <div [ngClass]="leftNavDisabled ? 'slider-header__button-home' : 'slider-header__button-home-active'" (click)="moveLeft()"><span class="drop-arrow drop-arrow--blue slider-arrow"><svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow" /></svg></span></div>
+            <div [ngClass]="rightNavDisabled ? 'slider-header__button-home' : 'slider-header__button-home-active'" (click)="moveRight()"><span class="drop-arrow drop-arrow--blue news-arrow"><svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow" /></svg></span></div>
+        </div>
+    </div>
+    <div class="related" *ngIf="popularProducts.length > 0">
+        <drag-scroll #nav drag-scroll-x-disabled="true" drag-scroll-disabled="true" (reachesLeftBound)="LeftBound($event)" (reachesRightBound)="RightBound($event)">
+            <div drag-scroll-item *ngFor="let product of popularProducts; let i =  index">
+                <div class="related__box">
+                    <div class="related__image-box">
+                        <a [routerLink]="['/product', product.transliteratedTitle ]" (click)="sendSelectContentEvent(product, i)" href="javascript:void(0)">
+                            <img class="prelated__img" [src]="getImageUrl(product.id)" onerror="this.src='https://cdn.autodoc.ua/images/no_image.png'" alt="фото {{product.displayDescription}}" title="{{product.displayDescription}}" width="254" height="200">
+                            <span class="special" *ngIf="product.oldPrice" style="bottom:0px">{{'акция' | translate}}</span>
+                        </a>
+                    </div>
+                    <div class="related__description" (deferLoadProducts)="addToViewed(i)">
+                        <a [routerLink]="['/product', product.transliteratedTitle ]" (click)="sendSelectContentEvent(product, i)" href="javascript:void(0)" class="product-box__name">{{product.displayDescription.trim()}}</a>
+                        <div class="product-box__code" style="margin-top: 10px; margin-bottom: 0px">
+                            <span class="product-box__code-name">{{ 'Бренд' | translate}}:</span>
+                            <span class="product-box__code-number">{{ product.brand }}</span>
+                            <br>
+                        </div>
+                        <div class="product-box__code">
+                            <span class="product-box__code-name">{{ 'Код товара' | translate}}:</span>
+                            <span class="product-box__code-number">{{ product.lookupNumber }}</span>
+                            <br />
+                        </div>
+                        <div class="product-box__status">
+                            <div class="product-box__instock">
+                                {{ 'Есть в наличии' | translate}}: {{product.restCount}} шт.
+                            </div>
+                        </div>
+
+                        <div class="product-box__wishlist">
+                            <a class="no-line" href="javascript:void(0)" *ngIf="!product.isFavorite" (click)="addToFavorite(product)">
+                                <svg class="wishlist-icon__svg ">
+                                    <use svg-use-reference="active-star" />
+                                </svg><span class="addToFavor">{{'В избранное' | translate}}</span>
+                            </a>
+                            <a class="no-line" href="javascript:void(0)" *ngIf="product.isFavorite" (click)="addToFavorite(product)">
+                                <svg class="wishlist-icon__svg-yellow ">
+                                    <use svg-use-reference="active-star" />
+                                </svg><span class="addToFavor">{{'Добавлено в избранное' | translate}}</span>
+                            </a>
+                        </div>
+                        <div class="product-box__bottom-info product-box__bottom-info--related">
+                            <div class="product-box__price-box">
+                                <span class="product-box__new-price" [innerHTML]="priceFormatting(product.price)"></span>
+                                <span *ngIf="product.oldPrice" class="product-box__price">{{ product.oldPrice }} грн</span>
+                            </div>
+                            <div class="product-box__buttons">
+                                <div class="btn-buy-box">
+                                    <span *ngIf="!checkProductInBasket(product)" (click)="onProductAdd(product)" class="product-box__buy product-box__buy--related"><svg class="basket-icon__svg basket-icon__svg--white"><use svg-use-reference="basket" /></svg><span class="buy-button">{{'Купить' | translate}}</span></span>
+                                    <a *ngIf="checkProductInBasket(product)" href="/order-checkout" class="product-box__item-in"><span class="item-in-basket">{{'Товар в корзине' | translate}}</span></a> <!--кнопка появляется после клика на кнопку "купить"-->
+                                    <div class="container__sub-product-added">
+                                        <div class="basket-icon-box">
+                                            <svg class="basket-icon__svg"><use svg-use-reference="basket" /></svg>
+                                            <span class="product-box__comparison-add product-box__comparison-add--btn-add product-box__comparison-add--analogues"><svg class="instock-icon__svg instock-icon__svg--white"><use svg-use-reference="success" /></svg></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </drag-scroll>
+    </div>
+    <order-popup [selectedProduct]="selectedProduct$" #orderpop></order-popup>
+</div>

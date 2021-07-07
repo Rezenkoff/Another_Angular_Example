@@ -1,0 +1,24 @@
+<div>
+    <div class="sector-form garage-input" (click)="onFilterClear(filterSelected)">
+        <input class="form-input"
+               type="text"
+               [disabled]="isDisabled()"
+               [(ngModel)]="filterSearchString"
+               placeholder="{{ placeholder | translate}} "
+               #filterBox (keyup)="findElemFilter(filterBox.value)"
+               (click)="onClick()"
+               (focus)="$event.target.select();"
+               [ngClass]="{'autodoc-mini-loader': itemsListLoad }"
+               maxlength="30">
+        <span class="drop-arrow garage-arrow">
+            <svg class="drop-arrow__svg"><use svg-use-reference="arrow"></use></svg>
+        </span>        
+    </div>
+    <div *ngIf="isDropdownShown()" class="filter-dropdown-add-garage">
+        <span></span>
+        <div *ngFor="let item of tmpfilterDataList" (click)="selectedFilter(item)" class="settlement-item">
+            <span class="text-uppercase"><b>{{ item.value }}</b></span>&nbsp;<br />
+        </div>
+    </div>
+    <div class="head-overlay lang-overlay" (click)="hideDropdown()" [style.display]="getDisplay()"></div>
+</div>

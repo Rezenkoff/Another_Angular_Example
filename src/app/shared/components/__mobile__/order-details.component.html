@@ -1,0 +1,116 @@
+﻿<div class="cabinet-order-item" [style.display]="order.isOpen? 'block' : 'none'" *ngIf="order">
+    <div class="cabinet-order-item">
+        <span class="cabinet-order-name">{{'Детали заказа' | translate}}</span>
+        <span (click)=" toggleCollapse()" class="cabinet-order-description"><a class="order-more close-link-order">{{'Скрыть' | translate}}</a></span>
+        <div class="detail-order-cabinet">
+            <div class="cabinet-order-item">
+                <span class="cabinet-order-name">{{'Дата и время заказа' | translate}}</span>
+                <span class="cabinet-order-description">{{order.orderDateString}}</span>
+            </div>
+            <div class="cabinet-order-item">
+                <span class="cabinet-order-name">{{'Способ доставки' | translate}}</span>
+                <span class="cabinet-order-description">{{order.deliveryMethod}}</span>
+            </div>
+            <div class="cabinet-order-item">
+                <span class="cabinet-order-name">{{'Способ оплаты' | translate}}</span>
+                <span class="cabinet-order-description">{{order.paymentMethod}}</span>
+            </div>
+            <div class="cabinet-order-item">
+                <span class="cabinet-order-name cabinet-order-name-vertical">{{'Статус заказа' | translate}}</span>
+                <span  class="cabinet-order-description cabinet-order-description-mobile">{{order.statusDescription}}</span>
+            </div>
+            <div class="cabinet-order-item">
+                <span class="cabinet-order-name">{{'Комментарий' | translate}}</span>
+                <span class="cabinet-order-description">{{order.comment}}</span>
+            </div>
+            <div class="cabinet-order-item">
+                <span class="cabinet-order-name">{{'Заказ' | translate}}</span>
+                <span class="cabinet-order-description">{{order.id}}</span>
+            </div>
+            <div class="cabinet-order-item">
+                <span class="cabinet-order-name">{{'Автомобиль' | translate}}</span>
+                <span class="cabinet-order-description">{{order.model}}</span>
+            </div>
+            <div class="cabinet-order-item">
+                <span class="cabinet-order-name">{{'VIN' | translate}}</span>
+                <span class="cabinet-order-description">{{order.vin}}</span>
+            </div>
+            <div class="cabinet-order-item">
+                <span class="cabinet-order-name">{{'Адрес доставки' | translate}}</span>
+                <div class="cabinet-order-description clearfix">
+                    <div class="">
+                        <div class="img-order-cabinet">
+                            <img [src]="orderDeliveryInfo.imageUrl" class="" width="96" height="">
+                        </div>
+                        <div class="map-info-cabinet">
+                            <address class="map-info__address">
+                                <div class="address-icon address-icon-contact">
+                                    <svg class="address-icon__svg address-icon__svg--blue">
+                                        <use svg-use-reference="placeholder" />
+                                    </svg>
+                                </div>
+                                <div class="address-of-sto">
+                                    {{order.deliveryAddress}}
+                                </div>
+                            </address>
+                            <div class="map-contacts">
+                                <div class="phone-list-block">
+                                    <div class="address-icon tel-icon-contact">
+                                        <svg class="address-icon__svg address-icon__svg--blue">
+                                            <use svg-use-reference="telephone" />
+                                        </svg>
+                                    </div>
+                                    <ul class="map-contacts__phone-list">
+                                        <li>
+                                            <a class="map-contacts__phone-link" href="">{{phone}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div *ngIf="order.latitudeDP != 0 && order.longitudeDP != 0" class="address-of-sto">
+                                <a (click)="openDeliveryPointMap()" class="order-more">{{'Показать на карте' | translate}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="rows.length > 0" class="block-table-order-item">
+                        <table class="table-order-item">
+                            <thead>
+                                <tr>
+                                    <th>{{'Код по каталогу' | translate}}</th>
+                                    <th>{{'Название' | translate}}</th>
+                                    <th>{{'Кол-во' | translate}}</th>
+                                    <th>{{'Цена' | translate}}</th>
+                                    <th>{{'Сумма' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of rows">
+                                    <td><a href="{{ productUrl(item.transliteratedTitle) }}" target="_blank">{{ item.articleNumber }}</a></td>
+                                    <td><a href="{{ productUrl(item.transliteratedTitle) }}" target="_blank">{{ item.artName }}</a></td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td class="hidden-xs">{{ item.price }} грн.</td>
+                                    <td>{{ item.price }}</td>
+                                    <td>{{ item.summa }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pay-batton-margin" *ngIf="paymentResult">
+                        <button class="btn btn-success" (click)="pay()">{{'Оплатить' | translate}}</button>
+                        <liqpay-widget></liqpay-widget>
+                    </div>
+                    <div class="cabinet-order-price">
+                        <div>{{'Всего:' | translate}}</div>
+                        <div class="cabinet-total-price">{{order.orderSum}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="order">
+    <show-point-on-map-popup #showpointonmappopup *ngIf="order?.deliveryMethodId === 6" [iconUrl]="'npmarker.png'" [latitudeCenter]="order?.latitudeDP" [longitudeCenter]="order?.longitudeDP" [latitudePoint]="order?.latitudeDP" [longitudePoint]="order?.longitudeDP" [zoom]="zoom"></show-point-on-map-popup>
+    <show-point-on-map-popup #showpointonmappopup *ngIf="order?.deliveryMethodId === 4" [iconUrl]="'marker.png'" [latitudeCenter]="order?.latitudeDP" [longitudeCenter]="order?.longitudeDP" [latitudePoint]="order?.latitudeDP" [longitudePoint]="order?.longitudeDP" [zoom]="zoom"></show-point-on-map-popup>
+    <show-point-on-map-popup #showpointonmappopup *ngIf="order?.deliveryMethodId === 9" [iconUrl]="'memarker.png'" [latitudeCenter]="order?.latitudeDP" [longitudeCenter]="order?.longitudeDP" [latitudePoint]="order?.latitudeDP" [longitudePoint]="order?.longitudeDP" [zoom]="zoom"></show-point-on-map-popup>
+</div>

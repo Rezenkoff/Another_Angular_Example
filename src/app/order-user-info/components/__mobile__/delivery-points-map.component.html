@@ -1,0 +1,37 @@
+﻿<div class="popup popup-order" style="z-index:2001; display: block;">
+    <div class="popup__overlay popup__overlay-order" style="display: block" (click)="closeWindow()"></div>
+    <div class="order-holder popup-basket" style="padding: 0">
+        <div class="mob-block-basket">
+            <div class="mob-title-basket">{{'Выберите отделение' | translate}}</div>
+            <span (click)="closeWindow()"><svg class="close-icon__svg close-icon-mob-basket"><use svg-use-reference="close"></use></svg></span>
+        </div>
+        <div class="order-holder__description">
+            
+            <div class="map-post-top">
+                <agm-map #agmMap style="height: 220px;" [latitude]="centerMap.latitude" [longitude]="centerMap.longitude" [(zoom)]="zoom" [disableDefaultUI]="true">
+                    <agm-marker-cluster imagePath="https://cdn.autodoc.ua/images/m/m">
+                        <ng-container *ngFor="let marker of (markersList$ | async); trackBy: trackByFn">
+                            <agm-marker *ngIf="marker.longitude != 0 && marker.latitude != 0" [latitude]="marker.latitude" [longitude]="marker.longitude" [iconUrl]="constants.G_MAPS.AUTODOC_MARKERS + marker.icon" (markerClick)="selectMarker(marker)">
+                                <agm-info-window #infoWindow [isOpen]="nameOnMapShown(marker)">
+                                    <strong>{{marker.shortName}}</strong>
+                                    <div class="btn-map-left" (click)="closeWindow()">
+                                        <a class="checkout-btn-mob-map">{{'Выбрать это отделение' | translate}}</a>
+                                    </div>
+									 <div class="btn-map-left" (click)="navigate(marker)">
+                                        <a class="checkout-btn-mob-map" >{{'Построить маршрут' | translate}}</a>
+                                    </div>
+                                </agm-info-window>
+                            </agm-marker>
+                        </ng-container>
+                    </agm-marker-cluster>
+                </agm-map>
+            </div>
+            <points-sidebar (pointActivated)="selectMarker($event)"
+                            (pointSelected)="applyMarket($event)"
+                            [selectedPointKey$]="selectedDeliveryPointKey$"
+                            [deliveryMethodKey$]="deliveryMethodKey$"
+                            [points$]="markersList$">
+            </points-sidebar>
+        </div>
+    </div>
+</div>

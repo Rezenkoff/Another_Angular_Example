@@ -1,0 +1,13 @@
+﻿<div class="review__form">
+    <textarea [(ngModel)]="text" class="review__area" placeholder="{{ 'Ваш отзыв' | translate}}" cols="30" rows="10"></textarea>
+    <div class="review__row">
+        <div class="review__input-box">
+            <input [(ngModel)]="name" class="review__input" type="text" placeholder="{{'Имя' | translate}}">
+            <input [(ngModel)]="phone" class="review__input" type="tel" mask="(000) 000-00-00" prefix="+38" [showMaskTyped]="true">
+        </div>
+        <div class="review__submit-box">
+            <product-rate (rateSelected)="setSelectedRate($event)"></product-rate>
+            <button [innerHTML]="submitButtonShow$ | async" [ngClass]="{'disabled-button': !submitEnabled()}" (click)="submit()" class="review__submit"></button>
+        </div>
+    </div>
+</div>

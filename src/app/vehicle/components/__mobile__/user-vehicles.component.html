@@ -1,0 +1,29 @@
+﻿<p>{{'Ваш гараж' | translate}}</p>
+<div class="checkbox-active">
+    <input  type="checkbox" [jcf]="{ type:'Checkbox' }" class="checkbox-garage" /><span class="align-middle">{{'Отобразить неактивные' | translate}}</span>
+</div>
+<table class="main-table--shadow table-vechicle">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                {{'Бренд' | translate}}
+            </th>
+            <th class="hidden-sm hidden-xs">
+                {{'Модель' | translate}}
+            </th>
+         
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let vehicle of userVehicles | vehicleFilter" class="main-table__item" (click)="onCarSelected(vehicle)" style="cursor:pointer">
+            <ng-template [ngIf]="vehicle.vin">
+                <td><img onerror="this.src = 'https://cdn.autodoc.ua/images/marks/car-icon.png'" [src]="getLogo(vehicle.mark)" width="40" height="40"></td>
+                <td>{{vehicle.mark}}</td>
+                <td class="hidden-sm hidden-xs">{{vehicle.model}}</td>
+
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+<button (click)="toggleAddBox()" class="addGarage__button">{{'Добавить в гараж' | translate}}</button>

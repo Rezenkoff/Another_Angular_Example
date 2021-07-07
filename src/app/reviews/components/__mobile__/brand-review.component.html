@@ -1,0 +1,61 @@
+﻿<div>
+    <div class="brand-circle-comment">
+        <div class="brand-initials">{{getInitials()}}</div>
+    </div>
+    <div class="brand-text-comment">
+        <div class="brand-full-name">{{ review.authorName }}</div>
+        <div *ngIf="review.isAdmin" class="brand-label-status">
+            <strong class="logo manager-icon">Autodoc</strong>AutoDoc
+        </div>
+        <div class="brand-date">{{ review.dateTime | date:'dd:MM:yyyy'}}</div>
+        <div>
+            <div class="brand-info-item">
+                <ng-container *ngIf="!parentReview">
+                    {{ 'оставил отзыв о товаре' | translate }}
+                    <a routerLink="/product/{{ review.productUrl }}">{{ review.productName }}</a>
+                </ng-container>
+                <ng-container *ngIf="parentReview">
+                    {{ 'ответ на комментарий от' | translate }}<a> {{ parentReview.authorName }}</a>
+                </ng-container>
+            </div>
+            <div *ngIf="!parentReview" class="brand-stars-icon">
+                <span *ngFor="let i of [1,2,3,4,5]">
+                    <svg [ngClass]="{'full-star__svg': i <= review.rate, 'empty-star__svg' : i > review.rate}">
+                        <use svg-use-reference="active-star" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <div class="brand-own-comment">
+            {{ review.text }}
+        </div>
+        <div class="brand-answer clearfix">
+            <a (click)="showAnswerArea()">{{ 'Ответить' | translate }}</a>
+            <div class="brand-likes">
+                <span>
+                    <svg (click)="likeClick()" class="full-like-green__svg">
+                        <use *ngIf="!isLiked" svg-use-reference="like-top-empty" />
+                        <use *ngIf="isLiked" svg-use-reference="like-top-full" />
+                    </svg>
+                    <span class="summ-likes">{{review.likesCount}}</span>
+                </span>
+                <span>
+                    <svg (click)="dislikeClick()" class="empty-like-red__svg">
+                        <use *ngIf="!isDisliked" svg-use-reference="like-bottom-empty" />
+                        <use *ngIf="isDisliked" svg-use-reference="like-bottom-full" />
+                    </svg>
+                    <span class="summ-likes">{{review.dislikesCount}}</span>
+                </span>
+            </div>
+        </div>
+        <reply-form *ngIf="isShowAnswerArea"
+                    [parentReviewId]="review.reviewId"
+                    (replySaved)="updateReviews($event)">
+        </reply-form>
+        <ng-container *ngIf="review.childReviews?.length">
+            <ng-container *ngFor="let child of review.childReviews; trackBy: trackByFn">
+                <brand-review [review]="child" [parentReview]="review"></brand-review>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

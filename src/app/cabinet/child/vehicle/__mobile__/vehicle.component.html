@@ -1,0 +1,189 @@
+﻿<div class="vehicle-garage">
+    <add-vehicle-mygarage *ngIf="needAddCar || userVehiclesList.length == 0" (onNeedAddCar)="onNeedAddCar($event)" (onAddUserCar)="onAddUserCar($event)"></add-vehicle-mygarage>
+    <div *ngIf="userVehiclesList.length > 0 && !needAddCar">
+        <div class="header-vehicle">
+            {{'Мой гараж' | translate}}
+            <a [routerLink]="['/']" ><span class="header-filter-close">
+                <svg class="close-icon__svg header-filter-close-svg"><use svg-use-reference="close"></use></svg>
+            </span></a>
+        </div>
+        <div class="vehicle-mob">
+            <div class="vehicle-title-car">{{'Выбранный автомобиль' | translate}}</div>
+            <a  (click)="addCar()" class="ps-text-link garage-add-link">{{'+ Добавить авто' | translate}}</a>
+            <div class="more-garage" *ngIf="selectedUserCar != null">
+                <div class="more-garage-image">
+                    <img class="img-car-garage" onerror="this.src = 'https://cdn.autodoc.ua/images/marks/car-icon.png'" src="{{selectedUserCar.urlImg}}" />
+                    <img class="img-car-garage" onerror="this.src = 'https://cdn.autodoc.ua/images/marks/car-icon.png'" />
+                </div>
+                <div class="container__added-name-box">
+                    <div class="garage-brand">{{selectedUserCar.ownNameCar}} {{selectedUserCar.mark}} {{selectedUserCar.model}}</div>
+                    <div class="garage-year-title">{{'Год выпуска:' | translate}} <span>{{selectedUserCar.year}}</span></div>
+                    <div class="garage-year-title">VIN: <span>{{selectedUserCar.vin}}</span></div>
+                    <div class="garage-year-title">{{'День рождения:' | translate}} <span>{{getBirthdaySelectedCar()}}</span></div>
+                    <div>
+                        <a class="garage-deselect-edit" (click)="needEditVehicle()">{{'Редактировать' | translate}}</a>
+                        <a class="garage-deselect" (click)="changeActive()">{{'Удалить' | translate}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="my-garage">
+                <div class="selected-box">
+                    <div class="properties-list" *ngIf="selectedUserCar != null && selectedUserCar.carInfoPP != null">
+                        <div class="properties-item ">
+                            <span class="properties-name">Выпускался:</span>
+                            <span class="properties-description" *ngIf="selectedUserCar.carInfoPP.years != null">{{selectedUserCar.carInfoPP.years}}</span>
+                        </div>
+                        <div class="properties-item" *ngIf="selectedUserCar.carInfoPP.engine_Cap != null && selectedUserCar.carInfoPP.engine_Type != null">
+                            <span class="properties-name">{{'Объем двигателя:' | translate}}</span>
+                            <span class="properties-description">{{selectedUserCar.carInfoPP.engine_Cap}} ccm ({{selectedUserCar.carInfoPP.engine_Type}})</span>
+                        </div>
+                        <!--<div class="properties-item ">
+                    <span class="properties-name">Мощность двигателя:</span>
+                    <span class="properties-description">97 PS</span>
+                </div>
+                <div class="properties-item ">
+                    <span class="properties-name">Код двигателя:</span>
+                    <span class="properties-description">G4EE</span>
+                </div>
+                <div class="properties-item ">
+                    <span class="properties-name">Привод:</span>
+                    <span class="properties-description">Передний</span>
+                </div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="help-block">
+                <div class="left-help-block">
+                    <span class="icon-help">
+                        <svg class=""><use svg-use-reference="vehicle-industry"></use></svg>
+                    </span>
+                    <a [routerLink]="[getLink(1)]">{{'Каталог запчастей' | translate }}</a>
+                </div>
+                <div class="right-help-block">
+                    <span class="icon-help">
+                        <svg class=""><use svg-use-reference="vehicle-car"></use></svg>
+
+                    </span>
+                    <a (click)="navigate(selectedUserCar)">{{'Запчасти для ТО' | translate }}</a>
+                </div>
+                <div class="centre-help-block">
+                    <span class="icon-help">
+                        <svg class=""><use svg-use-reference="vehicle-master"></use></svg>
+                    </span>
+                    <a [routerLink]="['/order-main/order-step']" (click)="helpGarage()">{{'Помощь в подборе запчастей' | translate }}</a>
+                </div>
+            </div>
+            <div *ngIf="isNeedEdit">
+                <div>
+                    <div class="garage-bold-text">{{'Добавьте VIN код авто' | translate }}</div>
+                    <div class="garage-simple-text">{{'Самый точный способ найти запчасть для машины это поиск по VIN коду.' | translate }}</div>
+                    <div >
+                        <div style="position: relative;">
+                            <input class="form-input selected-auto-input"
+                                   type="text"
+                                   placeholder="{{'Введите VIN номер' | translate }}"
+                                   mask="000000000000000"
+                                   [(ngModel)]="selectedUserCar.vin"
+                                   (ngModelChange)="ngOnChangesVin()" />
+                            <span class="select-icon-vehicle">
+                                <svg width="24" height="24"><use svg-use-reference="vehicle-question" /></svg>
+                                <span class="vin-foto">
+                                    <img src="https://cdn.autodoc.ua/VIN_info.png" width="346" height="248" />
+                                    <span>{{'Vehicle identification number (VIN) — уникальный код транспортного средства, состоящий из 17 символов. В коде представлена информация о производителе, характеристиках транспортного средства, и годе выпуска.' | translate}}</span>
+                                </span>
+                            </span>
+                        </div>
+                        <a class="btn-selected-auto save-btn-vehicle" [ngClass]="{'active-btn-vehicle' : activBtnVehicleVin}" (click)="saveSelectedCar(1)">{{'Сохранить VIN' | translate }}</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="garage-bold-text">{{'Как вы зовёте Вашу “ласточку”?' | translate }}</div>
+                    <div class="garage-simple-text">{{'Имя Вашего авто появится рядом с маркой и моделью.' | translate }}</div>
+                    <div>
+                        <input class="form-input selected-auto-input"
+                               type="text"
+                               placeholder="{{'Как вы называете свой Пепелац?' | translate }}"
+                               mask="000000000000000"
+                               [(ngModel)]="selectedUserCar.ownNameCar"
+                               (ngModelChange)="ngOnChangesName()" />
+                        <a class="btn-selected-auto save-btn-vehicle" [ngClass]="{'active-btn-vehicle' : activBtnVehicleName}" (click)="saveSelectedCar(2)">{{'Сохранить Имя' | translate }}</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="garage-bold-text">{{'Какой пробег у Вашей машины? (тыс. км)' | translate }}</div>
+                    <div class="garage-simple-text">{{'Это поможет нам в рекомендациях для планового ТО соответствующих узлов.' | translate }}</div>
+                    <div>
+                        <input class="form-input selected-auto-input"
+                               type="number"
+                               placeholder="{{'Введите пробег' | translate }}"
+                               [(ngModel)]="selectedUserCar.milage"
+                               (ngModelChange)="ngOnChangesMilage()" />
+                        <a class="btn-selected-auto save-btn-vehicle" [ngClass]="{'active-btn-vehicle' : activBtnVehicleMilage}" (click)="saveSelectedCar(3)">{{'Сохранить Пробег' | translate }}</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="garage-bold-text">{{'Мы дарим подарки в день рождения машины!' | translate }}</div>
+                    <div class="garage-simple-text">{{'Это может быть дата покупки или регистрации, или сегодняшняя дата :)' | translate }}</div>
+                    <div class="garage-flex">
+                        <div class="garage-bonus selected-bonus">
+                            <input class="form-input"
+                                   type="text"
+                                   placeholder="{{'Число' | translate }}"
+                                   [(ngModel)]="day"
+                                   (click)="toggleShowDay()">
+                            <span class="drop-arrow garage-arrow-more">
+                                <svg class="drop-arrow__svg"><use svg-use-reference="arrow"></use></svg>
+                            </span>
+                            <div *ngIf="showDay" class="filter-dropdown-container">
+                                <span></span>
+                                <div *ngFor="let item of GetDateDays(dateDays)" (click)="selectedDay(item)" class="settlement-item">
+                                    <span class="text-uppercase"><b>{{ item }}</b></span>&nbsp;<br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="garage-bonus selected-bonus">
+                            <input class="form-input"
+                                   type="text"
+                                   placeholder="{{'Месяц' | translate }}"
+                                   [(ngModel)]="month"
+                                   (click)="toggleShowMonth()">
+                            <span class="drop-arrow garage-arrow-more">
+                                <svg class="drop-arrow__svg"><use svg-use-reference="arrow"></use></svg>
+                            </span>
+                            <div *ngIf="showMonth" class="filter-dropdown-container">
+                                <span></span>
+                                <div *ngFor="let item of GetDateMonth(dateMonth)" (click)="selectedMonth(item)" class="settlement-item">
+                                    <span class="text-uppercase"><b>{{ item }}</b></span>&nbsp;<br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="garage-bonus selected-bonus">
+                            <input class="form-input"
+                                   type="text"
+                                   placeholder="{{'Год' | translate }}"
+                                   [(ngModel)]="year"
+                                   (click)="toggleShowYear()">
+                            <span class="drop-arrow garage-arrow-more">
+                                <svg class="drop-arrow__svg"><use svg-use-reference="arrow"></use></svg>
+                            </span>
+                            <div *ngIf="showYear" class="filter-dropdown-container">
+                                <span></span>
+                                <div *ngFor="let item of GetDateYears(dateYear)" (click)="selectedYear(item)" class="settlement-item">
+                                    <span class="text-uppercase"><b>{{ item }}</b></span>&nbsp;<br />
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn-selected-auto save-btn-vehicle" [ngClass]="{'active-btn-vehicle' : activBtnVehicleBirthday}" (click)="saveBirthday()">{{'Сохранить Дату' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <vehicle-list-mygarage *ngIf="!needAddCar" (onSelectedUserCar)="onSelectedUserCar($event)"></vehicle-list-mygarage>
+        </div>
+    </div>
+</div>
+<div *ngIf="inProcess">
+    <div class="container__row">
+        <div class="autodoc-loader"></div>
+    </div>
+</div>
+

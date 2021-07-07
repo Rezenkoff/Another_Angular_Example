@@ -1,0 +1,36 @@
+﻿<div class="delivery-info-page">
+    <div class="success-holder">
+        <p *ngIf="isInvoiceExists" class="orderInWay">{{'Ваш заказ уже в пути!' | translate}}.</p>
+        <div class="pictureInWay">
+            <img src="https://cdn.autodoc.ua/images/inWay.png" />
+        </div>
+        <div class="info-order">
+            <b>{{'Спасибо, за покупку' | translate}}!</b><br />
+            {{'Номер Вашего заказа' | translate}} {{ orderId }}.<br />
+            <ng-container *ngIf="isInvoiceExists">
+                {{'Ожидайте доставки по указанному Вами адресу' | translate }}
+            </ng-container>
+            <ng-container *ngIf="!isInvoiceExists">
+                {{'Менеджер свяжется с вами после обработки заказа.' | translate }}
+            </ng-container>
+        </div>
+        <ng-container *ngIf="isInvoiceExists">
+            <button *ngIf="!secretLinkCode" class="success__button" href="javascript:void(0)" [routerLink]="['/cabinet/order']">
+                {{'Отследить статус заказа вы можете в личном кабинете' | translate}}<span class="btn-arrow">
+                    <svg class="btn-arrow__svg"><use svg-use-reference="btn-arrow" /></svg>
+                </span>
+            </button>
+            <button *ngIf="secretLinkCode" class="success__button" href="javascript:void(0)" [routerLink]="['/s/' + secretLinkCode]">
+                {{'Статус заказа' | translate}}<span class="btn-arrow">
+                    <svg class="btn-arrow__svg"><use svg-use-reference="btn-arrow" /></svg>
+                </span>
+            </button>
+        </ng-container>
+    </div>
+    <div class="container">
+        <div class="success-holder form-group" *ngIf="!isEmailExists" style="display:grid">
+            <input class="form-control" [(ngModel)]="email" type="email" placeholder="Email" />
+            <button (click)="setEmail()" class="btn btn-primary">{{ 'Следить за изменением статуса по e-mail' | translate }}</button>
+        </div>
+    </div>
+</div>

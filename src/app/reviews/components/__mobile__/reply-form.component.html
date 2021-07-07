@@ -1,0 +1,12 @@
+﻿<div class="review-comment-box">
+    <textarea [(ngModel)]="text" class="review-brand" placeholder="{{ 'Ваш отзыв' | translate}}" cols="30" rows="10"></textarea>
+    <div class="review__row">
+        <div class="review__input-box">
+            <input [(ngModel)]="name" class="review-input-brand" style="margin-bottom: 12px;" type="text" placeholder="{{'Имя' | translate}}">
+            <input [(ngModel)]="phone" class="review-input-brand" type="tel" mask="(000) 000-00-00" prefix="+38" [showMaskTyped]="true">
+        </div>
+        <div class="review__submit-box">
+            <a [ngClass]="{'disabled-button': !submitEnabled() || isLoading }" (click)="submit()" class="review-submit-btn">{{'Оставить отзыв' | translate}}</a>
+        </div>
+    </div>
+</div>

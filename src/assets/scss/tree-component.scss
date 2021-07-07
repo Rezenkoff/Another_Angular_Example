@@ -1,0 +1,67 @@
+﻿.node-content-wrapper {
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 2px;
+    transition: background-color .15s,box-shadow .15s;
+}
+
+.node-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.node-content-wrapper-active,
+.node-content-wrapper.node-content-wrapper-active:hover,
+.node-content-wrapper-active.node-content-wrapper-focused {
+    background: #beebff;
+}
+
+.node-content-wrapper-focused {
+    background: #e7f4f9
+}
+
+.node-content-wrapper:hover {
+    background: #f7fbff
+}
+
+.node-content-wrapper-active, .node-content-wrapper-focused, .node-content-wrapper:hover {
+    box-shadow: inset 0 0 1px #999;
+}
+
+.node-content-wrapper.is-dragging-over {
+    background: #ddffee;
+    box-shadow: inset 0 0 1px #999;
+}
+
+.node-content-wrapper.is-dragging-over-disabled {
+    opacity: 0.5
+}
+
+tree-viewport {
+    -webkit-tap-highlight-color: transparent;
+    height: 100%;
+    overflow: auto;
+    display: block;
+}
+
+.empty-tree-drop-slot .node-drop-slot {
+    height: 20px;
+    min-width: 100px
+}
+
+tree-root .angular-tree-component-rtl {
+    direction: rtl;
+}
+
+tree-root .angular-tree-component-rtl .toggle-children-wrapper-collapsed .toggle-children {
+    transform: rotate(180deg) !important;
+}
+
+tree-root .angular-tree-component-rtl .tree-children {
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+tree-node-checkbox {
+    padding: 1px;
+}

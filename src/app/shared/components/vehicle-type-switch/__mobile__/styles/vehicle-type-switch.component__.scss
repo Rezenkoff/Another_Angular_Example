@@ -1,0 +1,144 @@
+.header-tires-selection {
+    background: #f5f7fa;
+    padding: 12px 12px 0;
+    text-align: left;
+    border: 1px solid #C5D5EA;
+    border-radius: 6px 6px 0px 0px;
+}
+.link-tab-tires {
+    color: #1d5495;
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration: none;
+    padding-top: 12px;
+
+    &:hover {
+        color: #1d5495;
+    }
+}
+.tab-tires {
+    background: linear-gradient(180deg,#fff,#f5f7fa);
+    border: 1px solid #c5d5ea;
+    border-bottom: none;
+    text-align: center;
+    border-radius: 6px 6px 0 0;
+    padding-top: 12px;
+    position: relative;
+    display: inline-block;
+    width: 48%;
+    height: 42px;
+    vertical-align: top;
+    top: 1px;
+}
+
+.tires-title {
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #414141;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+.tires-slider {
+    padding: 12px;
+}
+
+.open-tires {
+    background: #FFFFFF !important;
+}
+
+.open-tires .link-tab-tires {
+    color: #414141;
+}
+
+.close-tires {
+    border-bottom: 1px solid #c5d5ea !important;
+}
+.right-tab-tires {
+    float: right;
+}
+
+.popular-parametr-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .block-popular-parametrs {
+        padding: 0 10px;
+    }
+
+    ul {
+        margin-left: 0;
+        padding-left: 0;
+
+        li {
+            list-style-type: none;
+
+            a {
+                text-decoration: none;
+                color: #1d5495;
+            }
+        }
+    }
+}
+
+.radius-psrsmetr {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #414141;
+    margin-bottom: 12px;
+}
+
+.block-popular-parametrs {
+    padding: 0;
+}
+.popular-parametr-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.radius-popular {
+    text-align: center;
+}
+.r-popular {
+    font-size: 11px;
+    line-height: 13px;
+    background: #FFFFFF;
+    border: 1px solid #C5D5EA;
+    border-radius: 6px;
+    color: #1D5495;
+    padding: 9px 12px;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 12px;
+
+    &:hover {
+        color: #1D5495;
+        text-decoration: underline;
+    }
+}
+
+.r-popular:last-child {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.r-active {
+    background: #F5F7FA;
+    color: #414141;
+
+    &:hover {
+        color: #414141;
+        text-decoration: underline;
+    }
+}
+.tires-title-popular, .tires-brand-title-popular {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #414141;
+    text-align: center;
+}

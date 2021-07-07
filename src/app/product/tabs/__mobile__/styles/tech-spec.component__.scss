@@ -1,0 +1,54 @@
+﻿.watched-recently-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #414141;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+.tab-specifications-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 16px;
+    line-height: 24px;
+    color: #414141;
+}
+.tab-specifications-item {
+    padding: 6px 24px;
+}
+.tab-specifications-name {
+    color: #99AEC9;
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+
+.tab-specifications-description {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+
+.tab-specifications-item:nth-child(2n) {
+    background: #F5F7FA;
+    border-radius: 6px;
+}
+.block-specifications {
+    margin-bottom: 60px;
+    padding-right: 24px;
+    width: 75%;
+    display: inline-block;
+    vertical-align: top;
+
+    @media screen and (max-width: 1200px) {
+        width: 70%;
+    }
+
+    @media screen and (max-width: 1000px) {
+        width: 100%;
+    }
+}
+.main-item-tab .block-specifications {
+    width: 100%;
+}

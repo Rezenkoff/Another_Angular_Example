@@ -1,0 +1,28 @@
+﻿.catalog__item.parent.active-link > .catalog__link::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px !important;
+    margin-top: -4px !important;
+    background-size: initial !important;
+    background: initial !important;
+    background-image: url(https://cdn.autodoc.ua/images/sprite.png) !important;
+    background-position: 0 -38px !important;
+    width: 4px !important;
+    height: 8px !important;
+    transform: none !important;
+
+    @media screen and (max-width: 1250px) {
+        content: '';
+        position: absolute;
+        background: url(https://cdn.autodoc.ua/images/drop-arrow.png) no-repeat !important;
+        background-size: 24px 13px !important;
+        top: 50%;
+        right: 10px;
+        width: 24px !important;
+        height: 13px !important;
+        margin-top: -6px !important;
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg) !important;
+    }
+}

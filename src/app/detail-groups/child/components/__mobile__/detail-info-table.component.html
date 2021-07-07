@@ -1,0 +1,26 @@
+﻿<div style="max-height:610px;overflow:auto;">
+    <table class="main-table" style="margin-top: 10px;table-layout: fixed;width: 100%;">
+        <thead *ngIf="showHead">
+            <tr>
+                <th style="width:85px"></th>
+                <th>№</th>
+                <th class="align-left">{{'Наименование детали' | translate}}</th>
+                <th>{{'ОЕМ' | translate}}</th>
+                <th *ngIf="!isMobileScreen">{{'Инфо' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let detail of detailInfoList">
+            <tr [style.background-color]="getStyle(detail)" attr.name="{{detail.codeonimage}}" class="main-table__item" (click)="onRowHover(detail.codeonimage)" (mouseenter)="onRowHover(detail.codeonimage)" (mouseleave)="onRowLeave(detail.codeonimage)">
+                <td style="width:85px">
+                    <button class="btn btn-primary btn-sm" (click)="search(detail.oem)">{{'Найти' | translate}}</button>
+                </td>
+                <td>{{detail.codeonimage}}</td>
+                <td class="align-left">{{detail.name}}</td>
+                <td>{{detail.oem}}</td>
+                <td *ngIf="!isMobileScreen" matTooltip="{{trimSemicolumns(detail.note) || 'нет дополнительной информации'}}" matTooltipPosition="below">
+                    <span class="status-icon"><svg class="status-icon__svg work-icon__svg--blue work-icon__svg--order"><use svg-use-reference="work"></use></svg></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

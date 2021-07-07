@@ -1,0 +1,157 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "О компании"
+msgstr "Company"
+
+msgid "Доставка и оплата"
+msgstr "Delivery"
+
+msgid "Гарантия и возврат"
+msgstr "Warranty and returns"
+
+msgid "Как заказать"
+msgstr "How to order"
+
+msgid "Контакты"
+msgstr "Contacts"
+
+msgid "Ближайшие СТО"
+msgstr "Nearest service station"
+
+msgid "Личный кабинет"
+msgstr "Personal account"
+
+msgid "Выберите город:"
+msgstr "Select a city:"
+
+msgid "Поиск по VIN номеру,  по номеру или названию детали"
+msgstr "Search by VIN number, by number or detail`s name"
+
+msgid "Подбор по авто"
+msgstr "Selection by car"
+
+msgid "Каталог СТО"
+msgstr "Service stations catalog"
+
+msgid "Подберите мне запчасть"
+msgstr "Find me spare part"
+
+msgid "Выберите автомобиль"
+msgstr "Select a car"
+
+msgid "Укажите нужную запчасть"
+msgstr "Specify the required spare part"
+
+msgid "Выберите форму оплаты"
+msgstr "Select a form of paymen"
+
+msgid "Выберите форму доставки"
+msgstr "Select a form of delivery"
+
+msgid "Укажите контактную информацию"
+msgstr "Enter contact information"
+
+msgid "Назад"
+msgstr "Back"
+
+msgid "Следующий шаг"
+msgstr "Next step"
+
+msgid "Заказ подтверждаю"
+msgstr "Confirm order"
+
+msgid "1.Выберите Ваш автомобиль"
+msgstr "1.Select your car"
+
+msgid ""
+"Vehicle identification number (VIN) — уникальный код транспортного средства, "
+"состоящий из 17 символов. В коде представлена информация о производителе и "
+"характеристиках транспортного средства, и годе выпуска."
+msgstr ""
+"Vehicle identification number (VIN) —  is a unique code, including a serial "
+"number that contains from 17 symbols."
+
+msgid "*По данному VIN коду автомобиль не найден"
+msgstr "*No car code found for this VIN"
+
+msgid "*Сервис поиска по VIN недоступен"
+msgstr "*VIN search service is not available"
+
+msgid "или воспользуйтесь поиском по моделе"
+msgstr "or use the search by the model"
+
+msgid "Мои автомобили"
+msgstr "My cars"
+
+msgid "Выбор автомобиля"
+msgstr "Car selection"
+
+msgid "Выберите марку"
+msgstr "Select a model"
+
+msgid "Выберите модель"
+msgstr "Select a model"
+
+msgid "Выберите год выпуска"
+msgstr "Select a year of issue"
+
+msgid "Выбрать автомобиль"
+msgstr "Select car"
+
+msgid "Добавить в гараж"
+msgstr "Add to garage"
+
+msgid "2.укажите нужную запчасть"
+msgstr "2.specify the required spare part"
+
+msgid ""
+"Вы можете прикрепить файл со списком необходимых для Вас автозапчастей или "
+"фото запчасти. Не более 5 вложений объемом до 50 Мб"
+msgstr ""
+"You can attach a file with a list of necessary auto parts for you or a photo "
+"spare part. Up to 5 attachments up to 50 MB"
+
+msgid "3.выберите форму оплаты"
+msgstr "3.Select a payment form"
+
+msgid "Наличный расчет"
+msgstr "Cash"
+
+msgid "Банковский перевод"
+msgstr "Bank transfer"
+
+msgid "Приват24"
+msgstr "Provat24"
+
+msgid "Liqpay"
+msgstr "Liqpay"
+
+msgid "4.выберите способ доставки"
+msgstr "4.select a delivery method"
+
+msgid "Выберите способ доставки:"
+msgstr "Select a delivery method"
+
+msgid "Выберите СТО:"
+msgstr "Select service station"
+
+msgid "или"
+msgstr "or"
+
+msgid "5.укажите контактную информацию"
+msgstr "5.please provide contact information"
+
+msgid "Добавить комментарий"
+msgstr "Add comment"

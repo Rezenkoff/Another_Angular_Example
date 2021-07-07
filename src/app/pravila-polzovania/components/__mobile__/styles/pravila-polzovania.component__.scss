@@ -1,0 +1,35 @@
+.holder-filter {
+    background-color: #F5F7FA !important;
+    border-top: 1px solid #C5D5EA !important;
+    border-bottom: 1px solid #C5D5EA !important;
+    color: #414141 !important;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 12px;
+    border-radius: 0;
+}
+
+.holder-filter h4 a {
+    font-size: 14px;
+    line-height: 18px;
+    text-decoration: none;
+
+    &:hover {
+        color: #414141;
+    }
+}
+.panel-default > .holder-filter + .panel-collapse > .panel-body {
+    border-top-color: transparent !important;
+    padding: 0 0 15px 0 !important;
+}
+
+.panel-default > .holder-filter + .panel-collapse > .combobox-panel-body {
+    border-top-color: transparent !important;
+    padding: 0 0px 5px 0px !important;
+}
+.filter-arrow {
+    width: 16px !important;
+    height: 16px !important;
+    float: right;
+}

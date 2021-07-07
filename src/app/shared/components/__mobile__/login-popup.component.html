@@ -1,0 +1,53 @@
+﻿<div class="favorite-login-popup">
+        <span class="close-icon close-icon--order"  (click)="close()">
+            <svg class="close-icon__svg close-icon__svg--order">
+                <use svg-use-reference="close" />
+            </svg>
+        </span>
+        <div class="favorite-title-popup">{{'Войдите в аккаунт или зарегистрируйтесь' | translate}}</div>
+        <div class="">
+            <div class="">
+                <form novalidate>
+                    <div class="order-section__step-box" *ngIf="!inProcess">
+                        <div *ngIf="showSuccessMessage">
+                            <p class="auth-success-head">{{'Благодарим Вас за регистрацию на нашем сайте!' | translate}}</p>
+                            <p class="auth-success-text">{{'На указанный Вами почтовый ящик отправлено письмо с регистрационными данными.' | translate}}</p>
+                        </div>
+                        <div class="container__row">
+                            <span class="login__label">{{'Мобильный телефон' | translate}}</span>
+                            <div class="relative">
+                                <span class="auth-tel">+3 8</span><input class="login__input" type="tel" name="phoneNumber" [(ngModel)]="userLogin.phone" (ngModelChange)="onLoginInput($event)"
+                                                                         #phoneNumber="ngModel" placeholder="099999999" maxlength="10" required pattern="{{_constants.PATTERNS.PHONE_PATTERN}}">
+                            </div>
+                            <div *ngIf="!phoneNumber.valid && !phoneNumber.untouched" class="alert__alert-danger">
+                                {{'Некорректный мобильный номер' | translate}}
+                            </div>
+                        </div>
+                        <div class="container__row">
+                            <span class="login__label">{{'Пароль' | translate}}</span>
+                            <input class="login__input" id="password" type="password" (keyup.enter)="login()" name="password" [(ngModel)]="userLogin.password"
+                                   #password="ngModel" required>
+                            <div *ngIf="!password.valid && !password.untouched" class="alert__alert-danger">
+                                {{'Неверный пароль' | translate}}
+                            </div>
+                        </div>
+                        <div class="container-forgotPassword">
+                            <a class="container__row-example-text" (click)="forgotPassword()" href="javascript:void(0)">{{'Забыли пароль?' | translate}}</a>
+                        </div>
+
+                        <div class="container__row">
+                            <button [ngClass]="{ 'disabled-button': password.invalid || phoneNumber.invalid }" class="login__button" (click)="login()">
+                                {{'Войти' | translate}}
+                            </button>
+                            <button class="registration__button" (click)="registrationView()">{{'Регистрация' | translate}}</button>
+                        </div>
+                    </div>
+                    <div *ngIf="inProcess">
+                        <div class="container__row">
+                            <div class="autodoc-loader"></div>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+ </div>

@@ -1,0 +1,49 @@
+﻿<table class=" main-table--shadow table-vechicle">
+    <thead>
+        <tr>
+            <th></th>
+            <th (click)="onColumnClick('year')" class="hidden-sm hidden-xs">
+                {{'Год' | translate}}
+            </th>
+            <th (click)="onColumnClick('brand')">
+                {{'Бренд' | translate}}
+            </th>
+            <th (click)="onColumnClick('model')" class="hidden-sm hidden-xs">
+                {{'Модель' | translate}}
+            </th>
+            <th (click)="onColumnClick('vin')" class="hidden-sm hidden-xs">
+                {{'VIN' | translate}}
+            </th>
+            <th (click)="onColumnClick('stateNumber')">
+                {{'Гос номер' | translate}}
+            </th>
+            <th (click)="onColumnClick('milage')" class="hidden-sm hidden-xs">
+                {{'Пробег' | translate}}
+            </th>
+            <th>
+                {{'Редак-ть' | translate}}
+            </th>
+            <th class="hidden-sm hidden-xs"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let vehicle of (userVehicles$ | async ) | vehicleFilter:showDisabled;" class="main-table__item">
+            <td><img onerror="this.src = 'https://cdn.autodoc.ua/images/marks/car-icon.png'" [src]="getLogo(vehicle.mark)" width="40" height="40"></td>
+            <td class="hidden-sm hidden-xs">{{vehicle.year}}</td>
+            <td>{{vehicle.mark}}</td>
+            <td class="hidden-sm hidden-xs">{{vehicle.model}}</td>
+            <td class="hidden-sm hidden-xs">{{vehicle.vin}}</td>
+            <td>{{vehicle.stateNumber}}</td>
+            <td class="hidden-sm hidden-xs">{{vehicle.milage}}</td>
+            <td>
+                <div class="product-ico">
+                    <span matTooltip="{{'редактировать' | translate}}" matTooltipPosition="below" class="edit-icon" (click)="toggleEditBox(vehicle.id)"><svg class="car-icon__svg car-icon__svg--red"><use svg-use-reference="edit"></use></svg></span>
+                </div>
+            </td>
+            <td class="hidden-sm hidden-xs">
+                <button [style.background]="getDisButtonBackgroud(vehicle.isActive)" class="dis_button" (click)="changeActive(vehicle)" *ngIf="vehicle.isActive">{{ 'удалить' | translate }}</button>
+                <button [style.background]="getDisButtonBackgroud(vehicle.isActive)" class="dis_button" (click)="changeActive(vehicle)" *ngIf="!vehicle.isActive">{{ 'возобновить' | translate }}</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,49 @@
+﻿
+    <div style="padding: 0 12px;">
+        <div class="brand-circle-comment">
+            <div class="brand-initials">{{getInitials()}}</div>
+        </div>
+        <div class="product-text-comment">
+            
+            <div class="brand-full-name">{{ review.authorName }}</div>
+            <div *ngIf="review.isAdmin" class="brand-label-status">
+                <strong class="logo manager-icon">Autodoc</strong>AutoDoc
+            </div>
+            <div class="brand-date-desktop">{{ review.dateTime | date:'dd:MM:yyyy'}}</div>
+            <div>
+                <div class="brand-info-item">
+                    <div *ngIf="needStars">
+                        {{ 'оставил отзыв' | translate }}
+                    </div>
+                    <div *ngIf="!needStars">
+                        {{ 'ответил' | translate }}
+                    </div>
+                </div>
+                <div *ngIf="needStars" class="brand-stars-icon">
+                    <span *ngFor="let i of [1,2,3,4,5]">
+                        <svg [ngClass]="{'full-star__svg': i <= review.rate, 'empty-star__svg' : i > review.rate}">
+                            <use svg-use-reference="active-star" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="brand-own-comment">
+                {{ review.text }}
+            </div>
+            <a (click)="showReplyForm()" class="prod-whish-list">{{ 'Ответить' | translate }}</a>
+        </div>
+        <reply-form *ngIf="review.replyFormShown"
+                    [parentReviewId]="review.reviewId"
+                    (replySaved)="updateReviews($event)">
+        </reply-form>
+
+        <ng-container *ngIf="review.childReviews?.length">
+            <div style="margin-left:3%" *ngFor="let child of review.childReviews; trackBy: trackByFn" class="review__holder-list">
+                <review [review]="child" [productId]="productId" [needStars]="false" (closeOthersReplyForms)="closeReplyForms($event)"></review>
+            </div>
+        </ng-container>
+    </div>
+
+
+
+

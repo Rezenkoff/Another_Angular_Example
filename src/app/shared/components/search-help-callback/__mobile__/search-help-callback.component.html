@@ -1,0 +1,18 @@
+﻿<div class="quick-order__holder" [style.display]="showDropDown()">
+    <span class="close-icon" (click)="toggleWindow()"><svg class="close-icon__svg"><use svg-use-reference="close" /></svg></span>
+    <span class="callback__title">{{'Заявка на звонок' | translate}}</span>
+    <form class="callback__form" action="#">
+        <span class="callback__label">{{'Введите Ваш номер телефона:' | translate}}</span>
+        <div class="callback__row">
+            <span class="callback__tel">+38</span><input class="callback__input" #phone="ngModel" maxlength="10" [(ngModel)]="callback.userPhoneNumber" [ngModelOptions]="{standalone: true}" type="tel" pattern="{{_constants.PATTERNS.PHONE_PATTERN}}">
+        </div>
+        <div class="callback__buttons">
+            <button class="callback__submit call-me" [ngClass]="{'disabled-button': phone.invalid || inProcess || callback.userPhoneNumber.length==0}" (click)="createCallback()">
+                <span *ngIf="!inProcess">{{'Перезвонитe мне' | translate}}</span>
+                <mini-spinner *ngIf="inProcess"></mini-spinner>
+            </button>
+            <span class="callback__cancel" (click)="toggleWindow()">{{'Отмена' | translate}}</span>
+        </div>
+    </form>
+</div>
+<div class="callback-overlay head-overlay" (click)="toggleWindow()" [style.display]="showDropDown()"></div>

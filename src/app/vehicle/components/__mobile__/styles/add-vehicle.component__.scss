@@ -1,0 +1,84 @@
+.header-filter-close {
+    position: absolute;
+    right: 0;
+    margin: 4px 12px 0 0;
+}
+
+.header-filter-close-svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+.addGarage__bottom {
+    background: #3e77aa;
+    border: 1px solid #3e77aa;
+    color: #fff;
+    font-size: 13px;
+    line-height: 30px;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 20px;
+    margin: 20px 0 20px 0;
+    cursor: pointer;
+}
+button[disabled].addGarage__bottom {
+    opacity: 0.35;
+    cursor: not-allowed;
+    background: #3e77aa;
+}
+.cancelGarage {
+    background: #F44336;
+    border: 1px solid #f24343;
+    color: #fff;
+    font-size: 13px;
+    line-height: 30px;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 20px;
+    margin: 20px 0 20px 0;
+    cursor: pointer;
+}
+
+.vehicle-mob {
+    padding: 0 12px;
+}
+.header-vehicle {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 12px;
+}
+.choise-auto-title {
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 700;
+    color: #7b7b7b;
+}
+.add-vehicle-pad-1 {
+    padding: 10px;
+    background: #dee5e8;
+
+    @media screen and (max-width: 1024px) {
+        max-height: 700px;
+    }
+}
+.model-year-vin {
+    font-size: 15px;
+}
+.edit-form-input {
+    padding: 0;
+}
+
+.edit-form-input + .edit-form-input {
+    padding: 0 0 0 15px;
+
+    @media screen and (max-width: 992px) {
+        padding: 0;
+    }
+}

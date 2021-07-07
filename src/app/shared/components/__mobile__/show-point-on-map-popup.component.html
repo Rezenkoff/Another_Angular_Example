@@ -1,0 +1,11 @@
+﻿<div class="popup popup-route" style="display:block" *ngIf="isShowDropDown">
+    <div class="popup-route__holder" style="display:block" *ngIf="isShowDropDown">
+        <div class="contact__map footer-map">
+            <agm-map #agmMap style="height: 100%" [latitude]="latitudeCenter" [longitude]="longitudeCenter" [(zoom)]="zoom">
+                <agm-marker [latitude]="latitudePoint" [longitude]="longitudePoint" [iconUrl]="getIconUrl()">
+                </agm-marker>
+            </agm-map>
+        </div>
+        <span class="close-icon footer-icon-map close-icon--route" (click)="toggleWindow()"><svg class="close-icon__svg close-icon__svg--order"><use svg-use-reference="close" /></svg></span>
+    </div>
+</div>

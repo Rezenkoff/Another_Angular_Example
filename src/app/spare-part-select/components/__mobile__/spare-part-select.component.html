@@ -1,0 +1,10 @@
+﻿<div class="vin-block-mob clearfix">
+    <div class="vin-block-title-mob">{{'Подберём запчасти за Вас' | translate}}</div>
+    <div *ngIf="stepNumber === 1">
+        <spare-part-select-car (selectedCar)="selectCar($event)"></spare-part-select-car>
+    </div>
+
+    <div *ngIf="stepNumber === 2">
+        <spare-part-select-send-order (backToPreviousStep)="goToPreviousStep($event)" (isValidOrderSended)="ConfirmOrder($event)"></spare-part-select-send-order>
+    </div>
+</div>

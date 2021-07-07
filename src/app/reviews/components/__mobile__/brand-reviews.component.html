@@ -1,0 +1,11 @@
+﻿<div class="brand-next-category">
+    {{ 'Отзывы о бренде' | translate }} {{brand.name}}
+</div>
+<div>
+    <ng-container *ngIf="(reviews$ | async)">
+        <div *ngFor="let review of (reviews$ | async)?.reviews| slice:0:countShowedReviews; trackBy: trackByFn">
+            <brand-review [review]="review"></brand-review>
+        </div>
+    </ng-container>
+    <div *ngIf="countShowedReviews < (reviews$ | async)?.reviews.length" class="class-show-more"><a (click)="showMoreReviews()">{{'Показать больше отзывов' | translate }}</a></div>
+</div>

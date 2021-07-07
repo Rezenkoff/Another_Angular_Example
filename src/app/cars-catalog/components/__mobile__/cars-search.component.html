@@ -1,0 +1,6 @@
+﻿<div class="catalog-search-form" autocomplete="off" action="#">
+    <input class="catalog-search-input" [(ngModel)]="filterString" placeholder="{{'Начните вводить название авто' | translate}}" type="search" (keyup)="search()" style="text-overflow: ellipsis;">
+    <button class="search-form__submit-catalog" (click)="search()">
+        <span class="search-icon"><svg class="search-icon__svg catalog-ico"><use svg-use-reference="search"></use></svg></span>
+    </button>
+</div>

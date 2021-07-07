@@ -1,0 +1,15 @@
+﻿<div *ngIf="(isEnabled$ | async)" class="header__filter">
+    <div class="your-car-text">{{'Ваш автомобиль:' | translate}}</div>
+    <div *ngIf="isCarSelected"  style="text-align:center;margin-bottom: 12px;">
+        <span (click)="toggleSelectCarArea()" class="auto-filter">{{selectedCarName}}</span>
+    </div>
+    <div [style.display]="isCarSelected? 'none': 'block'">
+        <car-select-panel-common [initialSettings]="carDataArray$ | async"
+                                 (onCarSelectPanelChange)="updateCarInfo($event)">
+        </car-select-panel-common>
+        <div class="car-filter-btn">
+            <button class="btn-reset-filter" (click)="clearFilters()">{{'Сбросить' | translate}}</button>
+            <button class="btn-show-filter" (click)="navigate()">{{'Показать' | translate}}</button>
+        </div>
+    </div>
+</div>

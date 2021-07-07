@@ -1,0 +1,7 @@
+﻿<div class="footer__newsletter">
+    <span class="footer__title">{{'Подписаться на новости' | translate}}</span>
+    <div class="footer__form">
+        <input [(ngModel)]="email"  #subemail class="footer__form-input" type="email" placeholder="{{'Ваш email...' | translate}}" required pattern="{{_constants.PATTERNS.EMAIL_PATTERN}}">
+        <button [ngClass]="{ 'disabled-button': !buttonEnabled() }" (click)="addSubscription()" class="footer__form-button"><svg class="newsletter-icon"><use svg-use-reference="send" /></svg></button>
+    </div>
+</div>

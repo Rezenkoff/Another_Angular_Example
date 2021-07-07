@@ -1,0 +1,8 @@
+﻿<div class="article-rate">
+    <span class="article-rate__title">{{'Ваша оценка' | translate}}:</span>
+    <div class="rate rate--article" [attr.data-rate]="rate">
+        <div *ngFor="let i of [1,2,3,4,5]" (mouseenter)="setRate(i)" class="rate__star">
+            <star></star>
+        </div>
+    </div>
+</div>

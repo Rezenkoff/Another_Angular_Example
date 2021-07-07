@@ -1,0 +1,71 @@
+﻿<div class="title">
+    <span  class="title__text">
+        {{'Аналоги товара' | translate}} {{(product$ | async)?.displayDescription}}
+    </span>
+</div>
+<div class="catalog-section">
+    <div class="sidebar">
+        <!--<div class="margin-bot-10" style="display: none;"><span><input type="checkbox" (change)="setIsRest($event)" [jcf]="{type:'Checkbox'}"/><span class="aside-title">{{'Только товар в наличии' | translate}}</span></span></div>
+        <div class="aside-navigation"  style="display: none;">           
+            <div class="filter__opener filter__opener--auto  margin-bot-20">
+                <span class="aside-navigation__title">{{'Выберете тип' | translate}}</span>               
+            </div>
+            <div>
+                <div class="margin-bot-10">
+                    <input type="radio" id="type1" (change)="setFormFactor($event)" value="0" [value]="0" [jcf]="{type:'Radio'}">
+                    <label for="type1" class="filter__label-text filter__label-text--auto">{{'Легковые' | translate}}</label>
+                </div>
+
+                <div class="margin-bot-10">
+                    <input type="radio" id="type2" (change)="setFormFactor($event)" value="1" [value]="1"  [jcf]="{type:'Radio'}">
+                    <label for="type2" class="filter__label-text filter__label-text--auto">{{'Грузовые' | translate}}</label>
+                </div>
+
+                <div class="margin-bot-10">
+                    <input type="radio" id="type3" (change)="setFormFactor($event)" value="2" [value]="2" [jcf]="{type:'Radio'}">
+                    <label for="type3" class="filter__label-text filter__label-text--auto">{{'Все' | translate}}</label>
+                </div>
+            </div>
+        </div>-->
+    </div>
+    <div class="product-seciton">        
+        <!--<div class="sort-holder">
+            <div class="sort-holder__row">
+                <div class="filter-opener">Фильтр</div> 
+                <div *ngIf="!isAnalogsComponent" class="sort-holder__col">
+                    <span class="sort-holder__title">{{'Сортировать:' | translate}}</span>
+                    <div class="sort-holder__box">
+                        <select #selectSort class="sort-holder__select" [jcf]="{type:'Select'}" (change)="setSortByDisplayDescr(selectSort.value)">
+                            <option [value]="options.byDefault">{{'По умолчанию' | translate}}</option>
+                            <option [value]="options.byName">{{'По названию' | translate}}</option>
+                          
+                                <option>{{'По цене' | translate}}</option>    
+                                                      
+                            <option [value]="options.byBrand">{{'По бренду' | translate}}</option>                            
+                        </select>
+                    </div>
+                </div>
+                <div class="sort-holder__col">
+                    <span class="sort-holder__title">{{'Показать по:' | translate}}</span>
+                    <div class="sort-holder__box sort-holder__box--quantity">
+                        <select  #selectCount class="sort-holder__select" [jcf]="{type:'Select'}" (change)="setPageSize(selectCount.value)">
+                            <option [value]="20" >20</option>
+                            <option [value]="40">40</option>
+                            <option [value]="60">60</option>
+                            <option [value]="100">100</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="sort-holder__view">
+                <span class="sort-holder__title">Вид:</span>
+                <span class="sort-holder__view-list" [ngClass]="{active:isList}" (click)="setListClass(true)"><svg class="list-svg"><use svg-use-reference="list"></use></svg></span>
+                <span class="sort-holder__view-grid" [ngClass]="{active:!isList}" (click)="setListClass(false)"><svg class="grid-svg"><use svg-use-reference="grid"></use></svg></span>
+            </div>
+        </div>-->        
+        <search-analogs-list *ngIf="isAnalogsComponent" [isList]="isList" (product$)="setProduct($event)" (total$)="setTotalCount($event)"></search-analogs-list>        
+        <autodoc-paging  *ngIf="(totalCount$ | async) > searchParameters.count" [totalItems]="totalCount$ | async" [currentPage]="currentPage" [maxSize]="searchParameters.count" (pageChanged)="pageChanged($event)"></autodoc-paging>
+    </div>
+    
+</div>
+    

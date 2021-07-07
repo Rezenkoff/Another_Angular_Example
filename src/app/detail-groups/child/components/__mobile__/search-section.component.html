@@ -1,0 +1,9 @@
+﻿<div class="catalog-search-section">
+    <span class="catalog-search-title">{{'Вы также можете найти запчасти для' | translate}} {{titleCar}} {{'самостоятельно. Просто воспользуйтесь поиском.' | translate}}</span>
+    <div class="search-section-catalog search-form--service" autocomplete="off" action="#">
+        <input class="catalog-search-mob" [(ngModel)]="filterString" placeholder="{{'Быстрый поиск запчастей' | translate}}" type="search" (keyup)="onSearchChange()">
+        <button class="search-form-btn" (click)="searchWithDetailInfoDrop()">
+            <span class="search-icon"><svg class="search-icon__svg icon-catalog"><use svg-use-reference="search"></use></svg></span>
+        </button>
+    </div>
+</div>

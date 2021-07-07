@@ -1,0 +1,37 @@
+﻿.error-404{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+@media screen and (max-width: 570px) {
+    .error-404 img{
+        width: 100%;
+    }
+}
+.btn-404{
+    min-width: 192px;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    background: linear-gradient(180deg, #407FCA 0%, #1D5495 100%);
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    text-shadow: 0px 1px 1px rgb(0 0 0 / 25%);
+    padding: 12px 24px 12px 24px;
+}
+a.btn-404:hover{
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(180deg, #5395E3 0%, #3370B8 100%);
+}
+
+.text-404{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    color: #414141;
+}

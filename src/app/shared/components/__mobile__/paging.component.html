@@ -1,0 +1,14 @@
+﻿<ul class="art-pagination" *ngIf="totalItems > 0">
+    <li class="art-pagination__back" *ngIf="previousItemValid()">
+        <a class="art-pagination__second-control-link" href="javascript:void(0)" (click)="toFirstPage()">{{'В начало' | translate}}</a>
+    </li>
+    <li *ngFor="let pageNo of pageList"
+        class="art-pagination__item"
+        [ngClass]="{'active': selectedPage === pageNo}"
+        (click)="setCurrentPage(pageNo)">
+        <a class="art-pagination__link" [ngClass]="{'art-pagination__active':selectedPage === pageNo}" href="javascript:void(0)">{{ pageNo }}</a>
+    </li>
+    <li class="art-pagination__next" *ngIf="nextItemValid()">
+        <a class="art-pagination__second-control-link" href="javascript:void(0)" (click)="toLastPage()">{{'В конец' | translate}}</a>
+    </li>
+</ul>

@@ -1,0 +1,102 @@
+﻿<div class="block-tires-selection">
+    <div class="select-block-tires">
+        <div class="select-tires">
+            <div class="label-form">{{'Цвет' | translate}}</div>
+            <input class="delivery-step__input"
+                   placeholder="{{'Выбрать' | translate}}"
+                   [(ngModel)]="filterColor"
+                   (click)="toggleDropdownItem(0)" />
+            <span class="drop-arrow tires-arrow news-arrow" (click)="toggleDropdownItem(0)">
+                <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+            </span>
+            <div *ngIf="showDropDownItem[0]" class="tires-dropdown-container">
+                <div *ngFor="let color of getColorList(colorSettings$ | async)" (click)="selectColor(color.key, color.value)" class="settlement-item">
+                    <span class="text-uppercase"><b>{{ color.value }}</b></span>&nbsp;<br />
+                </div>
+            </div>
+        </div>
+        <div class="select-tires middle-select-tires">
+            <div class="label-form">{{'Ширина' | translate}}</div>
+            <input class="delivery-step__input"
+                   placeholder="{{'Выбрать' | translate}}"
+                   (click)="toggleDropdownItem(1)"
+                   [(ngModel)]="filterWidth" />
+            <span class="drop-arrow tires-arrow news-arrow" (click)="toggleDropdownItem(1)">
+                <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+            </span>
+            <div *ngIf="showDropDownItem[1]" class="tires-dropdown-container">
+                <div *ngFor="let width of getWidthList(widthSettings$ | async)" (click)="selectWidth(width.key, width.value)" class="settlement-item">
+                    <span class="text-uppercase"><b>{{ width.value }}</b></span>&nbsp;<br />
+                </div>
+            </div>
+        </div>
+        <div class="select-tires">
+            <div class="label-form">{{'Диаметр' | translate}}</div>
+            <input class="delivery-step__input"
+                   placeholder="{{'Выбрать' | translate}}"
+                   (click)="toggleDropdownItem(2)"
+                   [(ngModel)]="filterDiameter" />
+            <span class="drop-arrow tires-arrow news-arrow" (click)="toggleDropdownItem(2)">
+                <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+            </span>
+            <div *ngIf="showDropDownItem[2]" class="tires-dropdown-container">
+                <div *ngFor="let diameter of getDiameterList(diameterSettings$ | async)" (click)="selectDiameter(diameter.key, diameter.value)" class="settlement-item">
+                    <span class="text-uppercase"><b>{{ diameter.value }}</b></span>&nbsp;<br />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="select-block-tires">
+        <div class="select-tires">
+            <div class="label-form">PCD</div>
+            <input class="delivery-step__input"
+                   placeholder="{{'Выбрать' | translate}}"
+                   (click)="toggleDropdownItem(3)"
+                   [(ngModel)]="filterPCD" />
+            <span class="drop-arrow tires-arrow news-arrow" (click)="toggleDropdownItem(3)">
+                <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+            </span>
+            <div *ngIf="showDropDownItem[3]" class="tires-dropdown-container">
+                <div *ngFor="let pcd of getPCDList(PCDSettings$ | async)" (click)="selectPCD(pcd.key, pcd.value)" class="settlement-item">
+                    <span class="text-uppercase"><b>{{ pcd.value }}</b></span>&nbsp;<br />
+                </div>
+            </div>
+        </div>
+        <div class="select-tires middle-select-tires">
+            <div class="label-form ">ET</div>
+            <input class="delivery-step__input"
+                   placeholder="{{'Выбрать' | translate}}"
+                   (click)="toggleDropdownItem(4)"
+                   [(ngModel)]="filterET" />
+            <span class="drop-arrow tires-arrow news-arrow" (click)="toggleDropdownItem(4)">
+                <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+            </span>
+            <div *ngIf="showDropDownItem[4]" class="tires-dropdown-container">
+                <div *ngFor="let et of getETList(ETSettings$ | async)" (click)="selectET(et.key, et.value)" class="settlement-item">
+                    <span class="text-uppercase"><b>{{ et.value }}</b></span>&nbsp;<br />
+                </div>
+            </div>
+        </div>
+        <div class="select-tires">
+            <div class="label-form">DIA</div>
+            <input class="delivery-step__input"
+                   placeholder="{{'Выбрать' | translate}}"
+                   (click)="toggleDropdownItem(5)"
+                   [(ngModel)]="filterDIA" />
+            <span class="drop-arrow tires-arrow news-arrow" (click)="toggleDropdownItem(5)">
+                <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+            </span>
+            <div *ngIf="showDropDownItem[5]" class="tires-dropdown-container">
+                <div *ngFor="let dia of getDIAList(DIASettings$ | async)" (click)="selectDIA(dia.key, dia.value)" class="settlement-item">
+                    <span class="text-uppercase"><b>{{ dia.value }}</b></span>&nbsp;<br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-tires-selection">
+    <a [routerLink]="url" [queryParams]="getQueryParams()">
+        {{'Подобрать диски' | translate}}
+        <span class="drop-arrow btn-blue-arrow"><svg class="btn-blue-arrow"><use svg-use-reference="arrow"></use></svg></span>
+    </a>
+</div>

@@ -1,0 +1,40 @@
+﻿<div class="catalog-block-form">
+    <div style="padding: 0 12px">       
+        <div class="">
+            <form novalidate [formGroup]="selectPartsForm">
+                <div class="img-catalog" *ngIf="carSerie != null">
+                    <img onerror="this.src = 'https://cdn.autodoc.ua/car-img.svg'" src="{{imgUrlFull}}" alt="car" />
+                </div>
+                <div class="sector-form-catatlog">
+                    <div class="sector-form">
+                        <span class="label-form">{{'ФИО (полностью)' | translate}} <span class="red-star">*</span></span>
+                        <input class="form-input" type="text" placeholder="{{'ФИО' | translate}}" formControlName="name">
+                        <div [hidden]="selectPartsForm.controls.name.valid || selectPartsForm.controls.name.untouched || !selectPartsForm.pristine" class="alert__alert-danger">
+                            {{'Введите имя пользователя' | translate}}
+                        </div>
+                    </div>
+
+                    <div class="sector-form">
+                        <span class="label-form">{{'Номер телефона' | translate}} <span class="red-star">*</span></span>
+                        <input class="form-input" type="tel" placeholder="099999999" maxlength="10" formControlName="phone" pattern="{{_constants.PATTERNS.PHONE_PATTERN}}">
+                        <div [hidden]="selectPartsForm.controls.phone.valid || selectPartsForm.controls.phone.untouched || !selectPartsForm.pristine" class="alert__alert-danger">
+                            {{'Номер телефона введён некоpректно' | translate}}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="sector-form">
+                        <span class="label-form" style="width:auto">{{'Какие запчасти Вас интересуют?' | translate}}</span>
+                        <textarea class="catalog-textarea" formControlName="comment" cols="30" rows="10" placeholder="{{'Перечислите необходимые запчасти, их количество и сторону расположения' | translate}}"></textarea>
+                    </div>
+                    <input #fileInput (change)="fileChangeEvent($event)" class="select-me-input jcf-real-element" multiple="" type="file" accept="image/x-png,image/gif,image/jpeg" style="opacity: 0;">
+                    <div *ngFor="let item of fileNames" class="upload-file"><span class="at-file"><svg class="at-file__svg"><use svg-use-reference="at-file"></use></svg></span><span>{{item}}</span><span class="close-icon" (click)="deleteFile(item)"><svg class="close-icon__svg"><use svg-use-reference="close"></use></svg></span></div>
+                    <a (click)="fileInput.click()" class="btn-grey btn-select-mob"><span class="paper-clip-vin"><svg class="paper-clip-vin__svg"><use svg-use-reference="paper-clip-vin"></use></svg></span>{{'Прикрепить файлы' | translate}}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div  class="wrapper-btn-select">
+        <button (click)="confirmSelectMe()" [ngClass]="{'disabled-button': selectPartsForm.controls.phone.invalid || selectPartsForm.controls.name.invalid}" class="btn-blue-large-mob">{{'Отправить запрос' | translate}}</button>
+    </div>
+</div>

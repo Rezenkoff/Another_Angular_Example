@@ -1,0 +1,42 @@
+﻿<div class="basket__button-box" #basket>
+    <div class="basket__car-btn" (click)="toggleWindow()">
+        <span class="basket-icon">
+            <svg class="basket-icon__svg">
+                <use svg-use-reference="icon" />
+            </svg>
+        </span>
+        <div class="basket__car-text">
+            <div class="basket__car-title">{{ 'Корзина:' | translate }}</div>
+            <div class="basket__number-item">
+                <span>{{ totalItems }}</span>
+            </div>
+        </div>
+    </div>
+    <span style="display:none">MOBILE</span>
+    <div *ngIf="isShowDropDown" class="basket__added" #basketadded style="display: block">
+
+    <div class="basket__added" #basketadded [style.display]="showDropDown()">
+
+        <div *ngIf="totalItems !== 0;else emptybasket" class="basket-item">
+            <div class="basket__title">{{'Ваша корзина' | translate}}<span class="close-icon" (click)="toggleWindow()"><svg class="close-icon__svg"><use svg-use-reference="close" /></svg></span></div>
+            <product-preview-list></product-preview-list>
+            <div class="container__added-bottom">
+                <div class="container__sum container__sum--basket">
+                    <span class="container__sum-text">{{'Итого:' | translate}}</span>
+                    <span class="container__sum-quantity">
+                        <total-sum></total-sum>
+                    </span>
+                </div>
+                <a class="container__order-btn" href="javascript:void(0)" (click)="clickCheckout()" [routerLink]="['order-checkout']">{{'Оформить заказ' | translate}}</a>
+            </div>
+        </div>
+        <ng-template #emptybasket>
+            <div class="basket__title-empty">
+                {{'Сначала добавьте товары в корзину воспользовавшись поиском или каталогами. Так же вы можете обратиться в службу тех поддержки и мы с радостью поможем Вам в подборе.' | translate}}
+            </div>
+        </ng-template>
+    </div>
+
+
+    <div class="basket-overlay head-overlay" (click)="toggleWindow()" [style.display]="showDropDown()"></div>
+</div>

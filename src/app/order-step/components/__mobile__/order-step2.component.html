@@ -1,0 +1,33 @@
+﻿<div class="order-section__form-step-2">
+    <div class="vin-block-title-mob">{{'Укажите нужную запчасть' | translate}}</div>
+    <div class="order-section__area-box" [style.height]="_constants.STYLING.COMMENT_HEIGHT_DISPLAY">        
+        <textarea class="order-section__contact-area" placeholder="{{'Перечислите необходимые запчасти, их количество и сторону расположения запчасти ' | translate}}" cols="" rows="" maxlength="300" (ngModelChange)="onCommentEdit($event)" [(ngModel)]="orderStepService.OrderStepMainModel.Wishlist"></textarea>
+
+    </div>
+    
+    <form #form="ngForm">
+        <div class="order-section__load">
+            <span class="jcf-file"  title="Вы можете прикрепить файл со списком необходимых для Вас автозапчастей или фото запчасти. Не более 5 вложений объемом до 15 Мб. Для добавления нескольких вложений используете клавиши Ctrl и Shift">
+                <span class="jcf-fake-input"></span>
+                <span class="jcf-upload-button">
+                    <span class="jcf-button-content">{{'Прикрепить файлы' | translate}}</span>
+                </span>
+                <input #fileInput (change)="fileChangeEvent($event)" class="file-change jcf-real-element" id="file" multiple="" type="file" style="position: absolute; opacity: 0;">
+            </span>            
+        </div>
+        <div [hidden]="hideReset" class="order-section__load">
+            <button (click)="reset()" class="add-detail__button-del">
+                <span class="order-section__close-icon">
+                    <svg class="deletee-icon__svg"><use svg-use-reference="close"></use></svg>
+                </span>{{'Удалить файлы' | translate}}
+            </button>
+            <div class="order-section__load-text">
+                <div *ngFor="let item of fileNames" class="add-detail__load-file">
+                    <div class="file-hidden">{{item}}</div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

@@ -1,0 +1,76 @@
+﻿<div class="header-order">
+    <span (click)="returnToCabinetInfo()" class="drop-arrow  order-cabinet-arrow">
+        <svg class="drop-arrow__svg drop-arrow__svg--blue news-arrow"><use svg-use-reference="arrow"></use></svg>
+    </span>
+    {{'Настройки профиля' | translate}}
+</div>
+<div class="order-section__form">
+    <div class="profile-block">
+        <div class="title-profile">{{'Личная информация' | translate}}</div>
+        <form>
+            <div class="profile-info">
+                <div class="cabinet-form-info">
+                    <span class="login__label">{{ 'ФИО' | translate}}</span>
+                    <input class="registration__input" name="newName" [(ngModel)]="userData.newName" type="text" #nameInput="ngModel" required />
+                    <div *ngIf="!nameInput.valid && !nameInput.untouched" class="alert__alert-danger">
+                        {{ 'Некорректное ФИО' | translate}}
+                    </div>
+                </div>
+                <div class="cabinet-form-info">
+                    <span class="login__label">{{ 'E-mail адрес' | translate}}</span>
+                    <input class="registration__input" name="newInput" [(ngModel)]="userData.newEmail" type="email" #emailInput="ngModel" required pattern="{{_constants.PATTERNS.EMAIL_PATTERN}}" />
+                    <div *ngIf="!emailInput.valid && !emailInput.untouched" class="alert__alert-danger">
+                        {{ 'Некорректный E-mail' | translate}}
+                    </div>
+                </div>
+                <div class="cabinet-form-info">
+                    <span class="login__label">{{ 'Номер телефона' | translate}}</span>
+                    <input readonly [value]="info.phone" class="registration__input" />
+                </div>
+                <div class="cabinet-form-info-btn">
+                    <button class="btn-blue-large-mob" [ngClass]="{'disabled-button': !nameInput.valid}" (click)="changePersonalData()">{{'Сохранить изменения' | translate}}</button>
+                </div>
+                <div class="title-profile">{{'Пароль' | translate}}</div>
+                <div class="cabinet-form-info">
+                    <span class="login__label">{{ 'Текущий пароль' | translate}}</span>
+                    <input [(ngModel)]="changePasswordModel.currentPassword" #p1="ngModel" required pattern="{{_constants.PATTERNS.PASSWORD_PATTERN}}" class="registration__input" name="currentPass" type="password" />
+                    <div *ngIf="!p1.valid && !p1.untouched" class="alert__alert-danger">
+                        {{ 'Некорректный пароль' | translate}}
+                    </div>
+                </div>
+                <div class="cabinet-form-info">
+                    <span class="login__label">{{ 'Новый пароль' | translate}}</span>
+                    <input [(ngModel)]="changePasswordModel.newPassword" #p2="ngModel" required pattern="{{_constants.PATTERNS.PASSWORD_PATTERN}}" class="registration__input" name="newPass" type="password">
+                    <div *ngIf="!p2.valid && !p2.untouched" class="alert__alert-danger">
+                        {{ 'Некорректный пароль' | translate}}
+                    </div>
+                </div>
+                <div class="cabinet-form-info">
+                    <span class="login__label">{{ 'Повторите пароль' | translate}}</span>
+                    <input [(ngModel)]="secondNewPassword" #p3="ngModel" required pattern="{{_constants.PATTERNS.PASSWORD_PATTERN}}" class="registration__input" name="repeatPass" type="password" />
+                    <div *ngIf="!p3.valid && !p3.untouched" class="alert__alert-danger">
+                        {{ 'Некорректный пароль' | translate}}
+                    </div>
+                    <div *ngIf="!samePassword" class="alert__alert-danger">
+                        {{ 'Пароли не совпадают' | translate}}
+                    </div>
+                </div>
+                <div class="cabinet-form-info-btn">
+                    <button [disabled]="p1.invalid || p2.invalid || p3.invalid"
+                            class="btn-blue-large-mob"
+                            [ngClass]="{'disabled-button' : p1.invalid || p2.invalid || p3.invalid}"
+                            (click)="changePassword()" >
+                        {{ 'Изменить пароль' | translate}}
+                    </button>
+                </div>
+
+            </div>
+            <div *ngIf="inProcess">
+                <div class="container__row">
+                    <div class="autodoc-loader"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

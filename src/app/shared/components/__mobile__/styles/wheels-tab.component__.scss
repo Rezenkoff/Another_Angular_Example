@@ -1,0 +1,43 @@
+﻿.block-tires-selection {
+    background: #fff;
+    border-radius: 0;
+    padding: 12px 12px 0;
+    border-left: 1px solid #C5D5EA;
+    border-right: 1px solid #C5D5EA;
+}
+.select-block-tires {
+    padding: 12px 0 0px;
+}
+.select-tires {
+    width: 100%;
+    padding-bottom: 12px;
+    position: relative;
+}
+.footer-tires-selection {
+    background: linear-gradient(180deg,#407fca,#1d5495);
+    border-radius: 0 0 6px 6px;
+    text-align: center;
+    padding: 12px 0;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.footer-tires-selection a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
+
+
+    &:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+}
+.tires-arrow {
+    right: 12px;
+    bottom: 24px;
+    position: absolute;
+}

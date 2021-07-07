@@ -1,0 +1,7 @@
+﻿<input [(ngModel)]="deliveryPoint.address" type="text" (keyup)="searchAddress(searchBox.value)" #searchBox placeholder="{{'Начните вводить адрес' | translate}}" class="delivery-step__input" />
+<div *ngIf="googleResponse.results.length > 0 && showDropDown" class="settlement-dropdown-container">
+    <div *ngFor="let result of googleResponse.results" (click)="onAddressItemSelect(result)" class="settlement-item">
+        <span>{{ result.formatted_address }}</span>
+    </div>
+</div>
+<div class="dropdown-overlay" (click)="hideDropdown()" *ngIf="googleResponse.results.length > 0 && showDropDown"></div>

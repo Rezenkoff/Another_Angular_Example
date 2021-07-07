@@ -1,0 +1,11 @@
+﻿<div class="container__radio-box">
+    <span class="container__radio-title">{{'Область' | translate}} <span class="red-star">*</span></span>
+    <area-list [searchString]="selectedAreaName" (onAreaSelect)="selectArea($event)"></area-list>
+    <div class="container__row-example">
+        {{'Например' | translate}},
+        <ng-container *ngFor="let area of (popularAreas$ | async)">
+            <span style="cursor: pointer" class="container__row-example-text" (click)="selectArea(area)">{{area.areaName}}</span>
+            <span *ngIf="!isLastItem(area)" class="container__row-example-text">, </span>
+        </ng-container>
+    </div>
+</div>

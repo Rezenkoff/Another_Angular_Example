@@ -1,0 +1,37 @@
+﻿<div class="vin-block-form-mob col-sm-12 col-xs-12">
+
+    <div>
+        <div class="last-step-text">{{'Укажите нужную запчасть' | translate}}</div>
+        <textarea class="vin-textarea" [ngStyle]="{'border-color':orderStepService.OrderStepMainModel.Wishlist !== '' ? '' : 'red' }" [(ngModel)]="orderStepService.OrderStepMainModel.Wishlist" placeholder="{{'Перечислите необходимые запчасти, их количество и сторону расположения' | translate}}"></textarea>
+        <div *ngFor="let item of fileNames" class="upload-file"><span class="at-file"><svg class="at-file__svg"><use svg-use-reference="at-file"></use></svg></span><span>{{item}}</span><span class="close-icon" (click)="deleteFile(item)"><svg class="close-icon__svg"><use svg-use-reference="close"></use></svg></span></div>
+        <a (click)="fileInput.click()" class="btn-grey"><span class="paper-clip-vin"><svg class="paper-clip-vin__svg"><use svg-use-reference="paper-clip-vin"></use></svg></span>{{'Прикрепить файлы' | translate}}</a>
+        <input #fileInput (change)="fileChangeEvent($event)" class="file-change jcf-real-element" multiple="" type="file" accept="image/x-png,image/gif,image/jpeg" style="position: absolute; opacity: 0;">
+    </div>
+    <form novalidate [formGroup]="orderContactInfoGroup" class="vin-contact">
+        <div class="last-step-text">{{'Как с Вами связаться?' | translate}}</div>
+        <div class="sector-form">
+            <span class="label-form">{{'ФИО (полностью)' | translate}} &nbsp;<span class="red-star">*</span></span>
+            <input class="form-input" [ngStyle]="{'border-color':orderContactInfoGroup.controls.name.status === 'VALID' ? '' : 'red' }" placeholder="{{'ФИО' | translate}}" formControlName="name">
+        </div>
+        <div class="sector-form">
+            <span class="label-form">{{'Номер телефона' | translate}} &nbsp;<span class="red-star">*</span></span>
+            <input class="form-input" [ngStyle]="{'border-color':orderContactInfoGroup.controls.phone.status === 'VALID' ? '' : 'red' }" type="tel" maxlength="13" placeholder="+380 XX XXX XX XX" formControlName="phone">
+        </div>
+        <div class="sector-form">
+            <span class="label-form">{{'E-mail адрес' | translate}} &nbsp;</span>
+            <input class="form-input" type="email" placeholder="{{'Email' | translate}}" formControlName="email">
+        </div>
+        <div class="vin-add-comment">
+            <comment (onCommentEdit)="onCommentEdit($event)"></comment>
+        </div>
+        <div class="red-star-field"><span class="red-star">*</span> — {{'обязательные поля' | translate}}</div>
+        <div class="checkbox-vin-contract">
+            {{'Используя autodoc.ua Вы соглашаетесь с ' | translate}} <contract style="display:inline-block;"></contract>
+        </div>
+        <div class="vin-btn-last-step">
+            <a class="ps-text-link" (click)="goToPreviousStep()">{{'Назад' | translate}}</a>
+            <a class="vin-send-request" [ngClass]="{'btn-blue-disable': isOrderSending || !isValidOrder(), 'btn-blue': isValidOrder() && !isOrderSending}" (click)="SendRequest()">{{'Отправить запрос' | translate}}</a>
+        </div>
+    </form>
+</div>
+

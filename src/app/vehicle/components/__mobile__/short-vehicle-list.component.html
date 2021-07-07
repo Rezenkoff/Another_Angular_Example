@@ -1,0 +1,24 @@
+﻿<div>
+    <div *ngIf="userVehicles.length == 0">
+        <span class="order-section__title-no-auto">{{'В вашем гараже еще нет авто, добавить авто можно в личном кабинете или воспользовавшись подбором по VIN, или подбором по авто' | translate}}</span>
+    </div>
+    <div *ngIf="userVehicles.length != 0" class="vehicle-list">
+        <div class="vin-block-title-mob">{{'Мои автомобили' | translate}}</div>
+        <div class="order-section__sub-form">
+            <table class="main-table--shadow table-order">
+                <tbody>
+                    <tr class="item-step1-head">
+                        <td class="auto-item-head">{{'Бренд' | translate}}</td>
+                        <td class="auto-item-head">{{'Модель' | translate}}</td>
+                        <td class="auto-item-head">{{'Год' | translate}}</td>
+                    </tr>
+                    <tr (click)="selectUserVehicle(item)" *ngFor="let item of userVehicles" class="item-step1">
+                        <td class="auto-item"><img class="container__img-model" [src]="getLogo(item.mark)" width="30" height="30" title="image description" onerror="this.src = 'https://cdn.autodoc.ua/images/marks/car-icon.png'"><span class="brand-title">{{item.mark}}</span></td>
+                        <td class="auto-item">{{item.model}}</td>
+                        <td class="auto-item">{{item.year}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿<div class="refund-step4" >
+    <div class="info-holder__title">{{'Товары' | translate}}</div>
+    <div class="container__row">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th class="hidden-xs">{{'Код по каталогу' | translate}}</th>
+                    <th>{{'Название' | translate}}</th>
+                    <th>{{'Кол-во' | translate}}</th>
+                    <th class="hidden-xs">{{'Цена' | translate}}</th>
+                    <th>{{'Сумма' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of refundStepModel.InvoiceRows">
+                    <td class="hidden-xs" style="vertical-align:middle;">{{ item.articleNumber}}</td>
+                    <td style="vertical-align:middle;">{{ item.artName }}</td>
+                    <td>{{item.quantityRefund}}</td>
+                    <td class="hidden-xs" style="vertical-align:middle;">{{ item.price }} грн.</td>
+                    <td style="vertical-align:middle;">{{ item.summa }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="info-holder__title">{{'Паспортные данные' | translate}}</div>
+            <div class="info-holder__text">
+                <p><span class="info-passport">{{'ФИО' | translate }}:</span> {{refundStepModel.ClientInfo.user.name}}</p>
+                <p><span class="info-passport">{{'Телефон' | translate }}:</span> {{refundStepModel.ClientInfo.user.phone}}</p>
+                <p><span class="info-passport">{{'Email' | translate }}:</span> {{refundStepModel.ClientInfo.user.email}}</p>
+                <p><span class="info-passport">{{'Серия' | translate }}:</span> {{refundStepModel.ClientInfo.passport.series}}&nbsp;&nbsp;№ {{refundStepModel.ClientInfo.passport.number}}</p>
+                <p><span class="info-passport">{{'Кем выдан' | translate }}:</span> {{refundStepModel.ClientInfo.passport.issuedBy}}</p>
+                <p><span class="info-passport">{{'Когда выдан' | translate }}:</span> {{refundStepModel.ClientInfo.passport.whenIssued | date:'dd.MM.yyyy'}}</p>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="info-holder__title">{{'Данные счёта' | translate}}</div>
+            <div class="info-holder__text">
+                <p><span class="info-passport">{{'Номер карты' | translate }}:</span> {{refundStepModel.PaymentInfo.CardNumber}}</p>
+                <p><span class="info-passport">{{'Банк' | translate }}:</span> {{refundStepModel.PaymentInfo.isPrivatBank ? ('ПриватБанк' | translate) : (refundStepModel.PaymentInfo.BankName | translate)}}</p>
+                <p *ngIf="!refundStepModel.PaymentInfo.isPrivatBank"><span class="info-passport">{{'МФО' | translate }}:</span> {{refundStepModel.PaymentInfo.MFO}}</p>
+                <p *ngIf="!refundStepModel.PaymentInfo.isPrivatBank"><span class="info-passport">{{'ИПН' | translate }}:</span> {{refundStepModel.PaymentInfo.IPN}}</p>
+                <p *ngIf="!refundStepModel.PaymentInfo.isPrivatBank && refundStepModel.PaymentInfo.Comment.length > 0"><span class="info-passport">{{'Комментарий' | translate }}:</span> {{refundStepModel.PaymentInfo.Comment}}</p>
+            </div>
+        </div>
+    </div>
+</div>

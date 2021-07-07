@@ -1,0 +1,29 @@
+﻿<div class="catalog-name">{{ 'Запчаcти по маркам авто' | translate}}</div>
+<div *ngIf="inProcess" class="autodoc-loader"></div>
+<div *ngIf="(alphabet$ | async) != null" class="catalog-alphabet">
+    <div class="catalog-alphabet-block">
+        <div *ngFor="let letter of (alphabet$ | async).eng" class="catalog-letter">
+            <span (click)="scroll(letter)" class="catalog-letter-link">{{letter}}</span>
+        </div>
+    </div>
+    <div class="alphabet-block">
+        <div *ngFor="let letter of (alphabet$ | async).rus" class="catalog-letter">
+            <span (click)="scroll(letter)" class="catalog-letter-link">{{letter}}</span>
+        </div>
+    </div>
+</div>
+<cars-search (searchChange)="applyFilter($event)"></cars-search>
+<ul class="sub-categories cars-catalog">
+    <li class="sub-categories__item-cars" *ngFor="let mark of getCarsByLetter((carsList$ | async))">
+        <img onerror="this.src = 'https://cdn.autodoc.ua/car-img.svg'" alt="image" src="https://cdn.autodoc.ua/manufacturers/{{this.getIdFromKey(mark.markKey)}}.png"/>
+        <div class="cars-catalog-block">
+            <a id="letter_{{mark.markName[0]}}" class="cars-catalog-title" [routerLink]="getRouteForMark(mark)">{{ mark.markName }}</a>
+            <div *ngFor="let serie of mark.seriesList">
+                <a class="catalog-sub-second" [routerLink]="getRouteForCarSerie(mark, serie)">
+                    {{ serie.serieName}}
+                </a>
+            </div>
+        </div>
+    </li>
+</ul>
+

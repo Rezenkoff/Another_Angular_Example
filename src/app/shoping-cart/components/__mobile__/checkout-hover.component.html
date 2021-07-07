@@ -1,0 +1,11 @@
+﻿<div *ngIf="inProcess" class="cdk-overlay-container">
+    <div class="cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing" *ngIf="inProcess">
+    </div>
+    <span style="text-align: center;color: white;font-size:200%;position:absolute;z-index:2001 !important;top: 50%;text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5);" class="col-lg-4 col-lg-offset-4">
+        <b *ngIf="stepType == checkoutStepTypesEnum.InvoiceCreation">{{'Создаем заказ' | translate}}</b>
+        <b *ngIf="stepType == checkoutStepTypesEnum.Login">{{'Загружаем данные Вашего профиля' | translate}}</b>
+        <b *ngIf="stepType == checkoutStepTypesEnum.LiqPayLoad">{{'Загружаем форму для оплаты' | translate}}</b>
+        <b *ngIf="stepType == checkoutStepTypesEnum.Availability">{{'Проверяем наличие на складе' | translate}}</b>
+        <br/><br /><b>{{'Пожалуйста, подождите' | translate}}</b>
+    </span>
+</div>

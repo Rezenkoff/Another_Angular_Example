@@ -1,0 +1,10 @@
+﻿<div class="vin-input-icon">
+    <input class="form-input" [ngClass]="{'autodoc-mini-loader': (isSearching$ | async ) }" [(ngModel)]="searchString" placeholder="{{'Введите VIN или Гос номер' | translate}}" (ngModelChange)="check()" maxlength="30">
+    <span *ngIf="!(isSearching$ | async)" class="question-icon">
+        <svg width="24" height="24"><use svg-use-reference="vin-question" /></svg>
+        <span class="vin-foto">
+            <img src="https://cdn.autodoc.ua/VIN_info.png" width="346" height="248" />
+            <span>{{'Vehicle identification number (VIN) — уникальный код транспортного средства, состоящий из 17 символов. В коде представлена информация о производителе, характеристиках транспортного средства, и годе выпуска.' | translate}}</span>
+        </span>
+    </span>
+</div>

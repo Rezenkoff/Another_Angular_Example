@@ -1,0 +1,16 @@
+﻿<div *ngFor="let filterData of carDataArray$ | async; trackBy: trackByFn">
+    <div class="car-select" *ngIf="filterData.isActive">
+        <filter-dropdown [filterDataList]="filterData.options"
+                         [filterSearchString]="getSearchString(filterData)"
+                         (onChageFilter)="onOptionSelect($event, filterData)"
+                         (onClickEvent)="onFilterClick(filterData)"
+                         (onFilterClearEvent)="onFilterClear(filterData)"
+                         (onInputChangeEvent)="onInputChange()"
+                         [placeholder]="getPlaceholder(filterData)"
+                         [itemsListLoad]="filterData.loading"
+                         [isActive]="filterData.isActive"
+                         [showDropDown]="filterData.dropdownShown"
+                         (onOptionsRequest)="filterDropdownOptions($event, filterData)">
+        </filter-dropdown>
+    </div>
+</div>

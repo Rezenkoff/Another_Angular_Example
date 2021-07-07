@@ -1,0 +1,33 @@
+﻿.category-auto-tab{
+    display:flex;
+    flex-wrap:wrap;
+    width: 100%;
+}
+.category-auto-tab__element {
+    padding: 12px 0 0 12px;
+    width: 100%;
+
+    
+}
+
+.category-auto-tab__element a{
+    display:inline-block;
+    text-decoration:none;
+    font-size: 14px;
+    line-height: 21px;
+    color: #1D5495;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+.category-auto-tab__element:first-child{
+    padding-top: 12px;
+    border-top: 1px solid #C5D5EA;
+}
+.category-auto-tab__element span {
+    display: inline-block;
+}
+.category-auto-tab-name {
+    display: flex;
+    justify-content:space-between;
+}

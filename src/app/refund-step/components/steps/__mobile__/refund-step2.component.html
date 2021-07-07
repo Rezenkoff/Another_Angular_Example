@@ -1,0 +1,70 @@
+﻿<div class="refund-step2" >
+    <div class="order-section__contact-info">
+        <div class="container__input-holder">
+            <div class="container__row">
+                <span class="container__radio-title">{{'ФИО' | translate}} *</span>
+                <input class="container__row-input" placeholder="{{'Имя и фамилия *' | translate}}" [ngModel]="_refundStepService.clientInfo.user.name" disabled="disabled">
+            </div>
+            <div class="container__row">
+                <span class="container__radio-title">{{'Телефон' | translate}} *</span>
+                <div class="callback__row">
+                    <span class="callback__tel">+38</span><input class="callback__input" #phone="ngModel" [(ngModel)]="_refundStepService.clientInfo.user.phone"
+                                                                 maxlength="10" pattern="{{_constants.PATTERNS.PHONE_PATTERN}}" type="tel" (ngModelChange)="Validate()">
+                </div>
+            </div>
+            <div class="alert__alert-danger" *ngIf="phone.invalid && (phone.touched || phone.dirty)">
+                {{'Некорректный мобильный номер' | translate}}
+            </div>
+            <div class="container__row">
+                <span class="container__radio-title">Email</span>
+                <input class="container__row-input" type="email" placeholder="{{'Email' | translate}}" [ngModel]="_refundStepService.clientInfo.user.email" disabled="disabled">
+            </div>
+        </div>
+    </div>
+    <div class="order-section__contact-info">
+        <div class="container__row" style="height:70px;">
+            <div class="passport-series">
+                <span class="container__radio-title">{{'Серия' | translate}}</span>
+                <input class="container__row-input" style="text-transform:uppercase" #series="ngModel" required type="text" placeholder="{{'Серия' | translate}}"
+                       [(ngModel)]="_refundStepService.clientInfo.passport.series" (keyup)="Validate()" pattern="{{seriesPattern}}" maxlength="{{seriesLength}}">
+            </div>
+            <div class="passport-number">
+                <span class="container__radio-title">{{'Номер' | translate}}</span>
+                <input class="container__row-input" #number="ngModel" required type="text" placeholder="{{'Номер' | translate}}"
+                       [(ngModel)]="_refundStepService.clientInfo.passport.number" (ngModelChange)="Validate()" pattern="{{numberPattern}}" maxlength="{{numberLength}}" (keypress)="CheckNumbers($event)">
+            </div>
+        </div>
+        <div class="container__row">
+            <div class="alert__alert-danger" *ngIf="series.invalid && (series.touched || series.dirty) && _refundStepService.clientInfo.passport.series.length == seriesLength">
+                {{'Поле должно содержать только символы кириллицы !' | translate}}
+            </div>
+            <div class="alert__alert-danger" *ngIf="series.invalid && (series.touched || series.dirty)">
+                {{'Серия должна быть заполнена ' | translate}}
+            </div>
+            <div class="alert__alert-danger" *ngIf="number.invalid && (number.touched || number.dirty)">
+                {{'Заполните номер паспорта !' | translate}}
+            </div>
+        </div>
+        <div class="container__row">
+            <span class="container__radio-title">{{'Кем выдан' | translate}}</span>
+            <input class="container__row-input" #issuedBy="ngModel" required type="text" placeholder="{{'Кем выдан' | translate}}" [(ngModel)]="_refundStepService.clientInfo.passport.issuedBy" (ngModelChange)="Validate()">
+        </div>
+        <div class="alert__alert-danger" *ngIf="issuedBy.invalid && (issuedBy.touched || issuedBy.dirty)">
+            {{'Заполните кем выдан паспорт !' | translate}}
+        </div>
+        <div class="container__row">
+            <span class="container__radio-title">{{'Когда выдан' | translate}}</span>
+            <input type="text"
+                   placeholder="{{'Когда выдан' | translate}}"
+                   class="form-control container__row-input"
+                   bsDatepicker
+                   [bsConfig]="{dateInputFormat: 'DD/MM/YYYY'}"
+                   [(ngModel)]="_refundStepService.clientInfo.passport.whenIssued"
+                   #whenIssued="ngModel"
+                   (ngModelChange)="Validate()">
+        </div>
+        <div class="alert__alert-danger" *ngIf="whenIssued.invalid && (whenIssued.touched || whenIssued.dirty)">
+            {{'Заполните когда выдан паспорт !' | translate}}
+        </div>
+    </div>
+</div>

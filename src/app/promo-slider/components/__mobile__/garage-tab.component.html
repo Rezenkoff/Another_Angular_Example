@@ -1,0 +1,7 @@
+﻿<div class="main-input-search" style="padding-bottom: 1px">
+    <div class="margin-bot-10"><span>{{'Выберите авто:' | translate}}</span></div>
+    <user-cars-list (onCarsCountChanged)="carCountChanged($event)" (onCarSelect)="selectCar($event)"></user-cars-list>
+</div>
+<div class="footer-block-search" [ngClass]="{'ui-state-disabled': !userCar}" (click)="toCatalog()">
+    <a>{{'Поиск по каталогу' | translate}}<span class="drop-arrow btn-blue-arrow"><svg class="btn-blue-arrow"><use svg-use-reference="arrow"></use></svg></span></a>
+</div>

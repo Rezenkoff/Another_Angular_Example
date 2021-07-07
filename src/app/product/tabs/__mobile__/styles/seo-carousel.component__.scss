@@ -1,0 +1,84 @@
+﻿.imagesCarousel {
+    width: 380px;
+    height: 255px;
+
+    @media screen and (max-width: 479px) {
+        width: 100%;
+    }
+}
+
+.carouselWrapper {
+    position: absolute;
+    text-align: center !important;
+}
+
+.carouselImg {
+    display: inline-block !important;
+    width: auto;
+    height: 250px !important;
+    padding: 1%;
+}
+
+
+.overlayImg {
+    margin: auto;
+    position: absolute;
+}
+
+.imagesCarouselOverlay {
+    height: 500px;
+    width: 100%;
+    top: 15%;
+    position: absolute;
+}
+
+.carouselImgOverlay {
+    display: inline-block !important;
+    height: 100% !important;
+    padding: 1%;
+
+    @media screen and (max-width: 449px) {
+        max-height: 400px;
+        width: 85%;
+    }
+
+    @media screen and (max-height: 480px) {
+        height: 250px !important;
+        width: auto;
+    }
+}
+
+.spanDescriptionOverlay {
+    bottom: 0%;
+    color: white;
+    font-size: medium;
+    left: 0;
+    right: 0;
+    margin-top: 3%;
+    font-weight: bold;
+
+    @media screen and (max-width: 767px) {
+        margin-top: 30px !important;
+    }
+}
+
+.collorWhite {
+    color: white;
+}
+
+.collorWhite.glyphicon-chevron-right:before {
+    color: white !important;
+}
+
+.collorWhite.glyphicon-chevron-left:before {
+    color: white !important;
+}
+
+.overlayCarouselControl {
+    width: 30%;
+}
+.carousel-caption {
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+}

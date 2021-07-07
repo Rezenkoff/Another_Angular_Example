@@ -1,0 +1,10 @@
+﻿﻿<div class="callback">
+    <div class="callback__row">
+        <span class="call-first-part">+38</span>
+        <input class="callback__input-number" #phone="ngModel" maxlength="10" placeholder="XXX XXX XX XX" [(ngModel)]="callback.userPhoneNumber" [ngModelOptions]="{standalone: true}" type="tel" pattern="{{_constants.PATTERNS.PHONE_PATTERN}}">
+        <button id="callBackBtn" class="callback__input-button" [ngClass]="{'disabled-button': phone.invalid || !callback.userPhoneNumber || inProcess}" (click)="createCallback()">
+            <span *ngIf="!inProcess">{{'Заказать звонок' | translate}}</span>
+            <mini-spinner *ngIf="inProcess"></mini-spinner>
+        </button>
+    </div>
+</div>

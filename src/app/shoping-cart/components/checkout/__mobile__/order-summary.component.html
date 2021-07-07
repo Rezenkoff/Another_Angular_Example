@@ -1,0 +1,43 @@
+﻿<order-popup [selectedProduct]="product$" #orderpop></order-popup>
+<div class="checkout-order">
+    <div class="checkout-final-sum">{{'Итого' | translate}}</div>
+    <div class="total-amount">
+        <span class="checkout-quantity-items"><total-items></total-items> {{' на сумму' | translate}}</span>
+        <total-sum class="checkout-quantity-sum"></total-sum>
+    </div>
+    <div class="total-amount">
+        <span class="checkout-quantity-items">{{'Стоимость доставки' | translate}}</span>
+        <span *ngIf="(deliveryTypeKey$ | async) != 1 && (deliveryTypeKey$ | async) != 8" class="checkout-quantity-sum">{{'по тарифам перевозчика' | translate}}</span>
+        <span *ngIf="(deliveryTypeKey$ | async) == 1 || (deliveryTypeKey$ | async) == 8" class="checkout-quantity-sum red-color">{{'Бесплатно' | translate}}</span>
+    </div>
+    <div *ngIf="discount" class="total-amount">
+        <span class="checkout-quantity-items">{{'Скидка по промокоду' | translate}}</span>
+        <span class="checkout-quantity-sum">
+            <span *ngIf="discount.typeDiscount == 1">{{discount.size}}% (</span>
+            <span>{{(discountAmount$ | async) | number : '1.2-2'}} грн</span>
+            <span *ngIf="discount.typeDiscount == 1">)</span>
+        </span>
+    </div>
+    <div class="order-line"></div>
+    <div class="total-amount">
+        <span class="checkout-quantity-items"><span class="checkout-final-sum">К оплате:</span></span>
+        <total-sum-order class="checkout-quantity-sum"></total-sum-order>
+    </div>
+    <discount (discount)="addDiscount($event)"></discount>
+    <div class="checkout-edit-order">
+        <a class="ps-text-link" (click)="editProductsList()">{{'Редактировать заказ' | translate}}</a>
+    </div>
+    <div class="checkout-contract-order">
+        {{'Подтверждая заказ, я принимаю условия ' | translate}}
+        <contract></contract>
+    </div>
+    <div *ngIf="allowPush" class="checkout-btn-green-wrapper"><a class="checkout-btn-green" [ngClass]="{'disabled-button': !submitEnabled()}" (click)="submit()">{{'Оформить заказ' | translate}}</a></div>
+    <div *ngIf="!allowPush" class="checkout-btn-green-wrapper"><a class="checkout-btn-green-timer" [ngClass]="{'disabled-button': !submitEnabled()}">{{timeForShow}}</a></div>
+</div>
+<div class="checkout-zigZag-svg">
+    <svg viewBox="0 0 311.1 14.4">
+        <polyline points="0.7,13.7 13.4,0.8 25.3,12.8 37.2,0.8 49,12.8 60.9,0.8 72.8,12.8 84.7,0.8 96.6,12.8 108.4,0.8
+                    120.3,12.8 132.2,0.8 144,12.8 155.9,0.8 167.7,12.8 179.8,0.7 191.7,12.8 203.6,0.8 215.4,12.8 227.3,0.8 239.2,12.8 251.1,0.8
+                    262.9,12.8 274.8,0.8 286.7,12.8 298.6,0.8 310.4,12.8 "></polyline>
+    </svg>
+</div>

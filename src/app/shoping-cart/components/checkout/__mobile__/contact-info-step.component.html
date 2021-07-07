@@ -1,0 +1,56 @@
+﻿<!--<ordered-products *ngIf="(ordersListEnabled$ | async)" (productsConfirmed)="activateUserInfo()"></ordered-products>-->
+<div *ngIf="(contactInfoEnabled$ | async)">
+    <div class="checkout-mob">{{'Оформить заказ' | translate}}:</div>
+    <div class="stepwizard">
+        <div class="connecting-line"></div>
+        <div class="stepwizard-row setup-panel">
+            <div class="stepwizard-step">
+                <span class="first-step-mob"><svg class="success__svg"><use svg-use-reference="success"></use></svg></span>
+                <p class="first-step-text-mob">{{'Список товаров' | translate}}</p>
+            </div>
+            <div class="stepwizard-step">
+                <span class="active-step-mob">2</span>
+                <p class="active-step-text-mob">
+                    {{'Контактная информация' | translate}}
+                </p>
+            </div>
+            <div class="stepwizard-step">
+                <span class="dis-step-mob">3</span>
+                <p class="dis-step-text-mob">
+                    {{'Доставка и оплата' | translate}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="blue-line-mob"></div>
+    <div class="all-checkout-btn-mob" *ngIf="!(isAuthorized$ | async)">
+        <button [ngClass]="contactInfoActive ? 'checkout-btn-active-mob': 'checkout-btn-mob'" (click)="showContactInfo()">{{'Я новый покупатель' | translate}}</button>
+        <div class="checkout-line-mob"></div>
+        <button [ngClass]="authActive ? 'checkout-btn-active-mob': 'checkout-btn-mob'" (click)="showAuthorization()">{{'У меня есть аккаунт' | translate}}</button>
+    </div>
+
+    <main-user-info *ngIf="(isAuthorized$ | async) || contactInfoActive" 
+                    [userInfo$]="userInfo$"
+                    (onUserInfoChange)="updateUserInfo($event)"
+                    (onInputClick)="processInputClick()">
+    </main-user-info>
+    <cart-authorization *ngIf="!(isAuthorized$ | async) && authActive" (onAuthorization)="setUser($event)"></cart-authorization>
+
+    <div class="total-amount-mob">
+        <span class="checkout-quantity-items-mob"><total-items></total-items> {{' на сумму'}}:</span>
+        <span class="checkout-quantity-sum0-mob"><total-sum-order></total-sum-order></span>
+    </div>
+    <!--<div class="promo-code-mob">
+        <a class="ps-text-link link-promo-code-mob">{{'Применить промокод на скидку' | translate}}</a>
+    </div>
+    <div class="promo-code-mob">
+        <input class="checkout-input-promo" placeholder="{{'Введите промокод' | translate}}">
+        <button class="checkout-button-promo">
+            <span *ngIf="!inProcess">{{'Применить' | translate}}</span>
+            <mini-spinner *ngIf="inProcess"></mini-spinner>
+        </button>
+    </div>-->
+    <div class="checkout-btn-step-mob">
+        <button class="btn-blue-large-mob" [ngClass]="{'disabled-button': !submitEnabled()}" (click)="submit()">{{'Выбрать доставку и оплату' | translate}} </button>
+    </div>
+</div>

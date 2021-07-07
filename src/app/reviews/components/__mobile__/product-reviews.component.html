@@ -1,0 +1,5 @@
+﻿<ng-container *ngIf="reviews.length !== 0">
+    <div *ngFor="let review of reviews; trackBy: trackByFn" class="review__holder-list">
+        <review [productId]="productId" [review]="review" [needStars]="false" (closeOthersReplyForms)="closeOthersReplyForms($event)"></review>
+    </div>
+</ng-container>

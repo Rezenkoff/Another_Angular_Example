@@ -1,0 +1,59 @@
+.status-description {
+    text-align: left;
+    max-width: 100px;
+    margin: auto;
+}
+.refund-btn {
+    background: #3e77aa;
+    border: 1px solid #3e77aa;
+    color: #fff;
+    font-size: 13px;
+    line-height: 30px;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 20px;
+    cursor: pointer;
+}
+.cabinet-page {
+    min-height: 400px;
+
+    @media screen and (max-width: 767px) {
+        padding: 0 10px;
+        min-height: initial;
+    }
+}
+.table-order {
+    margin-bottom: 30px;
+
+    thead tr {
+        cursor: default;
+    }
+
+    tbody tr {
+        cursor: pointer;
+    }
+}
+
+.table-order td {
+    max-width: 150px;
+    overflow: hidden;
+    max-width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media screen and (max-width: 360px) {
+        max-width: 70px;
+    }
+}
+.status-icon {
+    position: relative;
+    right: 3px;
+    bottom: 1px;
+}
+
+.status-icon__svg {
+    width: 15px !important;
+    height: 15px;
+}

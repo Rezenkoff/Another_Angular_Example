@@ -1,0 +1,10 @@
+﻿<div class="characteristics-list-mob">
+    <div class="oem-header">
+        <div class="oem-header-code">OE-кросс-код</div>
+        <div class="oem-header-brand">Марка</div>
+    </div>
+    <div class="characteristics-item-mob" *ngFor="let item of getOeCode()">
+        <div class="characteristics-name-mob">{{item.code}}</div>
+        <div class="characteristics-description-mob">{{item.carModel}}</div>
+    </div>    
+</div>

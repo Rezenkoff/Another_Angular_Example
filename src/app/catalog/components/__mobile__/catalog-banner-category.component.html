@@ -1,0 +1,12 @@
+﻿<div>
+    <ul class="sub-categories">
+        <li class="sub-categories__item" *ngFor="let node of nodeList">
+            <a class="sub-categories__link" [routerLink]="getSubcategoryRouteLink(node)">
+                <span class="sub-categories__name">{{ node.name }}</span>
+                <div class="sub-categories__description">
+                </div>
+                <img *ngIf="node.imageUrl" class="sub-categories__image" [src]="node.imageUrl" alt="фото {{node.name}}" title="{{node.name}}" width="200" height="140">
+            </a>
+        </li>
+    </ul>
+</div>

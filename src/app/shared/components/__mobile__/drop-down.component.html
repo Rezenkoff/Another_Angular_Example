@@ -1,0 +1,22 @@
+﻿<div style="position:relative;">
+    <div style="float:left;">
+        <input class="delivery-step__input accum-input"
+               type="text"
+               [(ngModel)]="filterSelected.value"
+               placeholder="{{'Поиск...' | translate}} "
+               #filterBox (keyup)="findElemFilter(filterBox.value)" 
+               (click)="onClick()" 
+               (focus)="$event.target.select();" 
+               [ngClass]="{'autodoc-mini-loader': itemsListLoad }">
+    </div>
+    <div *ngIf="filterSelected.value">
+        <svg (click)="onFilterClear(filterSelected)" style="margin-left: 3%; margin-top: 10%; width:10px; height:10px; display: inline;"><use svg-use-reference="close" xlink:href="../assets/images/sprite.svg#close"></use></svg>
+    </div>
+    <div *ngIf="tmpfilterDataList.length > 0 && showDropDown" class="settlement-dropdown-container">
+        <span><a href="javascript:void()"></a></span>
+        <div *ngFor="let item of tmpfilterDataList | sortByKey" (click)="selectedFilter(item)" class="settlement-item">
+            <span class="text-uppercase"><b>{{ item.value }}</b></span>&nbsp;<br />
+        </div>
+    </div>
+    <div class="head-overlay lang-overlay" (click)="hideDropdown()" [style.display]="getDisplay()"></div>
+</div>

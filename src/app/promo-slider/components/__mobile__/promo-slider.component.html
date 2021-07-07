@@ -1,0 +1,10 @@
+﻿<div class="promo-slider-bg clearfix">
+    <div class="promo-slider clearfix">
+        <div class="col-lg-6">
+            <slider-info-block [indicatorShown$]="indicatorShown$"></slider-info-block>
+        </div>
+        <div class="col-lg-6">
+            <slider-main-block (onIndicatorChange)="applyIndicatorChanges($event)"></slider-main-block>
+        </div>
+    </div>
+</div>

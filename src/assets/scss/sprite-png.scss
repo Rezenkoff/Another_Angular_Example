@@ -1,0 +1,104 @@
+
+%icon-arrow-nav-h {
+    background-image: url(https://cdn.autodoc.ua/images/sprite.png);
+    background-position: -42px -21px;
+    width: 4px;
+    height: 8px;
+}
+%icon-arrow-nav {
+    background-image: url(https://cdn.autodoc.ua/images/sprite.png);
+    background-position: 0px -38px;
+    width: 4px;
+    height: 8px;
+}
+%icon-bread-arrow {
+    background-image: url(https://cdn.autodoc.ua/images/sprite.png);
+    background-position: -55px -19px;
+    width: 5px;
+    height: 9px;
+}
+%icon-bread-home {
+    background-image: url(https://cdn.autodoc.ua/images/sprite.png);
+    background-position: 0px -21px;
+    width: 12px;
+    height: 12px;
+}
+%icon-date-ico {
+    background-image: url(https://cdn.autodoc.ua/images/sprite.png);
+    background-position: 0px 0px;
+    width: 16px;
+    height: 16px;
+}
+%icon-load-ico {
+    background-image: url(https://cdn.autodoc.ua/images/sprite.png);
+    background-position: -21px 0px;
+    width: 16px;
+    height: 14px;
+}
+%icon-select-arrow-blue {
+    background-image: url(https://cdn.autodoc.ua/images/sprite.png);
+    background-position: -17px -21px;
+    width: 16px;
+    height: 8px;
+}
+%icon-select-arrow {
+    background-image: url(https://cdn.autodoc.ua/images/sprite.png);
+    background-position: -9px -38px;
+    width: 8px;
+    height: 4px;
+}
+%icon-slide-arrow {
+    background-image: url(https://cdn.autodoc.ua/images/sprite.png);
+    background-position: -42px 0px;
+    width: 8px;
+    height: 16px;
+}
+%icon-sub-slide-arrow {
+    background-image: url(https://cdn.autodoc.ua/images/sprite.png);
+    background-position: -55px 0px;
+    width: 7px;
+    height: 14px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  %icon-arrow-nav-h {
+    /*background-image: url(../../assets/images/sprite@2x.png);*/
+    background-size: 62px 46px;
+  }
+    %icon-arrow-nav {
+        /*background-image: url(../../assets/images/sprite@2x.png);*/
+        background-size: 62px 46px;
+    }
+    %icon-bread-arrow {
+        /*background-image: url(../../assets/images/sprite@2x.png);*/
+        background-size: 62px 46px;
+    }
+    %icon-bread-home {
+        /*background-image: url(../../assets/images/sprite@2x.png);*/
+        background-size: 62px 46px;
+    }
+    %icon-date-ico {
+        /*background-image: url(../../assets/images/sprite@2x.png);*/
+        background-size: 62px 46px;
+    }
+    %icon-load-ico {
+        /*background-image: url(../../assets/images/sprite@2x.png);*/
+        background-size: 62px 46px;
+    }
+    %icon-select-arrow-blue {
+        /*background-image: url(../../assets/images/sprite@2x.png);*/
+        background-size: 62px 46px;
+    }
+    %icon-select-arrow {
+        /*background-image: url(../../assets/images/sprite@2x.png);*/
+        background-size: 62px 46px;
+    }
+    %icon-slide-arrow {
+        /*background-image: url(../../assets/images/sprite@2x.png);*/
+        background-size: 62px 46px;
+    }
+    %icon-sub-slide-arrow {
+        /*background-image: url(../../assets/images/sprite@2x.png);*/
+        background-size: 62px 46px;
+    }
+}

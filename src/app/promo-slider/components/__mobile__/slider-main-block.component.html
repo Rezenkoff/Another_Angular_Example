@@ -1,0 +1,15 @@
+<div class="main-block-search">
+    <div class="main-header-tab">
+        <div class="tab-close" [ngClass]="{'tab-open': (selectedTabIndex == 0)}" (click)="selectTab(0)">
+            <a class="tab-close__tab-link" [ngClass]="{'tab-open__tab-link': (selectedTabIndex == 0)}">{{'Поиск по автомобилю' | translate}}</a>
+        </div>
+        <div *ngIf="isAuthenticated()" class="tab-close" [ngClass]="{'tab-open': (selectedTabIndex == 2)}" (click)="selectTab(2)">
+            <a class="tab-close__tab-link" [ngClass]="{'tab-open__tab-link': (selectedTabIndex == 2)}">{{'Мой гараж' | translate}} <br />({{carsCount}} авто)</a>
+        </div>
+    </div>
+    <car-select-tab *ngIf="selectedTabIndex == 0" (onCarSelectPanelChange)="checkChanges($event)"></car-select-tab>
+    <vin-search-tab *ngIf="selectedTabIndex == 1"></vin-search-tab>
+    <div [hidden]="selectedTabIndex != 2">
+        <garage-tab *ngIf="isAuthenticated()" (onCarsCountChange)="checkCarsCount($event)"></garage-tab>
+    </div>
+</div>

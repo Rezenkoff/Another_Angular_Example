@@ -1,0 +1,39 @@
+﻿<li class="container__added-item">
+    <span class="close-icon close-icon--delete" (click)="remove.emit(product)">
+        <svg class="close-icon__svg close-icon__svg--red">
+            <use svg-use-reference="close"></use>
+        </svg>
+    </span>
+    <div class="container__added-info">
+        <div class="container__added-image-basket">
+            <a>
+                <img class="container__added-img" 
+                     onerror="this.src='https://cdn.autodoc.ua/images/no_image.png'" 
+                     [src]="getImageUrl" width="50" height="50" alt="image description">
+            </a>
+        </div>
+        <div class="container__added-name-box">
+            <a class="container__added-name" (click)="navigateToProduct()">{{ displayDescription }}</a>
+            <div class="container__added-code">
+                <span class="container__added-code-name">{{ 'Код товара:' | translate}}</span>
+                <span class="container__added-code-number">{{ lookupNumber }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="container__added-price-box">
+        <div class="quantity quantity--order quantity--added quantity--product">
+            <input class="quantity__input quantity__input--order quantity__input--added input_number_no_arrow" type="number" maxlength="2" [ngModel]="quantity" (ngModelChange)="update.emit({ product: product, quantity: $event})">
+            <span class="quantity__plus quantity__plus--order quantity__plus--added" (click)="increment.emit(product)">
+                <svg class="drop-arrow__svg drop-arrow__svg--quantity">
+                    <use svg-use-reference="arrow-top"></use>
+                </svg>
+            </span>
+            <span class="quantity__minus quantity__minus--order quantity__minus--added" (click)="decrement.emit(product)" [ngClass]="isDisabled()">
+                <svg class="drop-arrow__svg drop-arrow__svg--quantity">
+                    <use svg-use-reference="arrow"></use>
+                </svg>
+            </span>
+        </div>
+        <span class="container__added-price container__added-price--basket">{{ product.price }}&nbsp;грн.</span>
+    </div>
+</li>

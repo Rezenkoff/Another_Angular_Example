@@ -1,0 +1,6 @@
+﻿<div *ngFor ="let alert of alerts" class="notification {{ cssClass(alert) }}" (click)="removeAlert(alert)" [@showAlert]="void">
+    <div>
+        <span class="{{ iconClass(alert) }} notification-icon margin-right-10"></span>
+        <div class="notification-message-text">{{alert.message}}</div>
+    </div>
+</div>

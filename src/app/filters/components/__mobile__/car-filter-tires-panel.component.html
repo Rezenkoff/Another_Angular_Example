@@ -1,0 +1,8 @@
+<div *ngIf="!(isEnabled$ | async) && needShow" style="padding: 0 12px 0 12px" class="car-tires-category">
+    <div class="your-car-text">{{'Ваш автомобиль:' | translate}}</div>
+    <car-select-panel-tires (onCarSelectPanelChangeCar)="updateCarInfo($event)"></car-select-panel-tires>
+    <div class="car-filter-btn">
+        <a class="btn-reset-filter" (click)="clearFilters()">{{'Сбросить' | translate}}</a>
+        <a class="btn-show-filter" [ngClass]="{ 'disabled-button': !CarIsValid()}" (click)="navigate()">{{'Показать' | translate}}</a>
+    </div>
+</div>

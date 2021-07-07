@@ -1,0 +1,231 @@
+﻿<div class="main-sto">
+    <ul class="breadcrumbs">
+        <li><a href="/">{{ 'Главная' | translate}}</a></li>
+        <li><span>{{ 'Карта партнеров' | translate}}</span></li>
+    </ul>   
+    <div class="sto-title-text" id="catalogStoTitle" #catalogStoTitle>
+        {{ 'Карта партнеров' | translate}}
+    </div>
+    <div class="sto-block-free-delivery" *ngIf="closeFreeDelivery">
+        <span class="close-icon sto-close-icon" (click)="closeFreeDeliveryMessage()">
+            <svg class="close-icon__svg"><use svg-use-reference="close"></use></svg>
+        </span>
+        <div class="sto-red-text">{{'Бесплатная доставка на СТО Autodoc по всей Украине от 2-х часов.' | translate }}</div>
+        <span>{{ 'Вы можете заказать доставку на любое СТО наших партнеров совершенно бесплатно. Для этого нужно просто выбрать нужное вам СТО в списке при оформлении заказа.' | translate }}</span>
+    </div>
+    <div class="sto-partnership">
+        <div class="sto-partnership-text">{{'Хотите стать нашим партнером?' | translate}}</div>
+        <a class="sto-partnership-btn" [routerLink]="['/for-partners']">{{ 'Отправить заявку' | translate }}</a>
+    </div>
+
+    <div *ngIf="!showDetailSto" class="sto-select-city">
+        <city-select class="select-city" (onSettlementSelected)="loadPoints($event)" [selectedName]="selectedCityMarker.name"></city-select>
+        <a *ngIf="!showAreas" (click)="toggleShowAreasButton(true)" class="list-btn">{{'Список городов' | translate}}</a>
+        <a *ngIf="showAreas" (click)="toggleShowAreasButton(false)" class="list-btn hide-list">{{'Скрыть список' | translate}}</a>  
+        <div style="padding-top: 10px;">
+            <div class="sto-choice-services">                     
+                <div class="block-select-sto">
+                    <select class="sort-holder__select" [jcf]="{type:'Select'}" [(ngModel)]="selectedPaymentMethodKey" (ngModelChange)="changePayment()">
+                        <option value="0" selected>{{'Способ оплаты' | translate}}</option>
+                        <option *ngFor="let p of paymentMethods" value="{{p.key}}">
+                            <ng-container *ngIf='lngId == 2'>{{p.nameRus}}</ng-container>
+                            <ng-container *ngIf='lngId != 2' >{{p.nameUkr}}</ng-container>
+                        </option>
+                    </select>                            
+                </div>
+                <div class="block-select-sto" style="display: none;">
+                    <input class="sto-select-drop" type="text" placeholder="{{'Виды услуг' | translate}}">
+                    <span class="drop-arrow sto-arrow">
+                        <svg class="drop-arrow__svg drop-arrow__svg--blue sto-arrow"><use svg-use-reference="arrow"></use></svg>                   
+                    </span>                             
+                </div>                    
+            </div>        
+            <label class="switch">
+                <input type="checkbox" [checked]="mode === 'DP'" (change)="changeOnlyDpCheckbox($event)">
+                <span class="slider round"></span>
+              </label>
+              <div class="show-only-points">
+                  <span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <g clip-path="url(#clip0)">
+                        <path d="M11.7333 2.96816C11.7333 2.95547 11.7333 2.95547 11.7333 2.94279C11.7206 2.91742 11.7206 2.89205 11.708 2.86668V2.854C11.6953 2.82863 11.6699 2.80326 11.6572 2.79058L11.6445 2.77789C11.6318 2.76521 11.6065 2.75252 11.5938 2.73984L11.5811 2.72715H11.5684L11.5557 2.71447L6.16486 0.0380533C6.06338 -0.0126844 5.93654 -0.0126844 5.82238 0.0380533L4.0085 0.938649L9.42476 3.71654L9.43744 3.72923C9.45012 3.72923 9.45012 3.74191 9.46281 3.74191C9.47549 3.75459 9.47549 3.76728 9.48818 3.77996C9.48818 3.79265 9.48818 3.79265 9.48818 3.80533V3.81802V6.76081C9.48818 6.81154 9.46281 6.8496 9.42476 6.87497L8.33389 7.44577C8.27047 7.48382 8.19437 7.45845 8.15631 7.39503C8.14363 7.38234 8.14363 7.35698 8.14363 7.33161V4.45224L2.66395 1.62361L2.65127 1.61092L0.456857 2.70179L0.444173 2.71447H0.431488L0.418804 2.72715C0.40612 2.73984 0.380751 2.75252 0.368066 2.76521L0.355382 2.77789C0.330013 2.80326 0.317328 2.82863 0.29196 2.854V2.86668C0.279275 2.89205 0.266591 2.91742 0.266591 2.94279C0.266591 2.95547 0.266591 2.95547 0.266591 2.96816C0.266591 2.99353 0.253906 3.00621 0.253906 3.03158V3.04427V8.95521C0.253906 9.09474 0.330013 9.23427 0.469542 9.2977L5.80969 11.9614C5.8858 11.9995 5.97459 12.0122 6.06338 11.9868L6.08875 11.9741C6.11412 11.9741 6.1268 11.9614 6.15217 11.9487L11.5304 9.28501C11.6572 9.22159 11.746 9.09474 11.746 8.94253V3.04427V3.03158C11.7333 3.00621 11.7333 2.99353 11.7333 2.96816Z" fill="#414141"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0">
+                        <rect width="12" height="12" fill="white"/>
+                        </clipPath>
+                        </defs>
+                    </svg>
+              </span>
+              <span>
+                {{'Показать только точки выдачи' | translate}}
+              </span>
+            </div>
+        </div>   
+    </div>
+    <div *ngIf="showAreas && !showDetailSto" class="all-sto-block">
+        <div class="sto-title-text">
+            {{ 'Выберите область и город' | translate}}
+        </div>
+        <ul class="tree-text-sub block-padding">
+            <li *ngFor="let area of areas">
+                <div *ngIf="!area.showSettlements" (click)="showAreaSettlments(area.areaId, true)">
+                    <div class="circle-element ">
+                        <span class="line-plus">+</span>
+                    </div>
+                    <a class="tree-text-sub-link" *ngIf="lngId === 2">{{ area.areaNameRus }}</a>
+                    <a class="tree-text-sub-link" *ngIf="lngId !== 2">{{ area.areaNameUkr }}</a>
+                </div>
+                <div *ngIf="area.showSettlements" (click)="showAreaSettlments(area.areaId, false)">
+                    <div class="circle-element ">
+                        <span class="line-minus">-</span>
+                    </div>
+                    <a class="tree-text-sub-link" *ngIf="lngId === 2">{{ area.areaNameRus }}</a>
+                    <a class="tree-text-sub-link" *ngIf="lngId !== 2">{{ area.areaNameUkr }}</a>
+                </div>
+                <ul class="tree-text-sub" *ngIf="area.showSettlements">
+                    <li *ngFor="let settlement of area.settlements">
+                        <a class="tree-text-sub-link" *ngIf="lngId === 2" (click)="loadPoinstFromArea(settlement)">{{ settlement.nameRus }}</a>
+                        <a class="tree-text-sub-link" *ngIf="lngId !== 2" (click)="loadPoinstFromArea(settlement)">{{ settlement.nameUkr }}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div> 
+    <ng-container *ngIf="!showAreas && !showDetailSto">
+        <div *ngIf="!showStoAsList" class="service-block">
+            <div class="service-station">
+                <div class="service-station__map">
+                    <div id="map" *ngIf="isBrowser()">
+                        <delivery-point-map [deliveryPoints]="stoList" (selectedMarkerChange)="selectMarker($event)" [centerMap]="centerMap" [zoom]="zoom"></delivery-point-map>
+                    </div>
+                </div>
+            </div>
+            <div class="add-service-list">
+                <div class="add-service-list__holder">
+                    <ng-template let-item ngFor [ngForOf]="stoList">
+                        <div class="add-service-list__box" (click)="selectMarker(item)">
+                            <div class="add-service-list__top-info">
+                                <div class="service-list__image">
+                                    <img class="service-list__img" [src]="getImagePreviewUrl(item.pictureUrl)" onerror="this.src = 'https://cdn.autodoc.ua/images/no_image.png'" alt="{{item.name}}" title="{{item.name}}" width="80">
+                                </div>
+                                <div class="add-service-list__description">
+                                    <span class="map-info__description-title">{{item.name}}</span>
+                                    <address class="map-info__address map-info__address--service">{{item.address}}</address>
+                                    <ul *ngIf="item.phones" class="map-contacts__phone-list map-contacts__phone-list--service">
+                                        <li *ngFor="let phone of item.phones | slice:0:2;" class="map-contacts__phone-item">
+                                            <a class="map-contacts__phone-link" href="tel:{{phone.contactText}}">{{phone.contactText}}&nbsp;&nbsp;</a>
+                                        </li>
+                                    </ul>
+                                    <div class="map-contacts__work-time map-contacts__work-time--service">
+                                        <div *ngFor="let sch of getSchedule(item.schedule)" class="map-contacts__work">{{sch}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!showStoAsList" class="sto-select-city">
+            <a (click)="toggleShowStoAsList(true)" class="btn-grey btn-show-sto">{{'Показать список СТО' | translate}}</a>
+        </div>
+
+        <div *ngIf="showStoAsList">        
+            <div class="all-sto-block">           
+                <ng-template let-item ngFor [ngForOf]="stoList">
+                    <div class="add-service-list__box sto-list-block" (click)="selectMarker(item)">
+                        <div class="add-service-list__top-info">
+                            <div class="service-list__image">
+                                <img class="service-list__img" [src]="getImagePreviewUrl(item.pictureUrl)" onerror="this.src = 'https://cdn.autodoc.ua/images/no_image.png'" alt="{{item.name}}" title="{{item.name}}" width="80">
+                            </div>
+                            <div class="add-service-list__description">
+                                <span class="map-info__description-title">{{item.name}}</span>
+                                <address class="map-info__address map-info__address--service">{{item.address}}</address>
+                                <ul *ngIf="item.phones" class="map-contacts__phone-list map-contacts__phone-list--service">
+                                    <li *ngFor="let phone of item.phones | slice:0:2;" class="map-contacts__phone-item">
+                                        <a class="map-contacts__phone-link" href="tel:{{phone.contactText}}">{{phone.contactText}}&nbsp;&nbsp;</a>
+                                    </li>
+                                </ul>
+                                <div class="map-contacts__work-time map-contacts__work-time--service">
+                                    <div *ngFor="let sch of getSchedule(item.schedule)" class="map-contacts__work">{{sch}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>                      
+            </div>                                                          
+        </div>
+        <div *ngIf="showStoAsList" class="sto-select-city">
+            <a (click)="toggleShowStoAsList(false)" class="btn-grey btn-show-sto">{{'Показать карту' | translate}}</a>
+        </div>
+    </ng-container>
+    
+    <div *ngIf="showDetailSto" class="selected-sto">
+        <div>
+            <span class="drop-arrow drop-arrow--blue sto-blue-arrow"><svg class="drop-arrow__svg drop-arrow__svg--blue"><use svg-use-reference="arrow"></use></svg></span>
+            <a (click)="clickBackFromDetailedSto()" class="sto-link-back">{{'Назад' | translate}}</a>
+        </div>
+        <div>        
+            <div class="sto-wrapper-img">
+                <img class="sto-one-img" [src]="getImagePreviewUrl(selectedMarker.pictureUrl)" onerror="this.src = 'https://cdn.autodoc.ua/images/no_image.png'" alt="{{selectedMarker.name}}" title="{{selectedMarker.name}}">
+            </div>
+            <div>
+                <div class="map-info__description-title">СТО</div>
+                <span class="map-info__description-title">{{selectedMarker.name}}</span>
+                <address class="map-info__address-sto">
+                    <div class="address-icon address-icon-sto">
+                        <svg class="address-icon__svg address-icon__svg--blue">
+                            <use svg-use-reference="placeholder" />
+                        </svg>
+                    </div>
+                    <div class="address-of-sto">{{selectedMarker.address}}</div>
+                </address>
+                <div class="map-contacts">
+                    <div *ngIf="selectedMarker.phones.length" class="phone-list-block">
+                        <div class="address-icon tel-icon-sto">
+                            <svg class="address-icon__svg address-icon__svg--blue">
+                                <use svg-use-reference="telephone" />
+                            </svg>
+                        </div>
+                        <ul class="map-contacts__phone-list">
+                            <li *ngFor="let phone of selectedMarker.phones">
+                                <a class="map-contacts__phone-link">{{phone.contactText}}&nbsp;&nbsp;</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div *ngIf="selectedMarker.schedule" class="map-contacts__work-time">
+                        <div>
+                            <div class="address-icon timetable-icon-sto">
+                                <svg class="address-icon__svg address-icon__svg--blue">
+                                    <use svg-use-reference="wall-clock" />
+                                </svg>
+                            </div>                                         
+                        </div>
+                        <div class="address-of-sto">{{selectedMarker.schedule}}</div>
+                    </div>
+                </div>                                   
+                <div style="padding-bottom: 2%; display: none;">
+                    <span class="registration__route-btn"><span class="address-icon"><svg class="address-icon__svg address-icon__svg--blue"><use svg-use-reference="address"></use></svg></span>{{ 'Как добраться ?' | translate}}</span>
+                </div>               
+            </div> 
+            <div>
+                <span class="vin-line-mob">{{'Как добраться:' | translate}}</span>
+                <a class="get-directions" (click)="showOnMap(selectedMarker)">{{'Проложить маршрут' | translate}}</a>
+            </div>           
+            <div class="sto-block-free-delivery how-to-get">
+                {{selectedMarker.route}}
+            </div>
+
+            <div *ngIf="getAvailablePaymentMethods().length">
+                <span class="vin-line-mob">{{'Способы оплаты:' | translate}}</span>
+                <ul>
+                    <li *ngFor="let paymentMethod of getAvailablePaymentMethods()">
+                        <ng-container *ngIf='lngId == 2'>{{paymentMethod.nameRus}}</ng-container>
+                        <ng-container *ngIf='lngId != 2' >{{paymentMethod.nameUkr}}</ng-container>
+                    </li>
+                </ul>
+            </div>  
+        </div>
+    </div>
+</div>

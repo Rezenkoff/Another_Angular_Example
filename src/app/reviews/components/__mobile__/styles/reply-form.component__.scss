@@ -1,0 +1,82 @@
+.review {
+    &__row {
+        overflow: hidden;
+    }
+
+    &__input-box {
+        float: left;
+        max-width: 332px;
+
+        @media screen and (max-width: 1250px) {
+            max-width: 300px;
+        }
+
+        @media screen and (max-width: 600px) {
+            float: none;
+            margin: 0 0 20px;
+            max-width: 100%;
+        }
+    }
+
+    &__submit-box {
+        float: right;
+        padding: 7px 0 0;
+
+        @media screen and (max-width: 1250px) {
+            padding: 0;
+        }
+
+        @media screen and (max-width: 600px) {
+            float: none;
+        }
+    }
+
+    &__submit {
+        display: block;
+        width: 190px;
+        background: linear-gradient(180deg,#8fd400,#699c01);
+        text-align: center;
+        font-size: 16px;
+        line-height: 54px;
+        font-weight: 700;
+        border-radius: 6px;
+        color: #fff;
+        border: none;
+        margin: 0 0 0 auto;
+
+        @media screen and (max-width: 600px) {
+            margin: 0 auto;
+            width: 100%;
+        }
+    }
+}
+.review-brand {
+    border-radius: 6px;
+    border-color: #99aec9;
+    height: 100px;
+    font-size: 14px;
+    margin: 0 0 15px;
+}
+.review-input-brand {
+    border-radius: 6px;
+    border-color: #99aec9;
+    line-height: 45px;
+    height: 42px;
+}
+.review-submit-btn {
+    background: linear-gradient(180deg,#8fd400,#699c01);
+    border-radius: 6px;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-block;
+    float: right;
+}
+
+.review-comment-box {
+    padding: 0px 0px 20px;
+    overflow: hidden;
+}

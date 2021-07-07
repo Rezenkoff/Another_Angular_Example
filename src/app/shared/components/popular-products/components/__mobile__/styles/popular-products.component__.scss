@@ -1,0 +1,76 @@
+.basket-icon-box {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+.main-popular-product {
+    width: 1200px;
+    margin: auto;
+
+    @media screen and (max-width: 1370px) {
+        width: auto;
+    }
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+}
+.wishlist-icon__svg-yellow {
+    fill: #1d5495;
+    color: #1d5495;
+    width: 12px;
+    height: 12px;
+}
+.no-line {
+    text-decoration: none;
+}
+.addToFavor {
+    color: #1D5495;
+    margin-left: 6px;
+    font-size: 12px;
+    line-height: 16px;
+    border-bottom: 1px dashed #1D5495;
+}
+.slider-header {
+    display: inline-block;
+    float: right;
+    text-align: center;
+    margin-top: 6px;
+
+    &__button-home {
+        background: #FFFFFF;
+        border: 1px solid #1D5495;
+        box-sizing: border-box;
+        border-radius: 18px;
+        width: 36px;
+        height: 36px;
+        display: inline-block;
+        margin-left: 12px;
+        padding-top: 5px;
+        opacity: 0.3;
+    }
+
+    &__button-home-active {
+        background: #FFFFFF;
+        border: 1px solid #1D5495;
+        box-sizing: border-box;
+        border-radius: 18px;
+        width: 36px;
+        height: 36px;
+        display: inline-block;
+        margin-left: 12px;
+        padding-top: 5px;
+    }
+}
+.slider-arrow {
+    width: 16px !important;
+    height: 16px !important;
+    transform: rotate(90deg) !important;
+}
+.product-box__name {
+    width: 530px !important;
+
+    @media screen and (max-width: 1024px) {
+        width: auto !important;
+    }
+}

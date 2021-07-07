@@ -1,0 +1,21 @@
+﻿<div class="panel panel-default filter-title">
+    <div class="" *ngFor="let filterData of comboboxes$ | async; trackBy: trackByFn">
+        <filter-combobox [filterData]="filterData"
+                         [language]="selectedLanguage"
+                         (onChageFilter)="onComboboxItemSelect($event, filterData)"
+                         (onOptionsRequest)="getComboboxOptions($event)"
+                         (onFilterClearEvent)="onFilterClear($event, filterData)">
+        </filter-combobox>
+    </div>
+    <div class="panel-body" style="padding: 5px 15px 5px 15px !important" *ngFor="let filterData of dropdowns$ | async; trackBy: trackByFn">
+        <span>{{ getFilterTitle(filterData) }}</span>
+        <filter-dropdown [(filterDataList)]="filterData.options"
+                         [filterSearchString]="getSearchString(filterData)"
+                         [itemsListLoad]="filterData.loading"
+                         (onChageFilter)="onDropdownItemSelect($event, filterData)"
+                         (onClickEvent)="getDropdownOptions(filterData)"
+                         (onFilterClearEvent)="onFilterClear($event, filterData)"
+                         (onOptionsRequest)="filterDropdownOptions($event, filterData)">
+        </filter-dropdown>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div>
+    <car-select-panel-tires (onCarSelectPanelChangeCar)="updateCarInfo($event)"></car-select-panel-tires>
+    <div class="text-center">
+        <a class="button-list__btn-1 button-list__btn-1--opener" style="margin-top:15px;" [ngClass]="{ 'disabled-button': !CarIsValid()}" (click)="onVehicleCreated()">
+            <span class="car-icon car-icon--white"><svg class="car-icon__svg car-icon__svg--white"><use svg-use-reference="car"></use></svg></span>{{'Выбрать автомобиль' | translate}}
+        </a>
+    </div>
+</div>

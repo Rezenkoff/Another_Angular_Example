@@ -1,0 +1,16 @@
+﻿<div class="product-box__suitable">
+    <span class="car-icon car-icon--product" (mouseenter)="showSuitabelVehicles()"><svg class="car-icon__svg car-icon__svg--product"><use svg-use-reference="car" /></svg></span>
+    <div class="product-box__suitable-box">
+        <span class="product-box__suitable-title">{{ 'Подходит к авто:' | translate}}</span>
+        <div *ngIf="!inProcess">
+            <div class="product-box__suitable-auto" *ngFor="let vehicle of vehicles">
+                <span class="instock-icon"><svg class="instock-icon__svg"><use svg-use-reference="success" /></svg></span>{{vehicle}}
+            </div>
+        </div>
+        <div *ngIf="inProcess">
+            <div class="container__row">
+                <div class="autodoc-loader"></div>
+            </div>
+        </div>
+    </div>
+</div>

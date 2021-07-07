@@ -1,0 +1,46 @@
+﻿<div class="main">
+    <div class="refund-section" *ngIf="!inProcess">
+        <ul class="refund-section__step-list">
+            <li class="refund-section__step-item" [ngClass]="displayStepStatus(0)">
+                <span class="refund-section__step-text" style="width: 128px;">{{'Выберите товар' | translate}}</span>
+                <span class="refund-section__step-number" (click)="onStepIndexClick(0)">
+                    <svg class="success__svg"><use svg-use-reference="success" /></svg>1
+                </span>
+            </li>
+            <li class="refund-section__step-item" [ngClass]="displayStepStatus(1)">
+                <span class="refund-section__step-text">{{'Укажите данные' | translate}}</span>
+                <span class="refund-section__step-number" (click)="onStepIndexClick(1)">
+                    <svg class="success__svg"><use svg-use-reference="success" /></svg>2
+                </span>
+            </li>
+            <li class="refund-section__step-item" [ngClass]="displayStepStatus(2)">
+                <span class="refund-section__step-text">{{'Реквизиты' | translate}}</span>
+                <span class="refund-section__step-number" (click)="onStepIndexClick(2)">
+                    <svg class="success__svg"><use svg-use-reference="success" /></svg>3
+                </span>
+            </li>
+            <li class="refund-section__step-item" [ngClass]="displayStepStatus(3)">
+                <span class="refund-section__step-text">{{'Возврат' | translate}}</span>
+                <span class="refund-section__step-number" (click)="onStepIndexClick(3)">
+                    <svg class="success__svg"><use svg-use-reference="success" /></svg>4
+                </span>
+            </li>
+        </ul>
+        <div class="refund-section clearfix">
+            <ng-template step-host>
+            </ng-template>
+            <div class="refund-section__next refund-section__next--back-button col-lg-12">
+                <button *ngIf="currentStepIndex > 0" class="refund-section__next-button refund-section__next-button--back" (click)="onBackStepClick()"><span>{{'Назад' | translate}}</span></button>
+                <button class="refund-section__next-button next-button--action" (click)="onNextStepClick()" [style.display]="getDisplayNext()" [ngClass]="{ 'disabled-button': !currentStep.isValid}">
+                    {{'Следующий шаг' | translate}}<span class="btn-arrow">
+                        <svg class="btn-arrow__svg"><use svg-use-reference="btn-arrow" /></svg>
+                    </span>
+                </button>
+                <button class="refund-section__next-button refund-section__next-button--refund" [style.display]="getDisplayConfirm()" (click)="Confirm()" [ngClass]="{'disabled-button': !currentStep.isValid}">{{'Отправить запрос' | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="inProcess" style="height:120px;">
+        <div class="autodoc-loader"></div>
+    </div>
+</div>

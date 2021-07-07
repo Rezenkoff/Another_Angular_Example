@@ -1,0 +1,34 @@
+﻿<div class="container__radio-block" *ngIf="deliveryMethods.length > 0">
+    <span class="container__radio-title">{{'Доставка' | translate}} <span class="red-star">*</span></span>
+    <div *ngFor="let delivery of deliveryMethods">
+        <ul class="container__radio-list">
+            <li class="container__radio-item">
+                <input class="container__radio-input"
+                       [disabled]="!delivery.isAvaiable"
+                       [value]="delivery"
+                       name="yes-{{ delivery.Key }}"
+                       [(ngModel)]="selectedDelivery"
+                       (ngModelChange)="setDeliveryType()"
+                       id="radio_b-{{ delivery.Key }}"
+                       type="radio"
+                       [jcf]="{type: 'radio'}">
+                <label class="container__radio-label" for="radio_b-{{ delivery.Key }}" [ngClass]="{'disabled-button': !delivery.isAvaiable}" >
+                    {{ delivery.ShipmentName  }}
+                    <span title="Количество точек выдачи, доступных в вашем городе" *ngIf="pointsCount && (shipmentKey$ | async) == delivery.Key">({{ pointsCount }})</span>
+                    <span  *ngIf="delivery.IsFreeFrom !== null">
+                        <span>
+                            <ng-container *ngIf="delivery.IsFreeFrom === 0" >
+                                <span class="label-no-cash-1">{{ 'Бесплатно' | translate }}</span>
+                                <span *ngIf="delivery.Key === 1" class="label-text-sto">{{ 'Заберите заказ на одном из СТО партнеров' | translate }}</span>
+                                <span *ngIf="delivery.Key === 8" class="label-text-sto">{{ 'Там можно не только забрать заказ, но и переобуться по выгодной цене!' | translate }}</span>
+                            </ng-container>
+                        </span>
+                        <span class="label-no-cash"><ng-container *ngIf="delivery.IsFreeFrom !== 0" >({{ 'бесплатно от ' | translate }}{{delivery.IsFreeFrom}}грн)</ng-container></span>    
+                    </span>
+                </label>
+            </li>
+        </ul>
+    </div>
+</div>
+
+

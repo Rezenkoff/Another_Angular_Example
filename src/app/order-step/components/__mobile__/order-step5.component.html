@@ -1,0 +1,28 @@
+﻿<div class="order-section__form-step-5">
+    <div class="vin-block-title-mob">{{'Укажите контактную информацию' | translate}}</div>
+    <div class="order-section__contact-info">
+        <form novalidate [formGroup]="orderContactInfoGroup" class="relative">
+            <div class="sector-form">
+                <span class="label-form">{{'ФИО (полностью)' | translate}} &nbsp;<span class="red-star">*</span></span>
+                <input class="form-input" [ngStyle]="{'border-color':orderContactInfoGroup.controls.name.status === 'VALID' ? '' : 'red' }" placeholder="{{'ФИО' | translate}}" formControlName="name">
+            </div>
+            <div class="sector-form">
+                <span class="label-form">{{'Номер телефона' | translate}} &nbsp;<span class="red-star">*</span></span>
+                <input class="form-input" [ngStyle]="{'border-color':orderContactInfoGroup.controls.phone.status === 'VALID' ? '' : 'red' }" type="tel" maxlength="13" placeholder="+380 XX XXX XX XX" formControlName="phone">
+            </div>
+            <div class="sector-form">
+                <span class="label-form">{{'E-mail адрес' | translate}} &nbsp;</span>
+                <input class="form-input" type="email" placeholder="{{'Email' | translate}}" formControlName="email">
+            </div>
+            <div class="vin-add-comment">
+                <comment (onCommentEdit)="onCommentEdit($event)"></comment>
+            </div>
+            <div class="red-star-field"><span class="red-star">*</span> — {{'обязательные поля' | translate}}</div>
+            <div class="checkbox-vin-contract">
+                {{'Используя autodoc.ua Вы соглашаетесь с ' | translate}} <contract style="display:inline-block;"></contract>
+            </div>
+        </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,30 @@
+﻿<div class="news-list" *ngIf="!inProcess">
+    <div class="news-box" *ngFor="let news of newsList">
+        <div class="news-title-mobile"><a class="" (click)="openNewsDetails(news)">{{ (languageId$ | async) === 2 ? news.header : news.ukrHeader }}</a></div>
+        <div class="image-box"> 
+            <a (click)="openNewsDetails(news)">
+                <img height="120" width="180" src="{{(languageId$ | async) === 2 ? news.previewPictureUrl : news.previewPictureUrlUkr}}" onerror="this.src = 'https://cdn.autodoc.ua/images/no_image.png'" alt="{{ (languageId$ | async) === 2 ? news.header : news.ukrHeader }}" title="{{ (languageId$ | async) === 2 ? news.header : news.ukrHeader }}">
+            </a>
+        </div>
+        <div class="info">
+            <time class="date">{{ news.publicationDate | date: 'dd.MM.yyyy' }}</time>
+            <a class="news-name" (click)="openNewsDetails(news)">{{ (languageId$ | async) === 2 ? news.header : news.ukrHeader }}</a>
+            <div class="text"><p>{{ (languageId$ | async) === 2 ? news.description : news.ukrDescription }}</p></div>
+            <span><a (click)="openNewsDetails(news)" class="news-more-btn">{{'Подробнее' | translate}}</a></span>
+        </div>
+    </div>
+</div>
+
+<autodoc-paging [(currentPage)]="currentPage"
+                [totalItems]="totalItems"
+                (pageChanged)="pageChanged($event)"
+                [maxSize]="pageSize"
+                *ngIf="pageSize < totalItems">
+
+</autodoc-paging>
+
+<div *ngIf="inProcess">
+    <div class="container__row">
+        <div class="autodoc-loader"></div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+
+%clear-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+%clearfix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+%pseudo {
+  content: '';
+  position: absolute;
+  display: block;
+}
+%before-vam {
+  &::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 0;
+  }
+}
+
+@mixin verticalAlign() {
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0.1px;
+  }
+}

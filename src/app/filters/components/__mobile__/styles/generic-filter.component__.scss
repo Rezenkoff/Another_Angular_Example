@@ -1,0 +1,21 @@
+.panel-default > .holder-filter + .panel-collapse > .panel-body {
+    border-top-color: transparent !important;
+    padding: 0 0 15px 0 !important;
+}
+
+.panel-default > .holder-filter + .panel-collapse > .combobox-panel-body {
+    border-top-color: transparent !important;
+    padding: 0 0px 5px 0px !important;
+}
+.panel-title {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+}
+.filter-title {    
+    border-bottom: 1px solid #c5d5ea !important;
+    border-radius: 0px !important;    
+    border-top: 0!important;
+   
+    border: 0px solid #c5d5ea !important
+}

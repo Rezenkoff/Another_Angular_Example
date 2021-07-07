@@ -1,0 +1,111 @@
+.product-section {
+    margin: 0px 0 5px;
+    min-height: 288px;
+
+    @media screen and (max-width: 479px) {
+        overflow: visible;
+    }
+
+    &__image-box {       
+        width: 360px;
+        float: none;
+        margin: auto;
+        text-align: center;
+    }
+}
+.foto-3d {
+    height: 380px !important;
+    width: 540px !important;
+    z-index: 2001 !important;
+    background: #dee5e8;
+    position: absolute;
+    bottom: -85px !important;
+    right: -45% !important;
+    top: auto !important;
+    width: 100%;
+    border: 2px solid #fff;
+    padding: 25px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    z-index: 2;
+    display: none;
+
+    @media screen and (max-width: 1022px) {
+        right: -25% !important;
+    }
+
+    @media screen and (max-width: 535px) {
+        right: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        bottom: 0px !important;
+    }
+}
+.sprite_place {
+    @media screen and (max-width: 535px) {
+        width: auto !important;
+        height: 250px !important;
+    }
+}
+.image-battons {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    letter-spacing: -4px;
+    text-align: center;
+
+    &__item {
+        display: inline-block;
+        vertical-align: top;
+        letter-spacing: 0;
+        position: relative;
+        cursor: pointer;
+
+        & + .image-battons__item {
+            margin: 0 0 0 58px;
+
+            @media screen and (max-width: 479px) {
+                margin: 0 0 0 38px;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -28px;
+                width: 1px;
+                bottom: 0;
+                background: #eee;
+
+                @media screen and (max-width: 479px) {
+                    left: -20px;
+                }
+            }
+        }
+    }
+
+    &__ico {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        margin: 0 6px 0 0;
+        font-size: 14px;
+        color: #9ebad4;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    &__text {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 14px;
+        line-height: 14px;
+        color: #1D5495;
+        border-bottom: 1px dashed #1D5495;
+
+
+        &:hover {
+            border-color: transparent;
+        }
+    }
+}

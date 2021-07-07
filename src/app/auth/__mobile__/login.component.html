@@ -1,0 +1,53 @@
+﻿<div class="main-height order-section__form">
+    <div class="main-height">
+        <form novalidate>
+            <div class="order-section__step-box" *ngIf="!inProcess">
+                <div *ngIf="showSuccessMessage">
+                    <p class="auth-success-head">{{'Благодарим Вас за регистрацию на нашем сайте!' | translate}}</p>
+                    <p class="auth-success-text">{{'На указанный Вами почтовый ящик отправлено письмо с регистрационными данными.' | translate}}</p>
+                </div>
+                <div class="container__row">
+                    <span class="login__label">{{'Номер телефона' | translate}}</span>
+                    <div class="relative">
+                        
+                        <input class="login__input" 
+                               type="tel"
+                               [showMaskTyped]="true"
+                               name="phoneNumber" 
+                               [(ngModel)]="userLogin.phone" 
+                               (ngModelChange)="onLoginInput($event)"
+                                #phoneNumber="ngModel" 
+                               placeholder="+380 XXX XX-XX-XX"  mask="(000) 000-00-00" prefix="+38">
+                    </div>
+                    <div *ngIf="!phoneNumber.valid && !phoneNumber.untouched" class="alert__alert-danger">
+                        {{'Некорректный мобильный номер' | translate}}
+                    </div>
+                </div>
+                <div class="container__row">
+                    <span class="login__label">{{'Пароль' | translate}}</span>
+                    <input class="login__input" id="password" type="password" (keyup.enter)="login()" name="password" [(ngModel)]="userLogin.password"
+                           #password="ngModel" required>
+                    <div *ngIf="!password.valid && !password.untouched" class="alert__alert-danger">
+                        {{'Неверный пароль' | translate}}
+                    </div>
+                </div>
+                <div class="container-forgotPassword">
+                    <a class="container__row-example-text" [routerLink]="['../forgot-password']" href="javascript:void(0)">{{'Забыли пароль?' | translate}}</a>
+                </div>
+
+                <div class="container__row">
+                    <button [ngClass]="{ 'disabled-button': password.invalid || phoneNumber.invalid }" class="login__button" (click)="login()" style="margin-right: 10px;">
+                        {{'Войти' | translate}}
+                    </button>
+                    <button class="registration__button" [routerLink]="['../registration']">{{'Регистрация' | translate}}</button>
+                </div>
+            </div>
+            <div *ngIf="inProcess">
+                <div class="container__row">
+                    <div class="autodoc-loader"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

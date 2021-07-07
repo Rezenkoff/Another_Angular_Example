@@ -1,0 +1,123 @@
+.order-section {
+  &__form-step-5 {
+    margin: 0 0 15px;
+    @media screen and (max-width: 767px) {
+      margin: 0 0 0px;
+    }
+    @media screen and (max-width: 359px) {
+      margin: 0;
+    }
+  }
+  &__contact-info {
+    max-width: 470px;
+    margin: 0 auto;
+  }
+  &__contact-input {
+    border-color: #dee5e8;
+    line-height: 58px;
+    height: 60px;
+    padding: 0 30px;
+    margin: 0 0 17px;
+    font-size: 17px;
+  }
+  &__add-comment {
+    text-align: center;
+    
+    &--basket {
+      margin: 10px 0 0px 0;
+    }
+  }
+  &__add-comment-text {
+    display: inline-block;
+    vertical-align: top;
+    color: #1D5495;
+    border-bottom: 1px dashed;
+    font-size: 14px;
+    line-height: 15px;
+    &:hover {
+      border-color: transparent;
+    }
+  }
+  &__area-box {
+    overflow: hidden;
+    height: 0;
+  }
+  &__contact-area {
+    border-radius: 6px;
+    border-color: #99AEC9;
+    padding: 12px;
+    height: 150px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+.success-holder{
+    font-size: 13px;
+    line-height: 20px;
+    color: #999;
+    text-align: center;
+    padding: 30px 0;
+}
+.success__button{
+    background: #3e77aa;
+    color: #f7f7f7;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid #1771b9;
+    display: block;
+    padding: 0 20px 0 27px;
+    border-radius: 5px;
+    margin: auto;
+}
+.success__button:hover {
+    background: #2c6495;
+}
+.contract-page {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #1d5495;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+.contact-info-tel {
+    font-size: 20px;
+    color: #999;
+    font-weight: 700;
+    position: absolute;
+    left: -45px;
+    bottom: 37px;
+}
+.relative {
+    position: relative;
+}
+.info-order {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 0 20px;
+    color: #666;    
+    font-weight: 500;
+}
+.required-text-star {
+    color: #F44336;
+    font-size: 20px;
+    font-weight: 700;
+}
+.required-text {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 15px;
+    text-align: center;
+}
+.required-field {
+    color: #f44336;
+    font-size: 20px;
+    font-weight: 700;
+    position: absolute;
+    top: 20px;
+    right: -16px;
+}

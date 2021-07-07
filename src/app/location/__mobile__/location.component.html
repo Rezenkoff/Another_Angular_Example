@@ -1,0 +1,32 @@
+﻿<div class="location-holder" #location>
+    <span class="location-holder__notes">{{'Выберите город:' | translate}}</span>
+    <span class="location-holder__button" (click)="toggleWindow()">
+        {{ locationService.selectedLocation.name }}
+        <span class="drop-arrow"><svg class="drop-arrow__svg"><use svg-use-reference="arrow" /></svg></span>
+    </span>
+    <div  class="location-holder__dropdown" [style.display]="showDropDown()" >
+        <span class="close-icon" (click)="toggleWindow()"><svg class="close-icon__svg"><use svg-use-reference="close" /></svg></span>
+        <span class="location-holder__title">{{'Выберите свой город' | translate}}</span>
+        <span class="location-holder__sub-title">{{'Мы доставляем заказы по всей Украине!' | translate}}</span>
+        <ul class="location-holder__list">
+            <li *ngFor ="let settlement of popularSettlementsList" class="location-holder__item" [ngClass]="{ 'active':settlement.id === locationService.selectedLocation.id }" (click)="selectLocation(settlement)">{{ settlement.name }}</li>
+            <li *ngIf="userGeocodedSettlement && isBrowser()" class="location-holder__form-text">{{'Ваш город:' | translate}}</li>
+            <li *ngIf="userGeocodedSettlement && isBrowser()" class="location-holder__item" [ngClass]="{ 'active': userGeocodedSettlement.id === locationService.selectedLocation.id }">{{ userGeocodedSettlement.name }}</li>
+        </ul>
+        <div class="location-holder__form">
+            <span class="location-holder__form-text">{{'Или введите другой населенный пункт Украины' | translate}}</span>
+            <div class="location-holder__row">
+                <settlement (onSettlementChange)="onSelectSettlement($event)"></settlement>
+
+                <datalist [hidden]="settlementsByName == null" id="settlementsFound" autocomplete="off">
+                    <option *ngFor ="let settlementFounded of settlementsByName" [value]="getSettlementFullDesc(settlementFounded)">
+                </datalist>
+
+            </div>
+            <div class="location-holder__text">
+                {{'Выбор города поможет предоставить актуальную информацию о наличии товара,  его цены и способов доставки в вашем городе!  Это поможет сохранить больше свободного времени для вас!' | translate}}
+            </div>
+        </div>
+    </div>
+    <div class="location-overlay head-overlay" [style.display]="showDropDown()" (click)="toggleWindow()"></div>
+</div>

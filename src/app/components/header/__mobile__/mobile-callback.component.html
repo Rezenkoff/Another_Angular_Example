@@ -1,0 +1,49 @@
+﻿
+<div class="callback">
+    <span *ngIf="!serverParamsService.serverParams.isTabletDevice" class="work-info__opener" (click)="toggleWindow()"><svg class="tel-icon__svg"><use svg-use-reference="telephone"></use></svg></span>
+
+    <div class="work-info__block" [style.display]="showDropDown()">
+        <div class="phone-list">
+            <ul class="phone-list">
+                <li class="phone-list__item">
+                    <a class="phone-list__link" href="tel:0504222333">+38(050) 4-222-333</a>
+                </li>
+                <li class="phone-list__item">
+                    <a class="phone-list__link" href="tel:0674222333">+38(067) 4-222-333</a>
+                </li>
+                <li class="phone-list__item">
+                    <a class="phone-list__link" href="tel:0734222333">+38(073) 4-222-333</a>
+                </li>
+            </ul>
+            <span class="close-icon mob-callback-icon" (click)="toggleWindow()"><svg class="close-icon__svg"><use svg-use-reference="close" /></svg></span>
+
+        </div>
+        <div class="callback__holder">
+            <span class="callback__title">{{'Заявка на звонок' | translate}}</span>
+            <form class="callback__form" action="#">
+                <span class="callback__label">{{'Ваш номер телефона:' | translate}}</span>
+                <div class="callback__row">
+                    <span class="callback__tel">+38</span><input class="callback__input" #phone="ngModel" [(ngModel)]="callback.userPhoneNumber" maxlength="10" [ngModelOptions]="{standalone: true}" type="tel" pattern="{{_constants.PATTERNS.PHONE_PATTERN}}">
+                </div>
+                <div class="callback__buttons">
+                    <input class="callback__submit" [ngClass]="{ 'disabled-button': phone.invalid || !callback.userPhoneNumber }" (click)="createCallback()" type="submit" value="Перезвонить мне">
+                    <span class="callback__cancel" (click)="toggleWindow()">{{'Отмена' | translate}}</span>
+                </div>
+            </form>
+        </div>
+        <div class="work-time__holder">
+            <span class="work-time__title">{{'Прием заявок online:' | translate}}</span>
+            <span class="work-time__order">{{'КРУГЛОСУТОЧНО' | translate}}</span>
+            <span class="work-time__title">{{'График работы' | translate}}</span>
+            <span class="work-time__time">{{'с 7:30 до 18:00' | translate}}</span>
+            <ul class="work-time__list">
+                <li class="work-time__item">
+                    <span class="work-time__day">{{'Суббота, Воскресенье: ' | translate}}</span>
+                    <span class="work-time__description">{{'с 10:00 до 17:00' | translate}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="callback-overlay head-overlay" (click)="toggleWindow()" [style.display]="showDropDown()"></div>
+</div>
+

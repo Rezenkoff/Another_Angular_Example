@@ -1,0 +1,51 @@
+﻿<div class="vin-block-form-mob col-sm-12 col-xs-12">
+    <div *ngIf="searchType == 0" class="vin-input-icon">
+        <vin-search-input [isSearching$]="isSearching$" (onVinCodeEnter)="vinSearch($event)" (onGovernmentNumEnter)="governmentNumSearch($event)"></vin-search-input>
+        <span class="question-icon">
+            <svg width="24" height="24"><use svg-use-reference="vehicle-question" /></svg>
+            <span class="vin-foto">
+                <img src="https://cdn.autodoc.ua/VIN_info.png" width="346" height="248" />
+                <span>{{'Vehicle identification number (VIN) — уникальный код транспортного средства, состоящий из 17 символов. В коде представлена информация о производителе, характеристиках транспортного средства, и годе выпуска.' | translate}}</span>
+            </span>
+        </span>
+    </div>
+
+    <div *ngIf="searchType == 1">
+        <car-select-panel-home (onCarSelectPanelChange)="modelSearch($event)"></car-select-panel-home>
+    </div>
+
+    <div *ngIf="searchType == 2">
+        <div class="all-auto-in-garage">
+            <user-cars-list (onCarSelect)="selectCarFromGarage($event)"></user-cars-list>
+        </div>
+    </div>
+
+    <a [ngClass]="getNextStepButtonClass()" (click)="goToNextStep()">{{'Следующий шаг' | translate}}<span class="drop-arrow btn-blue-arrow"><svg class="btn-blue-arrow"><use svg-use-reference="arrow"></use></svg></span></a>
+    <div *ngIf="!foundCar">
+        <div class="vin-line-mob" *ngIf="searchType == 0">
+            {{'Или воспользуйтесь поиском по модели' | translate}}
+        </div>
+    </div>
+    <div *ngIf="!foundCar">       
+        <div *ngIf="searchType !== 0">
+            <div class="vin-line-mob">{{'Или воспользуйтесь поиском по VIN' | translate}}</div>
+            <a class="btn-grey btn-choose-auto" (click)="selectVinSearchType()">{{'Подбор по VIN' | translate}}</a>
+        </div>
+        <a *ngIf="searchType !== 1" class="btn-grey btn-choose-auto" (click)="selectByModelSearchType()">{{'Подбор по автомобилю' | translate}}</a>
+        <a *ngIf="searchType !== 2 && isAuthenticated()" class="btn-grey btn-choose-garage" (click)="selectByGarageSearchType()">{{'Выбрать из гаража' | translate}} <span class="garage-auto">({{(garageCarsCount$ | async)}}{{' авто)' | translate}}</span></a>
+    </div>
+    <div *ngIf="foundCar">
+        <div class="select-car">
+            <span class="close-icon-vin" (click)="closeSelectedCar()"><svg class="close-icon-vin__svg"><use svg-use-reference="close"></use></svg></span>
+            <div class="select-car-title">{{'Ваш автомобиль' | translate}}</div>
+            <div style="padding: 0 0 24px 24px;">
+                <img src="https://test.omega.page/api/api/v1.0/image/getmanlogo?manufId={{foundCar.markId}}" class="select-car-img" width="60" height="60" onerror="this.src = 'https://cdn.autodoc.ua/images/marks/car-icon.png'">
+                <div style="display: inline-block;" (click)="goToNextStep()">
+                    <div class="select-car-text">{{foundCar.mark}}</div>
+                    <div class="select-car-text">{{foundCar.model}}</div>
+                    <div class="select-car-text">{{'Год выпуска:' | translate}} {{getYearFromDate(foundCar.year)}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

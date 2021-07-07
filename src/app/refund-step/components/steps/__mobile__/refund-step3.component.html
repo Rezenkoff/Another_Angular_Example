@@ -1,0 +1,35 @@
+﻿<div class="order-section__contact-info refund-step3" >
+    <div class="radio">
+        <input type="radio" name="bankType" value="privatbank" [(ngModel)]="selectedBank" [jcf]="{type: 'radio'}" (change)="onSelectedBank()">{{'ПриватБанк'|translate}}
+        <input type="radio" name="bankType" value="anotherbank" [(ngModel)]="selectedBank" [jcf]="{type: 'radio'}" (change)="onSelectedBank()">{{'Другой банк'|translate}}
+    </div>
+    <div class="container__row">
+        <span class="container__radio-title" style="width:auto">{{'Номер карты'|translate}}</span>
+        <input #card="ngModel" class="container__row-input" type="text" required maxlength="{{cartNumberLength}}" placeholder="{{'Номер карты' | translate}}"
+               [(ngModel)]="_refundStepService.paymentInfo.CardNumber" (ngModelChange)="Validate()" pattern="{{cardPattern}}" (keypress)="CheckNumbers($event)">
+        <span *ngIf="card.invalid && (card.dirty || card.touched)" class="alert__alert-danger">{{'Заполните поле !'|translate}}</span>
+    </div>
+    <div class="container__row" *ngIf="!_refundStepService.paymentInfo.isPrivatBank">
+        <span class="container__radio-title">{{'МФО'|translate}}</span>
+        <input #mfo="ngModel" class="container__row-input" type="text" required placeholder="{{'МФО' | translate}}" [(ngModel)]="_refundStepService.paymentInfo.MFO"
+               (ngModelChange)="Validate()" pattern="{{mfoPattern}}" maxlength="{{mfoLength}}" (keypress)="CheckNumbers($event)">
+        <span *ngIf="mfo.invalid && (mfo.dirty || mfo.touched)" class="alert__alert-danger">{{'Заполните поле !'|translate}}</span>
+    </div>
+    <div class="container__row" *ngIf="!_refundStepService.paymentInfo.isPrivatBank">
+        <span class="container__radio-title">{{'ИПН'|translate}}</span>
+        <input class="container__row-input" type="text" #ipn="ngModel" required placeholder="{{'ИПН' | translate}}" [(ngModel)]="_refundStepService.paymentInfo.IPN"
+               (ngModelChange)="Validate()" pattern="{{ipnPattern}}" maxlength="{{ipnLength}}" (keypress)="CheckNumbers($event)">
+        <span *ngIf="ipn.invalid && (ipn.dirty || ipn.touched)" class="alert__alert-danger">{{'Заполните поле !'|translate}}</span>
+    </div>
+    <div class="container__row" *ngIf="!_refundStepService.paymentInfo.isPrivatBank">
+        <span class="container__radio-title" style="width:115px">{{'Название банка'|translate}}</span>
+        <input class="container__row-input" type="text" #bankName="ngModel" placeholder="{{'Название банка' | translate}}" [(ngModel)]="_refundStepService.paymentInfo.BankName"
+               (ngModelChange)="Validate()">
+        <span *ngIf="bankName.invalid && (bankName.dirty || bankName.touched)" class="alert__alert-danger">{{'Заполните поле !'|translate}}</span>
+    </div>
+    <div class="container__row" *ngIf="!_refundStepService.paymentInfo.isPrivatBank">
+        <span class="container__radio-title">{{'Комментарий'|translate}}</span>
+        <textarea class="container__row" placeholder="Комментарий" cols="30" rows="10" [(ngModel)]="_refundStepService.paymentInfo.Comment" (ngModelChange)="Validate()"></textarea>
+        <span style="color:grey;font-size:11px">{{'*Укажите, если есть, требование к содержанию платежа (например: «Пополнение карты 4149000099991234, Петров Петр Павлович, 2055154321»)'|translate}}</span>
+    </div>
+</div>

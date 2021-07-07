@@ -1,0 +1,21 @@
+﻿<a><div *ngIf="isParentNode" class="text-sub" [routerLink]="getRoute()">{{ currentLevel.name }}</div></a>
+<ng-container *ngIf="!isParentNode">
+    <div *ngIf="hasChildren()" (click)="toggleChildren()" class="circle-element">
+        <ng-container *ngIf="childrenHidden">
+            <span class="line-plus">+</span>
+        </ng-container>
+        <ng-container *ngIf="!childrenHidden">
+            <span class="line-minus">-</span>
+        </ng-container>
+    </div>
+    <a *ngIf="currentLevel.hasProducts || currentLevel.deepLevel !== 2" [routerLink]="getRoute()" class="tree-text-sub-link">{{ currentLevel.name }}</a>
+    <a *ngIf="!currentLevel.hasProducts && currentLevel.deepLevel === 2" (click)="nodeClick()" class="tree-text-sub-link">{{ currentLevel.name }}</a>
+</ng-container>
+
+<ng-container>
+    <ul class="tree-text-sub" [ngClass]="{'block-padding': isParentNode}" [hidden]="childrenHidden && !isParentNode">
+        <li *ngFor="let node of getChildrenList(); trackBy: trackByFn">
+            <category-level [currentLevel]="node" [routeArray]="routeArray"></category-level>
+        </li>
+    </ul>
+</ng-container>

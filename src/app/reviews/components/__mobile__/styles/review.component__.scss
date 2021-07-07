@@ -1,0 +1,52 @@
+.product-text-comment {
+    display: inline-block;
+    width: 83%;
+    margin-bottom: 10px;
+}
+.brand-label-status {
+    background: #f5f7fa;
+    border: 1px solid #c5d5ea;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-size: 12px;
+    padding: 0 6px;
+}
+.manager-icon {
+    width: 12px;
+    height: 12px;
+    margin: 2px 3px 0 0;
+    background-size: 48px 12px;
+}
+.logo {
+    display: inline-block;    
+    background: url(https://cdn.autodoc.ua/images/header/logo.png) no-repeat;
+    text-indent: -9999px;
+    overflow: hidden;   
+    letter-spacing: 0;
+    vertical-align: top;
+    background-size: 48px 12px;
+}
+.brand-date-desktop {
+    font-size: 10px;
+    line-height: 12px;
+    color: #99aec9;  
+}
+.prod-whish-list:hover{
+    text-decoration: none;
+}
+.brand-info-item {
+    font-size: 12px;
+    line-height: 16px;
+    color: #414141;
+    margin-top: 3px;
+    display: inline-block;
+    max-width: 645px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.brand-own-comment {
+    font-size: 14px;
+    line-height: 21px;
+    color: #414141;
+    margin: 6px 0 12px;
+}

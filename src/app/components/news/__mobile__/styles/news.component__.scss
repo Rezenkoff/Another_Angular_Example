@@ -1,0 +1,99 @@
+
+.news-image-box {
+    max-height: 408px;
+    overflow: hidden;
+}
+.page-title {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    color: #1d5495;
+    margin-bottom: 12px;
+    text-align: center;
+}
+.news-content {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px;
+    color: #414141;
+    margin: 12px 0;
+}
+
+.news-content .image-box {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #c5d5ea;
+    margin: auto;
+    position: relative;
+    width: 250px;
+}
+
+.news-content .image-box .published {
+    position: absolute;
+    bottom: -15px;
+    left: 15px;
+    width: 80px;
+    background: #eaeff5;
+    display: block;
+    color: #999;
+    text-align: center;
+    font: 14px/16px NM,sans-serif;
+    padding: 13px 0;
+}
+.news-content .image-box .published span {
+    display: block;
+    font: 32px/34px NB,sans-serif;
+    margin: 0 0 5px;
+}
+
+.news-content .text-section {
+    padding: 12px 0;
+}
+
+.news-content .text {
+    padding: 15px 10px;
+}
+
+.news-content .text p:first-child {
+    margin-top: 0;
+}
+
+.news-content .text p {
+    margin: 20px 0;
+}
+.news-section-more {
+    max-width: 1000px;
+    margin: 0 auto 24px;
+}
+
+.latest-articles-more {
+    border-top: 1px solid #C5D5EA;
+    padding: 24px 0 0;
+    text-align: center;
+}
+.latest-articles__name-more {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    line-height: 16px;
+    display: block;
+    width: 312px;
+    margin: 10px auto;
+}
+.read-more {
+    @media screen and (max-width: 767px) {
+        margin: 0 10px 20px !important;
+    }
+}
+.news-callback {
+    margin: 0px 0 40px 0;
+    text-align: center;
+
+    &__text {
+        color: #1D5495;
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+}

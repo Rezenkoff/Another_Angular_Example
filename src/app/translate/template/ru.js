@@ -1,0 +1,1 @@
+module.exports = {"Contacts":"Контакты","About Company":"О Компании","Delivery":"Доставка","Returns":"Возврат","How to order":"Как заказать"};

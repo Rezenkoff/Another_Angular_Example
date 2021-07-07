@@ -1,0 +1,70 @@
+﻿<div class="title">
+    <span class="title__text">
+        {{'Результаты поиска' | translate}}
+    </span>
+</div>
+<div class="catalog-section">
+    <div *ngIf="!IsMobile() && !mobileFiltersShown" class="sidebar">
+        <div class="filter">
+            <div class="filter__box">
+                <selected-filter-view (onFilterChange)="applyFilters()"></selected-filter-view>
+                <div class="panel-group" id="accordion">
+                    <filters-panel></filters-panel>
+                </div>
+                <div>
+                    <button (click)="applyFilters()" class="filter-apply-btn">{{'Применить' | translate}}</button>
+                    <button (click)="resetFilters()" class="filter-reset-btn">{{'Сбросить' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="productsList" class="product-seciton">
+        <car-filter-panel></car-filter-panel>
+        <div class="filter-opener-mob" (click)="toggleFilters()">
+            
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.9317 0.454307C15.8029 0.159368 15.5799 0.0118777 15.2618 0.0117188H0.737808C0.420135 0.0117188 0.196893 0.159368 0.0682817 0.454307C-0.0602503 0.76435 -0.00735106 1.02928 0.227218 1.24859L5.82146 6.84267V12.3573C5.82146 12.5543 5.89335 12.7243 6.03703 12.8682L8.94171 15.7728C9.078 15.9165 9.24814 15.9886 9.45246 15.9886C9.54316 15.9886 9.63767 15.9695 9.73604 15.9317C10.0312 15.803 10.1788 15.5799 10.1788 15.2622V6.84271L15.7728 1.24863C16.0075 1.02932 16.0603 0.764469 15.9317 0.454307Z" fill="#1D5495" />
+            </svg>
+                
+            
+            <span class="show-filter">{{'Показать фильтры' | translate}}</span>
+            <span *ngIf="selectedFilterCount > 0" class="number-filters">: {{selectedFilterCount}}</span>
+        </div>
+
+        <search-parameters-panel (isListChanged)="setIsList($event)" (parametersChanged)="navigate()"></search-parameters-panel>
+        <!--mobile filters-->
+        <div [style.display]="mobileFiltersShown ? 'block' : 'none'" class="popup popup-order" #filters>
+            <div class="popup__overlay popup__overlay-order"></div>
+            <div class="filter-holder panel panel-default filter-title">
+                <div class="header-filter">
+                    {{'Фильтры' | translate}}
+                    <span class="header-filter-close" (click)="toggleFilters()"><svg class="close-icon__svg header-filter-close-svg"><use svg-use-reference="close"></use></svg></span>
+                </div>
+                <div class="" style="" #selectedFilterViewMobile>
+                    <selected-filter-view (onFilterChange)="applyFilters()"></selected-filter-view>
+                </div>
+
+                <filters-panel></filters-panel>
+                <div class="item-filter-btn">
+                    <a (click)="resetFilters()" class="btn-reset-filter">{{'Сбросить' | translate}}</a>
+                    <a (click)="applyFilters()" class="btn-show-filter">{{'Показать' | translate}}</a>
+                </div>
+            </div>
+        </div>
+
+        <search-product-list [isList]="isList"
+                             [showMoreButtonDisplayed]="isShowMoreDisplayed() | async"
+                             (onShowMoreClick)="loadMoreProducts()">
+        </search-product-list>
+        <ng-container *ngIf="(totalCount$ | async) === 1">
+            <div *ngIf="(firstProduct$ | async) != null && (firstProduct$ | async)?.analogsCount > 0">
+                <div id="analogs" class="title">
+                    <span class="title__text" style="font-size: 14px">{{'Аналоги (заменители) найденного товара' | translate}}</span>
+                </div>
+                <search-analogs-list [firstProduct]="firstProduct$ | async" [isList]="isList" (analogs$)="onAnalogsListChange($event)"></search-analogs-list>
+            </div>
+        </ng-container>
+        <seo-paging *ngIf="(totalCount$ | async) > searchParameters.count" [totalItems]="totalCount$ | async" [currentPage]="currentPage" [maxSize]="searchParameters.count" [queryParameters]="queryParameters" (pageChanged)="pageChanged($event)"></seo-paging>
+    </div>
+</div>
+

@@ -1,0 +1,29 @@
+﻿
+<div class="add-vehicle-pad-1" style="min-height: 240px">
+    <div>
+        <span class="choise-auto-title">{{'ВЫБЕРИТЕ ВАШ АВТОМОБИЛЬ' | translate}}</span>
+        <span class="choise-auto-title">{{'введите VIN' | translate}}</span>
+        <vin-search (onVehicleFinded)="onVehicleCreated($event)"></vin-search>
+        <span class="choise-auto-title">{{'или воспользуйтесь поиском по модели' | translate}}</span>
+    </div>
+    <div>        
+        <car-select-panel-common (onCarSelectPanelChange)="onCarModelChange($event)"></car-select-panel-common>
+    </div>    
+    <div *ngIf="CarIsValid()" class="row edit-form">
+        <div class="model-year-vin">
+            <b><span>{{'Выбранное авто:' | translate}} {{newVehicle.mark}} {{newVehicle.model}} </span><span><u>{{newVehicle.year}} </u></span><span>{{newVehicle.vin}}</span></b>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 edit-form-input">
+            <span class="login__label">{{'Гос номер' | translate}}</span>
+            <input type="text" class="registration__input" [(ngModel)]="newVehicle.stateNumber" [patterns]="customPatterns" mask="00000000" />
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 edit-form-input">
+            <span class="login__label">{{'Пробег' | translate}}</span>
+            <input type="text" class="registration__input" mask="separator" maxlength="8" [(ngModel)]="newVehicle.milage" />
+        </div>
+        <div>
+            <button (click)="addVehicle()" class="addGarage__bottom">{{'Добавить' | translate}}</button>
+            <button (click)="close()" class="cancelGarage">{{'Выход' | translate}}</button>
+        </div>
+    </div>
+</div>

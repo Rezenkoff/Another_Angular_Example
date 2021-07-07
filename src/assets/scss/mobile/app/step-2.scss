@@ -1,0 +1,169 @@
+.order-section {
+  &__form-step-2 {
+    max-width: 724px;
+    margin: 0 auto 10px;
+    @media screen and (max-width: 767px) {
+      max-width: 593px;
+      margin: 0 auto 0px;
+    }
+    @media screen and (max-width: 359px) {
+      margin: 0 auto;
+    }
+    .order-section__form-field {
+      @media screen and (max-width: 479px) {
+        padding: 0 57px 0 27px;
+      }
+    }
+  }
+  &__form-detail {
+    margin: 0 0 30px;
+    &::after {
+      content:'';
+      display:block;
+      clear:both;
+    }
+    @media screen and (max-width: 620px) {
+      max-width: 386px;
+      margin: 0 auto 30px;
+    }
+  }
+  &__load {
+    @media screen and (max-width: 620px) {
+      max-width: 386px;
+      margin: 0 auto;
+    }
+  }
+  &__load-text {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 420px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #999;
+    margin: 0 0 0 20px;
+    @media screen and (max-width: 767px) {
+      max-width: 350px;
+    }
+    @media screen and (max-width: 620px) {
+      display: block;
+      margin: 10px 0 0;
+    }
+  }
+  &__load{
+    margin-bottom: 5px;
+    margin-top: 5px;
+   }
+  &__close-icon {
+    top: 13px;
+    position: absolute;
+    left: 28px;
+    }
+}
+.add-detail {
+  float: right;
+  width: 52px;
+  height: 52px;
+  border: 1px solid #dee5e8;
+  border-radius: 50%;
+  line-height: 50px;
+  font-size: 30px;
+  color:  #3e77aa;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  top: 4px;
+  &:hover {
+    background:  #3e77aa;
+    border-color:  #3e77aa;
+    .add-detail__svg,
+    .add-detail__svg use {
+      fill: #fff;
+    }
+  }
+  &__button{
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    overflow: hidden;
+    border: 1px solid #dee5e8;
+    border-radius: 5px;
+    padding: 0 0 0 25px;
+    text-align: center;
+    line-height: 58px;
+    height: 60px;
+    background: #faf9f9;
+    color: #3e77aa;
+    font-size: 14px;
+    position: relative;
+    cursor: pointer;    
+    width: 208px;
+  }
+  &__button-del{
+    width: 212px;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    overflow: hidden;  
+    position: relative;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+    border: 1px solid #C5D5EA;
+    color: #1D5495;
+    border-radius: 6px;
+    padding: 12px 24px 12px 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  &__plus{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 29px;
+    margin: -7px 0 0;
+    width: 18px;
+    height: 18px;
+    fill: #3e77aa;
+  }
+  &__load-file{    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    background: #F5F7FA;
+    border: 1px solid #C5D5EA;
+    border-radius: 6px;
+    padding: 12px;
+    width: 100%;
+    margin: 12px 0 14px 0;
+    font-size: 12px;
+    color: #414141;
+    position: relative;
+
+  }
+  
+}
+.deletee-icon__svg{
+    width: 15px;
+    height: 15px;
+    display: block;
+    fill: #3e77aa;
+} 
+input.file-change{
+    height: 100px;
+    width: 205px;
+    padding: 50px;
+    cursor: pointer;
+}
+input.select-me-input{
+    height:1px !important;
+    width: 1px !important;
+}
+ .detail-code.order-section__form-prompt-text{
+    width: 235px!important;
+}
+.file-hidden{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

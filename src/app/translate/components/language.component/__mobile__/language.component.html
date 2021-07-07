@@ -1,0 +1,14 @@
+﻿<div class="lang" #lang>
+    <span class="lang__active-lang" (click)="toggleLanguageDropdown()">
+        <!--<img class="lang__icon" [src]="displayIcon(currentLanguage)" alt="LNG" title="image description" width="16" height="10">-->{{ currentLanguage }}
+        <span class="drop-arrow"><svg xmlns="http://www.w3.org/2000/svg" class="drop-arrow__svg" preserveAspectRatio="xMidYMid" viewBox="0 0 8.031 4" id="arrow"><path d="M.089.447a.25.25 0 0 1 0-.372.299.299 0 0 1 .401 0l3.521 3.272L7.532.075a.298.298 0 0 1 .4 0 .25.25 0 0 1 0 .372L4.211 3.905a.298.298 0 0 1-.4 0L.089.447z" class="afcls-1"></path></svg></span>
+    </span>
+    <ul class="lang__dropdown" [style.display]="getDisplay()">
+        <li class="dropdown__item" *ngFor ="let lang of supportedLanguages" (click)="selectLang(lang.name)">
+            <a class="dropdown__link" href="javascript:void(0)">
+                <!--<img class="dropdown__icon" [src]="displayIcon(lang.name)" alt="LNG" title="image description" width="16" height="10">-->{{ lang.name }}
+            </a>
+        </li>
+    </ul>
+    <div class="head-overlay lang-overlay" (click)="toggleLanguageDropdown()" [style.display]="getDisplay()"></div>
+</div>

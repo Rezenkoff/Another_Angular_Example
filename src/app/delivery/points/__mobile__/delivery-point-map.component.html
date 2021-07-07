@@ -1,0 +1,52 @@
+﻿<agm-map #agmMap style="height:100%;width:100%" [latitude]="centerMap.latitude" [longitude]="centerMap.longitude" [(zoom)]="zoom">
+    <agm-marker-cluster imagePath="https://cdn.autodoc.ua/images/blue-marker">
+        <agm-marker *ngFor="let marker of deliveryPoints; let i = index" [latitude]="marker.latitude" [longitude]="marker.longitude" [iconUrl]="imgUrl" (markerClick)="selectMarker(marker)">
+            <agm-info-window #infoWindow [isOpen]="marker.id==selectedMarker.id">
+                <div class="map-info">
+                    <div class="map-info__image">
+                        <span class="map-info__image-title">AutoDoc</span>
+                        <img class="map-info__img" src="{{getImagePreviewUrl(marker.pictureUrl)}}" alt="{{marker.name}}" onerror="this.src = 'https://cdn.autodoc.ua/images/no_image.png'" title="{{marker.name}}" width="118" height="90">
+                    </div>
+                    <div class="map-info__description">
+                        <span class="map-info__description-title">{{marker.name}}</span>
+                        <address class="map-info__address">
+                            <div class="address-icon address-icon-contact">
+                                <svg class="address-icon__svg address-icon__svg--blue">
+                                    <use svg-use-reference="placeholder" />
+                                </svg>
+                            </div>
+                            <div class="address-of-sto">{{marker.address}}</div>
+                        </address>
+                        <div class="map-contacts">
+                            <div class="phone-list-block">
+                                <div class="address-icon tel-icon-contact">
+                                    <svg class="address-icon__svg address-icon__svg--blue">
+                                        <use svg-use-reference="telephone" />
+                                    </svg>
+                                </div>
+                                <ul *ngIf="marker && marker.phones" class="map-contacts__phone-list">
+                                    <li *ngFor="let phone of marker.phones">
+                                        <a class="map-contacts__phone-link" href="tel:{{phone.contactText}}">{{phone.contactText}}&nbsp;&nbsp;</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="map-contacts__work-time">
+                                <div *ngIf="marker && marker.schedule" class="work-time-block">
+                                    <div class="address-icon timetable-icon-contact">
+                                        <svg class="address-icon__svg address-icon__svg--blue">
+                                            <use svg-use-reference="wall-clock" />
+                                        </svg>
+                                    </div>
+                                    {{'График работы СТО:' | translate}}
+                                    <div>{{marker.schedule}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </agm-info-window>
+        </agm-marker>
+    </agm-marker-cluster>
+</agm-map>

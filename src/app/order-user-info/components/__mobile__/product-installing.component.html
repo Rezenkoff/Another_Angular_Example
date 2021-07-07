@@ -1,0 +1,12 @@
+﻿<div class="container__radio-box">
+    <span class="container__radio-title">{{'Услуги' | translate}}</span>
+    <div>
+        <label>{{'Требуется установка запчасти: ' | translate}}</label>
+        <div>
+            <div *ngFor="let product of (cart$ | async) ?.products">
+                <input type="checkbox" [jcf]="{ type:'Checkbox' }" class="checkbox-garage" [(ngModel)]="product.isNeedToInstall" (click)="selectProduct(product, $event)" />
+                {{product.displayDescription}}
+            </div>
+        </div>
+    </div>
+</div>

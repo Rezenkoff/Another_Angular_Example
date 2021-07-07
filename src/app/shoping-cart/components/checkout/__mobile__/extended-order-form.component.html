@@ -1,0 +1,12 @@
+﻿<checkout-hover [inProcess]="inProcess" [stepType]="checkoutStepType"></checkout-hover>
+<liqpay-widget></liqpay-widget>
+<div class="" style="padding-bottom: 30px;">
+    <contact-info-step [enabledStep$]="enabledStep$"
+                       (contactInfoSubmit)="applyContactInfo($event)"
+                       (contactInfoEdit)="enableContactInfo()">
+    </contact-info-step>
+    <delivery-info-step [enabledStep$]="enabledStep$"
+                        (onUserDeliveryInfoChange)="updateDeliveryInfo($event)"
+                        (onOrderSubmit)="confirmOrder()">
+    </delivery-info-step>
+</div>

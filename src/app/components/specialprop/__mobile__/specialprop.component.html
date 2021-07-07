@@ -1,0 +1,8 @@
+﻿<div (window:scroll)="onWindowScroll($event)">
+    <div class="special-box--center" *ngIf="mobileBoxImageShow" [@hideBaner]="needShow">
+        <a *ngIf="mobileTargetUrl" [routerLink]="[mobileTargetUrl]" href="javascript:void(0)">
+            <img class="special-box__image--center" [src]="mobileImgUrl" alt="picture">
+        </a>
+        <img *ngIf="!mobileTargetUrl" class="special-box__image--center" alt="picture" [src]="mobileImgUrl">
+    </div>
+</div>

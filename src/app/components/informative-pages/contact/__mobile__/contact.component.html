@@ -1,0 +1,78 @@
+﻿<div class="contact-page" itemscope itemtype="https://schema.org/LocalBusiness">
+    <div class="info-holder-contact">
+        <div class="title-contact">{{'Контакты' | translate}}</div>
+        <span itemprop="name" style="display:none;">AUTODOC</span><img src="https://res.cloudinary.com/dk5dc1wvr/image/upload/v1507713302/images/logo.png" itemprop="image" style="display:none;" />
+        <div class="info-holder__text">
+            <p class="free-delivery-contact">{{'Бесплатная доставка на' | translate}} <a class="free-delivery-link" [routerLink]="['sto']" href="javascript:void(0)">{{'Точки выдачи Автодок' | translate}}.</a></p>
+            <p class="free-delivery-contact"><a class="free-delivery-link" [routerLink]="['/dostavka-i-oplata']" fragment="rabota-s-yuridicheskimi-litsami"  href="javascript:void(0)">{{'Работа с юридическими лицами (счета с НДС)' | translate}}</a></p>
+            <ul class="list-contact">
+                <li>{{'самовывоза из офиса — нет' | translate}}</li>
+                <li>
+                    {{'оплата — наличными, наложенным платежом, банковской картой' | translate}}
+                </li>
+                <li>{{'доставка курьерскими службами' | translate}}</li>
+            </ul>
+            <div>
+                <img src="https://cdn.autodoc.ua/new-post-contact.png" class="img-contact" alt="picture" width="" />
+                <img src="https://cdn.autodoc.ua/delivery-contact.png" class="img-contact" alt="picture" width="" />
+                <img src="https://cdn.autodoc.ua/Upost_logo-ua.png" class="img-contact" alt="picture" width="" />
+                <div class="meest-justin">
+                    <img src="https://cdn.autodoc.ua/meest-contact.png" class="img-contact" alt="picture" width="" />
+                    <img src="https://cdn.autodoc.ua/justin-contact.png" class="img-contact" alt="picture" width="" />
+                </div>
+            </div>
+            <div>
+                <div class="block-contact">
+                    <span class="title-block-contact">{{'График работы:' | translate}}</span>
+                    <p class="text-contact">
+                        <time itemprop="openingHours" datetime="Mo-Fr 9:00−21:00">{{'Пн-Пт: с 9:00 до 21:00' | translate}}  </time>
+                    </p>
+                    <p class="text-contact">
+                        <time itemprop="openingHours" datetime="Sa-Su 9:00−18:00">{{'Сб, Вс: с 9:00 до 18:00' | translate}}</time>
+                    </p>
+                    <p class="text-contact">{{'Онлайн-заказ 24/7' | translate}}</p>
+
+                </div>
+                <div class="block-contact">
+                    <span class="title-block-contact">{{'Телефоны:' | translate}}</span>
+                    <p class="text-contact">
+                        <a class="phone-list-contact" href="tel:0504222333"><span itemprop="telephone">(050) 4-222-333</span></a>
+
+                    </p>
+                    <p class="text-contact"><a class="phone-list-contact" href="tel:0674222333"><span itemprop="telephone">(067) 4-222-333</span></a></p>
+                    <p class="text-contact"><a class="phone-list-contact" href="tel:0734222333"><span itemprop="telephone">(073) 4-222-333</span></a></p>
+                    <meta itemprop="priceRange" content="От 1 грн">
+                </div>
+                <div class="block-contact">
+                    <span class="title-block-contact">E-mail:</span>
+                    <p class="text-contact">
+                        <a href="mailto:office@autodoc.ua" class="email-address"><span itemprop="email">office@autodoc.ua</span></a>
+                    </p>
+                </div>
+                <div class="block-contact" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <span class="title-block-contact">{{'Адрес:' | translate}}</span>
+                    <p class="text-contact">
+                        <span itemprop="addressLocality">{{'г. Киев, ' | translate}}</span><span itemprop="streetAddress">{{'ул. Олексы Довбуша, 37' | translate}}</span><br />
+                    </p>
+                </div>
+            </div>
+             <div class="social-contact">
+                
+                <a href="https://www.facebook.com/autodoc.ukraine/" target="_blank"><span class="contact-social-fb"></span></a>
+                <a href="https://www.instagram.com/autodoc.ua/" target="_blank"><span class="contact-social-inst"></span></a>
+                <a href="viber://pa?chatURI=autodoc" target="_blank"><span class="contact-social-viber"></span></a>
+                <a href="https://t.me/AutodocUaBot" target="_blank"><span class="contact-social-tg"></span></a>
+            </div>           
+           
+        </div>
+    </div>
+    <div class="contact__map contact-map" *ngIf="isBrowser()" style="height: 350px;">
+        <div class="sector-form contact-form">
+            <city-select (onSettlementSelected)="loadPoints($event)"></city-select>
+        </div>
+        <delivery-point-map [deliveryPoints]="stoList" (selectedMarkerChange)="selectMarker($event)" [centerMap]="centerMap" [zoom]="zoom"></delivery-point-map>
+    </div>
+</div>
+
+
+

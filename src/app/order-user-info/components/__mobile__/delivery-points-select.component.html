@@ -1,0 +1,25 @@
+﻿<delivery-points-map *ngIf="(mapShown$ | async)"
+                     [markersList$]="markersList$"
+                     [selectedSettlement$]="selectedSettlement$"
+                     [selectedDeliveryPointKey$]="selectedDeliveryPointKey$"
+                     [deliveryMethodKey$]="deliveryMethodKey$"
+                     (onClose)="closeMap()"
+                     (onSelectMarker)="selectMarker($event)">
+</delivery-points-map>
+<div>
+    <div class="container__radio-title" style="width: 145px;">{{'Адрес отделения' | translate}} <span class="red-star">*</span></div>
+    <delivery-points-list [shipmentKey]="shipmentKey"
+                          [deliveryPointKey$]="selectedDeliveryPointKey$"
+                          [deliveryMarkers$]="markersList$"
+                          [spinnerOn$]="spinnerOn$"
+                          (onSelectMarker)="selectMarker($event)"
+                          [deliveryMethodKey$]="deliveryMethodKey$">
+    </delivery-points-list>
+    <div *ngIf="!(selectedDeliveryPointKey$ | async)">
+        <span class="text-danger">{{'Выберите пункт выдачи' | translate}}</span>
+    </div>
+    <div  *ngIf="(deliveryMethodKey$ | async) != 4 && (markersList$ | async).length > 0" class="map-checkout">
+        <span class="show-map-checkout"><svg class="show-map-checkout__svg"><use svg-use-reference="map" /></svg></span>
+        <a class="ps-text-link" (click)="showMap()">{{'Выбрать отделение' | translate}}</a>
+    </div>
+</div>

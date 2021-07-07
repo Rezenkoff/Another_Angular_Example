@@ -1,0 +1,15 @@
+﻿<div class="container__radio-box">
+    <span class="container__radio-title">{{'Город' | translate}} *</span>
+    <settlement [selectedName]="selectedName"
+                (onSettlementChange)="onSelectSettlement($event)"
+                (hideDropdownSettlement)="hideDropdownSettlement($event)"
+                [(settlementsListSource)]="popularSettlements"
+                [shipmentKey$]="shipmentKey$"></settlement>
+    <div class="container__row-example">
+        {{'Например' | translate}},
+        <ng-template ngFor let-settlement [ngForOf]="popularSettlements" let-index="index">
+            <span *ngIf="index<=ExampleCityCountLimit" style="cursor: pointer" class="container__row-example-text" (click)="onSelectSettlement(settlement)">{{settlement.name}}</span>
+            <span *ngIf="!isLastItem(settlement) && index<ExampleCityCountLimit" class="container__row-example-text">, </span>
+        </ng-template>
+    </div>
+</div>

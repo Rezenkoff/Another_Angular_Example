@@ -1,0 +1,27 @@
+﻿<div class="order-section__form-step-4">
+    <span class="order-section__form-title">{{'Выберите способ доставки'| translate}}</span>
+    <div class="delivery-step">
+        <div class="delivery-step__choose">
+            <div class="delivery-step__col">
+
+                <span class="delivery-step__label">{{'Выберите способ доставки:' | translate}}</span>
+                <select class="delivery-step__select" [(ngModel)]="orderStepService.OrderStepMainModel.Shipment.ShypmentType" (ngModelChange)="onTypeChange($event)" [jcf]="{type:'Select'}">
+                    <option *ngFor ="let sh of shipmentList" [ngValue]="sh">{{ sh.ShipmentName }}</option>
+                </select>
+                <span  class="delivery-step__label">{{'Выберите город доставки:' | translate}}</span>
+
+                <settlement #settlementOrder (onSettlementChange)="onSelectSettlement($event)" (onEmptySearchTerm)="onEmptySearch()"></settlement>
+                <div *ngIf="orderStepService.OrderStepMainModel.Shipment.ShypmentType">
+                    <span class="delivery-step__label">{{'Выберите пункт выдачи:' | translate}}</span>
+                    <delivery-point #deliverypoint (onMarkerSelect)="onAddressSelect($event)" [cityId]="orderStepService.OrderStepMainModel.Shipment.DestinationCity.id" [shipmentTypeKey]="orderStepService.OrderStepMainModel.Shipment.ShypmentType.Key"></delivery-point>
+                </div>
+            </div>
+        </div>
+        <div class="delivery-step__decor">
+            <span class="delivery-step__decor-text">{{'или' | translate}}</span>
+        </div>
+        <!--<div class="delivery-step__map small-map">
+            <google-maps #googlemaps (onGoogleIconClick)="onMarkerSelect($event)"></google-maps>
+        </div>-->
+    </div>
+</div>

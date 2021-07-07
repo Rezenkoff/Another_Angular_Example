@@ -1,0 +1,27 @@
+﻿<p *ngIf="noLatestCarsFound">
+    {{'Для выбора авто из гаража, пожалуйста' | translate}} <a [routerLink]="['/login']">{{'авторизируйтесь' | translate}}</a> {{'на сайте' | translate}}
+</p>
+<div>
+    <p>{{'Ранее найденные автомобили' | translate}}</p>
+    <table class="main-table--shadow table-vechicle">
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    {{'Бренд' | translate}}
+                </th>
+                <th class="hidden-sm hidden-xs">
+                    {{'Модель' | translate}}
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vehicle of latestCars" class="main-table__item" (click)="onCarSelected(vehicle)" style="cursor:pointer">            
+                <td><img onerror="this.src = 'https://cdn.autodoc.ua/images/marks/car-icon.png'" [src]="getLogo(vehicle.brand)" width="40" height="40"></td>
+                <td>{{vehicle.brand}}</td>
+                <td class="hidden-sm hidden-xs">{{vehicle.name}}</td>            
+            </tr>
+        </tbody>
+    </table>
+</div>

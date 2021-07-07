@@ -1,0 +1,8 @@
+﻿<div>
+    <div class="autodoc-loader" *ngIf="(loading$ | async)"></div>
+    <ng-container *ngIf="!(loading$ | async)">
+        <h1 class="sub-categories__name" *ngIf="RootParentNode" style="margin-bottom: 0;text-align: center; border-bottom: 1px solid #C5D5EA; padding: 0 0 12px 0;margin-top: 0px;font-weight: bold;font-size: 18px;line-height: 24px;">{{categoryTitle}}</h1>
+
+        <catalog-subs *ngIf="RootParentNode" [fourthLvlRoot]="FourthLevelRoot" [root$]="root$" [catalogType]="catalogType" categoryTitle="{{categoryTitle}}"></catalog-subs>
+    </ng-container>    
+</div>

@@ -1,0 +1,36 @@
+﻿<div class="order-section__form-step-1 active">
+    <div class="order-section__step-box" *ngIf="!inProcess">
+        <div class="vin-block-title-mob">{{'Выберите Ваш автомобиль' | translate}}</div>
+        <div [hidden]="hideButtons" class="order-section__form-input">
+            <vin-search (onVehicleFinded)="addVehicle($event)"></vin-search>
+        </div>
+        <div *ngIf="isValid && !noVehicle" class="container__added-auto">
+            <div class="myCar">{{'Ваше авто:' | translate}}</div>
+            <div class="logo-brand">
+                <img class="container__img-model" [src]="getLogo(orderStepService.OrderStepMainModel.Vehicle.mark)" width="40" height="40" onerror="this.src = 'https://cdn.autodoc.ua/images/marks/car-icon.png'">
+                <span>{{ orderStepService.OrderStepMainModel.Vehicle.mark }} {{ orderStepService.OrderStepMainModel.Vehicle.model }} {{ orderStepService.OrderStepMainModel.Vehicle.year }}</span>
+            </div>
+            <span class="close-icon__model-auto" (click)="resetSelectedVehicle()">
+                <svg class="close-icon__svg close-icon__svg--red close-st1"><use svg-use-reference="close"></use></svg>
+            </span>
+            
+        </div>
+        <!--<div *ngif="notfound">
+            {{'*по данному vin коду автомобиль не найден' | translate}}
+        </div>-->
+        <div *ngIf="unauthorized" class="message-logIn">
+            <span class="close-icon message" (click)="displayUnauthorizeMessage()"><svg class="close-icon__svg step1-close-icon"><use svg-use-reference="close" /></svg></span>
+            <a class="message-logIn-cabinet" [routerLink]="['/authentication/login']">{{'Войдите' | translate}}</a> {{'в свою учётную запись, чтобы выбрать авто из вашего гаража' | translate}}           
+        </div>       
+        <div [hidden]="hideButtons" class="order-section__sub-text-box"><span class="vin-line-mob">{{'или воспользуйтесь поиском по модели' | translate}}</span></div>
+        <div [hidden]="hideButtons" class="order-section__button-list">
+            <a class="order-section__button-link" (click)="searchBySelectedCar()" href="javascript:void(0)"><span class="order-section__button-link-text">{{'Мои автомобили' | translate}}<span class="order-section__button-link-number"></span></span></a>
+            <a class="button-list__btn-1 button-list__btn-1--opener" href="javascript:void(0)" (click)="toggleSearchByVehicleParamsBox()">
+                <span class="car-icon car-icon--white"><svg class="car-icon__svg car-icon__svg--white"><use svg-use-reference="car"></use></svg></span>{{'Подбор по автомобилю' | translate}}
+            </a>
+        </div>
+    </div>
+    <div *ngIf="inProcess" style="height:120px;">
+        <div class="autodoc-loader"></div>
+    </div>
+</div>

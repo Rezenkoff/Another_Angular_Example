@@ -1,0 +1,54 @@
+.text-sub-catalog {
+    margin: 0 12px 12px 12px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: #1d5495;
+    text-decoration: none;
+}
+.tree-text-sub-catalog {
+    font-size: 14px;
+    line-height: 21px;
+    color: #1d5495;
+    list-style: none;
+}
+.tree-text-sub-catalog li {
+    margin-bottom: 12px;
+    font-size: 12px;
+    line-height: 21px;
+    color: #1d5495;
+}
+.circle-element-catalog {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #c5d5ea;
+    display: inline-block;
+    position: relative;
+    color: #1d5495;
+    margin-right: 6px;
+    cursor: pointer;
+}
+.text-sub-link-catalog {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 16px;
+    color: #1d5495;
+    vertical-align: top;
+
+    &:hover {
+        color: #1D5495;
+        text-decoration: underline;
+    }
+}
+
+.line-plus-catalog{
+    position:absolute;
+    top:-2px;
+    left:4px;
+}
+.line-minus-catalog {
+    position: absolute;
+    top: -2px;
+    left: 7px;
+}
